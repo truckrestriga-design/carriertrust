@@ -109,17 +109,20 @@ export default function AuthInner() {
     const saved = localStorage.getItem("lang");
     if (saved === "en" || saved === "de" || saved === "ru") setLang(saved);
 
-    supabase.auth.getUser().then(({ data }) => {
+    (async () => {
+      const { data } = await supabase.auth.getUser();
       const user = data.user;
       if (!user) return;
-
+    
       const userEmail = (user.email || "").toLowerCase();
       if (userEmail === ADMIN_EMAIL.toLowerCase()) {
         window.location.href = "/admin";
         return;
       }
+    
       window.location.href = nextUrl;
-    });
+    })();
+    
   }, [nextUrl]);
 
   const inputClass =
