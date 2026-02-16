@@ -16,9 +16,18 @@ export default function Header() {
       setLang(saved);
     }
 
-    supabase.auth.getUser().then(({ data }) => {
-      setLoggedIn(!!data.user);
-    });
+    useEffect(() => {
+      (async () => {
+        const { data, error } = await supabase.auth.getUser();
+        if (error) return;
+    
+        if (!data.user) {
+          window.location.href = "/auth?next=/write-review";
+          return;
+        }
+      })();
+    }, []);
+    
   }, []);
 
   function changeLang(l: Lang) {

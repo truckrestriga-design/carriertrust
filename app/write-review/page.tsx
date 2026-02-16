@@ -116,13 +116,18 @@ export default function WriteReviewPage() {
     const saved = localStorage.getItem("lang");
     if (saved === "en" || saved === "de" || saved === "ru") setLang(saved);
 
-    supabase.auth.getUser().then(({ data }) => {
-      if (!data.user) {
-        window.location.href = "/auth?next=/write-review";
-        return;
-      }
-      setLoading(false);
-    });
+    useEffect(() => {
+      (async () => {
+        const { data, error } = await supabase.auth.getUser();
+        if (error) return;
+    
+        if (!data.user) {
+          window.location.href = "/auth?next=/write-review";
+          return;
+        }
+      })();
+    }, []);
+    
   }, []);
 
   const inputClass =

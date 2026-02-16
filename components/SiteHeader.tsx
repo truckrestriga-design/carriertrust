@@ -15,9 +15,18 @@ export default function SiteHeader() {
     const saved = localStorage.getItem("lang");
     if (saved === "en" || saved === "de" || saved === "ru") setLang(saved);
 
-    supabase.auth.getUser().then(({ data }) => {
-      setIsLoggedIn(!!data.user);
-    });
+    useEffect(() => {
+      (async () => {
+        const { data, error } = await supabase.auth.getUser();
+        if (error) return;
+    
+        if (!data.user) {
+          window.location.href = "/auth?next=/write-review";
+          return;
+        }
+      })();
+    }, []);
+    
   }, []);
 
   function changeLang(next: Lang) {
