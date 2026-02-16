@@ -1,13 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { supabase } from "@/lib/supabaseClient";
+import { getSupabaseBrowserClient } from "@/lib/supabaseClient";
 
 type Lang = "en" | "de" | "ru";
 
 export default function Header() {
   const [lang, setLang] = useState<Lang>("en");
   const [loggedIn, setLoggedIn] = useState(false);
+  const supabase = getSupabaseBrowserClient();
 
   useEffect(() => {
     const saved = localStorage.getItem("lang");

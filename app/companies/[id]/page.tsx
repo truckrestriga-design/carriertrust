@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { useParams } from "next/navigation";
-import { supabase } from "@/lib/supabaseClient";
+import { getSupabaseBrowserClient } from "@/lib/supabaseClient";
 
 type Lang = "en" | "de" | "ru";
 
@@ -50,6 +50,7 @@ type ReviewRow = {
 export default function CompanyPage() {
   const params = useParams<{ id: string }>();
   const id = params?.id;
+  const supabase = getSupabaseBrowserClient();
 
   const [lang, setLang] = useState<Lang>("ru");
   const t = useMemo(() => TEXT[lang], [lang]);

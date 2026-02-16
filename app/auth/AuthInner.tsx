@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { supabase } from "@/lib/supabaseClient";
+import { getSupabaseBrowserClient } from "@/lib/supabaseClient";
 
 type Lang = "en" | "de" | "ru";
 
@@ -82,6 +82,7 @@ export default function AuthInner() {
   const sp = useSearchParams();
   const nextUrl = sp.get("next") || "/write-review";
   const confirmed = sp.get("confirmed") === "1";
+  const supabase = getSupabaseBrowserClient();
 
   const [lang, setLang] = useState<Lang>("en");
   const t = useMemo(() => TEXT[lang], [lang]);

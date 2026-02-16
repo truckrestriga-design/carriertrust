@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { supabase } from "@/lib/supabaseClient";
+import { getSupabaseBrowserClient } from "@/lib/supabaseClient";
 
 type Lang = "en" | "de" | "ru";
 
@@ -9,6 +9,7 @@ export default function SiteHeader() {
   const [lang, setLang] = useState<Lang>("en");
   const [open, setOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const supabase = getSupabaseBrowserClient();
 
   useEffect(() => {
     const saved = localStorage.getItem("lang");

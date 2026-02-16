@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { supabase } from "@/lib/supabaseClient";
+import { getSupabaseBrowserClient } from "@/lib/supabaseClient";
 
 type Lang = "en" | "de" | "ru";
 
@@ -118,6 +118,8 @@ type ReviewRow = {
 };
 
 export default function AdminPage() {
+  const supabase = getSupabaseBrowserClient();
+
   const [lang, setLang] = useState<Lang>("en");
   const t = useMemo(() => TEXT[lang], [lang]);
 

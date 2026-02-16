@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { supabase } from "@/lib/supabaseClient";
+import { getSupabaseBrowserClient } from "@/lib/supabaseClient";
 import { countryFromVat } from "@/lib/vatCountry";
 
 type Lang = "en" | "de" | "ru";
@@ -96,6 +96,7 @@ const TEXT: Record<Lang, TextPack> = {
 export default function WriteReviewPage() {
   const [lang, setLang] = useState<Lang>("en");
   const t = useMemo(() => TEXT[lang], [lang]);
+  const supabase = getSupabaseBrowserClient();
 
   const [loading, setLoading] = useState(true);
 
