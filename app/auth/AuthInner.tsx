@@ -70,8 +70,7 @@ const TEXT: Record<Lang, TextPack> = {
     btnLogin: "Войти",
     btnRegister: "Зарегистрироваться",
     backHome: "На главную",
-    regOk:
-      "Аккаунт создан. Подтвердите email по ссылке в письме, затем войдите.",
+    regOk: "Аккаунт создан. Подтвердите email по ссылке в письме, затем войдите.",
     confirmedOk: "Спасибо! Email подтверждён. Пожалуйста, войдите.",
     fillAll: "Пожалуйста, заполните все поля.",
   },
@@ -97,19 +96,14 @@ export default function AuthInner() {
   const [msgType, setMsgType] = useState<"success" | "error" | null>(null);
   const [loading, setLoading] = useState(false);
 
-  // Берем SITE_URL безопасно (чтобы не падало на Vercel)
-  const SITE_URL = useMemo(() => {
-    const envUrl = process.env.NEXT_PUBLIC_SITE_URL;
-    if (envUrl && envUrl.trim()) return envUrl.trim();
-    if (typeof window !== "undefined") return window.location.origin;
-    return "http://localhost:3000";
-  }, []);
+  // ВАЖНО: на проде должен быть URL сайта (carriertrust.eu)
+  // На Vercel мы его зададим в Environment Variables.
+  const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 
   const emailRedirectTo = useMemo(() => {
     return `${SITE_URL}/auth?next=${encodeURIComponent(nextUrl)}&confirmed=1`;
   }, [SITE_URL, nextUrl]);
 
-  // Load lang + if already logged in -> redirect (admin to /admin, else to nextUrl)
   useEffect(() => {
     const saved = localStorage.getItem("lang");
     if (saved === "en" || saved === "de" || saved === "ru") setLang(saved);
@@ -193,7 +187,6 @@ export default function AuthInner() {
     setVat("");
     setEmail("");
     setPassword("");
-
     setSuccess(t.regOk);
     setLoading(false);
   }

@@ -1,10 +1,10 @@
-import dynamic from "next/dynamic";
-
-const AuthInner = dynamic(() => import("./AuthInner"), {
-  ssr: false,
-  loading: () => <div style={{ padding: 24 }}>Loading...</div>,
-});
+import { Suspense } from "react";
+import AuthInner from "./AuthInner";
 
 export default function AuthPage() {
-  return <AuthInner />;
+  return (
+    <Suspense fallback={<div style={{ padding: 24 }}>Loading...</div>}>
+      <AuthInner />
+    </Suspense>
+  );
 }
