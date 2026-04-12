@@ -75,7 +75,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const { data: companies, error } = await supabaseServer
     .from("companies")
-    .select("id, updated_at")
+    .select("id, slug, updated_at")
     .order("updated_at", { ascending: false });
 
   if (error || !companies) {
@@ -83,11 +83,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }
 
   const companyPages: MetadataRoute.Sitemap = companies.map((company) => ({
-    url: `${base}/companies/${company.id}`,
+    url: `${base}/companies/${company.slug || company.id}`,
     lastModified: company.updated_at ? new Date(company.updated_at) : new Date(),
     changeFrequency: "weekly",
     priority: 0.8,
   }));
-
+  
   return [...staticPages, ...companyPages];
 }
