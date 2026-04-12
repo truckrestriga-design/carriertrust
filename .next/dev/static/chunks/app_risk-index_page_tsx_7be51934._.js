@@ -1,0 +1,1912 @@
+(globalThis.TURBOPACK || (globalThis.TURBOPACK = [])).push([typeof document === "object" ? document.currentScript : undefined,
+"[project]/app/risk-index/page.tsx [app-client] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "default",
+    ()=>RiskIndexPage
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/client/app-dir/link.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$supabaseClient$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/lib/supabaseClient.ts [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$language$2d$context$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/lib/language-context.tsx [app-client] (ecmascript)");
+;
+var _s = __turbopack_context__.k.signature(), _s1 = __turbopack_context__.k.signature();
+"use client";
+;
+;
+;
+;
+const EN = {
+    adSpace: "Ad space",
+    bannerEmptyText: "Your banner can appear here",
+    addBanner: "Add banner",
+    orderBanner: "Order a banner",
+    searchPageLabel: "Risk Index Page",
+    sideLabel: "Side",
+    sideLeft: "left",
+    sideRight: "right",
+    sizeLabel: "Size",
+    choosePeriod: "Choose a period:",
+    companyName: "Company name",
+    companyNamePlaceholder: "For example, EXPORTO LTD",
+    invoiceEmail: "Invoice email",
+    invoiceEmailPlaceholder: "invoice@company.com",
+    invalidEmail: "Please enter a valid email",
+    uploadBanner: "Upload banner",
+    chooseBannerFile: "Click to choose a file",
+    recommendedSize: "Recommended size: 180×600px",
+    paymentDetails: "Payment details",
+    bankCompany: "Company",
+    bankAccount: "Account number",
+    bankBic: "BIC",
+    amount: "Amount",
+    paymentPurpose: "Payment purpose",
+    paymentPurposeFallback: "Banner - Company Name",
+    uploadPaymentProof: "Upload payment proof",
+    uploadPaymentConfirmation: "Upload payment confirmation",
+    paymentProofFormats: "PDF, PNG, JPG",
+    bannerPreview: "Banner preview",
+    bannerPreviewEmpty: "Your uploaded banner preview will appear here",
+    havePaid: "I have paid",
+    sending: "Sending...",
+    successMessage: "Banner request sent. The banner is now under moderation, invoice will be sent by email.",
+    publishAfterModeration: "After payment verification and moderation, the banner will be published.",
+    errorSending: "Error sending"
+};
+const TEXT = {
+    en: EN,
+    de: {
+        ...EN,
+        adSpace: "Werbefläche",
+        bannerEmptyText: "Ihr Banner kann hier erscheinen",
+        addBanner: "Banner hinzufügen",
+        orderBanner: "Banner bestellen",
+        searchPageLabel: "Risk-Index-Seite",
+        sideLabel: "Seite",
+        sideLeft: "links",
+        sideRight: "rechts",
+        sizeLabel: "Größe",
+        choosePeriod: "Zeitraum wählen:",
+        companyName: "Firmenname",
+        companyNamePlaceholder: "Zum Beispiel EXPORTO LTD",
+        invoiceEmail: "Rechnungs-E-Mail",
+        invoiceEmailPlaceholder: "invoice@company.com",
+        invalidEmail: "Bitte geben Sie eine gültige E-Mail ein",
+        uploadBanner: "Banner hochladen",
+        chooseBannerFile: "Klicken, um eine Datei auszuwählen",
+        recommendedSize: "Empfohlene Größe: 180×600px",
+        paymentDetails: "Zahlungsdetails",
+        bankCompany: "Firma",
+        bankAccount: "Kontonummer",
+        bankBic: "BIC",
+        amount: "Betrag",
+        paymentPurpose: "Verwendungszweck",
+        paymentPurposeFallback: "Banner - Company Name",
+        uploadPaymentProof: "Zahlungsnachweis hochladen",
+        uploadPaymentConfirmation: "Zahlungsbestätigung hochladen",
+        paymentProofFormats: "PDF, PNG, JPG",
+        bannerPreview: "Banner-Vorschau",
+        bannerPreviewEmpty: "Hier erscheint die Vorschau Ihres hochgeladenen Banners",
+        havePaid: "Ich habe bezahlt",
+        sending: "Wird gesendet...",
+        successMessage: "Banner-Anfrage gesendet. Das Banner befindet sich jetzt in der Moderation, die Rechnung wird per E-Mail gesendet.",
+        publishAfterModeration: "Nach Zahlungsprüfung und Moderation wird das Banner veröffentlicht.",
+        errorSending: "Fehler beim Senden"
+    },
+    ru: {
+        ...EN,
+        adSpace: "Рекламное место",
+        bannerEmptyText: "Ваш баннер может быть размещён здесь",
+        addBanner: "Добавить баннер",
+        orderBanner: "Заказать баннер",
+        searchPageLabel: "Страница Risk Index",
+        sideLabel: "Сторона",
+        sideLeft: "левая",
+        sideRight: "правая",
+        sizeLabel: "Размер",
+        choosePeriod: "Выберите период:",
+        companyName: "Название компании",
+        companyNamePlaceholder: "Например, EXPORTO LTD",
+        invoiceEmail: "Email для счёта",
+        invoiceEmailPlaceholder: "invoice@company.com",
+        invalidEmail: "Введите корректный email",
+        uploadBanner: "Загрузить баннер",
+        chooseBannerFile: "Нажмите, чтобы выбрать файл",
+        recommendedSize: "Рекомендуемый размер: 180×600px",
+        paymentDetails: "Реквизиты для оплаты",
+        bankCompany: "Компания",
+        bankAccount: "Номер счёта",
+        bankBic: "BIC",
+        amount: "Сумма",
+        paymentPurpose: "Назначение платежа",
+        paymentPurposeFallback: "Banner - Company Name",
+        uploadPaymentProof: "Загрузить подтверждение оплаты",
+        uploadPaymentConfirmation: "Загрузить подтверждение платежа",
+        paymentProofFormats: "PDF, PNG, JPG",
+        bannerPreview: "Предпросмотр баннера",
+        bannerPreviewEmpty: "Здесь появится предпросмотр загруженного баннера",
+        havePaid: "Я оплатил",
+        sending: "Отправка...",
+        successMessage: "Заявка на баннер отправлена. Баннер сейчас на модерации, счёт будет отправлен на email.",
+        publishAfterModeration: "После проверки оплаты и модерации баннер будет опубликован.",
+        errorSending: "Ошибка отправки"
+    },
+    fr: {
+        ...EN,
+        adSpace: "Espace publicitaire",
+        bannerEmptyText: "Votre bannière peut apparaître ici",
+        addBanner: "Ajouter une bannière",
+        orderBanner: "Commander une bannière",
+        searchPageLabel: "Page Risk Index",
+        sideLabel: "Côté",
+        sideLeft: "gauche",
+        sideRight: "droite",
+        sizeLabel: "Taille",
+        choosePeriod: "Choisissez une période :",
+        companyName: "Nom de l’entreprise",
+        companyNamePlaceholder: "Par exemple, EXPORTO LTD",
+        invoiceEmail: "E-mail de facturation",
+        invoiceEmailPlaceholder: "invoice@company.com",
+        invalidEmail: "Veuillez entrer un e-mail valide",
+        uploadBanner: "Télécharger la bannière",
+        chooseBannerFile: "Cliquez pour choisir un fichier",
+        recommendedSize: "Taille recommandée : 180×600px",
+        paymentDetails: "Détails du paiement",
+        bankCompany: "Société",
+        bankAccount: "Numéro de compte",
+        bankBic: "BIC",
+        amount: "Montant",
+        paymentPurpose: "Objet du paiement",
+        paymentPurposeFallback: "Banner - Company Name",
+        uploadPaymentProof: "Télécharger la preuve de paiement",
+        uploadPaymentConfirmation: "Télécharger la confirmation du paiement",
+        paymentProofFormats: "PDF, PNG, JPG",
+        bannerPreview: "Aperçu de la bannière",
+        bannerPreviewEmpty: "L’aperçu de votre bannière téléchargée apparaîtra ici",
+        havePaid: "J’ai payé",
+        sending: "Envoi...",
+        successMessage: "Demande de bannière envoyée. La bannière est maintenant en modération, la facture sera envoyée par e-mail.",
+        publishAfterModeration: "Après vérification du paiement et modération, la bannière sera publiée.",
+        errorSending: "Erreur d’envoi"
+    },
+    es: {
+        ...EN,
+        adSpace: "Espacio publicitario",
+        bannerEmptyText: "Tu banner puede aparecer aquí",
+        addBanner: "Añadir banner",
+        orderBanner: "Pedir un banner",
+        searchPageLabel: "Página Risk Index",
+        sideLabel: "Lado",
+        sideLeft: "izquierdo",
+        sideRight: "derecho",
+        sizeLabel: "Tamaño",
+        choosePeriod: "Elige un período:",
+        companyName: "Nombre de la empresa",
+        companyNamePlaceholder: "Por ejemplo, EXPORTO LTD",
+        invoiceEmail: "Email de factura",
+        invoiceEmailPlaceholder: "invoice@company.com",
+        invalidEmail: "Introduce un email válido",
+        uploadBanner: "Subir banner",
+        chooseBannerFile: "Haz clic para elegir un archivo",
+        recommendedSize: "Tamaño recomendado: 180×600px",
+        paymentDetails: "Detalles de pago",
+        bankCompany: "Empresa",
+        bankAccount: "Número de cuenta",
+        bankBic: "BIC",
+        amount: "Importe",
+        paymentPurpose: "Concepto de pago",
+        paymentPurposeFallback: "Banner - Company Name",
+        uploadPaymentProof: "Subir comprobante de pago",
+        uploadPaymentConfirmation: "Subir confirmación de pago",
+        paymentProofFormats: "PDF, PNG, JPG",
+        bannerPreview: "Vista previa del banner",
+        bannerPreviewEmpty: "La vista previa del banner subido aparecerá aquí",
+        havePaid: "Ya he pagado",
+        sending: "Enviando...",
+        successMessage: "Solicitud de banner enviada. El banner está ahora en moderación; la factura será enviada por email.",
+        publishAfterModeration: "Después de la verificación del pago y la moderación, el banner será publicado.",
+        errorSending: "Error al enviar"
+    },
+    it: {
+        ...EN,
+        adSpace: "Spazio pubblicitario",
+        bannerEmptyText: "Il tuo banner può apparire qui",
+        addBanner: "Aggiungi banner",
+        orderBanner: "Ordina un banner",
+        searchPageLabel: "Pagina Risk Index",
+        sideLabel: "Lato",
+        sideLeft: "sinistro",
+        sideRight: "destro",
+        sizeLabel: "Dimensione",
+        choosePeriod: "Scegli un periodo:",
+        companyName: "Nome azienda",
+        companyNamePlaceholder: "Ad esempio, EXPORTO LTD",
+        invoiceEmail: "Email fattura",
+        invoiceEmailPlaceholder: "invoice@company.com",
+        invalidEmail: "Inserisci un’email valida",
+        uploadBanner: "Carica banner",
+        chooseBannerFile: "Clicca per scegliere un file",
+        recommendedSize: "Dimensione consigliata: 180×600px",
+        paymentDetails: "Dettagli di pagamento",
+        bankCompany: "Società",
+        bankAccount: "Numero di conto",
+        bankBic: "BIC",
+        amount: "Importo",
+        paymentPurpose: "Causale",
+        paymentPurposeFallback: "Banner - Company Name",
+        uploadPaymentProof: "Carica prova di pagamento",
+        uploadPaymentConfirmation: "Carica conferma pagamento",
+        paymentProofFormats: "PDF, PNG, JPG",
+        bannerPreview: "Anteprima banner",
+        bannerPreviewEmpty: "L’anteprima del banner caricato apparirà qui",
+        havePaid: "Ho pagato",
+        sending: "Invio...",
+        successMessage: "Richiesta banner inviata. Il banner è ora in moderazione, la fattura sarà inviata via email.",
+        publishAfterModeration: "Dopo la verifica del pagamento e la moderazione, il banner sarà pubblicato.",
+        errorSending: "Errore di invio"
+    }
+};
+function clamp(n, min, max) {
+    return Math.max(min, Math.min(max, n));
+}
+function isValidEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+function pillForRisk(r) {
+    if (r === "high") return "bg-red-50 text-red-800 border-red-200";
+    if (r === "medium") return "bg-yellow-50 text-yellow-800 border-yellow-200";
+    return "bg-emerald-50 text-emerald-800 border-emerald-200";
+}
+function RotatingBanner({ side, banners, onAddClick, t }) {
+    _s();
+    const [currentIndex, setCurrentIndex] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(0);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "RotatingBanner.useEffect": ()=>{
+            if (banners.length <= 1) return;
+            const interval = setInterval({
+                "RotatingBanner.useEffect.interval": ()=>{
+                    setCurrentIndex({
+                        "RotatingBanner.useEffect.interval": (prev)=>(prev + 1) % banners.length
+                    }["RotatingBanner.useEffect.interval"]);
+                }
+            }["RotatingBanner.useEffect.interval"], 5000);
+            return ({
+                "RotatingBanner.useEffect": ()=>clearInterval(interval)
+            })["RotatingBanner.useEffect"];
+        }
+    }["RotatingBanner.useEffect"], [
+        banners.length
+    ]);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "RotatingBanner.useEffect": ()=>{
+            setCurrentIndex(0);
+        }
+    }["RotatingBanner.useEffect"], [
+        banners
+    ]);
+    const currentBanner = banners[currentIndex];
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("aside", {
+        className: "hidden xl:flex flex-col items-center sticky top-32 shrink-0",
+        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            className: "w-[180px]",
+            children: [
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: "relative h-[600px] w-[180px] overflow-hidden rounded-[1.75rem] border border-white/70 bg-white/80 shadow-[0_18px_50px_rgba(15,23,42,0.10)] backdrop-blur",
+                    children: currentBanner ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                        src: currentBanner.image,
+                        alt: currentBanner.alt || `Banner ${side}`,
+                        className: "h-full w-full object-cover"
+                    }, void 0, false, {
+                        fileName: "[project]/app/risk-index/page.tsx",
+                        lineNumber: 384,
+                        columnNumber: 13
+                    }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "flex h-full w-full flex-col items-center justify-center gap-4 bg-[linear-gradient(180deg,rgba(255,255,255,0.92),rgba(241,245,249,0.96))] p-5 text-center",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "flex h-16 w-16 items-center justify-center rounded-2xl bg-emerald-100 shadow-inner",
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                    className: "h-8 w-8 text-emerald-600",
+                                    fill: "none",
+                                    stroke: "currentColor",
+                                    viewBox: "0 0 24 24",
+                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                        strokeLinecap: "round",
+                                        strokeLinejoin: "round",
+                                        strokeWidth: 2,
+                                        d: "M12 4v16m8-8H4"
+                                    }, void 0, false, {
+                                        fileName: "[project]/app/risk-index/page.tsx",
+                                        lineNumber: 398,
+                                        columnNumber: 19
+                                    }, this)
+                                }, void 0, false, {
+                                    fileName: "[project]/app/risk-index/page.tsx",
+                                    lineNumber: 392,
+                                    columnNumber: 17
+                                }, this)
+                            }, void 0, false, {
+                                fileName: "[project]/app/risk-index/page.tsx",
+                                lineNumber: 391,
+                                columnNumber: 15
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                        className: "text-sm font-semibold text-slate-700",
+                                        children: t.adSpace
+                                    }, void 0, false, {
+                                        fileName: "[project]/app/risk-index/page.tsx",
+                                        lineNumber: 408,
+                                        columnNumber: 17
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                        className: "mt-1 text-xs text-slate-400",
+                                        children: "180×600px"
+                                    }, void 0, false, {
+                                        fileName: "[project]/app/risk-index/page.tsx",
+                                        lineNumber: 409,
+                                        columnNumber: 17
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                        className: "mt-3 text-xs leading-5 text-slate-500",
+                                        children: t.bannerEmptyText
+                                    }, void 0, false, {
+                                        fileName: "[project]/app/risk-index/page.tsx",
+                                        lineNumber: 410,
+                                        columnNumber: 17
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/app/risk-index/page.tsx",
+                                lineNumber: 407,
+                                columnNumber: 15
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/app/risk-index/page.tsx",
+                        lineNumber: 390,
+                        columnNumber: 13
+                    }, this)
+                }, void 0, false, {
+                    fileName: "[project]/app/risk-index/page.tsx",
+                    lineNumber: 382,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                    onClick: ()=>onAddClick(side),
+                    className: "group mt-4 flex h-12 w-full items-center justify-center rounded-[1rem] border border-slate-200/80 bg-white text-sm font-semibold text-slate-800 shadow-[0_12px_30px_rgba(15,23,42,0.08)] transition-all duration-300 hover:-translate-y-0.5 hover:border-emerald-200 hover:bg-emerald-50/70 hover:text-emerald-700",
+                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                        className: "flex items-center gap-2",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                className: "flex h-5 w-5 items-center justify-center rounded-full bg-slate-100 text-slate-500 transition-colors group-hover:bg-emerald-100 group-hover:text-emerald-600",
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                    className: "h-3.5 w-3.5",
+                                    fill: "none",
+                                    stroke: "currentColor",
+                                    viewBox: "0 0 24 24",
+                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                        strokeLinecap: "round",
+                                        strokeLinejoin: "round",
+                                        strokeWidth: 2.2,
+                                        d: "M12 4v16m8-8H4"
+                                    }, void 0, false, {
+                                        fileName: "[project]/app/risk-index/page.tsx",
+                                        lineNumber: 430,
+                                        columnNumber: 17
+                                    }, this)
+                                }, void 0, false, {
+                                    fileName: "[project]/app/risk-index/page.tsx",
+                                    lineNumber: 424,
+                                    columnNumber: 15
+                                }, this)
+                            }, void 0, false, {
+                                fileName: "[project]/app/risk-index/page.tsx",
+                                lineNumber: 423,
+                                columnNumber: 13
+                            }, this),
+                            t.addBanner
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/app/risk-index/page.tsx",
+                        lineNumber: 422,
+                        columnNumber: 11
+                    }, this)
+                }, void 0, false, {
+                    fileName: "[project]/app/risk-index/page.tsx",
+                    lineNumber: 418,
+                    columnNumber: 9
+                }, this)
+            ]
+        }, void 0, true, {
+            fileName: "[project]/app/risk-index/page.tsx",
+            lineNumber: 381,
+            columnNumber: 7
+        }, this)
+    }, void 0, false, {
+        fileName: "[project]/app/risk-index/page.tsx",
+        lineNumber: 380,
+        columnNumber: 5
+    }, this);
+}
+_s(RotatingBanner, "fkSGCZOCafBoPVLWE3rJxYZye0U=");
+_c = RotatingBanner;
+function RiskIndexPage() {
+    _s1();
+    const { t, lang } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$language$2d$context$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useLang"])();
+    const modalT = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMemo"])({
+        "RiskIndexPage.useMemo[modalT]": ()=>TEXT[lang || "en"] ?? TEXT.en
+    }["RiskIndexPage.useMemo[modalT]"], [
+        lang
+    ]);
+    const [loading, setLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(true);
+    const [err, setErr] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
+    const [tab, setTab] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("high");
+    const [rows, setRows] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
+    const [q, setQ] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
+    const [limit, setLimit] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(50);
+    const [leftBanners, setLeftBanners] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
+    const [rightBanners, setRightBanners] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
+    const [isModalOpen, setIsModalOpen] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [selectedSide, setSelectedSide] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
+    const [selectedPlan, setSelectedPlan] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
+    const [bannerFile, setBannerFile] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
+    const [bannerPreview, setBannerPreview] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
+    const [paymentProofFile, setPaymentProofFile] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
+    const [paymentProofName, setPaymentProofName] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
+    const [form, setForm] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])({
+        companyName: "",
+        invoiceEmail: ""
+    });
+    const [submitting, setSubmitting] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [successMessage, setSuccessMessage] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
+    const [submitError, setSubmitError] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
+    const pricing = [
+        {
+            period: "week",
+            price: 49,
+            label: "1 week"
+        },
+        {
+            period: "month",
+            price: 149,
+            label: "1 month"
+        },
+        {
+            period: "year",
+            price: 999,
+            label: "1 year"
+        }
+    ];
+    const translatedPricing = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMemo"])({
+        "RiskIndexPage.useMemo[translatedPricing]": ()=>{
+            return pricing.map({
+                "RiskIndexPage.useMemo[translatedPricing]": (plan)=>{
+                    let label = plan.label;
+                    if (plan.period === "week") {
+                        if (lang === "de") label = "1 Woche";
+                        else if (lang === "ru") label = "1 неделя";
+                        else if (lang === "fr") label = "1 semaine";
+                        else if (lang === "es") label = "1 semana";
+                        else if (lang === "it") label = "1 settimana";
+                    }
+                    if (plan.period === "month") {
+                        if (lang === "de") label = "1 Monat";
+                        else if (lang === "ru") label = "1 месяц";
+                        else if (lang === "fr") label = "1 mois";
+                        else if (lang === "es") label = "1 mes";
+                        else if (lang === "it") label = "1 mese";
+                    }
+                    if (plan.period === "year") {
+                        if (lang === "de") label = "1 Jahr";
+                        else if (lang === "ru") label = "1 год";
+                        else if (lang === "fr") label = "1 an";
+                        else if (lang === "es") label = "1 año";
+                        else if (lang === "it") label = "1 anno";
+                    }
+                    return {
+                        ...plan,
+                        label
+                    };
+                }
+            }["RiskIndexPage.useMemo[translatedPricing]"]);
+        }
+    }["RiskIndexPage.useMemo[translatedPricing]"], [
+        lang
+    ]);
+    const selectedPlanData = translatedPricing.find((p)=>p.period === selectedPlan);
+    const companyBankData = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMemo"])({
+        "RiskIndexPage.useMemo[companyBankData]": ()=>({
+                companyName: 'SIA "JAKOVLEV CAPITAL"',
+                accountNumber: "LV00HABA0000000000000",
+                bic: "HABALV22"
+            })
+    }["RiskIndexPage.useMemo[companyBankData]"], []);
+    const paymentPurpose = form.companyName.trim() ? `Banner - ${form.companyName.trim()}` : modalT.paymentPurposeFallback;
+    const canSubmit = !!selectedSide && !!selectedPlan && !!bannerFile && !!paymentProofFile && !!form.companyName.trim() && isValidEmail(form.invoiceEmail);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "RiskIndexPage.useEffect": ()=>{
+            void load();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        }
+    }["RiskIndexPage.useEffect"], [
+        tab,
+        limit
+    ]);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "RiskIndexPage.useEffect": ()=>{
+            async function loadBanners() {
+                const now = new Date();
+                const { data } = await __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$supabaseClient$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["supabase"].from("banners").select("id, image_url, alt, placement, is_active, sort_order, expires_at").eq("is_active", true).in("placement", [
+                    "risk_left",
+                    "risk_right"
+                ]).order("sort_order", {
+                    ascending: true
+                });
+                const rows = (data || []).filter({
+                    "RiskIndexPage.useEffect.loadBanners.rows": (item)=>{
+                        if (!item.expires_at) return true;
+                        return new Date(item.expires_at) > now;
+                    }
+                }["RiskIndexPage.useEffect.loadBanners.rows"]);
+                const left = rows.filter({
+                    "RiskIndexPage.useEffect.loadBanners.left": (item)=>item.placement === "risk_left"
+                }["RiskIndexPage.useEffect.loadBanners.left"]).map({
+                    "RiskIndexPage.useEffect.loadBanners.left": (item)=>({
+                            id: item.id,
+                            image: item.image_url,
+                            alt: item.alt || "Left banner"
+                        })
+                }["RiskIndexPage.useEffect.loadBanners.left"]);
+                const right = rows.filter({
+                    "RiskIndexPage.useEffect.loadBanners.right": (item)=>item.placement === "risk_right"
+                }["RiskIndexPage.useEffect.loadBanners.right"]).map({
+                    "RiskIndexPage.useEffect.loadBanners.right": (item)=>({
+                            id: item.id,
+                            image: item.image_url,
+                            alt: item.alt || "Right banner"
+                        })
+                }["RiskIndexPage.useEffect.loadBanners.right"]);
+                setLeftBanners(left);
+                setRightBanners(right);
+            }
+            void loadBanners();
+        }
+    }["RiskIndexPage.useEffect"], []);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "RiskIndexPage.useEffect": ()=>{
+            if (!successMessage || !isModalOpen) return;
+            const timer = setTimeout({
+                "RiskIndexPage.useEffect.timer": ()=>{
+                    setIsModalOpen(false);
+                    setSuccessMessage("");
+                    setSubmitError("");
+                    setSelectedSide(null);
+                    setSelectedPlan(null);
+                    setBannerFile(null);
+                    setBannerPreview(null);
+                    setPaymentProofFile(null);
+                    setPaymentProofName(null);
+                    setForm({
+                        companyName: "",
+                        invoiceEmail: ""
+                    });
+                }
+            }["RiskIndexPage.useEffect.timer"], 2500);
+            return ({
+                "RiskIndexPage.useEffect": ()=>clearTimeout(timer)
+            })["RiskIndexPage.useEffect"];
+        }
+    }["RiskIndexPage.useEffect"], [
+        successMessage,
+        isModalOpen
+    ]);
+    async function load() {
+        try {
+            setLoading(true);
+            setErr(null);
+            const { data, error } = await __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$supabaseClient$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["supabase"].from("companies").select("id, name, vat_uid, country, trust_score, trust_updated_at, fraud_score, risk_level, auto_flagged").eq("risk_level", tab).order("fraud_score", {
+                ascending: false
+            }).limit(clamp(limit, 10, 200));
+            if (error) throw new Error(error.message);
+            setRows(data || []);
+        } catch (e) {
+            setErr(String(e?.message || e));
+        } finally{
+            setLoading(false);
+        }
+    }
+    function openOrder(side) {
+        setSelectedSide(side);
+        setSelectedPlan(null);
+        setBannerFile(null);
+        setBannerPreview(null);
+        setPaymentProofFile(null);
+        setPaymentProofName(null);
+        setForm({
+            companyName: "",
+            invoiceEmail: ""
+        });
+        setSuccessMessage("");
+        setSubmitError("");
+        setIsModalOpen(true);
+    }
+    function closeModal() {
+        setIsModalOpen(false);
+        setSuccessMessage("");
+        setSubmitError("");
+    }
+    function handleBannerUpload(e) {
+        const file = e.target.files?.[0];
+        if (!file) return;
+        setBannerFile(file);
+        const reader = new FileReader();
+        reader.onloadend = ()=>{
+            setBannerPreview(reader.result);
+        };
+        reader.readAsDataURL(file);
+    }
+    function handlePaymentProofUpload(e) {
+        const file = e.target.files?.[0];
+        if (!file) return;
+        setPaymentProofFile(file);
+        setPaymentProofName(file.name);
+    }
+    function updateForm(key, value) {
+        setForm((prev)=>({
+                ...prev,
+                [key]: value
+            }));
+    }
+    async function handleSubmitPaid() {
+        if (!canSubmit || !selectedPlanData || !selectedSide || !bannerFile || !paymentProofFile) {
+            return;
+        }
+        try {
+            setSubmitting(true);
+            setSuccessMessage("");
+            setSubmitError("");
+            const body = new FormData();
+            body.append("side", selectedSide);
+            body.append("placement", selectedSide === "left" ? "risk_left" : "risk_right");
+            body.append("period", selectedPlanData.period);
+            body.append("periodLabel", selectedPlanData.label);
+            body.append("price", String(selectedPlanData.price));
+            body.append("companyName", form.companyName.trim());
+            body.append("invoiceEmail", form.invoiceEmail.trim());
+            body.append("paymentPurpose", paymentPurpose);
+            body.append("bannerFile", bannerFile, bannerFile.name);
+            body.append("paymentProof", paymentProofFile, paymentProofFile.name);
+            const response = await fetch("/api/banner-order", {
+                method: "POST",
+                body
+            });
+            const text = await response.text();
+            let result = null;
+            try {
+                result = JSON.parse(text);
+            } catch  {
+                result = null;
+            }
+            if (!response.ok) {
+                throw new Error(result?.error || text || modalT.errorSending);
+            }
+            setSuccessMessage(modalT.successMessage);
+        } catch (error) {
+            setSubmitError(error instanceof Error ? error.message : modalT.errorSending);
+        } finally{
+            setSubmitting(false);
+        }
+    }
+    const filtered = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMemo"])({
+        "RiskIndexPage.useMemo[filtered]": ()=>{
+            const s = q.trim().toLowerCase();
+            if (!s) return rows;
+            return rows.filter({
+                "RiskIndexPage.useMemo[filtered]": (c)=>{
+                    const name = String(c.name || "").toLowerCase();
+                    const vat = String(c.vat_uid || "").toLowerCase();
+                    const country = String(c.country || "").toLowerCase();
+                    return name.includes(s) || vat.includes(s) || country.includes(s);
+                }
+            }["RiskIndexPage.useMemo[filtered]"]);
+        }
+    }["RiskIndexPage.useMemo[filtered]"], [
+        rows,
+        q
+    ]);
+    const card = "rounded-[28px] border border-black/10 bg-white/70 backdrop-blur shadow-[0_14px_60px_rgba(15,20,30,0.08)]";
+    const tableCard = "rounded-[22px] border border-black/10 bg-white/60 backdrop-blur shadow-sm overflow-hidden";
+    const input = "w-full rounded-2xl border border-black/10 bg-white/85 backdrop-blur px-4 py-3 outline-none text-black placeholder:text-black/40 focus:border-black/25 shadow-sm";
+    const pill = "inline-flex items-center rounded-full border px-3 py-1 text-xs font-semibold";
+    const tabBtn = "px-4 py-2 rounded-full border text-sm font-semibold transition";
+    const tabOn = "bg-black text-white border-black";
+    const tabOff = "bg-white/70 border-black/15 text-black hover:bg-white";
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("main", {
+        className: "min-h-screen text-black",
+        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            className: "relative px-6 pt-44 pb-16 md:pt-48",
+            children: [
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: "mx-auto flex max-w-[1520px] items-start gap-10 xl:gap-20",
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(RotatingBanner, {
+                            side: "left",
+                            banners: leftBanners,
+                            onAddClick: openOrder,
+                            t: modalT
+                        }, void 0, false, {
+                            fileName: "[project]/app/risk-index/page.tsx",
+                            lineNumber: 753,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "mx-auto min-w-0 max-w-5xl flex-1",
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: `p-6 ${card}`,
+                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "flex items-start justify-between gap-6 max-lg:flex-col",
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: "min-w-0",
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
+                                                        className: "text-3xl font-extrabold tracking-tight",
+                                                        children: t("riskIndexTitle")
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/app/risk-index/page.tsx",
+                                                        lineNumber: 759,
+                                                        columnNumber: 19
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                        className: "mt-2 max-w-2xl text-sm text-black/55",
+                                                        children: t("riskIndexDesc")
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/app/risk-index/page.tsx",
+                                                        lineNumber: 763,
+                                                        columnNumber: 19
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        className: "mt-4 flex flex-wrap items-center gap-2",
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                                onClick: ()=>setTab("high"),
+                                                                className: `${tabBtn} ${tab === "high" ? tabOn : tabOff}`,
+                                                                children: t("highRisk")
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/app/risk-index/page.tsx",
+                                                                lineNumber: 768,
+                                                                columnNumber: 21
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                                onClick: ()=>setTab("medium"),
+                                                                className: `${tabBtn} ${tab === "medium" ? tabOn : tabOff}`,
+                                                                children: t("mediumRisk")
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/app/risk-index/page.tsx",
+                                                                lineNumber: 775,
+                                                                columnNumber: 21
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                                onClick: ()=>setTab("low"),
+                                                                className: `${tabBtn} ${tab === "low" ? tabOn : tabOff}`,
+                                                                children: t("lowRisk")
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/app/risk-index/page.tsx",
+                                                                lineNumber: 782,
+                                                                columnNumber: 21
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                className: `${pill} ${pillForRisk(tab)}`,
+                                                                children: [
+                                                                    t("risk"),
+                                                                    ": ",
+                                                                    tab.toUpperCase()
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/app/risk-index/page.tsx",
+                                                                lineNumber: 789,
+                                                                columnNumber: 21
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/app/risk-index/page.tsx",
+                                                        lineNumber: 767,
+                                                        columnNumber: 19
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/app/risk-index/page.tsx",
+                                                lineNumber: 758,
+                                                columnNumber: 17
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: "shrink-0 w-[300px] max-lg:w-full",
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        className: "text-xs font-semibold text-black/60",
+                                                        children: t("search")
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/app/risk-index/page.tsx",
+                                                        lineNumber: 796,
+                                                        columnNumber: 19
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                                        className: `mt-2 ${input}`,
+                                                        value: q,
+                                                        onChange: (e)=>setQ(e.target.value),
+                                                        placeholder: t("searchCompanyVatCountry")
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/app/risk-index/page.tsx",
+                                                        lineNumber: 798,
+                                                        columnNumber: 19
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        className: "mt-3 flex items-center justify-between",
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                className: "text-xs text-black/50",
+                                                                children: t("limit")
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/app/risk-index/page.tsx",
+                                                                lineNumber: 806,
+                                                                columnNumber: 21
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
+                                                                value: limit,
+                                                                onChange: (e)=>setLimit(Number(e.target.value)),
+                                                                className: "rounded-xl border border-black/10 bg-white/80 px-3 py-2 text-sm",
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
+                                                                        value: 25,
+                                                                        children: "25"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/app/risk-index/page.tsx",
+                                                                        lineNumber: 813,
+                                                                        columnNumber: 23
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
+                                                                        value: 50,
+                                                                        children: "50"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/app/risk-index/page.tsx",
+                                                                        lineNumber: 814,
+                                                                        columnNumber: 23
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
+                                                                        value: 100,
+                                                                        children: "100"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/app/risk-index/page.tsx",
+                                                                        lineNumber: 815,
+                                                                        columnNumber: 23
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
+                                                                        value: 200,
+                                                                        children: "200"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/app/risk-index/page.tsx",
+                                                                        lineNumber: 816,
+                                                                        columnNumber: 23
+                                                                    }, this)
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/app/risk-index/page.tsx",
+                                                                lineNumber: 808,
+                                                                columnNumber: 21
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/app/risk-index/page.tsx",
+                                                        lineNumber: 805,
+                                                        columnNumber: 19
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                        onClick: ()=>void load(),
+                                                        className: "mt-3 w-full rounded-2xl bg-black px-4 py-3 font-semibold text-white shadow-sm transition hover:bg-black/90",
+                                                        children: t("refresh")
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/app/risk-index/page.tsx",
+                                                        lineNumber: 820,
+                                                        columnNumber: 19
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/app/risk-index/page.tsx",
+                                                lineNumber: 795,
+                                                columnNumber: 17
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/app/risk-index/page.tsx",
+                                        lineNumber: 757,
+                                        columnNumber: 15
+                                    }, this)
+                                }, void 0, false, {
+                                    fileName: "[project]/app/risk-index/page.tsx",
+                                    lineNumber: 756,
+                                    columnNumber: 13
+                                }, this),
+                                loading ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "mt-6 text-black/70",
+                                    children: t("loading")
+                                }, void 0, false, {
+                                    fileName: "[project]/app/risk-index/page.tsx",
+                                    lineNumber: 831,
+                                    columnNumber: 15
+                                }, this) : err ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "mt-6 rounded-2xl border border-red-200 bg-red-50 p-4 text-sm text-red-900",
+                                    children: err
+                                }, void 0, false, {
+                                    fileName: "[project]/app/risk-index/page.tsx",
+                                    lineNumber: 833,
+                                    columnNumber: 15
+                                }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: `mt-6 ${tableCard}`,
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: "flex items-center justify-between border-b border-black/10 px-4 py-3",
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    className: "text-sm font-semibold",
+                                                    children: [
+                                                        t("companies"),
+                                                        ": ",
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                            className: "text-black",
+                                                            children: filtered.length
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/app/risk-index/page.tsx",
+                                                            lineNumber: 840,
+                                                            columnNumber: 39
+                                                        }, this)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/app/risk-index/page.tsx",
+                                                    lineNumber: 839,
+                                                    columnNumber: 19
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    className: "text-xs text-black/45",
+                                                    children: t("sortedByFraud")
+                                                }, void 0, false, {
+                                                    fileName: "[project]/app/risk-index/page.tsx",
+                                                    lineNumber: 842,
+                                                    columnNumber: 19
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/app/risk-index/page.tsx",
+                                            lineNumber: 838,
+                                            columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: "overflow-x-auto",
+                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("table", {
+                                                className: "w-full text-sm",
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("thead", {
+                                                        className: "bg-black/[0.03] text-black/70",
+                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                                                    className: "px-4 py-3 text-left font-semibold",
+                                                                    children: t("company")
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/app/risk-index/page.tsx",
+                                                                    lineNumber: 849,
+                                                                    columnNumber: 25
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                                                    className: "px-4 py-3 text-left font-semibold",
+                                                                    children: "VAT"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/app/risk-index/page.tsx",
+                                                                    lineNumber: 850,
+                                                                    columnNumber: 25
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                                                    className: "px-4 py-3 text-left font-semibold",
+                                                                    children: t("country")
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/app/risk-index/page.tsx",
+                                                                    lineNumber: 851,
+                                                                    columnNumber: 25
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                                                    className: "px-4 py-3 text-left font-semibold",
+                                                                    children: t("fraudScore")
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/app/risk-index/page.tsx",
+                                                                    lineNumber: 852,
+                                                                    columnNumber: 25
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                                                    className: "px-4 py-3 text-left font-semibold",
+                                                                    children: t("trust")
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/app/risk-index/page.tsx",
+                                                                    lineNumber: 853,
+                                                                    columnNumber: 25
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                                                    className: "px-4 py-3 text-left font-semibold",
+                                                                    children: t("signals")
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/app/risk-index/page.tsx",
+                                                                    lineNumber: 854,
+                                                                    columnNumber: 25
+                                                                }, this)
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/app/risk-index/page.tsx",
+                                                            lineNumber: 848,
+                                                            columnNumber: 23
+                                                        }, this)
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/app/risk-index/page.tsx",
+                                                        lineNumber: 847,
+                                                        columnNumber: 21
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
+                                                        children: [
+                                                            filtered.map((c)=>{
+                                                                const fraud = typeof c.fraud_score === "number" ? c.fraud_score : 0;
+                                                                const trust = typeof c.trust_score === "number" ? Math.round(c.trust_score) : null;
+                                                                return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                                    className: "border-t border-black/10 transition hover:bg-black/[0.02]",
+                                                                    children: [
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                            className: "px-4 py-3",
+                                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                                                                                href: `/companies/${c.id}`,
+                                                                                className: "font-semibold text-black hover:underline",
+                                                                                children: c.name || t("company")
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/app/risk-index/page.tsx",
+                                                                                lineNumber: 870,
+                                                                                columnNumber: 31
+                                                                            }, this)
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/app/risk-index/page.tsx",
+                                                                            lineNumber: 869,
+                                                                            columnNumber: 29
+                                                                        }, this),
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                            className: "px-4 py-3 text-black/70",
+                                                                            children: (c.vat_uid || "—").toUpperCase()
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/app/risk-index/page.tsx",
+                                                                            lineNumber: 878,
+                                                                            columnNumber: 29
+                                                                        }, this),
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                            className: "px-4 py-3 text-black/70",
+                                                                            children: c.country || "—"
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/app/risk-index/page.tsx",
+                                                                            lineNumber: 882,
+                                                                            columnNumber: 29
+                                                                        }, this),
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                            className: "px-4 py-3",
+                                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                className: [
+                                                                                    "inline-flex items-center rounded-xl border px-2.5 py-1 text-xs font-extrabold",
+                                                                                    tab === "high" ? "border-red-200 bg-red-50 text-red-900" : tab === "medium" ? "border-yellow-200 bg-yellow-50 text-yellow-900" : "border-emerald-200 bg-emerald-50 text-emerald-900"
+                                                                                ].join(" "),
+                                                                                children: fraud
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/app/risk-index/page.tsx",
+                                                                                lineNumber: 885,
+                                                                                columnNumber: 31
+                                                                            }, this)
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/app/risk-index/page.tsx",
+                                                                            lineNumber: 884,
+                                                                            columnNumber: 29
+                                                                        }, this),
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                            className: "px-4 py-3 text-black/70",
+                                                                            children: trust === null ? "—" : `${trust}/100`
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/app/risk-index/page.tsx",
+                                                                            lineNumber: 899,
+                                                                            columnNumber: 29
+                                                                        }, this),
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                            className: "px-4 py-3",
+                                                                            children: c.auto_flagged ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                className: "inline-flex items-center rounded-full border border-red-200 bg-red-50 px-3 py-1 text-xs font-semibold text-red-800",
+                                                                                children: t("autoFlagged")
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/app/risk-index/page.tsx",
+                                                                                lineNumber: 905,
+                                                                                columnNumber: 33
+                                                                            }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                className: "text-black/40",
+                                                                                children: "—"
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/app/risk-index/page.tsx",
+                                                                                lineNumber: 909,
+                                                                                columnNumber: 33
+                                                                            }, this)
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/app/risk-index/page.tsx",
+                                                                            lineNumber: 903,
+                                                                            columnNumber: 29
+                                                                        }, this)
+                                                                    ]
+                                                                }, c.id, true, {
+                                                                    fileName: "[project]/app/risk-index/page.tsx",
+                                                                    lineNumber: 865,
+                                                                    columnNumber: 27
+                                                                }, this);
+                                                            }),
+                                                            filtered.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                                                    className: "px-4 py-6 text-black/60",
+                                                                    colSpan: 6,
+                                                                    children: t("noResults")
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/app/risk-index/page.tsx",
+                                                                    lineNumber: 918,
+                                                                    columnNumber: 27
+                                                                }, this)
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/app/risk-index/page.tsx",
+                                                                lineNumber: 917,
+                                                                columnNumber: 25
+                                                            }, this) : null
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/app/risk-index/page.tsx",
+                                                        lineNumber: 858,
+                                                        columnNumber: 21
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/app/risk-index/page.tsx",
+                                                lineNumber: 846,
+                                                columnNumber: 19
+                                            }, this)
+                                        }, void 0, false, {
+                                            fileName: "[project]/app/risk-index/page.tsx",
+                                            lineNumber: 845,
+                                            columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: "border-t border-black/10 px-4 py-3 text-xs text-black/45",
+                                            children: t("riskDisclaimer")
+                                        }, void 0, false, {
+                                            fileName: "[project]/app/risk-index/page.tsx",
+                                            lineNumber: 927,
+                                            columnNumber: 17
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/app/risk-index/page.tsx",
+                                    lineNumber: 837,
+                                    columnNumber: 15
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "mt-10 rounded-[26px] border border-black/10 bg-white/60 p-6 shadow-sm backdrop-blur",
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
+                                            className: "text-lg font-extrabold tracking-tight",
+                                            children: t("howToUseRiskIndex")
+                                        }, void 0, false, {
+                                            fileName: "[project]/app/risk-index/page.tsx",
+                                            lineNumber: 934,
+                                            columnNumber: 15
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                            className: "mt-2 text-sm leading-relaxed text-black/65",
+                                            children: t("howToUseRiskIndexBody")
+                                        }, void 0, false, {
+                                            fileName: "[project]/app/risk-index/page.tsx",
+                                            lineNumber: 936,
+                                            columnNumber: 15
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                            className: "mt-5 text-sm font-extrabold",
+                                            children: t("commonSignals")
+                                        }, void 0, false, {
+                                            fileName: "[project]/app/risk-index/page.tsx",
+                                            lineNumber: 940,
+                                            columnNumber: 15
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
+                                            className: "mt-2 list-disc space-y-1 pl-5 text-sm text-black/65",
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                    children: t("signalBurstReviews")
+                                                }, void 0, false, {
+                                                    fileName: "[project]/app/risk-index/page.tsx",
+                                                    lineNumber: 943,
+                                                    columnNumber: 17
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                    children: t("signalSameNetwork")
+                                                }, void 0, false, {
+                                                    fileName: "[project]/app/risk-index/page.tsx",
+                                                    lineNumber: 944,
+                                                    columnNumber: 17
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                    children: t("signalSelfReviews")
+                                                }, void 0, false, {
+                                                    fileName: "[project]/app/risk-index/page.tsx",
+                                                    lineNumber: 945,
+                                                    columnNumber: 17
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                    children: t("signalFlaggedRatio")
+                                                }, void 0, false, {
+                                                    fileName: "[project]/app/risk-index/page.tsx",
+                                                    lineNumber: 946,
+                                                    columnNumber: 17
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/app/risk-index/page.tsx",
+                                            lineNumber: 942,
+                                            columnNumber: 15
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                            className: "mt-4 text-xs text-black/45",
+                                            children: t("wantVerified")
+                                        }, void 0, false, {
+                                            fileName: "[project]/app/risk-index/page.tsx",
+                                            lineNumber: 949,
+                                            columnNumber: 15
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/app/risk-index/page.tsx",
+                                    lineNumber: 933,
+                                    columnNumber: 13
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/app/risk-index/page.tsx",
+                            lineNumber: 755,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(RotatingBanner, {
+                            side: "right",
+                            banners: rightBanners,
+                            onAddClick: openOrder,
+                            t: modalT
+                        }, void 0, false, {
+                            fileName: "[project]/app/risk-index/page.tsx",
+                            lineNumber: 953,
+                            columnNumber: 11
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/app/risk-index/page.tsx",
+                    lineNumber: 752,
+                    columnNumber: 9
+                }, this),
+                isModalOpen && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: "fixed inset-0 z-[9999] flex items-center justify-center bg-black/50 px-4 py-6",
+                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "relative w-full max-w-4xl rounded-[2rem] border border-white/50 bg-white/92 shadow-[0_40px_120px_rgba(15,23,42,0.25)]",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                onClick: closeModal,
+                                className: "absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 transition-colors hover:bg-slate-200",
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                    className: "h-5 w-5 text-slate-500",
+                                    fill: "none",
+                                    stroke: "currentColor",
+                                    viewBox: "0 0 24 24",
+                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                        strokeLinecap: "round",
+                                        strokeLinejoin: "round",
+                                        strokeWidth: 2,
+                                        d: "M6 18L18 6M6 6l12 12"
+                                    }, void 0, false, {
+                                        fileName: "[project]/app/risk-index/page.tsx",
+                                        lineNumber: 969,
+                                        columnNumber: 19
+                                    }, this)
+                                }, void 0, false, {
+                                    fileName: "[project]/app/risk-index/page.tsx",
+                                    lineNumber: 963,
+                                    columnNumber: 17
+                                }, this)
+                            }, void 0, false, {
+                                fileName: "[project]/app/risk-index/page.tsx",
+                                lineNumber: 959,
+                                columnNumber: 15
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "p-4 md:p-4",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "mb-2 flex h-10 w-10 items-center justify-center rounded-2xl bg-emerald-100",
+                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                            className: "h-5 w-5 text-emerald-600",
+                                            fill: "none",
+                                            stroke: "currentColor",
+                                            viewBox: "0 0 24 24",
+                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                strokeLinecap: "round",
+                                                strokeLinejoin: "round",
+                                                strokeWidth: 2,
+                                                d: "M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"
+                                            }, void 0, false, {
+                                                fileName: "[project]/app/risk-index/page.tsx",
+                                                lineNumber: 986,
+                                                columnNumber: 21
+                                            }, this)
+                                        }, void 0, false, {
+                                            fileName: "[project]/app/risk-index/page.tsx",
+                                            lineNumber: 980,
+                                            columnNumber: 19
+                                        }, this)
+                                    }, void 0, false, {
+                                        fileName: "[project]/app/risk-index/page.tsx",
+                                        lineNumber: 979,
+                                        columnNumber: 17
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
+                                        className: "text-[18px] font-bold text-slate-900",
+                                        children: modalT.orderBanner
+                                    }, void 0, false, {
+                                        fileName: "[project]/app/risk-index/page.tsx",
+                                        lineNumber: 995,
+                                        columnNumber: 17
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                        className: "mt-1 text-[13px] text-slate-500",
+                                        children: [
+                                            modalT.searchPageLabel,
+                                            " • ",
+                                            modalT.sideLabel,
+                                            ":",
+                                            " ",
+                                            selectedSide === "left" ? modalT.sideLeft : modalT.sideRight,
+                                            " • ",
+                                            modalT.sizeLabel,
+                                            " 180×600px"
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/app/risk-index/page.tsx",
+                                        lineNumber: 996,
+                                        columnNumber: 17
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "mt-3 grid grid-cols-1 gap-4 xl:grid-cols-[1fr_220px]",
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        className: "space-y-1",
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                                className: "text-[13px] font-semibold text-slate-700",
+                                                                children: modalT.choosePeriod
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/app/risk-index/page.tsx",
+                                                                lineNumber: 1004,
+                                                                columnNumber: 23
+                                                            }, this),
+                                                            translatedPricing.map((plan)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
+                                                                    className: `flex cursor-pointer items-center justify-between rounded-2xl border-2 px-3 py-2 transition-all ${selectedPlan === plan.period ? "border-emerald-500 bg-emerald-50" : "border-slate-200 hover:border-emerald-200"}`,
+                                                                    children: [
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                            className: "flex items-center gap-3",
+                                                                            children: [
+                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                                                                    type: "radio",
+                                                                                    name: "risk-banner-plan",
+                                                                                    value: plan.period,
+                                                                                    checked: selectedPlan === plan.period,
+                                                                                    onChange: (e)=>setSelectedPlan(e.target.value),
+                                                                                    className: "h-4 w-4 text-emerald-600"
+                                                                                }, void 0, false, {
+                                                                                    fileName: "[project]/app/risk-index/page.tsx",
+                                                                                    lineNumber: 1018,
+                                                                                    columnNumber: 29
+                                                                                }, this),
+                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                    className: "text-[15px] font-medium text-slate-700",
+                                                                                    children: plan.label
+                                                                                }, void 0, false, {
+                                                                                    fileName: "[project]/app/risk-index/page.tsx",
+                                                                                    lineNumber: 1026,
+                                                                                    columnNumber: 29
+                                                                                }, this)
+                                                                            ]
+                                                                        }, void 0, true, {
+                                                                            fileName: "[project]/app/risk-index/page.tsx",
+                                                                            lineNumber: 1017,
+                                                                            columnNumber: 27
+                                                                        }, this),
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                            className: "text-[16px] font-bold text-slate-900",
+                                                                            children: [
+                                                                                "€",
+                                                                                plan.price
+                                                                            ]
+                                                                        }, void 0, true, {
+                                                                            fileName: "[project]/app/risk-index/page.tsx",
+                                                                            lineNumber: 1030,
+                                                                            columnNumber: 27
+                                                                        }, this)
+                                                                    ]
+                                                                }, plan.period, true, {
+                                                                    fileName: "[project]/app/risk-index/page.tsx",
+                                                                    lineNumber: 1009,
+                                                                    columnNumber: 25
+                                                                }, this))
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/app/risk-index/page.tsx",
+                                                        lineNumber: 1003,
+                                                        columnNumber: 21
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        className: "mt-2.5 grid gap-2",
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
+                                                                        className: "mb-1 block text-[13px] font-semibold text-slate-700",
+                                                                        children: modalT.companyName
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/app/risk-index/page.tsx",
+                                                                        lineNumber: 1039,
+                                                                        columnNumber: 25
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                                                        value: form.companyName,
+                                                                        onChange: (e)=>updateForm("companyName", e.target.value),
+                                                                        className: "h-9 w-full rounded-xl border border-slate-200 px-3 outline-none transition-colors focus:border-emerald-400",
+                                                                        placeholder: modalT.companyNamePlaceholder
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/app/risk-index/page.tsx",
+                                                                        lineNumber: 1042,
+                                                                        columnNumber: 25
+                                                                    }, this)
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/app/risk-index/page.tsx",
+                                                                lineNumber: 1038,
+                                                                columnNumber: 23
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
+                                                                        className: "mb-1 block text-[13px] font-semibold text-slate-700",
+                                                                        children: modalT.invoiceEmail
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/app/risk-index/page.tsx",
+                                                                        lineNumber: 1051,
+                                                                        columnNumber: 25
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                                                        type: "email",
+                                                                        value: form.invoiceEmail,
+                                                                        onChange: (e)=>updateForm("invoiceEmail", e.target.value),
+                                                                        className: `h-9 w-full rounded-xl border px-3 outline-none transition-colors ${form.invoiceEmail.length === 0 ? "border-slate-200 focus:border-emerald-400" : isValidEmail(form.invoiceEmail) ? "border-emerald-300 focus:border-emerald-500" : "border-red-300 focus:border-red-500"}`,
+                                                                        placeholder: modalT.invoiceEmailPlaceholder
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/app/risk-index/page.tsx",
+                                                                        lineNumber: 1055,
+                                                                        columnNumber: 25
+                                                                    }, this),
+                                                                    form.invoiceEmail.length > 0 && !isValidEmail(form.invoiceEmail) && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                                        className: "mt-1 text-xs text-red-500",
+                                                                        children: modalT.invalidEmail
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/app/risk-index/page.tsx",
+                                                                        lineNumber: 1070,
+                                                                        columnNumber: 27
+                                                                    }, this)
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/app/risk-index/page.tsx",
+                                                                lineNumber: 1050,
+                                                                columnNumber: 23
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
+                                                                        className: "mb-1 block text-[13px] font-semibold text-slate-700",
+                                                                        children: modalT.uploadBanner
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/app/risk-index/page.tsx",
+                                                                        lineNumber: 1075,
+                                                                        columnNumber: 25
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
+                                                                        className: "block cursor-pointer rounded-2xl border-2 border-dashed border-slate-300 p-2.5 text-center transition-colors hover:border-emerald-300",
+                                                                        children: [
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                                                className: "text-sm font-medium leading-tight text-slate-700",
+                                                                                children: modalT.chooseBannerFile
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/app/risk-index/page.tsx",
+                                                                                lineNumber: 1079,
+                                                                                columnNumber: 27
+                                                                            }, this),
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                                                className: "mt-0.5 text-xs leading-tight text-slate-400",
+                                                                                children: modalT.recommendedSize
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/app/risk-index/page.tsx",
+                                                                                lineNumber: 1082,
+                                                                                columnNumber: 27
+                                                                            }, this),
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                                                                type: "file",
+                                                                                accept: "image/*",
+                                                                                onChange: handleBannerUpload,
+                                                                                className: "hidden"
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/app/risk-index/page.tsx",
+                                                                                lineNumber: 1085,
+                                                                                columnNumber: 27
+                                                                            }, this)
+                                                                        ]
+                                                                    }, void 0, true, {
+                                                                        fileName: "[project]/app/risk-index/page.tsx",
+                                                                        lineNumber: 1078,
+                                                                        columnNumber: 25
+                                                                    }, this)
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/app/risk-index/page.tsx",
+                                                                lineNumber: 1074,
+                                                                columnNumber: 23
+                                                            }, this),
+                                                            selectedPlanData && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                className: "rounded-2xl border border-emerald-200 bg-emerald-50 p-2.5",
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                                        className: "mb-1.5 text-[13px] font-semibold text-emerald-900",
+                                                                        children: modalT.paymentDetails
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/app/risk-index/page.tsx",
+                                                                        lineNumber: 1096,
+                                                                        columnNumber: 27
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                        className: "grid grid-cols-2 gap-x-3 gap-y-1 text-[13px] text-slate-700",
+                                                                        children: [
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                                                className: "col-span-2",
+                                                                                children: [
+                                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                        className: "font-semibold",
+                                                                                        children: [
+                                                                                            modalT.bankCompany,
+                                                                                            ":"
+                                                                                        ]
+                                                                                    }, void 0, true, {
+                                                                                        fileName: "[project]/app/risk-index/page.tsx",
+                                                                                        lineNumber: 1102,
+                                                                                        columnNumber: 31
+                                                                                    }, this),
+                                                                                    " ",
+                                                                                    companyBankData.companyName
+                                                                                ]
+                                                                            }, void 0, true, {
+                                                                                fileName: "[project]/app/risk-index/page.tsx",
+                                                                                lineNumber: 1101,
+                                                                                columnNumber: 29
+                                                                            }, this),
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                                                className: "col-span-2",
+                                                                                children: [
+                                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                        className: "font-semibold",
+                                                                                        children: [
+                                                                                            modalT.bankAccount,
+                                                                                            ":"
+                                                                                        ]
+                                                                                    }, void 0, true, {
+                                                                                        fileName: "[project]/app/risk-index/page.tsx",
+                                                                                        lineNumber: 1106,
+                                                                                        columnNumber: 31
+                                                                                    }, this),
+                                                                                    " ",
+                                                                                    companyBankData.accountNumber
+                                                                                ]
+                                                                            }, void 0, true, {
+                                                                                fileName: "[project]/app/risk-index/page.tsx",
+                                                                                lineNumber: 1105,
+                                                                                columnNumber: 29
+                                                                            }, this),
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                                                children: [
+                                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                        className: "font-semibold",
+                                                                                        children: [
+                                                                                            modalT.bankBic,
+                                                                                            ":"
+                                                                                        ]
+                                                                                    }, void 0, true, {
+                                                                                        fileName: "[project]/app/risk-index/page.tsx",
+                                                                                        lineNumber: 1110,
+                                                                                        columnNumber: 31
+                                                                                    }, this),
+                                                                                    " ",
+                                                                                    companyBankData.bic
+                                                                                ]
+                                                                            }, void 0, true, {
+                                                                                fileName: "[project]/app/risk-index/page.tsx",
+                                                                                lineNumber: 1109,
+                                                                                columnNumber: 29
+                                                                            }, this),
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                                                children: [
+                                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                        className: "font-semibold",
+                                                                                        children: [
+                                                                                            modalT.amount,
+                                                                                            ":"
+                                                                                        ]
+                                                                                    }, void 0, true, {
+                                                                                        fileName: "[project]/app/risk-index/page.tsx",
+                                                                                        lineNumber: 1114,
+                                                                                        columnNumber: 31
+                                                                                    }, this),
+                                                                                    " €",
+                                                                                    selectedPlanData.price,
+                                                                                    " + VAT (EU 0%, LV 21%)"
+                                                                                ]
+                                                                            }, void 0, true, {
+                                                                                fileName: "[project]/app/risk-index/page.tsx",
+                                                                                lineNumber: 1113,
+                                                                                columnNumber: 29
+                                                                            }, this),
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                                                className: "col-span-2",
+                                                                                children: [
+                                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                        className: "font-semibold",
+                                                                                        children: [
+                                                                                            modalT.paymentPurpose,
+                                                                                            ":"
+                                                                                        ]
+                                                                                    }, void 0, true, {
+                                                                                        fileName: "[project]/app/risk-index/page.tsx",
+                                                                                        lineNumber: 1118,
+                                                                                        columnNumber: 31
+                                                                                    }, this),
+                                                                                    " ",
+                                                                                    paymentPurpose
+                                                                                ]
+                                                                            }, void 0, true, {
+                                                                                fileName: "[project]/app/risk-index/page.tsx",
+                                                                                lineNumber: 1117,
+                                                                                columnNumber: 29
+                                                                            }, this)
+                                                                        ]
+                                                                    }, void 0, true, {
+                                                                        fileName: "[project]/app/risk-index/page.tsx",
+                                                                        lineNumber: 1100,
+                                                                        columnNumber: 27
+                                                                    }, this)
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/app/risk-index/page.tsx",
+                                                                lineNumber: 1095,
+                                                                columnNumber: 25
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
+                                                                        className: "mb-1 block text-[13px] font-semibold text-slate-700",
+                                                                        children: modalT.uploadPaymentProof
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/app/risk-index/page.tsx",
+                                                                        lineNumber: 1126,
+                                                                        columnNumber: 25
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
+                                                                        className: "block cursor-pointer rounded-2xl border-2 border-dashed border-slate-300 p-2.5 text-center transition-colors hover:border-emerald-300",
+                                                                        children: [
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                                                className: "text-sm font-medium leading-tight text-slate-700",
+                                                                                children: modalT.uploadPaymentConfirmation
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/app/risk-index/page.tsx",
+                                                                                lineNumber: 1130,
+                                                                                columnNumber: 27
+                                                                            }, this),
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                                                className: "mt-0.5 text-xs leading-tight text-slate-400",
+                                                                                children: modalT.paymentProofFormats
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/app/risk-index/page.tsx",
+                                                                                lineNumber: 1133,
+                                                                                columnNumber: 27
+                                                                            }, this),
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                                                                type: "file",
+                                                                                accept: ".pdf,image/*",
+                                                                                onChange: handlePaymentProofUpload,
+                                                                                className: "hidden"
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/app/risk-index/page.tsx",
+                                                                                lineNumber: 1136,
+                                                                                columnNumber: 27
+                                                                            }, this)
+                                                                        ]
+                                                                    }, void 0, true, {
+                                                                        fileName: "[project]/app/risk-index/page.tsx",
+                                                                        lineNumber: 1129,
+                                                                        columnNumber: 25
+                                                                    }, this),
+                                                                    paymentProofName && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                                        className: "mt-1 text-xs font-medium text-emerald-600",
+                                                                        children: [
+                                                                            "✓ ",
+                                                                            paymentProofName
+                                                                        ]
+                                                                    }, void 0, true, {
+                                                                        fileName: "[project]/app/risk-index/page.tsx",
+                                                                        lineNumber: 1145,
+                                                                        columnNumber: 27
+                                                                    }, this)
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/app/risk-index/page.tsx",
+                                                                lineNumber: 1125,
+                                                                columnNumber: 23
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/app/risk-index/page.tsx",
+                                                        lineNumber: 1037,
+                                                        columnNumber: 21
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/app/risk-index/page.tsx",
+                                                lineNumber: 1002,
+                                                columnNumber: 19
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                        className: "mb-1 text-[13px] font-semibold text-slate-700",
+                                                        children: modalT.bannerPreview
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/app/risk-index/page.tsx",
+                                                        lineNumber: 1154,
+                                                        columnNumber: 21
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        className: "h-[600px] w-[180px] overflow-hidden rounded-[1.5rem] border border-slate-200 bg-slate-100 shadow-sm",
+                                                        children: bannerPreview ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                                                            src: bannerPreview,
+                                                            alt: modalT.bannerPreview,
+                                                            className: "h-full w-full object-cover"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/app/risk-index/page.tsx",
+                                                            lineNumber: 1160,
+                                                            columnNumber: 25
+                                                        }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                            className: "flex h-full w-full items-center justify-center p-4 text-center text-sm leading-8 text-slate-400",
+                                                            children: modalT.bannerPreviewEmpty
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/app/risk-index/page.tsx",
+                                                            lineNumber: 1166,
+                                                            columnNumber: 25
+                                                        }, this)
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/app/risk-index/page.tsx",
+                                                        lineNumber: 1158,
+                                                        columnNumber: 21
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/app/risk-index/page.tsx",
+                                                lineNumber: 1153,
+                                                columnNumber: 19
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/app/risk-index/page.tsx",
+                                        lineNumber: 1001,
+                                        columnNumber: 17
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "mt-3 flex flex-col gap-2",
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                disabled: !canSubmit || submitting,
+                                                onClick: ()=>void handleSubmitPaid(),
+                                                className: `flex h-12 w-full items-center justify-center rounded-2xl text-base font-semibold transition-all ${canSubmit && !submitting ? "bg-slate-900 text-white shadow-[0_18px_40px_rgba(15,23,42,0.22)] hover:-translate-y-0.5 hover:bg-slate-800" : "cursor-not-allowed bg-slate-100 text-slate-400"}`,
+                                                children: submitting ? modalT.sending : modalT.havePaid
+                                            }, void 0, false, {
+                                                fileName: "[project]/app/risk-index/page.tsx",
+                                                lineNumber: 1175,
+                                                columnNumber: 19
+                                            }, this),
+                                            successMessage && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: "rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-2.5 text-sm text-emerald-700",
+                                                children: successMessage
+                                            }, void 0, false, {
+                                                fileName: "[project]/app/risk-index/page.tsx",
+                                                lineNumber: 1188,
+                                                columnNumber: 21
+                                            }, this),
+                                            submitError && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: "rounded-2xl border border-red-200 bg-red-50 px-4 py-2.5 text-sm text-red-700",
+                                                children: submitError
+                                            }, void 0, false, {
+                                                fileName: "[project]/app/risk-index/page.tsx",
+                                                lineNumber: 1194,
+                                                columnNumber: 21
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/app/risk-index/page.tsx",
+                                        lineNumber: 1174,
+                                        columnNumber: 17
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                        className: "mt-1.5 text-center text-xs text-slate-400",
+                                        children: modalT.publishAfterModeration
+                                    }, void 0, false, {
+                                        fileName: "[project]/app/risk-index/page.tsx",
+                                        lineNumber: 1200,
+                                        columnNumber: 17
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/app/risk-index/page.tsx",
+                                lineNumber: 978,
+                                columnNumber: 15
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/app/risk-index/page.tsx",
+                        lineNumber: 958,
+                        columnNumber: 13
+                    }, this)
+                }, void 0, false, {
+                    fileName: "[project]/app/risk-index/page.tsx",
+                    lineNumber: 957,
+                    columnNumber: 11
+                }, this)
+            ]
+        }, void 0, true, {
+            fileName: "[project]/app/risk-index/page.tsx",
+            lineNumber: 751,
+            columnNumber: 7
+        }, this)
+    }, void 0, false, {
+        fileName: "[project]/app/risk-index/page.tsx",
+        lineNumber: 750,
+        columnNumber: 5
+    }, this);
+}
+_s1(RiskIndexPage, "eN3ia7zbL2z6ki9S9vMR61cCcaU=", false, function() {
+    return [
+        __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$language$2d$context$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useLang"]
+    ];
+});
+_c1 = RiskIndexPage;
+var _c, _c1;
+__turbopack_context__.k.register(_c, "RotatingBanner");
+__turbopack_context__.k.register(_c1, "RiskIndexPage");
+if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
+    __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
+}
+}),
+]);
+
+//# sourceMappingURL=app_risk-index_page_tsx_7be51934._.js.map
