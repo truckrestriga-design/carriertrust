@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///Users/erick77/Desktop/timo/carriertrust_old/app/companies/CompaniesTitle.tsx"],"sourcesContent":["\"use client\";\n\nimport { useLang } from \"@/lib/language-context\";\n\nexport default function CompaniesTitle() {\n  const { lang } = useLang();\n\n  const titles: Record<string, string> = {\n    en: \"Companies Directory\",\n    de: \"Unternehmensverzeichnis\",\n    ru: \"Каталог компаний\",\n    fr: \"Annuaire des entreprises\",\n    es: \"Directorio de empresas\",\n    it: \"Directory aziende\",\n  };\n\n  return (\n    <h1 className=\"text-4xl font-bold text-slate-900 mb-8\">\n      {titles[lang] || titles.en}\n    </h1>\n  );\n}"],"names":[],"mappings":";;;;;AAEA;;;AAFA;;AAIe,SAAS;;IACtB,MAAM,EAAE,IAAI,EAAE,GAAG,IAAA,yIAAO;IAExB,MAAM,SAAiC;QACrC,IAAI;QACJ,IAAI;QACJ,IAAI;QACJ,IAAI;QACJ,IAAI;QACJ,IAAI;IACN;IAEA,qBACE,6LAAC;QAAG,WAAU;kBACX,MAAM,CAAC,KAAK,IAAI,OAAO,EAAE;;;;;;AAGhC;GAjBwB;;QACL,yIAAO;;;KADF"}}]
-}

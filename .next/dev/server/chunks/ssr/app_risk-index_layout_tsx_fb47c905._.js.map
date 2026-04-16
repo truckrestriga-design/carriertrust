@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///Users/erick77/Desktop/timo/carriertrust_old/app/risk-index/layout.tsx"],"sourcesContent":["export const metadata = {\n  title: \"EU Logistics Risk Index\",\n    description:\n      \"Public risk index for logistics companies based on trust signals: fraud events, attacks, and review risk. Reduce non-payment and fraud risks.\",\n  };\n  \n  export default function Layout({ children }: { children: React.ReactNode }) {\n    return children;\n  }"],"names":[],"mappings":";;;;;;AAAO,MAAM,WAAW;IACtB,OAAO;IACL,aACE;AACJ;AAEe,SAAS,OAAO,EAAE,QAAQ,EAAiC;IACxE,OAAO;AACT"}}]
-}

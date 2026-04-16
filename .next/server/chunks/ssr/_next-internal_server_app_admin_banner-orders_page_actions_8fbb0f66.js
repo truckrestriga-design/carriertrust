@@ -1,3 +1,0 @@
-module.exports=[32969,a=>{"use strict";var b=a.i(90647);a.s([],19875),a.i(19875),a.s(["400bd22e8d5420da7e847b3295a3ec78403570cdbd",()=>b.deleteBannerOrder,"402c6917bda941a8c095ae6025f30aac63ef17fa12",()=>b.activatePublishedBanner,"40ab1e8f8a08578fe0e869fa7aee6bee59786799ea",()=>b.publishBannerOrder,"40ae69a3d2eb58b0962c3506978eaa613ad644ad66",()=>b.deactivatePublishedBanner,"40c4ba69d3a697efcf963d1d4eb4bf6fbd8cc53f3b",()=>b.rejectBannerOrder],32969)}];
-
-//# sourceMappingURL=_next-internal_server_app_admin_banner-orders_page_actions_8fbb0f66.js.map

@@ -1,3 +1,0 @@
-module.exports=[94594,a=>{"use strict";var b=a.i(87924),c=a.i(82145);function d(){let{lang:a}=(0,c.useLang)(),d={en:"Companies Directory",de:"Unternehmensverzeichnis",ru:"Каталог компаний",fr:"Annuaire des entreprises",es:"Directorio de empresas",it:"Directory aziende"};return(0,b.jsx)("h1",{className:"text-4xl font-bold text-slate-900 mb-8",children:d[a]||d.en})}a.s(["default",()=>d])}];
-
-//# sourceMappingURL=app_companies_CompaniesTitle_tsx_a8813938._.js.map
