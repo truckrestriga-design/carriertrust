@@ -702,6 +702,18 @@
     visibility: visible;
   }
 
+  .sr-only {
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border-width: 0;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    position: absolute;
+    overflow: hidden;
+  }
+
   .absolute {
     position: absolute;
   }
@@ -926,6 +938,10 @@
     margin-inline: auto;
   }
 
+  .mt-0 {
+    margin-top: calc(var(--spacing) * 0);
+  }
+
   .mt-0\.5 {
     margin-top: calc(var(--spacing) * .5);
   }
@@ -972,10 +988,6 @@
 
   .mt-12 {
     margin-top: calc(var(--spacing) * 12);
-  }
-
-  .mt-24 {
-    margin-top: calc(var(--spacing) * 24);
   }
 
   .mt-\[6px\] {
@@ -3469,8 +3481,12 @@
     padding-top: calc(var(--spacing) * 45);
   }
 
-  .pt-\[1\.8rem\] {
-    padding-top: 1.8rem;
+  .pt-46 {
+    padding-top: calc(var(--spacing) * 46);
+  }
+
+  .pt-\[3\.5rem\] {
+    padding-top: 3.5rem;
   }
 
   .pb-1 {
@@ -3503,6 +3519,10 @@
 
   .pb-20 {
     padding-bottom: calc(var(--spacing) * 20);
+  }
+
+  .pb-24 {
+    padding-bottom: calc(var(--spacing) * 24);
   }
 
   .pl-5 {
@@ -3711,6 +3731,11 @@
   .tracking-\[0\.04em\] {
     --tw-tracking: .04em;
     letter-spacing: .04em;
+  }
+
+  .tracking-\[0\.12em\] {
+    --tw-tracking: .12em;
+    letter-spacing: .12em;
   }
 
   .tracking-\[0\.14em\] {
@@ -5397,8 +5422,8 @@
   }
 
   @media (min-width: 40rem) {
-    .sm\:pt-\[2\.4rem\] {
-      padding-top: 2.4rem;
+    .sm\:pt-\[4\.2rem\] {
+      padding-top: 4.2rem;
     }
   }
 

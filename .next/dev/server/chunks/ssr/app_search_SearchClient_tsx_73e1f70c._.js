@@ -338,7 +338,7 @@ function RotatingBanner({ side, banners, onAddClick, t }) {
                         className: "h-full w-full object-cover"
                     }, void 0, false, {
                         fileName: "[project]/app/search/SearchClient.tsx",
-                        lineNumber: 437,
+                        lineNumber: 440,
                         columnNumber: 13
                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "flex h-full w-full flex-col items-center justify-center gap-4 bg-[linear-gradient(180deg,rgba(255,255,255,0.92),rgba(241,245,249,0.96))] p-5 text-center",
@@ -357,17 +357,17 @@ function RotatingBanner({ side, banners, onAddClick, t }) {
                                         d: "M12 4v16m8-8H4"
                                     }, void 0, false, {
                                         fileName: "[project]/app/search/SearchClient.tsx",
-                                        lineNumber: 451,
+                                        lineNumber: 454,
                                         columnNumber: 19
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/app/search/SearchClient.tsx",
-                                    lineNumber: 445,
+                                    lineNumber: 448,
                                     columnNumber: 17
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/app/search/SearchClient.tsx",
-                                lineNumber: 444,
+                                lineNumber: 447,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -377,7 +377,7 @@ function RotatingBanner({ side, banners, onAddClick, t }) {
                                         children: t.adSpace
                                     }, void 0, false, {
                                         fileName: "[project]/app/search/SearchClient.tsx",
-                                        lineNumber: 461,
+                                        lineNumber: 464,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -385,7 +385,7 @@ function RotatingBanner({ side, banners, onAddClick, t }) {
                                         children: "180×600px"
                                     }, void 0, false, {
                                         fileName: "[project]/app/search/SearchClient.tsx",
-                                        lineNumber: 462,
+                                        lineNumber: 465,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -393,24 +393,24 @@ function RotatingBanner({ side, banners, onAddClick, t }) {
                                         children: t.bannerEmptyText
                                     }, void 0, false, {
                                         fileName: "[project]/app/search/SearchClient.tsx",
-                                        lineNumber: 463,
+                                        lineNumber: 466,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/search/SearchClient.tsx",
-                                lineNumber: 460,
+                                lineNumber: 463,
                                 columnNumber: 15
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/search/SearchClient.tsx",
-                        lineNumber: 443,
+                        lineNumber: 446,
                         columnNumber: 13
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/app/search/SearchClient.tsx",
-                    lineNumber: 435,
+                    lineNumber: 438,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -433,40 +433,40 @@ function RotatingBanner({ side, banners, onAddClick, t }) {
                                         d: "M12 4v16m8-8H4"
                                     }, void 0, false, {
                                         fileName: "[project]/app/search/SearchClient.tsx",
-                                        lineNumber: 483,
+                                        lineNumber: 486,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/app/search/SearchClient.tsx",
-                                    lineNumber: 477,
+                                    lineNumber: 480,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/app/search/SearchClient.tsx",
-                                lineNumber: 476,
+                                lineNumber: 479,
                                 columnNumber: 13
                             }, this),
                             t.addBanner
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/search/SearchClient.tsx",
-                        lineNumber: 475,
+                        lineNumber: 478,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/app/search/SearchClient.tsx",
-                    lineNumber: 471,
+                    lineNumber: 474,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/app/search/SearchClient.tsx",
-            lineNumber: 434,
+            lineNumber: 437,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/app/search/SearchClient.tsx",
-        lineNumber: 433,
+        lineNumber: 436,
         columnNumber: 5
     }, this);
 }
@@ -579,7 +579,7 @@ function SearchPage() {
                 itemListElement: items.map((item, index)=>({
                         "@type": "ListItem",
                         position: index + 1,
-                        url: `https://carriertrust.eu/companies/${item.id}`,
+                        url: `https://carriertrust.eu/companies/${item.slug || item.id}`,
                         name: item.name || t.companyFallback
                     }))
             };
@@ -605,10 +605,56 @@ function SearchPage() {
                 setLoading(false);
                 return;
             }
-            const { data } = await __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$supabaseClient$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["supabase"].from("companies").select("id, slug, name, vat_uid, country").ilike("name", `%${query}%`).order("name", {
+            const { data, error } = await __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$supabaseClient$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["supabase"].from("companies").select("id, slug, name, vat_uid, country").ilike("name", `%${query}%`).order("name", {
                 ascending: true
             }).limit(50);
-            setItems(data || []);
+            const companies = data || [];
+            const companyIds = companies.map((x)=>x.id).filter(Boolean);
+            let merged = companies;
+            if (companyIds.length > 0) {
+                const { data: plansData, error: plansError } = await __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$supabaseClient$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["supabase"].from("company_plans").select("company_id, plan, plan_status, current_period_end").in("company_id", companyIds);
+                console.log("PLANS DATA JSON", JSON.stringify(plansData, null, 2));
+                console.log("PLANS ERROR JSON", JSON.stringify(plansError, null, 2));
+                if (!plansError && plansData) {
+                    const planMap = new Map();
+                    for (const row of plansData){
+                        const existing = planMap.get(row.company_id);
+                        if (!existing) {
+                            planMap.set(row.company_id, row);
+                            continue;
+                        }
+                        const existingEnd = existing.current_period_end ? new Date(existing.current_period_end).getTime() : 0;
+                        const rowEnd = row.current_period_end ? new Date(row.current_period_end).getTime() : 0;
+                        if (rowEnd > existingEnd) {
+                            planMap.set(row.company_id, row);
+                        }
+                    }
+                    merged = companies.map((company)=>{
+                        const planRow = planMap.get(company.id);
+                        return {
+                            ...company,
+                            current_plan: planRow?.plan || null,
+                            current_plan_status: planRow?.plan_status || null,
+                            current_period_end: planRow?.current_period_end || null
+                        };
+                    });
+                }
+            }
+            if (error) {
+                console.error("Search companies error:", error);
+                setItems([]);
+                setLoading(false);
+                return;
+            }
+            console.log("Search companies data:", data);
+            console.log("MERGED SEARCH ITEMS JSON", JSON.stringify(merged.map((x)=>({
+                    id: x.id,
+                    name: x.name,
+                    current_plan: x.current_plan,
+                    current_plan_status: x.current_plan_status,
+                    current_period_end: x.current_period_end
+                })), null, 2));
+            setItems(merged);
             setLoading(false);
         }
         loadCompanies();
@@ -767,7 +813,7 @@ function SearchPage() {
                 }
             }, void 0, false, {
                 fileName: "[project]/app/search/SearchClient.tsx",
-                lineNumber: 831,
+                lineNumber: 905,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -777,41 +823,41 @@ function SearchPage() {
                         className: "absolute inset-0 bg-slate-50"
                     }, void 0, false, {
                         fileName: "[project]/app/search/SearchClient.tsx",
-                        lineNumber: 839,
+                        lineNumber: 913,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(16,185,129,0.14),transparent)]"
                     }, void 0, false, {
                         fileName: "[project]/app/search/SearchClient.tsx",
-                        lineNumber: 840,
+                        lineNumber: 914,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "absolute top-[8%] left-[8%] h-[24rem] w-[24rem] rounded-full bg-emerald-300/20 blur-3xl"
                     }, void 0, false, {
                         fileName: "[project]/app/search/SearchClient.tsx",
-                        lineNumber: 841,
+                        lineNumber: 915,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "absolute bottom-[8%] right-[10%] h-[20rem] w-[20rem] rounded-full bg-cyan-300/20 blur-3xl"
                     }, void 0, false, {
                         fileName: "[project]/app/search/SearchClient.tsx",
-                        lineNumber: 842,
+                        lineNumber: 916,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "absolute inset-0 opacity-[0.04] bg-[linear-gradient(to_right,rgba(15,23,42,0.55)_1px,transparent_1px),linear-gradient(to_bottom,rgba(15,23,42,0.55)_1px,transparent_1px)] bg-[size:4rem_4rem]"
                     }, void 0, false, {
                         fileName: "[project]/app/search/SearchClient.tsx",
-                        lineNumber: 843,
+                        lineNumber: 917,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/search/SearchClient.tsx",
-                lineNumber: 838,
+                lineNumber: 912,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -827,7 +873,7 @@ function SearchPage() {
                                 t: t
                             }, void 0, false, {
                                 fileName: "[project]/app/search/SearchClient.tsx",
-                                lineNumber: 848,
+                                lineNumber: 922,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -842,20 +888,20 @@ function SearchPage() {
                                                     className: "absolute -right-16 -top-20 h-56 w-56 rounded-full bg-emerald-200/40 blur-3xl"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/search/SearchClient.tsx",
-                                                    lineNumber: 853,
+                                                    lineNumber: 927,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "absolute -bottom-24 -left-12 h-56 w-56 rounded-full bg-cyan-200/30 blur-3xl"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/search/SearchClient.tsx",
-                                                    lineNumber: 854,
+                                                    lineNumber: 928,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/search/SearchClient.tsx",
-                                            lineNumber: 852,
+                                            lineNumber: 926,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -868,14 +914,14 @@ function SearchPage() {
                                                             className: "h-2 w-2 rounded-full bg-emerald-500"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/search/SearchClient.tsx",
-                                                            lineNumber: 859,
+                                                            lineNumber: 933,
                                                             columnNumber: 19
                                                         }, this),
                                                         t.pageBadge
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/search/SearchClient.tsx",
-                                                    lineNumber: 858,
+                                                    lineNumber: 932,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
@@ -883,7 +929,7 @@ function SearchPage() {
                                                     children: t.pageTitle
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/search/SearchClient.tsx",
-                                                    lineNumber: 863,
+                                                    lineNumber: 937,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -896,13 +942,13 @@ function SearchPage() {
                                                             children: q || "—"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/search/SearchClient.tsx",
-                                                            lineNumber: 868,
+                                                            lineNumber: 942,
                                                             columnNumber: 35
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/search/SearchClient.tsx",
-                                                    lineNumber: 867,
+                                                    lineNumber: 941,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -914,7 +960,7 @@ function SearchPage() {
                                                                 className: "absolute -inset-1 rounded-2xl bg-gradient-to-r from-emerald-400 to-teal-400 opacity-20 blur transition duration-500 group-hover:opacity-30"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/search/SearchClient.tsx",
-                                                                lineNumber: 873,
+                                                                lineNumber: 947,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -935,12 +981,12 @@ function SearchPage() {
                                                                                     d: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/app/search/SearchClient.tsx",
-                                                                                    lineNumber: 882,
+                                                                                    lineNumber: 956,
                                                                                     columnNumber: 27
                                                                                 }, this)
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/app/search/SearchClient.tsx",
-                                                                                lineNumber: 876,
+                                                                                lineNumber: 950,
                                                                                 columnNumber: 25
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -951,13 +997,13 @@ function SearchPage() {
                                                                                 className: "h-12 w-full bg-transparent text-base text-slate-800 outline-none placeholder:text-slate-400 md:text-lg"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/app/search/SearchClient.tsx",
-                                                                                lineNumber: 890,
+                                                                                lineNumber: 964,
                                                                                 columnNumber: 25
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/app/search/SearchClient.tsx",
-                                                                        lineNumber: 875,
+                                                                        lineNumber: 949,
                                                                         columnNumber: 23
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -979,40 +1025,40 @@ function SearchPage() {
                                                                                         d: "M17 8l4 4m0 0l-4 4m4-4H3"
                                                                                     }, void 0, false, {
                                                                                         fileName: "[project]/app/search/SearchClient.tsx",
-                                                                                        lineNumber: 911,
+                                                                                        lineNumber: 985,
                                                                                         columnNumber: 29
                                                                                     }, this)
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/app/search/SearchClient.tsx",
-                                                                                    lineNumber: 905,
+                                                                                    lineNumber: 979,
                                                                                     columnNumber: 27
                                                                                 }, this)
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/app/search/SearchClient.tsx",
-                                                                            lineNumber: 903,
+                                                                            lineNumber: 977,
                                                                             columnNumber: 25
                                                                         }, this)
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/search/SearchClient.tsx",
-                                                                        lineNumber: 899,
+                                                                        lineNumber: 973,
                                                                         columnNumber: 23
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/app/search/SearchClient.tsx",
-                                                                lineNumber: 874,
+                                                                lineNumber: 948,
                                                                 columnNumber: 21
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/search/SearchClient.tsx",
-                                                        lineNumber: 872,
+                                                        lineNumber: 946,
                                                         columnNumber: 19
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/search/SearchClient.tsx",
-                                                    lineNumber: 871,
+                                                    lineNumber: 945,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1022,18 +1068,23 @@ function SearchPage() {
                                                         children: t.loading
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/search/SearchClient.tsx",
-                                                        lineNumber: 926,
+                                                        lineNumber: 1000,
                                                         columnNumber: 21
                                                     }, this) : items.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                         className: "rounded-2xl border border-slate-200 bg-white px-5 py-6 text-slate-500",
                                                         children: t.noCompanies
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/search/SearchClient.tsx",
-                                                        lineNumber: 930,
+                                                        lineNumber: 1004,
                                                         columnNumber: 21
                                                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                         className: "grid gap-4",
-                                                        children: items.map((c)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+                                                        children: items.map((c)=>{
+                                                            const activePlan = c.current_plan;
+                                                            const activeStatus = String(c.current_plan_status || "").toLowerCase();
+                                                            const periodEndTs = c.current_period_end ? new Date(c.current_period_end).getTime() : 0;
+                                                            const hasProBadge = (activePlan === "pro" || activePlan === "one_month") && activeStatus !== "expired" && periodEndTs > Date.now();
+                                                            return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
                                                                 href: `/companies/${c.slug || c.id}`,
                                                                 className: "block rounded-2xl border border-slate-200 bg-white px-5 py-5 shadow-sm transition hover:-translate-y-0.5 hover:border-emerald-200 hover:bg-emerald-50/40 hover:shadow-md",
                                                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1042,12 +1093,29 @@ function SearchPage() {
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                             children: [
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                                    className: "text-xl font-semibold tracking-tight text-slate-900",
-                                                                                    children: c.name || t.companyFallback
-                                                                                }, void 0, false, {
+                                                                                    className: "flex flex-wrap items-center gap-2",
+                                                                                    children: [
+                                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                                            className: "text-xl font-semibold tracking-tight text-slate-900",
+                                                                                            children: c.name || t.companyFallback
+                                                                                        }, void 0, false, {
+                                                                                            fileName: "[project]/app/search/SearchClient.tsx",
+                                                                                            lineNumber: 1030,
+                                                                                            columnNumber: 13
+                                                                                        }, this),
+                                                                                        hasProBadge && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                            className: "inline-flex items-center rounded-full border border-emerald-300 bg-emerald-100 px-2.5 py-1 text-[11px] font-bold uppercase tracking-[0.12em] text-emerald-800 shadow-sm",
+                                                                                            children: "PRO"
+                                                                                        }, void 0, false, {
+                                                                                            fileName: "[project]/app/search/SearchClient.tsx",
+                                                                                            lineNumber: 1035,
+                                                                                            columnNumber: 15
+                                                                                        }, this)
+                                                                                    ]
+                                                                                }, void 0, true, {
                                                                                     fileName: "[project]/app/search/SearchClient.tsx",
-                                                                                    lineNumber: 943,
-                                                                                    columnNumber: 31
+                                                                                    lineNumber: 1029,
+                                                                                    columnNumber: 11
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                                     className: "mt-2 text-sm text-slate-500",
@@ -1059,14 +1127,14 @@ function SearchPage() {
                                                                                     ]
                                                                                 }, void 0, true, {
                                                                                     fileName: "[project]/app/search/SearchClient.tsx",
-                                                                                    lineNumber: 946,
-                                                                                    columnNumber: 31
+                                                                                    lineNumber: 1041,
+                                                                                    columnNumber: 11
                                                                                 }, this)
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/app/search/SearchClient.tsx",
-                                                                            lineNumber: 942,
-                                                                            columnNumber: 29
+                                                                            lineNumber: 1028,
+                                                                            columnNumber: 9
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                             className: "hidden h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-slate-100 text-slate-400 sm:flex",
@@ -1082,55 +1150,56 @@ function SearchPage() {
                                                                                     d: "M9 5l7 7-7 7"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/app/search/SearchClient.tsx",
-                                                                                    lineNumber: 959,
-                                                                                    columnNumber: 33
+                                                                                    lineNumber: 1054,
+                                                                                    columnNumber: 13
                                                                                 }, this)
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/app/search/SearchClient.tsx",
-                                                                                lineNumber: 953,
-                                                                                columnNumber: 31
+                                                                                lineNumber: 1048,
+                                                                                columnNumber: 11
                                                                             }, this)
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/search/SearchClient.tsx",
-                                                                            lineNumber: 952,
-                                                                            columnNumber: 29
+                                                                            lineNumber: 1047,
+                                                                            columnNumber: 9
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/app/search/SearchClient.tsx",
-                                                                    lineNumber: 941,
-                                                                    columnNumber: 27
+                                                                    lineNumber: 1027,
+                                                                    columnNumber: 7
                                                                 }, this)
                                                             }, c.id, false, {
                                                                 fileName: "[project]/app/search/SearchClient.tsx",
-                                                                lineNumber: 936,
-                                                                columnNumber: 25
-                                                            }, this))
+                                                                lineNumber: 1022,
+                                                                columnNumber: 5
+                                                            }, this);
+                                                        })
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/search/SearchClient.tsx",
-                                                        lineNumber: 934,
+                                                        lineNumber: 1008,
                                                         columnNumber: 21
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/search/SearchClient.tsx",
-                                                    lineNumber: 924,
+                                                    lineNumber: 998,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/search/SearchClient.tsx",
-                                            lineNumber: 857,
+                                            lineNumber: 931,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/search/SearchClient.tsx",
-                                    lineNumber: 851,
+                                    lineNumber: 925,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/app/search/SearchClient.tsx",
-                                lineNumber: 850,
+                                lineNumber: 924,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(RotatingBanner, {
@@ -1140,13 +1209,13 @@ function SearchPage() {
                                 t: t
                             }, void 0, false, {
                                 fileName: "[project]/app/search/SearchClient.tsx",
-                                lineNumber: 977,
+                                lineNumber: 1073,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/search/SearchClient.tsx",
-                        lineNumber: 847,
+                        lineNumber: 921,
                         columnNumber: 9
                     }, this),
                     isModalOpen && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1169,17 +1238,17 @@ function SearchPage() {
                                             d: "M6 18L18 6M6 6l12 12"
                                         }, void 0, false, {
                                             fileName: "[project]/app/search/SearchClient.tsx",
-                                            lineNumber: 993,
+                                            lineNumber: 1089,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/app/search/SearchClient.tsx",
-                                        lineNumber: 987,
+                                        lineNumber: 1083,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/app/search/SearchClient.tsx",
-                                    lineNumber: 983,
+                                    lineNumber: 1079,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1199,17 +1268,17 @@ function SearchPage() {
                                                     d: "M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/search/SearchClient.tsx",
-                                                    lineNumber: 1010,
+                                                    lineNumber: 1106,
                                                     columnNumber: 21
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/app/search/SearchClient.tsx",
-                                                lineNumber: 1004,
+                                                lineNumber: 1100,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/app/search/SearchClient.tsx",
-                                            lineNumber: 1003,
+                                            lineNumber: 1099,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -1217,7 +1286,7 @@ function SearchPage() {
                                             children: t.orderBanner
                                         }, void 0, false, {
                                             fileName: "[project]/app/search/SearchClient.tsx",
-                                            lineNumber: 1019,
+                                            lineNumber: 1115,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1235,7 +1304,7 @@ function SearchPage() {
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/search/SearchClient.tsx",
-                                            lineNumber: 1020,
+                                            lineNumber: 1116,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1251,7 +1320,7 @@ function SearchPage() {
                                                                     children: t.choosePeriod
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/search/SearchClient.tsx",
-                                                                    lineNumber: 1028,
+                                                                    lineNumber: 1124,
                                                                     columnNumber: 23
                                                                 }, this),
                                                                 translatedPricing.map((plan)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
@@ -1269,7 +1338,7 @@ function SearchPage() {
                                                                                         className: "h-4 w-4 text-emerald-600"
                                                                                     }, void 0, false, {
                                                                                         fileName: "[project]/app/search/SearchClient.tsx",
-                                                                                        lineNumber: 1042,
+                                                                                        lineNumber: 1138,
                                                                                         columnNumber: 29
                                                                                     }, this),
                                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1277,13 +1346,13 @@ function SearchPage() {
                                                                                         children: plan.label
                                                                                     }, void 0, false, {
                                                                                         fileName: "[project]/app/search/SearchClient.tsx",
-                                                                                        lineNumber: 1050,
+                                                                                        lineNumber: 1146,
                                                                                         columnNumber: 29
                                                                                     }, this)
                                                                                 ]
                                                                             }, void 0, true, {
                                                                                 fileName: "[project]/app/search/SearchClient.tsx",
-                                                                                lineNumber: 1041,
+                                                                                lineNumber: 1137,
                                                                                 columnNumber: 27
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1294,19 +1363,19 @@ function SearchPage() {
                                                                                 ]
                                                                             }, void 0, true, {
                                                                                 fileName: "[project]/app/search/SearchClient.tsx",
-                                                                                lineNumber: 1054,
+                                                                                lineNumber: 1150,
                                                                                 columnNumber: 27
                                                                             }, this)
                                                                         ]
                                                                     }, plan.period, true, {
                                                                         fileName: "[project]/app/search/SearchClient.tsx",
-                                                                        lineNumber: 1033,
+                                                                        lineNumber: 1129,
                                                                         columnNumber: 25
                                                                     }, this))
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/search/SearchClient.tsx",
-                                                            lineNumber: 1027,
+                                                            lineNumber: 1123,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1319,7 +1388,7 @@ function SearchPage() {
                                                                             children: t.companyName
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/search/SearchClient.tsx",
-                                                                            lineNumber: 1063,
+                                                                            lineNumber: 1159,
                                                                             columnNumber: 25
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1329,13 +1398,13 @@ function SearchPage() {
                                                                             placeholder: t.companyNamePlaceholder
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/search/SearchClient.tsx",
-                                                                            lineNumber: 1066,
+                                                                            lineNumber: 1162,
                                                                             columnNumber: 25
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/app/search/SearchClient.tsx",
-                                                                    lineNumber: 1062,
+                                                                    lineNumber: 1158,
                                                                     columnNumber: 23
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1345,7 +1414,7 @@ function SearchPage() {
                                                                             children: t.invoiceEmail
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/search/SearchClient.tsx",
-                                                                            lineNumber: 1075,
+                                                                            lineNumber: 1171,
                                                                             columnNumber: 25
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1356,7 +1425,7 @@ function SearchPage() {
                                                                             placeholder: t.invoiceEmailPlaceholder
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/search/SearchClient.tsx",
-                                                                            lineNumber: 1079,
+                                                                            lineNumber: 1175,
                                                                             columnNumber: 25
                                                                         }, this),
                                                                         form.invoiceEmail.length > 0 && !isValidEmail(form.invoiceEmail) && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1364,13 +1433,13 @@ function SearchPage() {
                                                                             children: t.invalidEmail
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/search/SearchClient.tsx",
-                                                                            lineNumber: 1094,
+                                                                            lineNumber: 1190,
                                                                             columnNumber: 27
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/app/search/SearchClient.tsx",
-                                                                    lineNumber: 1074,
+                                                                    lineNumber: 1170,
                                                                     columnNumber: 23
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1380,7 +1449,7 @@ function SearchPage() {
                                                                             children: t.uploadBanner
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/search/SearchClient.tsx",
-                                                                            lineNumber: 1099,
+                                                                            lineNumber: 1195,
                                                                             columnNumber: 25
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
@@ -1391,7 +1460,7 @@ function SearchPage() {
                                                                                     children: t.chooseBannerFile
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/app/search/SearchClient.tsx",
-                                                                                    lineNumber: 1103,
+                                                                                    lineNumber: 1199,
                                                                                     columnNumber: 27
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1399,7 +1468,7 @@ function SearchPage() {
                                                                                     children: t.recommendedSize
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/app/search/SearchClient.tsx",
-                                                                                    lineNumber: 1106,
+                                                                                    lineNumber: 1202,
                                                                                     columnNumber: 27
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1409,19 +1478,19 @@ function SearchPage() {
                                                                                     className: "hidden"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/app/search/SearchClient.tsx",
-                                                                                    lineNumber: 1109,
+                                                                                    lineNumber: 1205,
                                                                                     columnNumber: 27
                                                                                 }, this)
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/app/search/SearchClient.tsx",
-                                                                            lineNumber: 1102,
+                                                                            lineNumber: 1198,
                                                                             columnNumber: 25
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/app/search/SearchClient.tsx",
-                                                                    lineNumber: 1098,
+                                                                    lineNumber: 1194,
                                                                     columnNumber: 23
                                                                 }, this),
                                                                 selectedPlanData && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1432,7 +1501,7 @@ function SearchPage() {
                                                                             children: t.paymentDetails
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/search/SearchClient.tsx",
-                                                                            lineNumber: 1120,
+                                                                            lineNumber: 1216,
                                                                             columnNumber: 27
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1449,7 +1518,7 @@ function SearchPage() {
                                                                                             ]
                                                                                         }, void 0, true, {
                                                                                             fileName: "[project]/app/search/SearchClient.tsx",
-                                                                                            lineNumber: 1126,
+                                                                                            lineNumber: 1222,
                                                                                             columnNumber: 31
                                                                                         }, this),
                                                                                         " ",
@@ -1457,7 +1526,7 @@ function SearchPage() {
                                                                                     ]
                                                                                 }, void 0, true, {
                                                                                     fileName: "[project]/app/search/SearchClient.tsx",
-                                                                                    lineNumber: 1125,
+                                                                                    lineNumber: 1221,
                                                                                     columnNumber: 29
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1471,7 +1540,7 @@ function SearchPage() {
                                                                                             ]
                                                                                         }, void 0, true, {
                                                                                             fileName: "[project]/app/search/SearchClient.tsx",
-                                                                                            lineNumber: 1130,
+                                                                                            lineNumber: 1226,
                                                                                             columnNumber: 31
                                                                                         }, this),
                                                                                         " ",
@@ -1479,7 +1548,7 @@ function SearchPage() {
                                                                                     ]
                                                                                 }, void 0, true, {
                                                                                     fileName: "[project]/app/search/SearchClient.tsx",
-                                                                                    lineNumber: 1129,
+                                                                                    lineNumber: 1225,
                                                                                     columnNumber: 29
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1492,7 +1561,7 @@ function SearchPage() {
                                                                                             ]
                                                                                         }, void 0, true, {
                                                                                             fileName: "[project]/app/search/SearchClient.tsx",
-                                                                                            lineNumber: 1134,
+                                                                                            lineNumber: 1230,
                                                                                             columnNumber: 31
                                                                                         }, this),
                                                                                         " ",
@@ -1500,7 +1569,7 @@ function SearchPage() {
                                                                                     ]
                                                                                 }, void 0, true, {
                                                                                     fileName: "[project]/app/search/SearchClient.tsx",
-                                                                                    lineNumber: 1133,
+                                                                                    lineNumber: 1229,
                                                                                     columnNumber: 29
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1513,7 +1582,7 @@ function SearchPage() {
                                                                                             ]
                                                                                         }, void 0, true, {
                                                                                             fileName: "[project]/app/search/SearchClient.tsx",
-                                                                                            lineNumber: 1138,
+                                                                                            lineNumber: 1234,
                                                                                             columnNumber: 31
                                                                                         }, this),
                                                                                         " €",
@@ -1522,7 +1591,7 @@ function SearchPage() {
                                                                                     ]
                                                                                 }, void 0, true, {
                                                                                     fileName: "[project]/app/search/SearchClient.tsx",
-                                                                                    lineNumber: 1137,
+                                                                                    lineNumber: 1233,
                                                                                     columnNumber: 29
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1536,7 +1605,7 @@ function SearchPage() {
                                                                                             ]
                                                                                         }, void 0, true, {
                                                                                             fileName: "[project]/app/search/SearchClient.tsx",
-                                                                                            lineNumber: 1142,
+                                                                                            lineNumber: 1238,
                                                                                             columnNumber: 31
                                                                                         }, this),
                                                                                         " ",
@@ -1544,19 +1613,19 @@ function SearchPage() {
                                                                                     ]
                                                                                 }, void 0, true, {
                                                                                     fileName: "[project]/app/search/SearchClient.tsx",
-                                                                                    lineNumber: 1141,
+                                                                                    lineNumber: 1237,
                                                                                     columnNumber: 29
                                                                                 }, this)
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/app/search/SearchClient.tsx",
-                                                                            lineNumber: 1124,
+                                                                            lineNumber: 1220,
                                                                             columnNumber: 27
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/app/search/SearchClient.tsx",
-                                                                    lineNumber: 1119,
+                                                                    lineNumber: 1215,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1566,7 +1635,7 @@ function SearchPage() {
                                                                             children: t.uploadPaymentProof
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/search/SearchClient.tsx",
-                                                                            lineNumber: 1150,
+                                                                            lineNumber: 1246,
                                                                             columnNumber: 25
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
@@ -1577,7 +1646,7 @@ function SearchPage() {
                                                                                     children: t.uploadPaymentConfirmation
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/app/search/SearchClient.tsx",
-                                                                                    lineNumber: 1154,
+                                                                                    lineNumber: 1250,
                                                                                     columnNumber: 27
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1585,7 +1654,7 @@ function SearchPage() {
                                                                                     children: t.paymentProofFormats
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/app/search/SearchClient.tsx",
-                                                                                    lineNumber: 1157,
+                                                                                    lineNumber: 1253,
                                                                                     columnNumber: 27
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1595,13 +1664,13 @@ function SearchPage() {
                                                                                     className: "hidden"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/app/search/SearchClient.tsx",
-                                                                                    lineNumber: 1160,
+                                                                                    lineNumber: 1256,
                                                                                     columnNumber: 27
                                                                                 }, this)
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/app/search/SearchClient.tsx",
-                                                                            lineNumber: 1153,
+                                                                            lineNumber: 1249,
                                                                             columnNumber: 25
                                                                         }, this),
                                                                         paymentProofName && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1612,25 +1681,25 @@ function SearchPage() {
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/app/search/SearchClient.tsx",
-                                                                            lineNumber: 1169,
+                                                                            lineNumber: 1265,
                                                                             columnNumber: 27
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/app/search/SearchClient.tsx",
-                                                                    lineNumber: 1149,
+                                                                    lineNumber: 1245,
                                                                     columnNumber: 23
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/search/SearchClient.tsx",
-                                                            lineNumber: 1061,
+                                                            lineNumber: 1157,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/search/SearchClient.tsx",
-                                                    lineNumber: 1026,
+                                                    lineNumber: 1122,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1640,7 +1709,7 @@ function SearchPage() {
                                                             children: t.bannerPreview
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/search/SearchClient.tsx",
-                                                            lineNumber: 1178,
+                                                            lineNumber: 1274,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1651,31 +1720,31 @@ function SearchPage() {
                                                                 className: "h-full w-full object-cover"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/search/SearchClient.tsx",
-                                                                lineNumber: 1184,
+                                                                lineNumber: 1280,
                                                                 columnNumber: 25
                                                             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                 className: "flex h-full w-full items-center justify-center p-4 text-center text-sm leading-8 text-slate-400",
                                                                 children: t.bannerPreviewEmpty
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/search/SearchClient.tsx",
-                                                                lineNumber: 1190,
+                                                                lineNumber: 1286,
                                                                 columnNumber: 25
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/search/SearchClient.tsx",
-                                                            lineNumber: 1182,
+                                                            lineNumber: 1278,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/search/SearchClient.tsx",
-                                                    lineNumber: 1177,
+                                                    lineNumber: 1273,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/search/SearchClient.tsx",
-                                            lineNumber: 1025,
+                                            lineNumber: 1121,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1688,7 +1757,7 @@ function SearchPage() {
                                                     children: submitting ? t.sending : t.havePaid
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/search/SearchClient.tsx",
-                                                    lineNumber: 1199,
+                                                    lineNumber: 1295,
                                                     columnNumber: 19
                                                 }, this),
                                                 successMessage && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1696,7 +1765,7 @@ function SearchPage() {
                                                     children: successMessage
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/search/SearchClient.tsx",
-                                                    lineNumber: 1212,
+                                                    lineNumber: 1308,
                                                     columnNumber: 21
                                                 }, this),
                                                 submitError && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1704,13 +1773,13 @@ function SearchPage() {
                                                     children: submitError
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/search/SearchClient.tsx",
-                                                    lineNumber: 1218,
+                                                    lineNumber: 1314,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/search/SearchClient.tsx",
-                                            lineNumber: 1198,
+                                            lineNumber: 1294,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1718,36 +1787,36 @@ function SearchPage() {
                                             children: t.publishAfterModeration
                                         }, void 0, false, {
                                             fileName: "[project]/app/search/SearchClient.tsx",
-                                            lineNumber: 1224,
+                                            lineNumber: 1320,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/search/SearchClient.tsx",
-                                    lineNumber: 1002,
+                                    lineNumber: 1098,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/search/SearchClient.tsx",
-                            lineNumber: 982,
+                            lineNumber: 1078,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/app/search/SearchClient.tsx",
-                        lineNumber: 981,
+                        lineNumber: 1077,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/search/SearchClient.tsx",
-                lineNumber: 846,
+                lineNumber: 920,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/search/SearchClient.tsx",
-        lineNumber: 830,
+        lineNumber: 904,
         columnNumber: 5
     }, this);
 }

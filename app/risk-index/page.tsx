@@ -763,7 +763,12 @@ export default function RiskIndexPage() {
                   <p className="mt-2 max-w-2xl text-sm text-black/55">
                     {t("riskIndexDesc")}
                   </p>
-
+                  <Link
+  href="/companies"
+  className="mt-3 inline-flex items-center rounded-xl border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-50"
+>
+  Browse Companies Directory
+</Link>
                   <div className="mt-4 flex flex-wrap items-center gap-2">
                     <button
                       onClick={() => setTab("high")}

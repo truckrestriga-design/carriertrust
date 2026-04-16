@@ -64,8 +64,8 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$search$2f$SearchClien
 ;
 async function generateMetadata() {
     return {
-        title: "Logistics Companies Search",
-        description: "Search logistics companies, freight forwarders, cargo delivery providers and transport companies across Europe on CarrierTrust.",
+        title: "Search Logistics Companies, Carrier Reviews & Trust Scores",
+        description: "Search logistics companies, carrier reviews, trust scores, freight forwarders and transport companies across Europe on CarrierTrust.",
         alternates: {
             canonical: "https://carriertrust.eu/search"
         },

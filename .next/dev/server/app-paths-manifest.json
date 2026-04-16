@@ -1,5 +1,8 @@
 {
   "/api/track-event/route": "app/api/track-event/route.js",
-  "/pricing/page": "app/pricing/page.js",
-  "/risk-index/page": "app/risk-index/page.js"
+  "/companies/[id]/page": "app/companies/[id]/page.js",
+  "/companies/page": "app/companies/page.js",
+  "/page": "app/page.js",
+  "/risk-index/page": "app/risk-index/page.js",
+  "/search/page": "app/search/page.js"
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { Suspense, useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 import { countryFromVat } from "@/lib/vatCountry";
@@ -322,7 +322,7 @@ function AppBrand({ tagline }: { tagline: string }) {
   );
 }
 
-export default function WriteReviewPage() {
+function WriteReviewPageInner() {
   const sp = useSearchParams();
   const companyIdFromUrl = sp.get("company_id") || "";
   const { lang } = useLang();
@@ -801,5 +801,13 @@ export default function WriteReviewPage() {
         </div>
       </div>
     </main>
+  );
+}
+
+export default function WriteReviewPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-slate-50" />}>
+      <WriteReviewPageInner />
+    </Suspense>
   );
 }

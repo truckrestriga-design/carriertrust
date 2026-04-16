@@ -1,0 +1,15 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/claim-company/layout,_N_T_/claim-company/page,_N_T_/claim-company"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/claim-company/__PAGE__",
+    "/claim-company",
+    "/_index",
+    "/_head"
+  ]
+}

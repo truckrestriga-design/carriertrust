@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 
@@ -12,7 +12,7 @@ type Company = {
   country: string | null;
 };
 
-export default function ClaimCompanyPage() {
+function ClaimCompanyPageInner() {
   const sp = useSearchParams();
   const router = useRouter();
 
@@ -287,5 +287,13 @@ export default function ClaimCompanyPage() {
         </div>
       </div>
     </main>
+  );
+}
+
+export default function ClaimCompanyPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-slate-50" />}>
+      <ClaimCompanyPageInner />
+    </Suspense>
   );
 }

@@ -76,7 +76,15 @@ type TextPack = {
 
   timelineTitle: string;
   timelineText: string;
-
+  timelineIndexed: string;
+  timelineCountryDetected: string;
+  timelineCountryLabel: string;
+  timelineTrustScore: string;
+  timelineTrustMonitoring: string;
+  timelineReviews: string;
+  timelineReview: string;
+  timelineVerification: string;
+  
   latestPublished: string;
 
   trustBasedOnSignals: string;
@@ -184,14 +192,23 @@ const EN: TextPack = {
   rateLimitedGeneric: "Too many reports. Please wait and try again.",
   sendFailedGeneric: "Could not send report right now. Please try again later.",
 
-  aboutTitle: "About",
+  aboutTitle: "About company",
   aboutText:
-    "Company information will appear here (next: verification + profile details).",
+  "This logistics company is monitored by CarrierTrust using trust signals, payment reputation, cargo delivery activity, logistics reviews and verification data across the European transport network including freight forwarding and carrier cooperation checks.",
 
   timelineTitle: "Timeline",
   timelineText:
     "Timeline will appear here (next: signals, replies, verification events).",
 
+    timelineIndexed: "Company profile indexed on CarrierTrust",
+    timelineCountryDetected: "company data detected",
+    timelineCountryLabel: "Company country",
+    timelineTrustScore: "Trust score currently",
+    timelineTrustMonitoring: "Trust monitoring active",
+    timelineReviews: "published reviews available",
+    timelineReview: "published review available",
+    timelineVerification: "Company verification recorded on",
+    
   latestPublished: "Latest published reviews for this company",
 
   trustBasedOnSignals: "Based on trust signals",
@@ -306,10 +323,18 @@ const TEXT: Record<Lang, TextPack> = {
       "Die Meldung konnte derzeit nicht gesendet werden. Bitte versuchen Sie es später erneut.",
     aboutTitle: "Über das Unternehmen",
     aboutText:
-      "Unternehmensinformationen werden hier angezeigt (als Nächstes: Verifizierung + Profildetails).",
+    "Dieses Logistikunternehmen wird von CarrierTrust anhand von Vertrauenssignalen, Zahlungsreputation, Transportaktivität, Bewertungen und Verifizierungsdaten im europäischen Transportnetz überwacht.",
     timelineTitle: "Zeitverlauf",
     timelineText:
       "Die Chronologie wird hier angezeigt (als Nächstes: Signale, Antworten, Verifizierungsereignisse).",
+      timelineIndexed: "Unternehmensprofil in CarrierTrust indexiert",
+timelineCountryDetected: "Unternehmensdaten erkannt",
+timelineCountryLabel: "Unternehmensland",
+timelineTrustScore: "Aktueller Trust Score",
+timelineTrustMonitoring: "Vertrauensüberwachung aktiv",
+timelineReviews: "veröffentlichte Bewertungen verfügbar",
+timelineReview: "veröffentlichte Bewertung verfügbar",
+timelineVerification: "Unternehmensverifizierung erfasst am",
     latestPublished: "Neueste veröffentlichte Bewertungen für dieses Unternehmen",
     trustBasedOnSignals: "Basierend auf Vertrauenssignalen",
     trustBasedOnReviews: "Basierend auf veröffentlichten Bewertungen",
@@ -414,10 +439,18 @@ const TEXT: Record<Lang, TextPack> = {
       "Не удалось отправить жалобу сейчас. Попробуйте позже.",
     aboutTitle: "О компании",
     aboutText:
-      "Информация о компании появится здесь (дальше: верификация и детали профиля).",
+      "Эта логистическая компания отслеживается CarrierTrust по сигналам доверия, платежной репутации, активности грузоперевозок, отзывам и данным верификации в европейской транспортной сети.",
     timelineTitle: "История",
     timelineText:
       "История событий появится здесь (дальше: сигналы, ответы, события верификации).",
+      timelineIndexed: "Профиль компании индексирован в CarrierTrust",
+timelineCountryDetected: "страна компании определена",
+timelineCountryLabel: "Страна компании",
+timelineTrustScore: "Текущий индекс доверия",
+timelineTrustMonitoring: "Мониторинг доверия активен",
+timelineReviews: "опубликованных отзывов доступно",
+timelineReview: "опубликованный отзыв доступен",
+timelineVerification: "Верификация компании зафиксирована",
     latestPublished: "Последние опубликованные отзывы о компании",
     trustBasedOnSignals: "На основе сигналов доверия",
     trustBasedOnReviews: "На основе опубликованных отзывов",
@@ -525,10 +558,18 @@ const TEXT: Record<Lang, TextPack> = {
       "Impossible d’envoyer le signalement pour le moment. Veuillez réessayer plus tard.",
     aboutTitle: "À propos",
     aboutText:
-      "Les informations sur l’entreprise apparaîtront ici (prochaine étape : vérification + détails du profil).",
+      "Cette entreprise logistique est surveillée par CarrierTrust à l’aide de signaux de confiance, réputation de paiement, activité de livraison, avis et données de vérification dans le réseau européen de transport.",
     timelineTitle: "Historique",
     timelineText:
       "L’historique apparaîtra ici (prochaine étape : signaux, réponses, événements de vérification).",
+      timelineIndexed: "Profil de l'entreprise indexé dans CarrierTrust",
+timelineCountryDetected: "données de l'entreprise détectées",
+timelineCountryLabel: "Pays de l'entreprise",
+timelineTrustScore: "Score de confiance actuel",
+timelineTrustMonitoring: "Surveillance de confiance active",
+timelineReviews: "avis publiés disponibles",
+timelineReview: "avis publié disponible",
+timelineVerification: "Vérification enregistrée le",
     latestPublished: "Derniers avis publiés pour cette entreprise",
     trustBasedOnSignals: "Basé sur des signaux de confiance",
     trustBasedOnReviews: "Basé sur les avis publiés",
@@ -634,10 +675,18 @@ const TEXT: Record<Lang, TextPack> = {
       "No se pudo enviar el reporte ahora. Inténtalo más tarde.",
     aboutTitle: "Acerca de",
     aboutText:
-      "La información de la empresa aparecerá aquí (siguiente paso: verificación + detalles del perfil).",
+      "Esta empresa logística es monitorizada por CarrierTrust utilizando señales de confianza, reputación de pago, actividad de transporte, reseñas y datos de verificación en la red europea de transporte.",
     timelineTitle: "Cronología",
     timelineText:
       "La cronología aparecerá aquí (siguiente paso: señales, respuestas, eventos de verificación).",
+      timelineIndexed: "Perfil de empresa indexado en CarrierTrust",
+timelineCountryDetected: "datos de empresa detectados",
+timelineCountryLabel: "País de la empresa",
+timelineTrustScore: "Trust score actual",
+timelineTrustMonitoring: "Monitoreo de confianza activo",
+timelineReviews: "reseñas publicadas disponibles",
+timelineReview: "reseña publicada disponible",
+timelineVerification: "Verificación registrada el",
     latestPublished: "Últimas reseñas publicadas de esta empresa",
     trustBasedOnSignals: "Basado en señales de confianza",
     trustBasedOnReviews: "Basado en reseñas publicadas",
@@ -744,10 +793,18 @@ const TEXT: Record<Lang, TextPack> = {
       "Impossibile inviare la segnalazione adesso. Riprova più tardi.",
     aboutTitle: "Informazioni",
     aboutText:
-      "Le informazioni sull’azienda appariranno qui (prossimo: verifica + dettagli profilo).",
+      "Questa azienda logistica è monitorata da CarrierTrust tramite segnali di fiducia, reputazione dei pagamenti, attività di trasporto, recensioni e dati di verifica nella rete europea dei trasporti.",
     timelineTitle: "Cronologia",
     timelineText:
       "La cronologia apparirà qui (prossimo: segnali, risposte, eventi di verifica).",
+      timelineIndexed: "Profilo aziendale indicizzato su CarrierTrust",
+timelineCountryDetected: "dati aziendali rilevati",
+timelineCountryLabel: "Paese dell'azienda",
+timelineTrustScore: "Trust score attuale",
+timelineTrustMonitoring: "Monitoraggio fiducia attivo",
+timelineReviews: "recensioni pubblicate disponibili",
+timelineReview: "recensione pubblicata disponibile",
+timelineVerification: "Verifica registrata il",
     latestPublished: "Ultime recensioni pubblicate per questa azienda",
     trustBasedOnSignals: "Basato su segnali di fiducia",
     trustBasedOnReviews: "Basato sulle recensioni pubblicate",
@@ -814,6 +871,7 @@ type PricingPlan = {
 
 type Company = {
   id: string;
+  slug?: string | null;
   name: string | null;
   vat_uid: string | null;
   country: string | null;
@@ -1102,6 +1160,7 @@ export default function CompanyPage() {
 
   const [loading, setLoading] = useState(true);
   const [company, setCompany] = useState<Company | null>(null);
+  const [companyPlan, setCompanyPlan] = useState<string | null>(null);
   const [reviews, setReviews] = useState<Review[]>([]);
   const [err, setErr] = useState<string | null>(null);
 
@@ -1203,21 +1262,50 @@ export default function CompanyPage() {
         setErr(null);
         setLoading(true);
 
-        const { data: c, error: cErr } = await supabase
-          .from("companies")
-          .select(
-            "id, name, vat_uid, country, trust_score, trust_level, trust_updated_at, is_verified_company, verified_at, verification_method, fraud_score, risk_level, auto_flagged"
-          )
-          .eq("slug", companySlug)
-          .single();
+        let c: any = null;
 
-        if (cErr) throw new Error(cErr.message);
-        if (!c?.id) throw new Error("Company not found");
+const bySlug = await supabase
+  .from("companies")
+  .select(
+    "id, slug, name, vat_uid, country, trust_score, trust_level, trust_updated_at, is_verified_company, verified_at, verification_method, fraud_score, risk_level, auto_flagged"
+  )
+  .eq("slug", companySlug)
+  .maybeSingle();
 
-        setCompany(c as any);
+if (bySlug.error) throw new Error(bySlug.error.message);
 
-        const realCompanyId = String(c.id);
+if (bySlug.data?.id) {
+  c = bySlug.data;
+} else {
+  const byId = await supabase
+    .from("companies")
+    .select(
+      "id, slug, name, vat_uid, country, trust_score, trust_level, trust_updated_at, is_verified_company, verified_at, verification_method, fraud_score, risk_level, auto_flagged"
+    )
+    .eq("id", companySlug)
+    .maybeSingle();
 
+  if (byId.error) throw new Error(byId.error.message);
+  c = byId.data;
+}
+
+if (!c?.id) throw new Error("Company not found");
+
+setCompany(c as any);
+
+const realCompanyId = String(c.id);
+const { data: planRow, error: planErr } = await supabase
+  .from("company_plans")
+  .select("plan, plan_status, current_period_end")
+  .eq("company_id", realCompanyId)
+  .eq("plan_status", "active")
+  .order("created_at", { ascending: false })
+  .limit(1)
+  .maybeSingle();
+
+if (planErr) throw new Error(planErr.message);
+
+setCompanyPlan(planRow?.plan ?? null);
         const { data: r, error: rErr } = await supabase
           .from("reviews")
           .select(
@@ -1393,9 +1481,13 @@ export default function CompanyPage() {
   }, [reviews]);
 
   const reviewsCount = reviews.length;
-  const isVerifiedCompany = Boolean(company?.is_verified_company);
+const isVerifiedCompany = Boolean(company?.is_verified_company);
 
-  const trustScoreUI = useMemo(() => {
+const hasProBadge =
+  companyPlan === "pro" || companyPlan === "one_month";
+
+
+const trustScoreUI = useMemo(() => {
     const db = company?.trust_score;
     let base: number | null = null;
 
@@ -1757,7 +1849,7 @@ export default function CompanyPage() {
 
   if (loading) {
     return (
-      <main className="min-h-screen text-slate-900">
+      <div className="min-h-screen text-slate-900">
         <div className="pointer-events-none fixed inset-0 overflow-hidden">
           <div className="absolute inset-0 bg-slate-50" />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(16,185,129,0.14),transparent)]" />
@@ -1771,7 +1863,7 @@ export default function CompanyPage() {
             <div className="text-black/70">{t.loading}</div>
           </div>
         </div>
-      </main>
+      </div>
     );
   }
 
@@ -1828,22 +1920,32 @@ export default function CompanyPage() {
               </div>
 
               <div className="relative flex flex-col items-start justify-between gap-8 lg:flex-row">
-                <div className="min-w-0 flex-1">
-                  <div className="flex min-w-0 items-start gap-3">
-                    <h1 className="break-words text-2xl font-bold leading-[1.05] tracking-tight text-slate-900 sm:text-3xl md:text-4xl">
-                      {company?.name || "Company"}
-                    </h1>
 
-                    {isVerifiedCompany ? (
-                      <span
-                        className="mt-[6px] inline-flex items-center"
-                        title={t.verifiedCompanyHelp}
-                        aria-label={t.verifiedCompany}
-                      >
-                        <BlueCheck className="h-6 w-6" />
-                      </span>
-                    ) : null}
-                  </div>
+                <div className="min-w-0 flex-1">
+                <div className="flex min-w-0 items-start gap-3 flex-wrap">
+                <div className="flex flex-wrap items-center gap-3">
+  <h1 className="break-words text-2xl font-bold leading-[1.05] tracking-tight text-slate-900 sm:text-3xl md:text-4xl">
+    {company?.name || "Company"}
+  </h1>
+
+  {hasProBadge && (
+    <span className="inline-flex items-center rounded-full border border-emerald-300 bg-emerald-100 px-3 py-1 text-xs font-bold uppercase tracking-[0.12em] text-emerald-800 shadow-sm">
+      PRO
+    </span>
+  )}
+</div>
+
+
+  {isVerifiedCompany ? (
+    <span
+      className="mt-[6px] inline-flex items-center"
+      title={t.verifiedCompanyHelp}
+      aria-label={t.verifiedCompany}
+    >
+      <BlueCheck className="h-6 w-6" />
+    </span>
+  ) : null}
+</div>
 
                   <div className="mt-4 flex flex-wrap items-center gap-2.5 text-sm">
                     <span className={`${pill} border-black/10 bg-white/70 text-black/70`}>
@@ -2155,15 +2257,49 @@ export default function CompanyPage() {
                 <div className="mt-10 text-xs leading-6 text-slate-500">
                   {t.neutralHostingNote}
                 </div>
+                
               </>
             )}
 
-            {tab === "timeline" && (
-              <div className={`mt-8 p-6 ${card}`}>
-                <h2 className="text-lg font-bold">{t.timelineTitle}</h2>
-                <p className="mt-2 text-sm text-black/65">{t.timelineText}</p>
-              </div>
-            )}
+{tab === "timeline" && (
+  <div className={`mt-8 p-6 ${card}`}>
+    <h2 className="text-lg font-bold">{t.timelineTitle}</h2>
+
+    <div className="mt-4 space-y-3 text-sm leading-7 text-slate-600">
+      <p>• {t.timelineIndexed}</p>
+
+      <p>
+  • {t.timelineCountryLabel}:{" "}
+  <span className="font-semibold text-slate-900">
+    {company.country || "—"}
+  </span>
+</p>
+
+      {typeof trustScoreUI === "number" ? (
+        <p>
+          • {t.timelineTrustScore}{" "}
+          <span className="font-semibold text-slate-900">{trustScoreUI}/100</span>
+        </p>
+      ) : (
+        <p>• {t.timelineTrustMonitoring}</p>
+      )}
+
+      <p>
+        • <span className="font-semibold text-slate-900">{reviewsCount}</span>{" "}
+        {reviewsCount === 1 ? t.timelineReview : t.timelineReviews}
+      </p>
+
+      {company.verified_at ? (
+        <p>
+          • {t.timelineVerification}{" "}
+          <span className="font-semibold text-slate-900">
+            {formatDate(company.verified_at)}
+          </span>
+        </p>
+      ) : null}
+    </div>
+  </div>
+)}
 
             {tab === "about" && (
               <div className={`mt-8 p-6 ${card}`}>
@@ -2512,6 +2648,24 @@ export default function CompanyPage() {
           </div>
         )}
       </div>
+      <div className="sr-only">
+  <h2>{company.name} logistics company profile</h2>
+
+  <p>
+    {company.name} is listed on CarrierTrust as a logistics company operating in{" "}
+    {company.country || "Europe"} with VAT {company.vat_uid || "not available"}.
+  </p>
+
+  <p>
+    CarrierTrust tracks freight forwarding reputation, cargo delivery reviews,
+    payment trust signals, logistics cooperation history and company verification data.
+  </p>
+
+  <p>
+    Businesses use CarrierTrust before transport cooperation, cargo delivery
+    contracts and freight partner selection across Europe.
+  </p>
+</div>
     </main>
   );
 }

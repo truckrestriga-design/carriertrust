@@ -60,10 +60,18 @@ const EN = {
     duplicateError: "You have already reported this review recently.",
     rateLimitedGeneric: "Too many reports. Please wait and try again.",
     sendFailedGeneric: "Could not send report right now. Please try again later.",
-    aboutTitle: "About",
-    aboutText: "Company information will appear here (next: verification + profile details).",
+    aboutTitle: "About company",
+    aboutText: "This logistics company is monitored by CarrierTrust using trust signals, payment reputation, cargo delivery activity, logistics reviews and verification data across the European transport network including freight forwarding and carrier cooperation checks.",
     timelineTitle: "Timeline",
     timelineText: "Timeline will appear here (next: signals, replies, verification events).",
+    timelineIndexed: "Company profile indexed on CarrierTrust",
+    timelineCountryDetected: "company data detected",
+    timelineCountryLabel: "Company country",
+    timelineTrustScore: "Trust score currently",
+    timelineTrustMonitoring: "Trust monitoring active",
+    timelineReviews: "published reviews available",
+    timelineReview: "published review available",
+    timelineVerification: "Company verification recorded on",
     latestPublished: "Latest published reviews for this company",
     trustBasedOnSignals: "Based on trust signals",
     trustBasedOnReviews: "Based on published reviews",
@@ -159,9 +167,17 @@ const TEXT = {
         rateLimitedGeneric: "Zu viele Meldungen. Bitte warten Sie und versuchen Sie es erneut.",
         sendFailedGeneric: "Die Meldung konnte derzeit nicht gesendet werden. Bitte versuchen Sie es später erneut.",
         aboutTitle: "Über das Unternehmen",
-        aboutText: "Unternehmensinformationen werden hier angezeigt (als Nächstes: Verifizierung + Profildetails).",
+        aboutText: "Dieses Logistikunternehmen wird von CarrierTrust anhand von Vertrauenssignalen, Zahlungsreputation, Transportaktivität, Bewertungen und Verifizierungsdaten im europäischen Transportnetz überwacht.",
         timelineTitle: "Zeitverlauf",
         timelineText: "Die Chronologie wird hier angezeigt (als Nächstes: Signale, Antworten, Verifizierungsereignisse).",
+        timelineIndexed: "Unternehmensprofil in CarrierTrust indexiert",
+        timelineCountryDetected: "Unternehmensdaten erkannt",
+        timelineCountryLabel: "Unternehmensland",
+        timelineTrustScore: "Aktueller Trust Score",
+        timelineTrustMonitoring: "Vertrauensüberwachung aktiv",
+        timelineReviews: "veröffentlichte Bewertungen verfügbar",
+        timelineReview: "veröffentlichte Bewertung verfügbar",
+        timelineVerification: "Unternehmensverifizierung erfasst am",
         latestPublished: "Neueste veröffentlichte Bewertungen für dieses Unternehmen",
         trustBasedOnSignals: "Basierend auf Vertrauenssignalen",
         trustBasedOnReviews: "Basierend auf veröffentlichten Bewertungen",
@@ -255,9 +271,17 @@ const TEXT = {
         rateLimitedGeneric: "Слишком много жалоб. Подождите и попробуйте ещё раз.",
         sendFailedGeneric: "Не удалось отправить жалобу сейчас. Попробуйте позже.",
         aboutTitle: "О компании",
-        aboutText: "Информация о компании появится здесь (дальше: верификация и детали профиля).",
+        aboutText: "Эта логистическая компания отслеживается CarrierTrust по сигналам доверия, платежной репутации, активности грузоперевозок, отзывам и данным верификации в европейской транспортной сети.",
         timelineTitle: "История",
         timelineText: "История событий появится здесь (дальше: сигналы, ответы, события верификации).",
+        timelineIndexed: "Профиль компании индексирован в CarrierTrust",
+        timelineCountryDetected: "страна компании определена",
+        timelineCountryLabel: "Страна компании",
+        timelineTrustScore: "Текущий индекс доверия",
+        timelineTrustMonitoring: "Мониторинг доверия активен",
+        timelineReviews: "опубликованных отзывов доступно",
+        timelineReview: "опубликованный отзыв доступен",
+        timelineVerification: "Верификация компании зафиксирована",
         latestPublished: "Последние опубликованные отзывы о компании",
         trustBasedOnSignals: "На основе сигналов доверия",
         trustBasedOnReviews: "На основе опубликованных отзывов",
@@ -351,9 +375,17 @@ const TEXT = {
         rateLimitedGeneric: "Trop de signalements. Veuillez patienter et réessayer.",
         sendFailedGeneric: "Impossible d’envoyer le signalement pour le moment. Veuillez réessayer plus tard.",
         aboutTitle: "À propos",
-        aboutText: "Les informations sur l’entreprise apparaîtront ici (prochaine étape : vérification + détails du profil).",
+        aboutText: "Cette entreprise logistique est surveillée par CarrierTrust à l’aide de signaux de confiance, réputation de paiement, activité de livraison, avis et données de vérification dans le réseau européen de transport.",
         timelineTitle: "Historique",
         timelineText: "L’historique apparaîtra ici (prochaine étape : signaux, réponses, événements de vérification).",
+        timelineIndexed: "Profil de l'entreprise indexé dans CarrierTrust",
+        timelineCountryDetected: "données de l'entreprise détectées",
+        timelineCountryLabel: "Pays de l'entreprise",
+        timelineTrustScore: "Score de confiance actuel",
+        timelineTrustMonitoring: "Surveillance de confiance active",
+        timelineReviews: "avis publiés disponibles",
+        timelineReview: "avis publié disponible",
+        timelineVerification: "Vérification enregistrée le",
         latestPublished: "Derniers avis publiés pour cette entreprise",
         trustBasedOnSignals: "Basé sur des signaux de confiance",
         trustBasedOnReviews: "Basé sur les avis publiés",
@@ -447,9 +479,17 @@ const TEXT = {
         rateLimitedGeneric: "Demasiados reportes. Espera e inténtalo de nuevo.",
         sendFailedGeneric: "No se pudo enviar el reporte ahora. Inténtalo más tarde.",
         aboutTitle: "Acerca de",
-        aboutText: "La información de la empresa aparecerá aquí (siguiente paso: verificación + detalles del perfil).",
+        aboutText: "Esta empresa logística es monitorizada por CarrierTrust utilizando señales de confianza, reputación de pago, actividad de transporte, reseñas y datos de verificación en la red europea de transporte.",
         timelineTitle: "Cronología",
         timelineText: "La cronología aparecerá aquí (siguiente paso: señales, respuestas, eventos de verificación).",
+        timelineIndexed: "Perfil de empresa indexado en CarrierTrust",
+        timelineCountryDetected: "datos de empresa detectados",
+        timelineCountryLabel: "País de la empresa",
+        timelineTrustScore: "Trust score actual",
+        timelineTrustMonitoring: "Monitoreo de confianza activo",
+        timelineReviews: "reseñas publicadas disponibles",
+        timelineReview: "reseña publicada disponible",
+        timelineVerification: "Verificación registrada el",
         latestPublished: "Últimas reseñas publicadas de esta empresa",
         trustBasedOnSignals: "Basado en señales de confianza",
         trustBasedOnReviews: "Basado en reseñas publicadas",
@@ -543,9 +583,17 @@ const TEXT = {
         rateLimitedGeneric: "Troppe segnalazioni. Attendi e riprova.",
         sendFailedGeneric: "Impossibile inviare la segnalazione adesso. Riprova più tardi.",
         aboutTitle: "Informazioni",
-        aboutText: "Le informazioni sull’azienda appariranno qui (prossimo: verifica + dettagli profilo).",
+        aboutText: "Questa azienda logistica è monitorata da CarrierTrust tramite segnali di fiducia, reputazione dei pagamenti, attività di trasporto, recensioni e dati di verifica nella rete europea dei trasporti.",
         timelineTitle: "Cronologia",
         timelineText: "La cronologia apparirà qui (prossimo: segnali, risposte, eventi di verifica).",
+        timelineIndexed: "Profilo aziendale indicizzato su CarrierTrust",
+        timelineCountryDetected: "dati aziendali rilevati",
+        timelineCountryLabel: "Paese dell'azienda",
+        timelineTrustScore: "Trust score attuale",
+        timelineTrustMonitoring: "Monitoraggio fiducia attivo",
+        timelineReviews: "recensioni pubblicate disponibili",
+        timelineReview: "recensione pubblicata disponibile",
+        timelineVerification: "Verifica registrata il",
         latestPublished: "Ultime recensioni pubblicate per questa azienda",
         trustBasedOnSignals: "Basato su segnali di fiducia",
         trustBasedOnReviews: "Basato sulle recensioni pubblicate",
@@ -700,7 +748,7 @@ function BlueCheck({ className }) {
                 className: "fill-sky-500/15"
             }, void 0, false, {
                 fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                lineNumber: 964,
+                lineNumber: 1022,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -709,7 +757,7 @@ function BlueCheck({ className }) {
                 strokeWidth: "1.25"
             }, void 0, false, {
                 fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                lineNumber: 968,
+                lineNumber: 1026,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -720,13 +768,13 @@ function BlueCheck({ className }) {
                 strokeLinejoin: "round"
             }, void 0, false, {
                 fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                lineNumber: 973,
+                lineNumber: 1031,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-        lineNumber: 963,
+        lineNumber: 1021,
         columnNumber: 5
     }, this);
 }
@@ -743,7 +791,7 @@ function VerifiedIcon({ className }) {
                 className: "fill-emerald-600/15"
             }, void 0, false, {
                 fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                lineNumber: 987,
+                lineNumber: 1045,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -752,7 +800,7 @@ function VerifiedIcon({ className }) {
                 strokeWidth: "1.2"
             }, void 0, false, {
                 fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                lineNumber: 991,
+                lineNumber: 1049,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -763,13 +811,13 @@ function VerifiedIcon({ className }) {
                 strokeLinejoin: "round"
             }, void 0, false, {
                 fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                lineNumber: 996,
+                lineNumber: 1054,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-        lineNumber: 986,
+        lineNumber: 1044,
         columnNumber: 5
     }, this);
 }
@@ -821,7 +869,7 @@ function RotatingBanner({ side, banners, onAddClick }) {
                         className: "h-full w-full object-cover"
                     }, void 0, false, {
                         fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                        lineNumber: 1033,
+                        lineNumber: 1091,
                         columnNumber: 13
                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "flex h-full w-full flex-col items-center justify-center gap-4 bg-[linear-gradient(180deg,rgba(255,255,255,0.92),rgba(241,245,249,0.96))] p-5 text-center",
@@ -840,17 +888,17 @@ function RotatingBanner({ side, banners, onAddClick }) {
                                         d: "M12 4v16m8-8H4"
                                     }, void 0, false, {
                                         fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                        lineNumber: 1047,
+                                        lineNumber: 1105,
                                         columnNumber: 19
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                    lineNumber: 1041,
+                                    lineNumber: 1099,
                                     columnNumber: 17
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                lineNumber: 1040,
+                                lineNumber: 1098,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -860,7 +908,7 @@ function RotatingBanner({ side, banners, onAddClick }) {
                                         children: t.adSpace
                                     }, void 0, false, {
                                         fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                        lineNumber: 1057,
+                                        lineNumber: 1115,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -868,7 +916,7 @@ function RotatingBanner({ side, banners, onAddClick }) {
                                         children: "180×600px"
                                     }, void 0, false, {
                                         fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                        lineNumber: 1058,
+                                        lineNumber: 1116,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -876,24 +924,24 @@ function RotatingBanner({ side, banners, onAddClick }) {
                                         children: t.bannerEmptyText
                                     }, void 0, false, {
                                         fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                        lineNumber: 1059,
+                                        lineNumber: 1117,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                lineNumber: 1056,
+                                lineNumber: 1114,
                                 columnNumber: 15
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                        lineNumber: 1039,
+                        lineNumber: 1097,
                         columnNumber: 13
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                    lineNumber: 1031,
+                    lineNumber: 1089,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -916,40 +964,40 @@ function RotatingBanner({ side, banners, onAddClick }) {
                                         d: "M12 4v16m8-8H4"
                                     }, void 0, false, {
                                         fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                        lineNumber: 1079,
+                                        lineNumber: 1137,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                    lineNumber: 1073,
+                                    lineNumber: 1131,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                lineNumber: 1072,
+                                lineNumber: 1130,
                                 columnNumber: 13
                             }, this),
                             t.addBanner
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                        lineNumber: 1071,
+                        lineNumber: 1129,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                    lineNumber: 1067,
+                    lineNumber: 1125,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-            lineNumber: 1030,
+            lineNumber: 1088,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-        lineNumber: 1029,
+        lineNumber: 1087,
         columnNumber: 5
     }, this);
 }
@@ -972,6 +1020,7 @@ function CompanyPage() {
     const [tab, setTab] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("reviews");
     const [loading, setLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(true);
     const [company, setCompany] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
+    const [companyPlan, setCompanyPlan] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
     const [reviews, setReviews] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
     const [err, setErr] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
     const [claimStatus, setClaimStatus] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("none");
@@ -1069,11 +1118,24 @@ function CompanyPage() {
                     try {
                         setErr(null);
                         setLoading(true);
-                        const { data: c, error: cErr } = await __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$supabaseClient$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["supabase"].from("companies").select("id, name, vat_uid, country, trust_score, trust_level, trust_updated_at, is_verified_company, verified_at, verification_method, fraud_score, risk_level, auto_flagged").eq("slug", companySlug).single();
-                        if (cErr) throw new Error(cErr.message);
+                        let c = null;
+                        const bySlug = await __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$supabaseClient$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["supabase"].from("companies").select("id, slug, name, vat_uid, country, trust_score, trust_level, trust_updated_at, is_verified_company, verified_at, verification_method, fraud_score, risk_level, auto_flagged").eq("slug", companySlug).maybeSingle();
+                        if (bySlug.error) throw new Error(bySlug.error.message);
+                        if (bySlug.data?.id) {
+                            c = bySlug.data;
+                        } else {
+                            const byId = await __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$supabaseClient$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["supabase"].from("companies").select("id, slug, name, vat_uid, country, trust_score, trust_level, trust_updated_at, is_verified_company, verified_at, verification_method, fraud_score, risk_level, auto_flagged").eq("id", companySlug).maybeSingle();
+                            if (byId.error) throw new Error(byId.error.message);
+                            c = byId.data;
+                        }
                         if (!c?.id) throw new Error("Company not found");
                         setCompany(c);
                         const realCompanyId = String(c.id);
+                        const { data: planRow, error: planErr } = await __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$supabaseClient$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["supabase"].from("company_plans").select("plan, plan_status, current_period_end").eq("company_id", realCompanyId).eq("plan_status", "active").order("created_at", {
+                            ascending: false
+                        }).limit(1).maybeSingle();
+                        if (planErr) throw new Error(planErr.message);
+                        setCompanyPlan(planRow?.plan ?? null);
                         const { data: r, error: rErr } = await __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$supabaseClient$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["supabase"].from("reviews").select("id, created_at, rating, issue_type, review_text, status, author_email, author_company, author_company_vat, is_verified, verification_method, risk_score, is_flagged").eq("company_id", realCompanyId).eq("status", "published").order("created_at", {
                             ascending: false
                         });
@@ -1251,6 +1313,7 @@ function CompanyPage() {
     ]);
     const reviewsCount = reviews.length;
     const isVerifiedCompany = Boolean(company?.is_verified_company);
+    const hasProBadge = companyPlan === "pro" || companyPlan === "one_month";
     const trustScoreUI = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMemo"])({
         "CompanyPage.useMemo[trustScoreUI]": ()=>{
             const db = company?.trust_score;
@@ -1574,7 +1637,7 @@ function CompanyPage() {
     const fraudScore = typeof company?.fraud_score === "number" ? company.fraud_score : 0;
     const autoFlagged = Boolean(company?.auto_flagged);
     if (loading) {
-        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("main", {
+        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
             className: "min-h-screen text-slate-900",
             children: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1584,41 +1647,41 @@ function CompanyPage() {
                             className: "absolute inset-0 bg-slate-50"
                         }, void 0, false, {
                             fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                            lineNumber: 1762,
+                            lineNumber: 1854,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(16,185,129,0.14),transparent)]"
                         }, void 0, false, {
                             fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                            lineNumber: 1763,
+                            lineNumber: 1855,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "absolute top-[8%] left-[8%] h-[24rem] w-[24rem] rounded-full bg-emerald-300/20 blur-3xl"
                         }, void 0, false, {
                             fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                            lineNumber: 1764,
+                            lineNumber: 1856,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "absolute bottom-[8%] right-[10%] h-[20rem] w-[20rem] rounded-full bg-cyan-300/20 blur-3xl"
                         }, void 0, false, {
                             fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                            lineNumber: 1765,
+                            lineNumber: 1857,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "absolute inset-0 opacity-[0.04] bg-[linear-gradient(to_right,rgba(15,23,42,0.55)_1px,transparent_1px),linear-gradient(to_bottom,rgba(15,23,42,0.55)_1px,transparent_1px)] bg-[size:4rem_4rem]"
                         }, void 0, false, {
                             fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                            lineNumber: 1766,
+                            lineNumber: 1858,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                    lineNumber: 1761,
+                    lineNumber: 1853,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1630,23 +1693,23 @@ function CompanyPage() {
                             children: t.loading
                         }, void 0, false, {
                             fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                            lineNumber: 1771,
+                            lineNumber: 1863,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                        lineNumber: 1770,
+                        lineNumber: 1862,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                    lineNumber: 1769,
+                    lineNumber: 1861,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-            lineNumber: 1760,
+            lineNumber: 1852,
             columnNumber: 7
         }, this);
     }
@@ -1662,22 +1725,22 @@ function CompanyPage() {
                         children: err
                     }, void 0, false, {
                         fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                        lineNumber: 1783,
+                        lineNumber: 1875,
                         columnNumber: 13
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                    lineNumber: 1782,
+                    lineNumber: 1874,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                lineNumber: 1781,
+                lineNumber: 1873,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-            lineNumber: 1780,
+            lineNumber: 1872,
             columnNumber: 7
         }, this);
     }
@@ -1693,22 +1756,22 @@ function CompanyPage() {
                         children: t.companyNotFound
                     }, void 0, false, {
                         fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                        lineNumber: 1797,
+                        lineNumber: 1889,
                         columnNumber: 13
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                    lineNumber: 1796,
+                    lineNumber: 1888,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                lineNumber: 1795,
+                lineNumber: 1887,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-            lineNumber: 1794,
+            lineNumber: 1886,
             columnNumber: 7
         }, this);
     }
@@ -1722,7 +1785,7 @@ function CompanyPage() {
                 }
             }, void 0, false, {
                 fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                lineNumber: 1807,
+                lineNumber: 1899,
                 columnNumber: 9
             }, this) : null,
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1737,7 +1800,7 @@ function CompanyPage() {
                                 onAddClick: openBannerOrder
                             }, void 0, false, {
                                 fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                lineNumber: 1817,
+                                lineNumber: 1909,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1753,20 +1816,20 @@ function CompanyPage() {
                                                         className: "absolute -right-16 -top-20 h-56 w-56 rounded-full bg-emerald-200/40 blur-3xl"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                        lineNumber: 1826,
+                                                        lineNumber: 1918,
                                                         columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                         className: "absolute -bottom-24 -left-12 h-56 w-56 rounded-full bg-cyan-200/30 blur-3xl"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                        lineNumber: 1827,
+                                                        lineNumber: 1919,
                                                         columnNumber: 17
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                lineNumber: 1825,
+                                                lineNumber: 1917,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1776,15 +1839,32 @@ function CompanyPage() {
                                                         className: "min-w-0 flex-1",
                                                         children: [
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                className: "flex min-w-0 items-start gap-3",
+                                                                className: "flex min-w-0 items-start gap-3 flex-wrap",
                                                                 children: [
-                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
-                                                                        className: "break-words text-2xl font-bold leading-[1.05] tracking-tight text-slate-900 sm:text-3xl md:text-4xl",
-                                                                        children: company?.name || "Company"
-                                                                    }, void 0, false, {
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                        className: "flex flex-wrap items-center gap-3",
+                                                                        children: [
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
+                                                                                className: "break-words text-2xl font-bold leading-[1.05] tracking-tight text-slate-900 sm:text-3xl md:text-4xl",
+                                                                                children: company?.name || "Company"
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
+                                                                                lineNumber: 1927,
+                                                                                columnNumber: 3
+                                                                            }, this),
+                                                                            hasProBadge && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                className: "inline-flex items-center rounded-full border border-emerald-300 bg-emerald-100 px-3 py-1 text-xs font-bold uppercase tracking-[0.12em] text-emerald-800 shadow-sm",
+                                                                                children: "PRO"
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
+                                                                                lineNumber: 1932,
+                                                                                columnNumber: 5
+                                                                            }, this)
+                                                                        ]
+                                                                    }, void 0, true, {
                                                                         fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                        lineNumber: 1833,
-                                                                        columnNumber: 21
+                                                                        lineNumber: 1926,
+                                                                        columnNumber: 17
                                                                     }, this),
                                                                     isVerifiedCompany ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                         className: "mt-[6px] inline-flex items-center",
@@ -1794,19 +1874,19 @@ function CompanyPage() {
                                                                             className: "h-6 w-6"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                            lineNumber: 1843,
-                                                                            columnNumber: 25
+                                                                            lineNumber: 1945,
+                                                                            columnNumber: 7
                                                                         }, this)
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                        lineNumber: 1838,
-                                                                        columnNumber: 23
+                                                                        lineNumber: 1940,
+                                                                        columnNumber: 5
                                                                     }, this) : null
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                lineNumber: 1832,
-                                                                columnNumber: 19
+                                                                lineNumber: 1925,
+                                                                columnNumber: 17
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                 className: "mt-4 flex flex-wrap items-center gap-2.5 text-sm",
@@ -1822,13 +1902,13 @@ function CompanyPage() {
                                                                                 children: (company?.vat_uid || "—").toUpperCase()
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                                lineNumber: 1851,
+                                                                                lineNumber: 1953,
                                                                                 columnNumber: 23
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                        lineNumber: 1849,
+                                                                        lineNumber: 1951,
                                                                         columnNumber: 21
                                                                     }, this),
                                                                     company?.country ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1842,13 +1922,13 @@ function CompanyPage() {
                                                                                 children: company.country
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                                lineNumber: 1859,
+                                                                                lineNumber: 1961,
                                                                                 columnNumber: 25
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                        lineNumber: 1857,
+                                                                        lineNumber: 1959,
                                                                         columnNumber: 23
                                                                     }, this) : null,
                                                                     isVerifiedCompany ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1864,7 +1944,7 @@ function CompanyPage() {
                                                                                             className: "h-4 w-4"
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                                            lineNumber: 1872,
+                                                                                            lineNumber: 1974,
                                                                                             columnNumber: 29
                                                                                         }, this),
                                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1872,7 +1952,7 @@ function CompanyPage() {
                                                                                             children: t.verifiedCompany
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                                            lineNumber: 1873,
+                                                                                            lineNumber: 1975,
                                                                                             columnNumber: 29
                                                                                         }, this),
                                                                                         company.verified_at ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1880,18 +1960,18 @@ function CompanyPage() {
                                                                                             children: formatDate(company.verified_at)
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                                            lineNumber: 1877,
+                                                                                            lineNumber: 1979,
                                                                                             columnNumber: 31
                                                                                         }, this) : null
                                                                                     ]
                                                                                 }, void 0, true, {
                                                                                     fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                                    lineNumber: 1871,
+                                                                                    lineNumber: 1973,
                                                                                     columnNumber: 27
                                                                                 }, this)
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                                lineNumber: 1867,
+                                                                                lineNumber: 1969,
                                                                                 columnNumber: 25
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -1900,19 +1980,19 @@ function CompanyPage() {
                                                                                 children: t.verifiedLearnMore
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                                lineNumber: 1884,
+                                                                                lineNumber: 1986,
                                                                                 columnNumber: 25
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                        lineNumber: 1866,
+                                                                        lineNumber: 1968,
                                                                         columnNumber: 23
                                                                     }, this) : null
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                lineNumber: 1848,
+                                                                lineNumber: 1950,
                                                                 columnNumber: 19
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1924,7 +2004,7 @@ function CompanyPage() {
                                                                         children: t.writeReview
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                        lineNumber: 1895,
+                                                                        lineNumber: 1997,
                                                                         columnNumber: 21
                                                                     }, this),
                                                                     claimStatus === "approved" ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -1933,14 +2013,14 @@ function CompanyPage() {
                                                                         children: t.companyDashboard
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                        lineNumber: 1900,
+                                                                        lineNumber: 2002,
                                                                         columnNumber: 23
                                                                     }, this) : claimStatus === "pending" ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                         className: disabledBtn,
                                                                         children: t.claimPending
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                        lineNumber: 1904,
+                                                                        lineNumber: 2006,
                                                                         columnNumber: 23
                                                                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                                                                         href: claimHref,
@@ -1948,7 +2028,7 @@ function CompanyPage() {
                                                                         children: t.claimThisCompany
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                        lineNumber: 1906,
+                                                                        lineNumber: 2008,
                                                                         columnNumber: 23
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1960,7 +2040,7 @@ function CompanyPage() {
                                                                                     children: avg
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                                    lineNumber: 1914,
+                                                                                    lineNumber: 2016,
                                                                                     columnNumber: 27
                                                                                 }, this),
                                                                                 "/5 •",
@@ -1970,7 +2050,7 @@ function CompanyPage() {
                                                                                     children: reviewsCount
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                                    lineNumber: 1915,
+                                                                                    lineNumber: 2017,
                                                                                     columnNumber: 27
                                                                                 }, this),
                                                                                 " ",
@@ -1978,7 +2058,7 @@ function CompanyPage() {
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                            lineNumber: 1913,
+                                                                            lineNumber: 2015,
                                                                             columnNumber: 25
                                                                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                             children: [
@@ -1987,7 +2067,7 @@ function CompanyPage() {
                                                                                     children: reviewsCount
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                                    lineNumber: 1922,
+                                                                                    lineNumber: 2024,
                                                                                     columnNumber: 27
                                                                                 }, this),
                                                                                 " ",
@@ -1995,18 +2075,18 @@ function CompanyPage() {
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                            lineNumber: 1921,
+                                                                            lineNumber: 2023,
                                                                             columnNumber: 25
                                                                         }, this)
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                        lineNumber: 1911,
+                                                                        lineNumber: 2013,
                                                                         columnNumber: 21
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                lineNumber: 1894,
+                                                                lineNumber: 1996,
                                                                 columnNumber: 19
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2018,7 +2098,7 @@ function CompanyPage() {
                                                                         children: t.tabsReviews
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                        lineNumber: 1932,
+                                                                        lineNumber: 2034,
                                                                         columnNumber: 21
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2027,7 +2107,7 @@ function CompanyPage() {
                                                                         children: t.tabsTimeline
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                        lineNumber: 1938,
+                                                                        lineNumber: 2040,
                                                                         columnNumber: 21
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2036,19 +2116,19 @@ function CompanyPage() {
                                                                         children: t.tabsAbout
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                        lineNumber: 1944,
+                                                                        lineNumber: 2046,
                                                                         columnNumber: 21
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                lineNumber: 1931,
+                                                                lineNumber: 2033,
                                                                 columnNumber: 19
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                        lineNumber: 1831,
+                                                        lineNumber: 1924,
                                                         columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2064,7 +2144,7 @@ function CompanyPage() {
                                                                             children: t.trustScore
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                            lineNumber: 1956,
+                                                                            lineNumber: 2058,
                                                                             columnNumber: 23
                                                                         }, this),
                                                                         riskLabel ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2076,13 +2156,13 @@ function CompanyPage() {
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                            lineNumber: 1959,
+                                                                            lineNumber: 2061,
                                                                             columnNumber: 25
                                                                         }, this) : null
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                    lineNumber: 1955,
+                                                                    lineNumber: 2057,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2097,13 +2177,13 @@ function CompanyPage() {
                                                                                     children: "/100"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                                    lineNumber: 1972,
+                                                                                    lineNumber: 2074,
                                                                                     columnNumber: 25
                                                                                 }, this)
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                            lineNumber: 1968,
+                                                                            lineNumber: 2070,
                                                                             columnNumber: 23
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2115,13 +2195,13 @@ function CompanyPage() {
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                            lineNumber: 1976,
+                                                                            lineNumber: 2078,
                                                                             columnNumber: 23
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                    lineNumber: 1967,
+                                                                    lineNumber: 2069,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2133,12 +2213,12 @@ function CompanyPage() {
                                                                         }
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                        lineNumber: 1982,
+                                                                        lineNumber: 2084,
                                                                         columnNumber: 23
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                    lineNumber: 1981,
+                                                                    lineNumber: 2083,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2153,13 +2233,13 @@ function CompanyPage() {
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                            lineNumber: 1997,
+                                                                            lineNumber: 2099,
                                                                             columnNumber: 25
                                                                         }, this) : null
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                    lineNumber: 1994,
+                                                                    lineNumber: 2096,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 company.trust_updated_at ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2171,7 +2251,7 @@ function CompanyPage() {
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                    lineNumber: 2004,
+                                                                    lineNumber: 2106,
                                                                     columnNumber: 23
                                                                 }, this) : null,
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2185,7 +2265,7 @@ function CompanyPage() {
                                                                                     children: t.fraudScoreLabel
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                                    lineNumber: 2011,
+                                                                                    lineNumber: 2113,
                                                                                     columnNumber: 25
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2193,13 +2273,13 @@ function CompanyPage() {
                                                                                     children: fraudScore
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                                    lineNumber: 2014,
+                                                                                    lineNumber: 2116,
                                                                                     columnNumber: 25
                                                                                 }, this)
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                            lineNumber: 2010,
+                                                                            lineNumber: 2112,
                                                                             columnNumber: 23
                                                                         }, this),
                                                                         autoFlagged ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2207,36 +2287,36 @@ function CompanyPage() {
                                                                             children: t.autoFlaggedLabel
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                            lineNumber: 2019,
+                                                                            lineNumber: 2121,
                                                                             columnNumber: 25
                                                                         }, this) : null
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                    lineNumber: 2009,
+                                                                    lineNumber: 2111,
                                                                     columnNumber: 21
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                            lineNumber: 1954,
+                                                            lineNumber: 2056,
                                                             columnNumber: 19
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                        lineNumber: 1953,
+                                                        lineNumber: 2055,
                                                         columnNumber: 17
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                lineNumber: 1830,
+                                                lineNumber: 1922,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                        lineNumber: 1824,
+                                        lineNumber: 1916,
                                         columnNumber: 13
                                     }, this),
                                     tab === "reviews" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
@@ -2249,7 +2329,7 @@ function CompanyPage() {
                                                         children: t.reviews
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                        lineNumber: 2032,
+                                                        lineNumber: 2134,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2257,13 +2337,13 @@ function CompanyPage() {
                                                         children: t.latestPublished
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                        lineNumber: 2035,
+                                                        lineNumber: 2137,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                lineNumber: 2031,
+                                                lineNumber: 2133,
                                                 columnNumber: 17
                                             }, this),
                                             reviews.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2274,7 +2354,7 @@ function CompanyPage() {
                                                         children: t.noReviewsTitle
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                        lineNumber: 2042,
+                                                        lineNumber: 2144,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2282,13 +2362,13 @@ function CompanyPage() {
                                                         children: t.noReviewsText
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                        lineNumber: 2043,
+                                                        lineNumber: 2145,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                lineNumber: 2041,
+                                                lineNumber: 2143,
                                                 columnNumber: 19
                                             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 className: "mt-4 space-y-4",
@@ -2314,7 +2394,7 @@ function CompanyPage() {
                                                                                         children: stars(r.rating || 0)
                                                                                     }, void 0, false, {
                                                                                         fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                                        lineNumber: 2067,
+                                                                                        lineNumber: 2169,
                                                                                         columnNumber: 33
                                                                                     }, this),
                                                                                     r.is_verified ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2326,19 +2406,19 @@ function CompanyPage() {
                                                                                                 children: String(r.verification_method)
                                                                                             }, void 0, false, {
                                                                                                 fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                                                lineNumber: 2075,
+                                                                                                lineNumber: 2177,
                                                                                                 columnNumber: 39
                                                                                             }, this) : null
                                                                                         ]
                                                                                     }, void 0, true, {
                                                                                         fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                                        lineNumber: 2072,
+                                                                                        lineNumber: 2174,
                                                                                         columnNumber: 35
                                                                                     }, this) : null
                                                                                 ]
                                                                             }, void 0, true, {
                                                                                 fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                                lineNumber: 2066,
+                                                                                lineNumber: 2168,
                                                                                 columnNumber: 31
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2351,7 +2431,7 @@ function CompanyPage() {
                                                                                         children: authorLabel(r)
                                                                                     }, void 0, false, {
                                                                                         fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                                        lineNumber: 2085,
+                                                                                        lineNumber: 2187,
                                                                                         columnNumber: 33
                                                                                     }, this),
                                                                                     r.author_company_vat ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2363,13 +2443,13 @@ function CompanyPage() {
                                                                                         ]
                                                                                     }, void 0, true, {
                                                                                         fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                                        lineNumber: 2089,
+                                                                                        lineNumber: 2191,
                                                                                         columnNumber: 35
                                                                                     }, this) : null
                                                                                 ]
                                                                             }, void 0, true, {
                                                                                 fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                                lineNumber: 2083,
+                                                                                lineNumber: 2185,
                                                                                 columnNumber: 31
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2381,13 +2461,13 @@ function CompanyPage() {
                                                                                 ]
                                                                             }, void 0, true, {
                                                                                 fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                                lineNumber: 2095,
+                                                                                lineNumber: 2197,
                                                                                 columnNumber: 31
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                        lineNumber: 2065,
+                                                                        lineNumber: 2167,
                                                                         columnNumber: 29
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2397,13 +2477,13 @@ function CompanyPage() {
                                                                         children: t.report
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                        lineNumber: 2102,
+                                                                        lineNumber: 2204,
                                                                         columnNumber: 29
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                lineNumber: 2064,
+                                                                lineNumber: 2166,
                                                                 columnNumber: 27
                                                             }, this),
                                                             flagged ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2416,7 +2496,7 @@ function CompanyPage() {
                                                                             children: t.underReviewTitle
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                            lineNumber: 2114,
+                                                                            lineNumber: 2216,
                                                                             columnNumber: 33
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2424,18 +2504,18 @@ function CompanyPage() {
                                                                             children: t.underReviewText
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                            lineNumber: 2117,
+                                                                            lineNumber: 2219,
                                                                             columnNumber: 33
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                    lineNumber: 2113,
+                                                                    lineNumber: 2215,
                                                                     columnNumber: 31
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                lineNumber: 2112,
+                                                                lineNumber: 2214,
                                                                 columnNumber: 29
                                                             }, this) : null,
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2443,7 +2523,7 @@ function CompanyPage() {
                                                                 children: r.review_text || ""
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                lineNumber: 2124,
+                                                                lineNumber: 2226,
                                                                 columnNumber: 27
                                                             }, this),
                                                             hasReply ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2462,13 +2542,13 @@ function CompanyPage() {
                                                                                         children: t.official
                                                                                     }, void 0, false, {
                                                                                         fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                                        lineNumber: 2133,
+                                                                                        lineNumber: 2235,
                                                                                         columnNumber: 35
                                                                                     }, this)
                                                                                 ]
                                                                             }, void 0, true, {
                                                                                 fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                                lineNumber: 2131,
+                                                                                lineNumber: 2233,
                                                                                 columnNumber: 33
                                                                             }, this),
                                                                             reply?.updated_at ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2476,13 +2556,13 @@ function CompanyPage() {
                                                                                 children: new Date(reply.updated_at).toLocaleDateString()
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                                lineNumber: 2138,
+                                                                                lineNumber: 2240,
                                                                                 columnNumber: 35
                                                                             }, this) : null
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                        lineNumber: 2130,
+                                                                        lineNumber: 2232,
                                                                         columnNumber: 31
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2490,25 +2570,25 @@ function CompanyPage() {
                                                                         children: String(reply?.reply_text || "")
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                        lineNumber: 2144,
+                                                                        lineNumber: 2246,
                                                                         columnNumber: 31
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                lineNumber: 2129,
+                                                                lineNumber: 2231,
                                                                 columnNumber: 29
                                                             }, this) : null
                                                         ]
                                                     }, r.id, true, {
                                                         fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                        lineNumber: 2063,
+                                                        lineNumber: 2165,
                                                         columnNumber: 25
                                                     }, this);
                                                 })
                                             }, void 0, false, {
                                                 fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                lineNumber: 2048,
+                                                lineNumber: 2150,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2516,7 +2596,7 @@ function CompanyPage() {
                                                 children: t.neutralHostingNote
                                             }, void 0, false, {
                                                 fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                lineNumber: 2155,
+                                                lineNumber: 2257,
                                                 columnNumber: 17
                                             }, this)
                                         ]
@@ -2529,22 +2609,122 @@ function CompanyPage() {
                                                 children: t.timelineTitle
                                             }, void 0, false, {
                                                 fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                lineNumber: 2163,
-                                                columnNumber: 17
+                                                lineNumber: 2266,
+                                                columnNumber: 5
                                             }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                className: "mt-2 text-sm text-black/65",
-                                                children: t.timelineText
-                                            }, void 0, false, {
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: "mt-4 space-y-3 text-sm leading-7 text-slate-600",
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                        children: [
+                                                            "• ",
+                                                            t.timelineIndexed
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
+                                                        lineNumber: 2269,
+                                                        columnNumber: 7
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                        children: [
+                                                            "• ",
+                                                            t.timelineCountryLabel,
+                                                            ":",
+                                                            " ",
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                className: "font-semibold text-slate-900",
+                                                                children: company.country || "—"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
+                                                                lineNumber: 2273,
+                                                                columnNumber: 3
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
+                                                        lineNumber: 2271,
+                                                        columnNumber: 7
+                                                    }, this),
+                                                    typeof trustScoreUI === "number" ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                        children: [
+                                                            "• ",
+                                                            t.timelineTrustScore,
+                                                            " ",
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                className: "font-semibold text-slate-900",
+                                                                children: [
+                                                                    trustScoreUI,
+                                                                    "/100"
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
+                                                                lineNumber: 2281,
+                                                                columnNumber: 11
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
+                                                        lineNumber: 2279,
+                                                        columnNumber: 9
+                                                    }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                        children: [
+                                                            "• ",
+                                                            t.timelineTrustMonitoring
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
+                                                        lineNumber: 2284,
+                                                        columnNumber: 9
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                        children: [
+                                                            "• ",
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                className: "font-semibold text-slate-900",
+                                                                children: reviewsCount
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
+                                                                lineNumber: 2288,
+                                                                columnNumber: 11
+                                                            }, this),
+                                                            " ",
+                                                            reviewsCount === 1 ? t.timelineReview : t.timelineReviews
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
+                                                        lineNumber: 2287,
+                                                        columnNumber: 7
+                                                    }, this),
+                                                    company.verified_at ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                        children: [
+                                                            "• ",
+                                                            t.timelineVerification,
+                                                            " ",
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                className: "font-semibold text-slate-900",
+                                                                children: formatDate(company.verified_at)
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
+                                                                lineNumber: 2295,
+                                                                columnNumber: 11
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
+                                                        lineNumber: 2293,
+                                                        columnNumber: 9
+                                                    }, this) : null
+                                                ]
+                                            }, void 0, true, {
                                                 fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                lineNumber: 2164,
-                                                columnNumber: 17
+                                                lineNumber: 2268,
+                                                columnNumber: 5
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                        lineNumber: 2162,
-                                        columnNumber: 15
+                                        lineNumber: 2265,
+                                        columnNumber: 3
                                     }, this),
                                     tab === "about" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: `mt-8 p-6 ${card}`,
@@ -2554,7 +2734,7 @@ function CompanyPage() {
                                                 children: t.aboutTitle
                                             }, void 0, false, {
                                                 fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                lineNumber: 2170,
+                                                lineNumber: 2306,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2562,19 +2742,19 @@ function CompanyPage() {
                                                 children: t.aboutText
                                             }, void 0, false, {
                                                 fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                lineNumber: 2171,
+                                                lineNumber: 2307,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                        lineNumber: 2169,
+                                        lineNumber: 2305,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                lineNumber: 1823,
+                                lineNumber: 1915,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(RotatingBanner, {
@@ -2583,13 +2763,13 @@ function CompanyPage() {
                                 onAddClick: openBannerOrder
                             }, void 0, false, {
                                 fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                lineNumber: 2176,
+                                lineNumber: 2312,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                        lineNumber: 1816,
+                        lineNumber: 1908,
                         columnNumber: 9
                     }, this),
                     reportOpen && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2607,7 +2787,7 @@ function CompanyPage() {
                                                     children: t.reportTitle
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                    lineNumber: 2188,
+                                                    lineNumber: 2324,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2615,13 +2795,13 @@ function CompanyPage() {
                                                     children: t.reportHelp
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                    lineNumber: 2189,
+                                                    lineNumber: 2325,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                            lineNumber: 2187,
+                                            lineNumber: 2323,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2634,13 +2814,13 @@ function CompanyPage() {
                                             children: t.close
                                         }, void 0, false, {
                                             fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                            lineNumber: 2192,
+                                            lineNumber: 2328,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                    lineNumber: 2186,
+                                    lineNumber: 2322,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2662,7 +2842,7 @@ function CompanyPage() {
                                             }
                                         }, void 0, false, {
                                             fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                            lineNumber: 2205,
+                                            lineNumber: 2341,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -2672,7 +2852,7 @@ function CompanyPage() {
                                             className: input
                                         }, void 0, false, {
                                             fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                            lineNumber: 2221,
+                                            lineNumber: 2357,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -2682,7 +2862,7 @@ function CompanyPage() {
                                             className: `${input} uppercase`
                                         }, void 0, false, {
                                             fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                            lineNumber: 2228,
+                                            lineNumber: 2364,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("textarea", {
@@ -2693,7 +2873,7 @@ function CompanyPage() {
                                             className: input
                                         }, void 0, false, {
                                             fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                            lineNumber: 2235,
+                                            lineNumber: 2371,
                                             columnNumber: 17
                                         }, this),
                                         reportMsg && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2701,7 +2881,7 @@ function CompanyPage() {
                                             children: reportMsg
                                         }, void 0, false, {
                                             fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                            lineNumber: 2244,
+                                            lineNumber: 2380,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2711,24 +2891,24 @@ function CompanyPage() {
                                             children: reportSending ? t.sending : t.submitReport
                                         }, void 0, false, {
                                             fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                            lineNumber: 2249,
+                                            lineNumber: 2385,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                    lineNumber: 2204,
+                                    lineNumber: 2340,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                            lineNumber: 2185,
+                            lineNumber: 2321,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                        lineNumber: 2184,
+                        lineNumber: 2320,
                         columnNumber: 11
                     }, this),
                     isBannerModalOpen && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2751,17 +2931,17 @@ function CompanyPage() {
                                             d: "M6 18L18 6M6 6l12 12"
                                         }, void 0, false, {
                                             fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                            lineNumber: 2274,
+                                            lineNumber: 2410,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                        lineNumber: 2268,
+                                        lineNumber: 2404,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                    lineNumber: 2264,
+                                    lineNumber: 2400,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2781,17 +2961,17 @@ function CompanyPage() {
                                                     d: "M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                    lineNumber: 2291,
+                                                    lineNumber: 2427,
                                                     columnNumber: 21
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                lineNumber: 2285,
+                                                lineNumber: 2421,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                            lineNumber: 2284,
+                                            lineNumber: 2420,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -2799,7 +2979,7 @@ function CompanyPage() {
                                             children: t.orderBanner
                                         }, void 0, false, {
                                             fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                            lineNumber: 2300,
+                                            lineNumber: 2436,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2817,7 +2997,7 @@ function CompanyPage() {
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                            lineNumber: 2301,
+                                            lineNumber: 2437,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2833,7 +3013,7 @@ function CompanyPage() {
                                                                     children: t.choosePeriod
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                    lineNumber: 2309,
+                                                                    lineNumber: 2445,
                                                                     columnNumber: 23
                                                                 }, this),
                                                                 translatedPricing.map((plan)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
@@ -2851,7 +3031,7 @@ function CompanyPage() {
                                                                                         className: "h-4 w-4 text-emerald-600"
                                                                                     }, void 0, false, {
                                                                                         fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                                        lineNumber: 2323,
+                                                                                        lineNumber: 2459,
                                                                                         columnNumber: 29
                                                                                     }, this),
                                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2859,13 +3039,13 @@ function CompanyPage() {
                                                                                         children: plan.label
                                                                                     }, void 0, false, {
                                                                                         fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                                        lineNumber: 2331,
+                                                                                        lineNumber: 2467,
                                                                                         columnNumber: 29
                                                                                     }, this)
                                                                                 ]
                                                                             }, void 0, true, {
                                                                                 fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                                lineNumber: 2322,
+                                                                                lineNumber: 2458,
                                                                                 columnNumber: 27
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2876,19 +3056,19 @@ function CompanyPage() {
                                                                                 ]
                                                                             }, void 0, true, {
                                                                                 fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                                lineNumber: 2336,
+                                                                                lineNumber: 2472,
                                                                                 columnNumber: 27
                                                                             }, this)
                                                                         ]
                                                                     }, plan.period, true, {
                                                                         fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                        lineNumber: 2314,
+                                                                        lineNumber: 2450,
                                                                         columnNumber: 25
                                                                     }, this))
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                            lineNumber: 2308,
+                                                            lineNumber: 2444,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2901,7 +3081,7 @@ function CompanyPage() {
                                                                             children: t.companyName
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                            lineNumber: 2345,
+                                                                            lineNumber: 2481,
                                                                             columnNumber: 25
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -2911,13 +3091,13 @@ function CompanyPage() {
                                                                             placeholder: t.companyNamePlaceholder
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                            lineNumber: 2348,
+                                                                            lineNumber: 2484,
                                                                             columnNumber: 25
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                    lineNumber: 2344,
+                                                                    lineNumber: 2480,
                                                                     columnNumber: 23
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2927,7 +3107,7 @@ function CompanyPage() {
                                                                             children: t.invoiceEmail
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                            lineNumber: 2357,
+                                                                            lineNumber: 2493,
                                                                             columnNumber: 25
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -2938,7 +3118,7 @@ function CompanyPage() {
                                                                             placeholder: t.invoiceEmailPlaceholder
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                            lineNumber: 2361,
+                                                                            lineNumber: 2497,
                                                                             columnNumber: 25
                                                                         }, this),
                                                                         bannerOrderInvoiceEmail.length > 0 && !isValidEmail(bannerOrderInvoiceEmail) && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2946,13 +3126,13 @@ function CompanyPage() {
                                                                             children: t.invalidEmail
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                            lineNumber: 2377,
+                                                                            lineNumber: 2513,
                                                                             columnNumber: 29
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                    lineNumber: 2356,
+                                                                    lineNumber: 2492,
                                                                     columnNumber: 23
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2962,7 +3142,7 @@ function CompanyPage() {
                                                                             children: t.uploadBanner
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                            lineNumber: 2384,
+                                                                            lineNumber: 2520,
                                                                             columnNumber: 25
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
@@ -2973,7 +3153,7 @@ function CompanyPage() {
                                                                                     children: t.chooseBannerFile
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                                    lineNumber: 2388,
+                                                                                    lineNumber: 2524,
                                                                                     columnNumber: 27
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2981,7 +3161,7 @@ function CompanyPage() {
                                                                                     children: t.recommendedSize
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                                    lineNumber: 2391,
+                                                                                    lineNumber: 2527,
                                                                                     columnNumber: 27
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -2991,19 +3171,19 @@ function CompanyPage() {
                                                                                     className: "hidden"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                                    lineNumber: 2394,
+                                                                                    lineNumber: 2530,
                                                                                     columnNumber: 27
                                                                                 }, this)
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                            lineNumber: 2387,
+                                                                            lineNumber: 2523,
                                                                             columnNumber: 25
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                    lineNumber: 2383,
+                                                                    lineNumber: 2519,
                                                                     columnNumber: 23
                                                                 }, this),
                                                                 selectedPlanData && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3014,7 +3194,7 @@ function CompanyPage() {
                                                                             children: t.paymentDetails
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                            lineNumber: 2405,
+                                                                            lineNumber: 2541,
                                                                             columnNumber: 27
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3031,7 +3211,7 @@ function CompanyPage() {
                                                                                             ]
                                                                                         }, void 0, true, {
                                                                                             fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                                            lineNumber: 2411,
+                                                                                            lineNumber: 2547,
                                                                                             columnNumber: 31
                                                                                         }, this),
                                                                                         " ",
@@ -3039,7 +3219,7 @@ function CompanyPage() {
                                                                                     ]
                                                                                 }, void 0, true, {
                                                                                     fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                                    lineNumber: 2410,
+                                                                                    lineNumber: 2546,
                                                                                     columnNumber: 29
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3053,7 +3233,7 @@ function CompanyPage() {
                                                                                             ]
                                                                                         }, void 0, true, {
                                                                                             fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                                            lineNumber: 2415,
+                                                                                            lineNumber: 2551,
                                                                                             columnNumber: 31
                                                                                         }, this),
                                                                                         " ",
@@ -3061,7 +3241,7 @@ function CompanyPage() {
                                                                                     ]
                                                                                 }, void 0, true, {
                                                                                     fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                                    lineNumber: 2414,
+                                                                                    lineNumber: 2550,
                                                                                     columnNumber: 29
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3074,7 +3254,7 @@ function CompanyPage() {
                                                                                             ]
                                                                                         }, void 0, true, {
                                                                                             fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                                            lineNumber: 2419,
+                                                                                            lineNumber: 2555,
                                                                                             columnNumber: 31
                                                                                         }, this),
                                                                                         " ",
@@ -3082,7 +3262,7 @@ function CompanyPage() {
                                                                                     ]
                                                                                 }, void 0, true, {
                                                                                     fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                                    lineNumber: 2418,
+                                                                                    lineNumber: 2554,
                                                                                     columnNumber: 29
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3095,7 +3275,7 @@ function CompanyPage() {
                                                                                             ]
                                                                                         }, void 0, true, {
                                                                                             fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                                            lineNumber: 2422,
+                                                                                            lineNumber: 2558,
                                                                                             columnNumber: 31
                                                                                         }, this),
                                                                                         " €",
@@ -3104,7 +3284,7 @@ function CompanyPage() {
                                                                                     ]
                                                                                 }, void 0, true, {
                                                                                     fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                                    lineNumber: 2421,
+                                                                                    lineNumber: 2557,
                                                                                     columnNumber: 29
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3118,7 +3298,7 @@ function CompanyPage() {
                                                                                             ]
                                                                                         }, void 0, true, {
                                                                                             fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                                            lineNumber: 2425,
+                                                                                            lineNumber: 2561,
                                                                                             columnNumber: 31
                                                                                         }, this),
                                                                                         " ",
@@ -3126,19 +3306,19 @@ function CompanyPage() {
                                                                                     ]
                                                                                 }, void 0, true, {
                                                                                     fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                                    lineNumber: 2424,
+                                                                                    lineNumber: 2560,
                                                                                     columnNumber: 29
                                                                                 }, this)
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                            lineNumber: 2409,
+                                                                            lineNumber: 2545,
                                                                             columnNumber: 27
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                    lineNumber: 2404,
+                                                                    lineNumber: 2540,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3148,7 +3328,7 @@ function CompanyPage() {
                                                                             children: t.uploadPaymentProof
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                            lineNumber: 2433,
+                                                                            lineNumber: 2569,
                                                                             columnNumber: 25
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
@@ -3159,7 +3339,7 @@ function CompanyPage() {
                                                                                     children: t.uploadPaymentConfirmation
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                                    lineNumber: 2437,
+                                                                                    lineNumber: 2573,
                                                                                     columnNumber: 27
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3167,7 +3347,7 @@ function CompanyPage() {
                                                                                     children: t.paymentProofFormats
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                                    lineNumber: 2440,
+                                                                                    lineNumber: 2576,
                                                                                     columnNumber: 27
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -3177,13 +3357,13 @@ function CompanyPage() {
                                                                                     className: "hidden"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                                    lineNumber: 2443,
+                                                                                    lineNumber: 2579,
                                                                                     columnNumber: 27
                                                                                 }, this)
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                            lineNumber: 2436,
+                                                                            lineNumber: 2572,
                                                                             columnNumber: 25
                                                                         }, this),
                                                                         paymentProofName && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3194,25 +3374,25 @@ function CompanyPage() {
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                            lineNumber: 2452,
+                                                                            lineNumber: 2588,
                                                                             columnNumber: 27
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                    lineNumber: 2432,
+                                                                    lineNumber: 2568,
                                                                     columnNumber: 23
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                            lineNumber: 2343,
+                                                            lineNumber: 2479,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                    lineNumber: 2307,
+                                                    lineNumber: 2443,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3222,7 +3402,7 @@ function CompanyPage() {
                                                             children: t.bannerPreview
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                            lineNumber: 2461,
+                                                            lineNumber: 2597,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3233,31 +3413,31 @@ function CompanyPage() {
                                                                 className: "h-full w-full object-cover"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                lineNumber: 2467,
+                                                                lineNumber: 2603,
                                                                 columnNumber: 25
                                                             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                 className: "flex h-full w-full items-center justify-center p-4 text-center text-sm leading-8 text-slate-400",
                                                                 children: t.bannerPreviewEmpty
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                                lineNumber: 2473,
+                                                                lineNumber: 2609,
                                                                 columnNumber: 25
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                            lineNumber: 2465,
+                                                            lineNumber: 2601,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                    lineNumber: 2460,
+                                                    lineNumber: 2596,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                            lineNumber: 2306,
+                                            lineNumber: 2442,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3270,7 +3450,7 @@ function CompanyPage() {
                                                     children: bannerOrderSubmitting ? t.sending : t.havePaid
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                    lineNumber: 2482,
+                                                    lineNumber: 2618,
                                                     columnNumber: 19
                                                 }, this),
                                                 bannerOrderSuccess && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3278,7 +3458,7 @@ function CompanyPage() {
                                                     children: bannerOrderSuccess
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                    lineNumber: 2495,
+                                                    lineNumber: 2631,
                                                     columnNumber: 21
                                                 }, this),
                                                 bannerOrderError && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3286,13 +3466,13 @@ function CompanyPage() {
                                                     children: bannerOrderError
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                                    lineNumber: 2501,
+                                                    lineNumber: 2637,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                            lineNumber: 2481,
+                                            lineNumber: 2617,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3300,40 +3480,88 @@ function CompanyPage() {
                                             children: t.publishAfterModeration
                                         }, void 0, false, {
                                             fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                            lineNumber: 2507,
+                                            lineNumber: 2643,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                                    lineNumber: 2283,
+                                    lineNumber: 2419,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                            lineNumber: 2263,
+                            lineNumber: 2399,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                        lineNumber: 2262,
+                        lineNumber: 2398,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-                lineNumber: 1815,
+                lineNumber: 1907,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "sr-only",
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
+                        children: [
+                            company.name,
+                            " logistics company profile"
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
+                        lineNumber: 2652,
+                        columnNumber: 3
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                        children: [
+                            company.name,
+                            " is listed on CarrierTrust as a logistics company operating in",
+                            " ",
+                            company.country || "Europe",
+                            " with VAT ",
+                            company.vat_uid || "not available",
+                            "."
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
+                        lineNumber: 2654,
+                        columnNumber: 3
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                        children: "CarrierTrust tracks freight forwarding reputation, cargo delivery reviews, payment trust signals, logistics cooperation history and company verification data."
+                    }, void 0, false, {
+                        fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
+                        lineNumber: 2659,
+                        columnNumber: 3
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                        children: "Businesses use CarrierTrust before transport cooperation, cargo delivery contracts and freight partner selection across Europe."
+                    }, void 0, false, {
+                        fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
+                        lineNumber: 2664,
+                        columnNumber: 3
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
+                lineNumber: 2651,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/companies/[id]/CompanyClient.tsx",
-        lineNumber: 1805,
+        lineNumber: 1897,
         columnNumber: 5
     }, this);
 }
-_s1(CompanyPage, "yT7KkS/GE+Zkwec4UbTrgOcypGw=", false, function() {
+_s1(CompanyPage, "gKPBeJia3kC7A2dwR+aUXeimeks=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useParams"],
         __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$language$2d$context$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useLang"]

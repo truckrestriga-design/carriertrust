@@ -770,6 +770,15 @@ function RiskIndexPage() {
                                                         lineNumber: 763,
                                                         columnNumber: 19
                                                     }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                                                        href: "/companies",
+                                                        className: "mt-3 inline-flex items-center rounded-xl border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-50",
+                                                        children: "Browse Companies Directory"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/app/risk-index/page.tsx",
+                                                        lineNumber: 766,
+                                                        columnNumber: 19
+                                                    }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                         className: "mt-4 flex flex-wrap items-center gap-2",
                                                         children: [
@@ -779,7 +788,7 @@ function RiskIndexPage() {
                                                                 children: t("highRisk")
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/risk-index/page.tsx",
-                                                                lineNumber: 768,
+                                                                lineNumber: 773,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -788,7 +797,7 @@ function RiskIndexPage() {
                                                                 children: t("mediumRisk")
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/risk-index/page.tsx",
-                                                                lineNumber: 775,
+                                                                lineNumber: 780,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -797,7 +806,7 @@ function RiskIndexPage() {
                                                                 children: t("lowRisk")
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/risk-index/page.tsx",
-                                                                lineNumber: 782,
+                                                                lineNumber: 787,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -809,13 +818,13 @@ function RiskIndexPage() {
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/app/risk-index/page.tsx",
-                                                                lineNumber: 789,
+                                                                lineNumber: 794,
                                                                 columnNumber: 21
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/risk-index/page.tsx",
-                                                        lineNumber: 767,
+                                                        lineNumber: 772,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
@@ -832,7 +841,7 @@ function RiskIndexPage() {
                                                         children: t("search")
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/risk-index/page.tsx",
-                                                        lineNumber: 796,
+                                                        lineNumber: 801,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -842,7 +851,7 @@ function RiskIndexPage() {
                                                         placeholder: t("searchCompanyVatCountry")
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/risk-index/page.tsx",
-                                                        lineNumber: 798,
+                                                        lineNumber: 803,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -853,7 +862,7 @@ function RiskIndexPage() {
                                                                 children: t("limit")
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/risk-index/page.tsx",
-                                                                lineNumber: 806,
+                                                                lineNumber: 811,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
@@ -866,7 +875,7 @@ function RiskIndexPage() {
                                                                         children: "25"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/risk-index/page.tsx",
-                                                                        lineNumber: 813,
+                                                                        lineNumber: 818,
                                                                         columnNumber: 23
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -874,7 +883,7 @@ function RiskIndexPage() {
                                                                         children: "50"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/risk-index/page.tsx",
-                                                                        lineNumber: 814,
+                                                                        lineNumber: 819,
                                                                         columnNumber: 23
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -882,7 +891,7 @@ function RiskIndexPage() {
                                                                         children: "100"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/risk-index/page.tsx",
-                                                                        lineNumber: 815,
+                                                                        lineNumber: 820,
                                                                         columnNumber: 23
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -890,19 +899,19 @@ function RiskIndexPage() {
                                                                         children: "200"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/risk-index/page.tsx",
-                                                                        lineNumber: 816,
+                                                                        lineNumber: 821,
                                                                         columnNumber: 23
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/app/risk-index/page.tsx",
-                                                                lineNumber: 808,
+                                                                lineNumber: 813,
                                                                 columnNumber: 21
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/risk-index/page.tsx",
-                                                        lineNumber: 805,
+                                                        lineNumber: 810,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -911,13 +920,13 @@ function RiskIndexPage() {
                                                         children: t("refresh")
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/risk-index/page.tsx",
-                                                        lineNumber: 820,
+                                                        lineNumber: 825,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/risk-index/page.tsx",
-                                                lineNumber: 795,
+                                                lineNumber: 800,
                                                 columnNumber: 17
                                             }, this)
                                         ]
@@ -936,14 +945,14 @@ function RiskIndexPage() {
                                     children: t("loading")
                                 }, void 0, false, {
                                     fileName: "[project]/app/risk-index/page.tsx",
-                                    lineNumber: 831,
+                                    lineNumber: 836,
                                     columnNumber: 15
                                 }, this) : err ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "mt-6 rounded-2xl border border-red-200 bg-red-50 p-4 text-sm text-red-900",
                                     children: err
                                 }, void 0, false, {
                                     fileName: "[project]/app/risk-index/page.tsx",
-                                    lineNumber: 833,
+                                    lineNumber: 838,
                                     columnNumber: 15
                                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: `mt-6 ${tableCard}`,
@@ -961,13 +970,13 @@ function RiskIndexPage() {
                                                             children: filtered.length
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/risk-index/page.tsx",
-                                                            lineNumber: 840,
+                                                            lineNumber: 845,
                                                             columnNumber: 39
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/risk-index/page.tsx",
-                                                    lineNumber: 839,
+                                                    lineNumber: 844,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -975,13 +984,13 @@ function RiskIndexPage() {
                                                     children: t("sortedByFraud")
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/risk-index/page.tsx",
-                                                    lineNumber: 842,
+                                                    lineNumber: 847,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/risk-index/page.tsx",
-                                            lineNumber: 838,
+                                            lineNumber: 843,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -998,7 +1007,7 @@ function RiskIndexPage() {
                                                                     children: t("company")
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/risk-index/page.tsx",
-                                                                    lineNumber: 849,
+                                                                    lineNumber: 854,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -1006,7 +1015,7 @@ function RiskIndexPage() {
                                                                     children: "VAT"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/risk-index/page.tsx",
-                                                                    lineNumber: 850,
+                                                                    lineNumber: 855,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -1014,7 +1023,7 @@ function RiskIndexPage() {
                                                                     children: t("country")
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/risk-index/page.tsx",
-                                                                    lineNumber: 851,
+                                                                    lineNumber: 856,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -1022,7 +1031,7 @@ function RiskIndexPage() {
                                                                     children: t("fraudScore")
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/risk-index/page.tsx",
-                                                                    lineNumber: 852,
+                                                                    lineNumber: 857,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -1030,7 +1039,7 @@ function RiskIndexPage() {
                                                                     children: t("trust")
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/risk-index/page.tsx",
-                                                                    lineNumber: 853,
+                                                                    lineNumber: 858,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -1038,18 +1047,18 @@ function RiskIndexPage() {
                                                                     children: t("signals")
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/risk-index/page.tsx",
-                                                                    lineNumber: 854,
+                                                                    lineNumber: 859,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/risk-index/page.tsx",
-                                                            lineNumber: 848,
+                                                            lineNumber: 853,
                                                             columnNumber: 23
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/risk-index/page.tsx",
-                                                        lineNumber: 847,
+                                                        lineNumber: 852,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
@@ -1068,12 +1077,12 @@ function RiskIndexPage() {
                                                                                 children: c.name || t("company")
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/app/risk-index/page.tsx",
-                                                                                lineNumber: 870,
+                                                                                lineNumber: 875,
                                                                                 columnNumber: 31
                                                                             }, this)
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/risk-index/page.tsx",
-                                                                            lineNumber: 869,
+                                                                            lineNumber: 874,
                                                                             columnNumber: 29
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1081,7 +1090,7 @@ function RiskIndexPage() {
                                                                             children: (c.vat_uid || "—").toUpperCase()
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/risk-index/page.tsx",
-                                                                            lineNumber: 878,
+                                                                            lineNumber: 883,
                                                                             columnNumber: 29
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1089,7 +1098,7 @@ function RiskIndexPage() {
                                                                             children: c.country || "—"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/risk-index/page.tsx",
-                                                                            lineNumber: 882,
+                                                                            lineNumber: 887,
                                                                             columnNumber: 29
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1102,12 +1111,12 @@ function RiskIndexPage() {
                                                                                 children: fraud
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/app/risk-index/page.tsx",
-                                                                                lineNumber: 885,
+                                                                                lineNumber: 890,
                                                                                 columnNumber: 31
                                                                             }, this)
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/risk-index/page.tsx",
-                                                                            lineNumber: 884,
+                                                                            lineNumber: 889,
                                                                             columnNumber: 29
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1115,7 +1124,7 @@ function RiskIndexPage() {
                                                                             children: trust === null ? "—" : `${trust}/100`
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/risk-index/page.tsx",
-                                                                            lineNumber: 899,
+                                                                            lineNumber: 904,
                                                                             columnNumber: 29
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1125,25 +1134,25 @@ function RiskIndexPage() {
                                                                                 children: t("autoFlagged")
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/app/risk-index/page.tsx",
-                                                                                lineNumber: 905,
+                                                                                lineNumber: 910,
                                                                                 columnNumber: 33
                                                                             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                                 className: "text-black/40",
                                                                                 children: "—"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/app/risk-index/page.tsx",
-                                                                                lineNumber: 909,
+                                                                                lineNumber: 914,
                                                                                 columnNumber: 33
                                                                             }, this)
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/risk-index/page.tsx",
-                                                                            lineNumber: 903,
+                                                                            lineNumber: 908,
                                                                             columnNumber: 29
                                                                         }, this)
                                                                     ]
                                                                 }, c.id, true, {
                                                                     fileName: "[project]/app/risk-index/page.tsx",
-                                                                    lineNumber: 865,
+                                                                    lineNumber: 870,
                                                                     columnNumber: 27
                                                                 }, this);
                                                             }),
@@ -1154,29 +1163,29 @@ function RiskIndexPage() {
                                                                     children: t("noResults")
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/risk-index/page.tsx",
-                                                                    lineNumber: 918,
+                                                                    lineNumber: 923,
                                                                     columnNumber: 27
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/risk-index/page.tsx",
-                                                                lineNumber: 917,
+                                                                lineNumber: 922,
                                                                 columnNumber: 25
                                                             }, this) : null
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/risk-index/page.tsx",
-                                                        lineNumber: 858,
+                                                        lineNumber: 863,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/risk-index/page.tsx",
-                                                lineNumber: 846,
+                                                lineNumber: 851,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/app/risk-index/page.tsx",
-                                            lineNumber: 845,
+                                            lineNumber: 850,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1184,13 +1193,13 @@ function RiskIndexPage() {
                                             children: t("riskDisclaimer")
                                         }, void 0, false, {
                                             fileName: "[project]/app/risk-index/page.tsx",
-                                            lineNumber: 927,
+                                            lineNumber: 932,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/risk-index/page.tsx",
-                                    lineNumber: 837,
+                                    lineNumber: 842,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1201,7 +1210,7 @@ function RiskIndexPage() {
                                             children: t("howToUseRiskIndex")
                                         }, void 0, false, {
                                             fileName: "[project]/app/risk-index/page.tsx",
-                                            lineNumber: 934,
+                                            lineNumber: 939,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1209,7 +1218,7 @@ function RiskIndexPage() {
                                             children: t("howToUseRiskIndexBody")
                                         }, void 0, false, {
                                             fileName: "[project]/app/risk-index/page.tsx",
-                                            lineNumber: 936,
+                                            lineNumber: 941,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -1217,7 +1226,7 @@ function RiskIndexPage() {
                                             children: t("commonSignals")
                                         }, void 0, false, {
                                             fileName: "[project]/app/risk-index/page.tsx",
-                                            lineNumber: 940,
+                                            lineNumber: 945,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
@@ -1227,34 +1236,34 @@ function RiskIndexPage() {
                                                     children: t("signalBurstReviews")
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/risk-index/page.tsx",
-                                                    lineNumber: 943,
+                                                    lineNumber: 948,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
                                                     children: t("signalSameNetwork")
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/risk-index/page.tsx",
-                                                    lineNumber: 944,
+                                                    lineNumber: 949,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
                                                     children: t("signalSelfReviews")
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/risk-index/page.tsx",
-                                                    lineNumber: 945,
+                                                    lineNumber: 950,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
                                                     children: t("signalFlaggedRatio")
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/risk-index/page.tsx",
-                                                    lineNumber: 946,
+                                                    lineNumber: 951,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/risk-index/page.tsx",
-                                            lineNumber: 942,
+                                            lineNumber: 947,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1262,13 +1271,13 @@ function RiskIndexPage() {
                                             children: t("wantVerified")
                                         }, void 0, false, {
                                             fileName: "[project]/app/risk-index/page.tsx",
-                                            lineNumber: 949,
+                                            lineNumber: 954,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/risk-index/page.tsx",
-                                    lineNumber: 933,
+                                    lineNumber: 938,
                                     columnNumber: 13
                                 }, this)
                             ]
@@ -1284,7 +1293,7 @@ function RiskIndexPage() {
                             t: modalT
                         }, void 0, false, {
                             fileName: "[project]/app/risk-index/page.tsx",
-                            lineNumber: 953,
+                            lineNumber: 958,
                             columnNumber: 11
                         }, this)
                     ]
@@ -1313,17 +1322,17 @@ function RiskIndexPage() {
                                         d: "M6 18L18 6M6 6l12 12"
                                     }, void 0, false, {
                                         fileName: "[project]/app/risk-index/page.tsx",
-                                        lineNumber: 969,
+                                        lineNumber: 974,
                                         columnNumber: 19
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/app/risk-index/page.tsx",
-                                    lineNumber: 963,
+                                    lineNumber: 968,
                                     columnNumber: 17
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/app/risk-index/page.tsx",
-                                lineNumber: 959,
+                                lineNumber: 964,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1343,17 +1352,17 @@ function RiskIndexPage() {
                                                 d: "M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/risk-index/page.tsx",
-                                                lineNumber: 986,
+                                                lineNumber: 991,
                                                 columnNumber: 21
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/app/risk-index/page.tsx",
-                                            lineNumber: 980,
+                                            lineNumber: 985,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/app/risk-index/page.tsx",
-                                        lineNumber: 979,
+                                        lineNumber: 984,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -1361,7 +1370,7 @@ function RiskIndexPage() {
                                         children: modalT.orderBanner
                                     }, void 0, false, {
                                         fileName: "[project]/app/risk-index/page.tsx",
-                                        lineNumber: 995,
+                                        lineNumber: 1000,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1379,7 +1388,7 @@ function RiskIndexPage() {
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/risk-index/page.tsx",
-                                        lineNumber: 996,
+                                        lineNumber: 1001,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1395,7 +1404,7 @@ function RiskIndexPage() {
                                                                 children: modalT.choosePeriod
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/risk-index/page.tsx",
-                                                                lineNumber: 1004,
+                                                                lineNumber: 1009,
                                                                 columnNumber: 23
                                                             }, this),
                                                             translatedPricing.map((plan)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
@@ -1413,7 +1422,7 @@ function RiskIndexPage() {
                                                                                     className: "h-4 w-4 text-emerald-600"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/app/risk-index/page.tsx",
-                                                                                    lineNumber: 1018,
+                                                                                    lineNumber: 1023,
                                                                                     columnNumber: 29
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1421,13 +1430,13 @@ function RiskIndexPage() {
                                                                                     children: plan.label
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/app/risk-index/page.tsx",
-                                                                                    lineNumber: 1026,
+                                                                                    lineNumber: 1031,
                                                                                     columnNumber: 29
                                                                                 }, this)
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/app/risk-index/page.tsx",
-                                                                            lineNumber: 1017,
+                                                                            lineNumber: 1022,
                                                                             columnNumber: 27
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1438,19 +1447,19 @@ function RiskIndexPage() {
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/app/risk-index/page.tsx",
-                                                                            lineNumber: 1030,
+                                                                            lineNumber: 1035,
                                                                             columnNumber: 27
                                                                         }, this)
                                                                     ]
                                                                 }, plan.period, true, {
                                                                     fileName: "[project]/app/risk-index/page.tsx",
-                                                                    lineNumber: 1009,
+                                                                    lineNumber: 1014,
                                                                     columnNumber: 25
                                                                 }, this))
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/risk-index/page.tsx",
-                                                        lineNumber: 1003,
+                                                        lineNumber: 1008,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1463,7 +1472,7 @@ function RiskIndexPage() {
                                                                         children: modalT.companyName
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/risk-index/page.tsx",
-                                                                        lineNumber: 1039,
+                                                                        lineNumber: 1044,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1473,13 +1482,13 @@ function RiskIndexPage() {
                                                                         placeholder: modalT.companyNamePlaceholder
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/risk-index/page.tsx",
-                                                                        lineNumber: 1042,
+                                                                        lineNumber: 1047,
                                                                         columnNumber: 25
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/app/risk-index/page.tsx",
-                                                                lineNumber: 1038,
+                                                                lineNumber: 1043,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1489,7 +1498,7 @@ function RiskIndexPage() {
                                                                         children: modalT.invoiceEmail
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/risk-index/page.tsx",
-                                                                        lineNumber: 1051,
+                                                                        lineNumber: 1056,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1500,7 +1509,7 @@ function RiskIndexPage() {
                                                                         placeholder: modalT.invoiceEmailPlaceholder
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/risk-index/page.tsx",
-                                                                        lineNumber: 1055,
+                                                                        lineNumber: 1060,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     form.invoiceEmail.length > 0 && !isValidEmail(form.invoiceEmail) && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1508,13 +1517,13 @@ function RiskIndexPage() {
                                                                         children: modalT.invalidEmail
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/risk-index/page.tsx",
-                                                                        lineNumber: 1070,
+                                                                        lineNumber: 1075,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/app/risk-index/page.tsx",
-                                                                lineNumber: 1050,
+                                                                lineNumber: 1055,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1524,7 +1533,7 @@ function RiskIndexPage() {
                                                                         children: modalT.uploadBanner
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/risk-index/page.tsx",
-                                                                        lineNumber: 1075,
+                                                                        lineNumber: 1080,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
@@ -1535,7 +1544,7 @@ function RiskIndexPage() {
                                                                                 children: modalT.chooseBannerFile
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/app/risk-index/page.tsx",
-                                                                                lineNumber: 1079,
+                                                                                lineNumber: 1084,
                                                                                 columnNumber: 27
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1543,7 +1552,7 @@ function RiskIndexPage() {
                                                                                 children: modalT.recommendedSize
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/app/risk-index/page.tsx",
-                                                                                lineNumber: 1082,
+                                                                                lineNumber: 1087,
                                                                                 columnNumber: 27
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1553,19 +1562,19 @@ function RiskIndexPage() {
                                                                                 className: "hidden"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/app/risk-index/page.tsx",
-                                                                                lineNumber: 1085,
+                                                                                lineNumber: 1090,
                                                                                 columnNumber: 27
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/app/risk-index/page.tsx",
-                                                                        lineNumber: 1078,
+                                                                        lineNumber: 1083,
                                                                         columnNumber: 25
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/app/risk-index/page.tsx",
-                                                                lineNumber: 1074,
+                                                                lineNumber: 1079,
                                                                 columnNumber: 23
                                                             }, this),
                                                             selectedPlanData && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1576,7 +1585,7 @@ function RiskIndexPage() {
                                                                         children: modalT.paymentDetails
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/risk-index/page.tsx",
-                                                                        lineNumber: 1096,
+                                                                        lineNumber: 1101,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1593,7 +1602,7 @@ function RiskIndexPage() {
                                                                                         ]
                                                                                     }, void 0, true, {
                                                                                         fileName: "[project]/app/risk-index/page.tsx",
-                                                                                        lineNumber: 1102,
+                                                                                        lineNumber: 1107,
                                                                                         columnNumber: 31
                                                                                     }, this),
                                                                                     " ",
@@ -1601,7 +1610,7 @@ function RiskIndexPage() {
                                                                                 ]
                                                                             }, void 0, true, {
                                                                                 fileName: "[project]/app/risk-index/page.tsx",
-                                                                                lineNumber: 1101,
+                                                                                lineNumber: 1106,
                                                                                 columnNumber: 29
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1615,7 +1624,7 @@ function RiskIndexPage() {
                                                                                         ]
                                                                                     }, void 0, true, {
                                                                                         fileName: "[project]/app/risk-index/page.tsx",
-                                                                                        lineNumber: 1106,
+                                                                                        lineNumber: 1111,
                                                                                         columnNumber: 31
                                                                                     }, this),
                                                                                     " ",
@@ -1623,7 +1632,7 @@ function RiskIndexPage() {
                                                                                 ]
                                                                             }, void 0, true, {
                                                                                 fileName: "[project]/app/risk-index/page.tsx",
-                                                                                lineNumber: 1105,
+                                                                                lineNumber: 1110,
                                                                                 columnNumber: 29
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1636,7 +1645,7 @@ function RiskIndexPage() {
                                                                                         ]
                                                                                     }, void 0, true, {
                                                                                         fileName: "[project]/app/risk-index/page.tsx",
-                                                                                        lineNumber: 1110,
+                                                                                        lineNumber: 1115,
                                                                                         columnNumber: 31
                                                                                     }, this),
                                                                                     " ",
@@ -1644,7 +1653,7 @@ function RiskIndexPage() {
                                                                                 ]
                                                                             }, void 0, true, {
                                                                                 fileName: "[project]/app/risk-index/page.tsx",
-                                                                                lineNumber: 1109,
+                                                                                lineNumber: 1114,
                                                                                 columnNumber: 29
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1657,7 +1666,7 @@ function RiskIndexPage() {
                                                                                         ]
                                                                                     }, void 0, true, {
                                                                                         fileName: "[project]/app/risk-index/page.tsx",
-                                                                                        lineNumber: 1114,
+                                                                                        lineNumber: 1119,
                                                                                         columnNumber: 31
                                                                                     }, this),
                                                                                     " €",
@@ -1666,7 +1675,7 @@ function RiskIndexPage() {
                                                                                 ]
                                                                             }, void 0, true, {
                                                                                 fileName: "[project]/app/risk-index/page.tsx",
-                                                                                lineNumber: 1113,
+                                                                                lineNumber: 1118,
                                                                                 columnNumber: 29
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1680,7 +1689,7 @@ function RiskIndexPage() {
                                                                                         ]
                                                                                     }, void 0, true, {
                                                                                         fileName: "[project]/app/risk-index/page.tsx",
-                                                                                        lineNumber: 1118,
+                                                                                        lineNumber: 1123,
                                                                                         columnNumber: 31
                                                                                     }, this),
                                                                                     " ",
@@ -1688,19 +1697,19 @@ function RiskIndexPage() {
                                                                                 ]
                                                                             }, void 0, true, {
                                                                                 fileName: "[project]/app/risk-index/page.tsx",
-                                                                                lineNumber: 1117,
+                                                                                lineNumber: 1122,
                                                                                 columnNumber: 29
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/app/risk-index/page.tsx",
-                                                                        lineNumber: 1100,
+                                                                        lineNumber: 1105,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/app/risk-index/page.tsx",
-                                                                lineNumber: 1095,
+                                                                lineNumber: 1100,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1710,7 +1719,7 @@ function RiskIndexPage() {
                                                                         children: modalT.uploadPaymentProof
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/risk-index/page.tsx",
-                                                                        lineNumber: 1126,
+                                                                        lineNumber: 1131,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
@@ -1721,7 +1730,7 @@ function RiskIndexPage() {
                                                                                 children: modalT.uploadPaymentConfirmation
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/app/risk-index/page.tsx",
-                                                                                lineNumber: 1130,
+                                                                                lineNumber: 1135,
                                                                                 columnNumber: 27
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1729,7 +1738,7 @@ function RiskIndexPage() {
                                                                                 children: modalT.paymentProofFormats
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/app/risk-index/page.tsx",
-                                                                                lineNumber: 1133,
+                                                                                lineNumber: 1138,
                                                                                 columnNumber: 27
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1739,13 +1748,13 @@ function RiskIndexPage() {
                                                                                 className: "hidden"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/app/risk-index/page.tsx",
-                                                                                lineNumber: 1136,
+                                                                                lineNumber: 1141,
                                                                                 columnNumber: 27
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/app/risk-index/page.tsx",
-                                                                        lineNumber: 1129,
+                                                                        lineNumber: 1134,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     paymentProofName && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1756,25 +1765,25 @@ function RiskIndexPage() {
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/app/risk-index/page.tsx",
-                                                                        lineNumber: 1145,
+                                                                        lineNumber: 1150,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/app/risk-index/page.tsx",
-                                                                lineNumber: 1125,
+                                                                lineNumber: 1130,
                                                                 columnNumber: 23
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/risk-index/page.tsx",
-                                                        lineNumber: 1037,
+                                                        lineNumber: 1042,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/risk-index/page.tsx",
-                                                lineNumber: 1002,
+                                                lineNumber: 1007,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1784,7 +1793,7 @@ function RiskIndexPage() {
                                                         children: modalT.bannerPreview
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/risk-index/page.tsx",
-                                                        lineNumber: 1154,
+                                                        lineNumber: 1159,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1795,31 +1804,31 @@ function RiskIndexPage() {
                                                             className: "h-full w-full object-cover"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/risk-index/page.tsx",
-                                                            lineNumber: 1160,
+                                                            lineNumber: 1165,
                                                             columnNumber: 25
                                                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                             className: "flex h-full w-full items-center justify-center p-4 text-center text-sm leading-8 text-slate-400",
                                                             children: modalT.bannerPreviewEmpty
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/risk-index/page.tsx",
-                                                            lineNumber: 1166,
+                                                            lineNumber: 1171,
                                                             columnNumber: 25
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/risk-index/page.tsx",
-                                                        lineNumber: 1158,
+                                                        lineNumber: 1163,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/risk-index/page.tsx",
-                                                lineNumber: 1153,
+                                                lineNumber: 1158,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/risk-index/page.tsx",
-                                        lineNumber: 1001,
+                                        lineNumber: 1006,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1832,7 +1841,7 @@ function RiskIndexPage() {
                                                 children: submitting ? modalT.sending : modalT.havePaid
                                             }, void 0, false, {
                                                 fileName: "[project]/app/risk-index/page.tsx",
-                                                lineNumber: 1175,
+                                                lineNumber: 1180,
                                                 columnNumber: 19
                                             }, this),
                                             successMessage && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1840,7 +1849,7 @@ function RiskIndexPage() {
                                                 children: successMessage
                                             }, void 0, false, {
                                                 fileName: "[project]/app/risk-index/page.tsx",
-                                                lineNumber: 1188,
+                                                lineNumber: 1193,
                                                 columnNumber: 21
                                             }, this),
                                             submitError && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1848,13 +1857,13 @@ function RiskIndexPage() {
                                                 children: submitError
                                             }, void 0, false, {
                                                 fileName: "[project]/app/risk-index/page.tsx",
-                                                lineNumber: 1194,
+                                                lineNumber: 1199,
                                                 columnNumber: 21
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/risk-index/page.tsx",
-                                        lineNumber: 1174,
+                                        lineNumber: 1179,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1862,24 +1871,24 @@ function RiskIndexPage() {
                                         children: modalT.publishAfterModeration
                                     }, void 0, false, {
                                         fileName: "[project]/app/risk-index/page.tsx",
-                                        lineNumber: 1200,
+                                        lineNumber: 1205,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/risk-index/page.tsx",
-                                lineNumber: 978,
+                                lineNumber: 983,
                                 columnNumber: 15
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/risk-index/page.tsx",
-                        lineNumber: 958,
+                        lineNumber: 963,
                         columnNumber: 13
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/app/risk-index/page.tsx",
-                    lineNumber: 957,
+                    lineNumber: 962,
                     columnNumber: 11
                 }, this)
             ]

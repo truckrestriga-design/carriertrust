@@ -119,6 +119,15 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
   type __Unused = __Check
 }
 
+// Validate ../../../app/cargo-delivery-terms/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/cargo-delivery-terms">> = Specific
+  const handler = {} as typeof import("../../../app/cargo-delivery-terms/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
 // Validate ../../../app/claim-company/page.tsx
 {
   type __IsExpected<Specific extends AppPageConfig<"/claim-company">> = Specific
@@ -132,6 +141,15 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
 {
   type __IsExpected<Specific extends AppPageConfig<"/companies/[id]">> = Specific
   const handler = {} as typeof import("../../../app/companies/[id]/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../../app/companies/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/companies">> = Specific
+  const handler = {} as typeof import("../../../app/companies/page.js")
   type __Check = __IsExpected<typeof handler>
   // @ts-ignore
   type __Unused = __Check
@@ -159,6 +177,15 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
 {
   type __IsExpected<Specific extends AppPageConfig<"/email-confirmed">> = Specific
   const handler = {} as typeof import("../../../app/email-confirmed/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../../app/how-to-check-logistics-company/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/how-to-check-logistics-company">> = Specific
+  const handler = {} as typeof import("../../../app/how-to-check-logistics-company/page.js")
   type __Check = __IsExpected<typeof handler>
   // @ts-ignore
   type __Unused = __Check
@@ -231,6 +258,15 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
 {
   type __IsExpected<Specific extends AppPageConfig<"/terms">> = Specific
   const handler = {} as typeof import("../../../app/terms/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../../app/timocom-alternative/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/timocom-alternative">> = Specific
+  const handler = {} as typeof import("../../../app/timocom-alternative/page.js")
   type __Check = __IsExpected<typeof handler>
   // @ts-ignore
   type __Unused = __Check

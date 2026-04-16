@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { Suspense, useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 import { useLang } from "@/lib/language-context";
@@ -558,7 +558,7 @@ function AppBrand({ tagline }: { tagline: string }) {
   );
 }
 
-export default function AuthPage() {
+function AuthPageInner() {
   const sp = useSearchParams();
   const { lang } = useLang();
 
@@ -1423,5 +1423,13 @@ export default function AuthPage() {
         </div>
       </div>
     </main>
+  );
+}
+
+export default function AuthPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-slate-50" />}>
+      <AuthPageInner />
+    </Suspense>
   );
 }

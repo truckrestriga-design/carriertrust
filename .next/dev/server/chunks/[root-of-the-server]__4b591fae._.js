@@ -77,6 +77,12 @@ async function sitemap() {
             priority: 0.9
         },
         {
+            url: `${base}/companies`,
+            lastModified: new Date(),
+            changeFrequency: "daily",
+            priority: 0.9
+        },
+        {
             url: `${base}/risk-index`,
             lastModified: new Date(),
             changeFrequency: "daily",
@@ -98,6 +104,24 @@ async function sitemap() {
             url: `${base}/verification`,
             lastModified: new Date(),
             changeFrequency: "monthly",
+            priority: 0.7
+        },
+        {
+            url: `${base}/cargo-delivery-terms`,
+            lastModified: new Date(),
+            changeFrequency: "weekly",
+            priority: 0.7
+        },
+        {
+            url: `${base}/timocom-alternative`,
+            lastModified: new Date(),
+            changeFrequency: "weekly",
+            priority: 0.7
+        },
+        {
+            url: `${base}/how-to-check-logistics-company`,
+            lastModified: new Date(),
+            changeFrequency: "weekly",
             priority: 0.7
         },
         {

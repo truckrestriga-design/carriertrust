@@ -15,6 +15,9 @@ type SearchCompany = {
   name: string | null;
   vat_uid: string | null;
   country: string | null;
+  current_plan?: string | null;
+  current_plan_status?: string | null;
+  current_period_end?: string | null;
 };
 
 type PricingPlan = {
@@ -619,7 +622,7 @@ export default function SearchPage() {
         itemListElement: items.map((item, index) => ({
           "@type": "ListItem",
           position: index + 1,
-          url: `https://carriertrust.eu/companies/${item.id}`,
+          url: `https://carriertrust.eu/companies/${item.slug || item.id}`,
           name: item.name || t.companyFallback,
         })),
       };
@@ -643,15 +646,86 @@ export default function SearchPage() {
         return;
       }
 
-      const { data } = await supabase
-        .from("companies")
-        .select("id, slug, name, vat_uid, country")
-        .ilike("name", `%${query}%`)
-        .order("name", { ascending: true })
-        .limit(50);
+      const { data, error } = await supabase
+  .from("companies")
+  .select("id, slug, name, vat_uid, country")
+  .ilike("name", `%${query}%`)
+  .order("name", { ascending: true })
+  .limit(50);
+  const companies = (data || []) as SearchCompany[];
+  const companyIds = companies.map((x) => x.id).filter(Boolean);
+  
+  let merged: SearchCompany[] = companies;
+  
+  if (companyIds.length > 0) {
+    const { data: plansData, error: plansError } = await supabase
+      .from("company_plans")
+      .select("company_id, plan, plan_status, current_period_end")
+      .in("company_id", companyIds);
 
-      setItems((data || []) as SearchCompany[]);
-      setLoading(false);
+      console.log("PLANS DATA JSON", JSON.stringify(plansData, null, 2));
+      console.log("PLANS ERROR JSON", JSON.stringify(plansError, null, 2));
+
+    if (!plansError && plansData) {
+      
+      const planMap = new Map<string, any>();
+  
+      for (const row of plansData) {
+        const existing = planMap.get(row.company_id);
+  
+        if (!existing) {
+          planMap.set(row.company_id, row);
+          continue;
+        }
+  
+        const existingEnd = existing.current_period_end
+          ? new Date(existing.current_period_end).getTime()
+          : 0;
+        const rowEnd = row.current_period_end
+          ? new Date(row.current_period_end).getTime()
+          : 0;
+  
+        if (rowEnd > existingEnd) {
+          planMap.set(row.company_id, row);
+        }
+      }
+  
+      merged = companies.map((company) => {
+        const planRow = planMap.get(company.id);
+  
+        return {
+          ...company,
+          current_plan: planRow?.plan || null,
+          current_plan_status: planRow?.plan_status || null,
+          current_period_end: planRow?.current_period_end || null,
+        };
+      });
+    }
+  }
+if (error) {
+  console.error("Search companies error:", error);
+  setItems([]);
+  setLoading(false);
+  return;
+}
+
+console.log("Search companies data:", data);
+console.log(
+  "MERGED SEARCH ITEMS JSON",
+  JSON.stringify(
+    merged.map((x) => ({
+      id: x.id,
+      name: x.name,
+      current_plan: x.current_plan,
+      current_plan_status: x.current_plan_status,
+      current_period_end: x.current_period_end,
+    })),
+    null,
+    2
+  )
+);
+setItems(merged);
+setLoading(false);
     }
 
     loadCompanies();
@@ -932,41 +1006,63 @@ export default function SearchPage() {
                     </div>
                   ) : (
                     <div className="grid gap-4">
-                      {items.map((c) => (
-                        <Link
-                          key={c.id}
-                          href={`/companies/${c.slug || c.id}`}
-                          className="block rounded-2xl border border-slate-200 bg-white px-5 py-5 shadow-sm transition hover:-translate-y-0.5 hover:border-emerald-200 hover:bg-emerald-50/40 hover:shadow-md"
-                        >
-                          <div className="flex items-start justify-between gap-4">
-                            <div>
-                              <div className="text-xl font-semibold tracking-tight text-slate-900">
-                                {c.name || t.companyFallback}
-                              </div>
-                              <div className="mt-2 text-sm text-slate-500">
-                                {t.vatLabel}: {c.vat_uid || "—"}
-                                {c.country ? ` • ${c.country}` : ""}
-                              </div>
-                            </div>
+             {items.map((c) => {
+  const activePlan = c.current_plan;
+  const activeStatus = String(c.current_plan_status || "").toLowerCase();
+  const periodEndTs = c.current_period_end
+    ? new Date(c.current_period_end).getTime()
+    : 0;
+  
+  const hasProBadge =
+    (activePlan === "pro" || activePlan === "one_month") &&
+    activeStatus !== "expired" &&
+    periodEndTs > Date.now();
+    
+  return (
+    <Link
+      key={c.id}
+      href={`/companies/${c.slug || c.id}`}
+      className="block rounded-2xl border border-slate-200 bg-white px-5 py-5 shadow-sm transition hover:-translate-y-0.5 hover:border-emerald-200 hover:bg-emerald-50/40 hover:shadow-md"
+    >
+      <div className="flex items-start justify-between gap-4">
+        <div>
+          <div className="flex flex-wrap items-center gap-2">
+            <div className="text-xl font-semibold tracking-tight text-slate-900">
+              {c.name || t.companyFallback}
+            </div>
 
-                            <div className="hidden h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-slate-100 text-slate-400 sm:flex">
-                              <svg
-                                className="h-5 w-5"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                              >
-                                <path
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                  strokeWidth={2}
-                                  d="M9 5l7 7-7 7"
-                                />
-                              </svg>
-                            </div>
-                          </div>
-                        </Link>
-                      ))}
+            {hasProBadge && (
+              <span className="inline-flex items-center rounded-full border border-emerald-300 bg-emerald-100 px-2.5 py-1 text-[11px] font-bold uppercase tracking-[0.12em] text-emerald-800 shadow-sm">
+                PRO
+              </span>
+            )}
+          </div>
+
+          <div className="mt-2 text-sm text-slate-500">
+            {t.vatLabel}: {c.vat_uid || "—"}
+            {c.country ? ` • ${c.country}` : ""}
+          </div>
+        </div>
+
+        <div className="hidden h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-slate-100 text-slate-400 sm:flex">
+          <svg
+            className="h-5 w-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M9 5l7 7-7 7"
+            />
+          </svg>
+        </div>
+      </div>
+    </Link>
+  );
+})}
                     </div>
                   )}
                 </div>

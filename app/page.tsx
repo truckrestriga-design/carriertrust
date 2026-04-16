@@ -632,7 +632,7 @@ export default function HomePage() {
 
       if (vatErr) throw new Error(vatErr.message);
       if (byVat && byVat.length > 0) {
-        window.location.href = `/companies/${byVat[0].id}`;
+        window.location.href = `/search?q=${encodeURIComponent(query)}`;
         return;
       }
 
@@ -648,11 +648,10 @@ export default function HomePage() {
 
       if (rows.length === 0) {
         setMsg(t("heroNotFound"));
-      } else if (rows.length === 1) {
-        window.location.href = `/companies/${rows[0].id}`;
       } else {
         window.location.href = `/search?q=${encodeURIComponent(query)}`;
       }
+
     } catch (e: any) {
       setMsg(String(e?.message || e));
     } finally {
@@ -690,7 +689,17 @@ export default function HomePage() {
         name: "CarrierTrust",
         url: "https://carriertrust.eu",
         description:
-          "European logistics trust platform for cargo transportation, freight forwarding, carrier reviews, risk index and company verification.",
+  "European logistics trust platform for cargo transportation, freight forwarding, carrier reviews, logistics verification, cargo delivery terms, Timocom alternative, cargo.lt market comparison, carrier risk index and company verification.",
+  keywords: [
+    "cargo",
+    "delivery",
+    "logistics",
+    "timocom",
+    "cargo.lt",
+    "carrier reviews",
+    "freight forwarding",
+    "cargo delivery terms"
+  ],
       },
       {
         "@type": "WebPage",
@@ -1221,6 +1230,13 @@ export default function HomePage() {
                   />
                 </svg>
               </Link>
+              <Link
+  href="/companies"
+  className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-slate-300 px-8 py-4 font-semibold text-slate-800 transition-all hover:bg-slate-100 sm:w-auto"
+>
+  Companies Directory
+</Link>
+
             </div>
           </div>
         </div>
@@ -1296,6 +1312,7 @@ export default function HomePage() {
           background: #059669;
         }
       `}</style>
+     
     </main>
   );
 }

@@ -20,12 +20,13 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://carriertrust.eu"),
 
   title: {
-    default: "CarrierTrust — EU Logistics Reviews, Risk Index & Carrier Reputation",
+    default:
+      "CarrierTrust — EU Logistics Reviews, Cargo Risk Index & Company Verification",
     template: "%s | CarrierTrust",
   },
 
   description:
-    "CarrierTrust is the European logistics trust platform for cargo transportation, freight forwarding, carrier reviews, risk index and company verification.",
+    "CarrierTrust is the European logistics trust platform for cargo transportation, freight forwarding, logistics reviews, cargo delivery terms, carrier risk index, company verification and partner trust checks.",
 
   keywords: [
     "carriertrust",
@@ -39,6 +40,11 @@ export const metadata: Metadata = {
     "cargo company verification",
     "freight forwarder reputation",
     "european logistics platform",
+    "cargo delivery terms",
+    "timocom alternative",
+    "cargo.lt logistics platform",
+    "logistics verification",
+    "partner trust checks",
   ],
 
   applicationName: "CarrierTrust",
@@ -60,9 +66,10 @@ export const metadata: Metadata = {
   },
 
   openGraph: {
-    title: "CarrierTrust — EU Logistics Reviews, Risk Index & Carrier Reputation",
+    title:
+      "CarrierTrust — EU Logistics Reviews, Cargo Risk Index & Company Verification",
     description:
-      "European trust platform for cargo transportation, freight forwarding, carrier reviews, risk index and company verification.",
+      "European logistics trust platform for cargo transportation, freight forwarding, logistics reviews, cargo delivery terms, carrier risk index, company verification and partner trust checks.",
     url: "https://carriertrust.eu",
     siteName: "CarrierTrust",
     type: "website",
@@ -71,9 +78,10 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "CarrierTrust — EU Logistics Reviews, Risk Index & Carrier Reputation",
+    title:
+      "CarrierTrust — EU Logistics Reviews, Cargo Risk Index & Company Verification",
     description:
-      "European trust platform for cargo transportation, freight forwarding, carrier reviews, risk index and company verification.",
+      "European logistics trust platform for cargo transportation, freight forwarding, logistics reviews, cargo delivery terms, carrier risk index, company verification and partner trust checks.",
   },
 
   robots: {
@@ -113,7 +121,7 @@ export default function RootLayout({
           <div className="relative flex min-h-screen flex-col">
             <SiteHeader />
 
-            <main className="flex-1 pt-[1.8rem] sm:pt-[2.4rem] lg:pt-0">
+            <main className="flex-1 pt-[3.5rem] sm:pt-[4.2rem] lg:pt-0">
               {children}
             </main>
 

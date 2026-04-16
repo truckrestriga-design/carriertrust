@@ -1,0 +1,8 @@
+{
+  "version": 1,
+  "functions": {
+    "/api/banner-order": {},
+    "/api/track-event": {},
+    "/api/track-visit": {}
+  }
+}

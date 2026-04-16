@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { Suspense, useMemo, useState } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 
@@ -16,7 +16,7 @@ type Placement =
   | "company_left"
   | "company_right";
 
-export default function BannerOrderPage() {
+  function BannerOrderPageInner() {
   const router = useRouter();
   const params = useSearchParams();
 
@@ -410,5 +410,13 @@ export default function BannerOrderPage() {
         </div>
       </div>
     </main>
+  );
+}
+
+export default function BannerOrderPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-slate-50" />}>
+      <BannerOrderPageInner />
+    </Suspense>
   );
 }

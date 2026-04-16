@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { Suspense, useEffect, useRef } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 import { trackEvent } from "@/lib/analytics";
 
-export default function VisitTracker() {
+function VisitTrackerInner() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const lastTrackedRef = useRef<string>("");
@@ -26,4 +26,12 @@ export default function VisitTracker() {
   }, [pathname, searchParams]);
 
   return null;
+}
+
+export default function VisitTracker() {
+  return (
+    <Suspense fallback={null}>
+      <VisitTrackerInner />
+    </Suspense>
+  );
 }

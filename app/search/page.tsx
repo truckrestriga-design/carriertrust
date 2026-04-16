@@ -3,9 +3,9 @@ import SearchClient from "./SearchClient";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Logistics Companies Search",
+    title: "Search Logistics Companies, Carrier Reviews & Trust Scores",
     description:
-      "Search logistics companies, freight forwarders, cargo delivery providers and transport companies across Europe on CarrierTrust.",
+  "Search logistics companies, carrier reviews, trust scores, freight forwarders and transport companies across Europe on CarrierTrust.",
     alternates: {
       canonical: "https://carriertrust.eu/search",
     },
@@ -26,6 +26,12 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
+import { Suspense } from "react";
+
 export default function SearchPage() {
-  return <SearchClient />;
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-slate-50" />}>
+      <SearchClient />
+    </Suspense>
+  );
 }

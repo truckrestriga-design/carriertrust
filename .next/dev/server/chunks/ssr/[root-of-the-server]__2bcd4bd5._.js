@@ -83,20 +83,27 @@ async function generateMetadata({ params }) {
     let trustScore = "";
     let riskLevel = "";
     try {
-        const { data } = await __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$supabaseServer$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["supabaseServer"].from("companies").select("name, country, vat_uid, trust_score, risk_level").eq("slug", id).maybeSingle();
-        if (data?.name) companyName = String(data.name);
-        if (data?.country) country = String(data.country);
-        if (data?.vat_uid) vat = String(data.vat_uid);
-        if (data?.trust_score !== null && data?.trust_score !== undefined) {
-            trustScore = String(data.trust_score);
+        let company = null;
+        const bySlug = await __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$supabaseServer$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["supabaseServer"].from("companies").select("id, name, slug, country, vat_uid, trust_score, risk_level").eq("slug", id).maybeSingle();
+        if (bySlug.data) {
+            company = bySlug.data;
+        } else {
+            const byId = await __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$supabaseServer$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["supabaseServer"].from("companies").select("id, name, slug, country, vat_uid, trust_score, risk_level").eq("id", id).maybeSingle();
+            company = byId.data;
         }
-        if (data?.risk_level) riskLevel = String(data.risk_level);
+        if (company?.name) companyName = String(company.name);
+        if (company?.country) country = String(company.country);
+        if (company?.vat_uid) vat = String(company.vat_uid);
+        if (company?.trust_score !== null && company?.trust_score !== undefined) {
+            trustScore = String(company.trust_score);
+        }
+        if (company?.risk_level) riskLevel = String(company.risk_level);
     } catch  {
     // safe fallback
     }
-    const title = `${companyName} Reviews & Trust Score`;
+    const title = `${companyName} Reviews, Trust Score & Carrier Reputation`;
     const descriptionParts = [
-        `Read reviews and trust signals for ${companyName}`,
+        `Read reviews, trust score and carrier reputation for ${companyName}`,
         `logistics company profile in ${country}`,
         trustScore ? `trust score ${trustScore}` : null,
         riskLevel ? `risk level ${riskLevel}` : null,
@@ -111,7 +118,7 @@ async function generateMetadata({ params }) {
             canonical: url
         },
         openGraph: {
-            title: `${companyName} Reviews & Trust Score | CarrierTrust`,
+            title: `${companyName} Reviews, Trust Score & Carrier Reputation | CarrierTrust`,
             description,
             url,
             siteName: "CarrierTrust",
@@ -119,7 +126,7 @@ async function generateMetadata({ params }) {
         },
         twitter: {
             card: "summary_large_image",
-            title: `${companyName} Reviews & Trust Score | CarrierTrust`,
+            title: `${companyName} Reviews, Trust Score & Carrier Reputation | CarrierTrust`,
             description
         },
         keywords: [
@@ -138,12 +145,112 @@ async function generateMetadata({ params }) {
         }
     };
 }
-function CompanyPage() {
-    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$companies$2f5b$id$5d2f$CompanyClient$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
-        fileName: "[project]/app/companies/[id]/page.tsx",
-        lineNumber: 87,
-        columnNumber: 10
-    }, this);
+async function CompanyPage({ params }) {
+    const { id } = await params;
+    let company = null;
+    try {
+        const bySlug = await __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$supabaseServer$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["supabaseServer"].from("companies").select("id, slug, name, country, vat_uid, trust_score").eq("slug", id).maybeSingle();
+        if (bySlug.data) {
+            company = bySlug.data;
+        } else {
+            const byId = await __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$supabaseServer$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["supabaseServer"].from("companies").select("id, slug, name, country, vat_uid, trust_score").eq("id", id).maybeSingle();
+            company = byId.data ?? null;
+        }
+    } catch  {
+        company = null;
+    }
+    const companyUrl = `https://carriertrust.eu/companies/${company?.slug || id}`;
+    const companySchema = {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Organization",
+                "@id": `${companyUrl}#organization`,
+                name: company?.name || "Company",
+                url: companyUrl,
+                description: `Read reviews and trust signals for ${company?.name || "this company"}, logistics company profile${company?.country ? ` in ${company.country}` : " in Europe"}${company?.vat_uid ? `, VAT ${company.vat_uid}` : ""}.`,
+                areaServed: {
+                    "@type": "Place",
+                    name: "Europe"
+                },
+                knowsAbout: [
+                    "logistics",
+                    "freight forwarding",
+                    "cargo transportation",
+                    "carrier reviews",
+                    "payment reputation",
+                    "company verification"
+                ],
+                ...company?.country ? {
+                    address: {
+                        "@type": "PostalAddress",
+                        addressCountry: company.country
+                    }
+                } : {},
+                ...company?.vat_uid ? {
+                    identifier: [
+                        {
+                            "@type": "PropertyValue",
+                            name: "VAT",
+                            value: company.vat_uid
+                        }
+                    ]
+                } : {},
+                ...typeof company?.trust_score === "number" ? {
+                    aggregateRating: {
+                        "@type": "AggregateRating",
+                        ratingValue: company.trust_score,
+                        bestRating: 100,
+                        worstRating: 0,
+                        ratingCount: 1
+                    }
+                } : {}
+            },
+            {
+                "@type": "BreadcrumbList",
+                "@id": `${companyUrl}#breadcrumb`,
+                itemListElement: [
+                    {
+                        "@type": "ListItem",
+                        position: 1,
+                        name: "Home",
+                        item: "https://carriertrust.eu"
+                    },
+                    {
+                        "@type": "ListItem",
+                        position: 2,
+                        name: "Companies",
+                        item: "https://carriertrust.eu/search"
+                    },
+                    {
+                        "@type": "ListItem",
+                        position: 3,
+                        name: company?.name || "Company",
+                        item: companyUrl
+                    }
+                ]
+            }
+        ]
+    };
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["Fragment"], {
+        children: [
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("script", {
+                type: "application/ld+json",
+                dangerouslySetInnerHTML: {
+                    __html: JSON.stringify(companySchema)
+                }
+            }, void 0, false, {
+                fileName: "[project]/app/companies/[id]/page.tsx",
+                lineNumber: 219,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$companies$2f5b$id$5d2f$CompanyClient$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
+                fileName: "[project]/app/companies/[id]/page.tsx",
+                lineNumber: 225,
+                columnNumber: 7
+            }, this)
+        ]
+    }, void 0, true);
 }
 }),
 "[project]/app/companies/[id]/page.tsx [app-rsc] (ecmascript, Next.js Server Component)", ((__turbopack_context__) => {

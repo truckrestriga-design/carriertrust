@@ -1,5 +1,192 @@
-[00:00:01.219] Server  LOG     ✓ Ready in 941ms
-[00:01:02.228] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:06:41.099] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:07:51.873] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:12:46.304] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:01.043] Server  LOG     ✓ Ready in 779ms
+[00:00:01.847] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:01:37.938] Server  LOG     ✓ Compiled in 516ms
+[02:14:21.796] Server  LOG     ○ Compiling /search ...
+[02:14:29.851] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:14:30.372] Browser LOG     PLANS DATA JSON [
+  {
+    "company_id": "f61bbee5-c8ec-4c5c-83e8-4b9b0e52d549",
+    "plan": "free",
+    "plan_status": "active",
+    "current_period_end": null
+  }
+]
+[02:14:30.372] Browser LOG     PLANS ERROR JSON null
+[02:14:30.372] Browser LOG     Search companies data: [{"country":"Latvia","id":"f61bbee5-c8ec-4c5c-83e8-4b9b0e52d549","name":"TRUCK REST","slug":"truck-rest","vat_uid":"LV213214214214"}]
+[02:14:30.372] Browser LOG     MERGED SEARCH ITEMS JSON [
+  {
+    "id": "f61bbee5-c8ec-4c5c-83e8-4b9b0e52d549",
+    "name": "TRUCK REST",
+    "current_plan": "free",
+    "current_plan_status": "active",
+    "current_period_end": null
+  }
+]
+[02:14:36.762] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[02:14:44.051] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:14:44.420] Browser LOG     PLANS DATA JSON [
+  {
+    "company_id": "fe779541-d61c-4314-a19e-0f68f7117cc0",
+    "plan": "one_month",
+    "plan_status": "active",
+    "current_period_end": "2026-04-29T09:23:56.455+00:00"
+  },
+  {
+    "company_id": "5b11d759-fb5e-4d1a-aa3f-ffcb4f77eed0",
+    "plan": "pro",
+    "plan_status": "active",
+    "current_period_end": "2026-04-30T17:22:59+00:00"
+  }
+]
+[02:14:44.466] Browser LOG     PLANS ERROR JSON null
+[02:14:44.467] Browser LOG     Search companies data: [{"country":"Estonia","id":"fe779541-d61c-4314-a19e-0f68f7117cc0","name":"GAJA PLUSS OU","slug":"gaja-pluss-ou","vat_uid":"EE101674021"},{"country":"Latvia","id":"5b11d759-fb5e-4d1a-aa3f-ffcb4f77eed0","name":"GAJA PLUSS SIA","slug":"gaja-pluss-sia","vat_uid":"LV40003525814"}]
+[02:14:44.467] Browser LOG     MERGED SEARCH ITEMS JSON [
+  {
+    "id": "fe779541-d61c-4314-a19e-0f68f7117cc0",
+    "name": "GAJA PLUSS OU",
+    "current_plan": "one_month",
+    "current_plan_status": "active",
+    "current_period_end": "2026-04-29T09:23:56.455+00:00"
+  },
+  {
+    "id": "5b11d759-fb5e-4d1a-aa3f-ffcb4f77eed0",
+    "name": "GAJA PLUSS SIA",
+    "current_plan": "pro",
+    "current_plan_status": "active",
+    "current_period_end": "2026-04-30T17:22:59+00:00"
+  }
+]
+[02:14:45.343] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[02:14:47.794] Browser LOG     PLANS DATA JSON [
+  {
+    "company_id": "fe779541-d61c-4314-a19e-0f68f7117cc0",
+    "plan": "one_month",
+    "plan_status": "active",
+    "current_period_end": "2026-04-29T09:23:56.455+00:00"
+  },
+  {
+    "company_id": "5b11d759-fb5e-4d1a-aa3f-ffcb4f77eed0",
+    "plan": "pro",
+    "plan_status": "active",
+    "current_period_end": "2026-04-30T17:22:59+00:00"
+  }
+]
+[02:14:47.794] Browser LOG     PLANS ERROR JSON null
+[02:14:47.794] Browser LOG     Search companies data: [{"country":"Estonia","id":"fe779541-d61c-4314-a19e-0f68f7117cc0","name":"GAJA PLUSS OU","slug":"gaja-pluss-ou","vat_uid":"EE101674021"},{"country":"Latvia","id":"5b11d759-fb5e-4d1a-aa3f-ffcb4f77eed0","name":"GAJA PLUSS SIA","slug":"gaja-pluss-sia","vat_uid":"LV40003525814"}]
+[02:14:47.794] Browser LOG     MERGED SEARCH ITEMS JSON [
+  {
+    "id": "fe779541-d61c-4314-a19e-0f68f7117cc0",
+    "name": "GAJA PLUSS OU",
+    "current_plan": "one_month",
+    "current_plan_status": "active",
+    "current_period_end": "2026-04-29T09:23:56.455+00:00"
+  },
+  {
+    "id": "5b11d759-fb5e-4d1a-aa3f-ffcb4f77eed0",
+    "name": "GAJA PLUSS SIA",
+    "current_plan": "pro",
+    "current_plan_status": "active",
+    "current_period_end": "2026-04-30T17:22:59+00:00"
+  }
+]
+[02:14:47.794] Browser LOG     PLANS DATA JSON [
+  {
+    "company_id": "fe779541-d61c-4314-a19e-0f68f7117cc0",
+    "plan": "one_month",
+    "plan_status": "active",
+    "current_period_end": "2026-04-29T09:23:56.455+00:00"
+  },
+  {
+    "company_id": "5b11d759-fb5e-4d1a-aa3f-ffcb4f77eed0",
+    "plan": "pro",
+    "plan_status": "active",
+    "current_period_end": "2026-04-30T17:22:59+00:00"
+  }
+]
+[02:14:47.795] Browser LOG     PLANS ERROR JSON null
+[02:14:47.795] Browser LOG     Search companies data: [{"country":"Estonia","id":"fe779541-d61c-4314-a19e-0f68f7117cc0","name":"GAJA PLUSS OU","slug":"gaja-pluss-ou","vat_uid":"EE101674021"},{"country":"Latvia","id":"5b11d759-fb5e-4d1a-aa3f-ffcb4f77eed0","name":"GAJA PLUSS SIA","slug":"gaja-pluss-sia","vat_uid":"LV40003525814"}]
+[02:14:47.795] Browser LOG     MERGED SEARCH ITEMS JSON [
+  {
+    "id": "fe779541-d61c-4314-a19e-0f68f7117cc0",
+    "name": "GAJA PLUSS OU",
+    "current_plan": "one_month",
+    "current_plan_status": "active",
+    "current_period_end": "2026-04-29T09:23:56.455+00:00"
+  },
+  {
+    "id": "5b11d759-fb5e-4d1a-aa3f-ffcb4f77eed0",
+    "name": "GAJA PLUSS SIA",
+    "current_plan": "pro",
+    "current_plan_status": "active",
+    "current_period_end": "2026-04-30T17:22:59+00:00"
+  }
+]
+[03:02:25.679] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[03:02:26.141] Browser LOG     PLANS DATA JSON [
+  {
+    "company_id": "fe779541-d61c-4314-a19e-0f68f7117cc0",
+    "plan": "one_month",
+    "plan_status": "active",
+    "current_period_end": "2026-04-29T09:23:56.455+00:00"
+  },
+  {
+    "company_id": "5b11d759-fb5e-4d1a-aa3f-ffcb4f77eed0",
+    "plan": "pro",
+    "plan_status": "active",
+    "current_period_end": "2026-04-30T17:22:59+00:00"
+  }
+]
+[03:02:26.142] Browser LOG     PLANS ERROR JSON null
+[03:02:26.142] Browser LOG     Search companies data: [{"country":"Estonia","id":"fe779541-d61c-4314-a19e-0f68f7117cc0","name":"GAJA PLUSS OU","slug":"gaja-pluss-ou","vat_uid":"EE101674021"},{"country":"Latvia","id":"5b11d759-fb5e-4d1a-aa3f-ffcb4f77eed0","name":"GAJA PLUSS SIA","slug":"gaja-pluss-sia","vat_uid":"LV40003525814"}]
+[03:02:26.142] Browser LOG     MERGED SEARCH ITEMS JSON [
+  {
+    "id": "fe779541-d61c-4314-a19e-0f68f7117cc0",
+    "name": "GAJA PLUSS OU",
+    "current_plan": "one_month",
+    "current_plan_status": "active",
+    "current_period_end": "2026-04-29T09:23:56.455+00:00"
+  },
+  {
+    "id": "5b11d759-fb5e-4d1a-aa3f-ffcb4f77eed0",
+    "name": "GAJA PLUSS SIA",
+    "current_plan": "pro",
+    "current_plan_status": "active",
+    "current_period_end": "2026-04-30T17:22:59+00:00"
+  }
+]
+[03:02:28.444] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[03:10:43.443] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[03:10:44.094] Browser LOG     PLANS DATA JSON [
+  {
+    "company_id": "fe779541-d61c-4314-a19e-0f68f7117cc0",
+    "plan": "one_month",
+    "plan_status": "active",
+    "current_period_end": "2026-04-29T09:23:56.455+00:00"
+  },
+  {
+    "company_id": "5b11d759-fb5e-4d1a-aa3f-ffcb4f77eed0",
+    "plan": "pro",
+    "plan_status": "active",
+    "current_period_end": "2026-04-30T17:22:59+00:00"
+  }
+]
+[03:10:44.094] Browser LOG     PLANS ERROR JSON null
+[03:10:44.094] Browser LOG     Search companies data: [{"country":"Estonia","id":"fe779541-d61c-4314-a19e-0f68f7117cc0","name":"GAJA PLUSS OU","slug":"gaja-pluss-ou","vat_uid":"EE101674021"},{"country":"Latvia","id":"5b11d759-fb5e-4d1a-aa3f-ffcb4f77eed0","name":"GAJA PLUSS SIA","slug":"gaja-pluss-sia","vat_uid":"LV40003525814"}]
+[03:10:44.094] Browser LOG     MERGED SEARCH ITEMS JSON [
+  {
+    "id": "fe779541-d61c-4314-a19e-0f68f7117cc0",
+    "name": "GAJA PLUSS OU",
+    "current_plan": "one_month",
+    "current_plan_status": "active",
+    "current_period_end": "2026-04-29T09:23:56.455+00:00"
+  },
+  {
+    "id": "5b11d759-fb5e-4d1a-aa3f-ffcb4f77eed0",
+    "name": "GAJA PLUSS SIA",
+    "current_plan": "pro",
+    "current_plan_status": "active",
+    "current_period_end": "2026-04-30T17:22:59+00:00"
+  }
+]
+[03:10:45.314] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[03:12:18.035] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold

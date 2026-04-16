@@ -18,6 +18,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.9,
     },
     {
+      url: `${base}/companies`,
+      lastModified: new Date(),
+      changeFrequency: "daily",
+      priority: 0.9,
+    },
+    {
       url: `${base}/risk-index`,
       lastModified: new Date(),
       changeFrequency: "daily",
@@ -39,6 +45,24 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: `${base}/verification`,
       lastModified: new Date(),
       changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      url: `${base}/cargo-delivery-terms`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.7,
+    },
+    {
+      url: `${base}/timocom-alternative`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.7,
+    },
+    {
+      url: `${base}/how-to-check-logistics-company`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
       priority: 0.7,
     },
     {
@@ -88,6 +112,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     changeFrequency: "weekly",
     priority: 0.8,
   }));
-  
+
   return [...staticPages, ...companyPages];
 }
