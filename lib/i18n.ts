@@ -903,7 +903,7 @@ tipReply:
       "Factura vencida 45 días. La carga fue entregada pero no se recibió el pago.",
 
       riskIndexTitle: "Índice de riesgo empresarial",
-      browseCompaniesDirectory: "Explorar directorio de empresas",
+      browseCompaniesDirectory: "ZZZ BOTON PRUEBA",
 riskIndexDesc:
   "Índice público de empresas logísticas basado en señales automáticas.",
 highRisk: "Alto riesgo",
