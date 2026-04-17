@@ -447,19 +447,6 @@ export default function RiskIndexPage() {
   const { t, lang } = useLang();
   const modalT = useMemo(() => TEXT[(lang as Lang) || "en"] ?? TEXT.en, [lang]);
 
-  const browseCompaniesText = useMemo(() => {
-    const map: Record<Lang, string> = {
-      en: "Browse Companies Directory",
-      de: "Unternehmensverzeichnis öffnen",
-      ru: "Открыть каталог компаний",
-      fr: "Ouvrir l’annuaire des entreprises",
-      es: "Abrir el directorio de empresas",
-      it: "Apri l’elenco aziende",
-    };
-  
-    return map[(lang as Lang) || "en"] ?? map.en;
-  }, [lang]);
-
   const [loading, setLoading] = useState(true);
   const [err, setErr] = useState<string | null>(null);
 
@@ -790,7 +777,7 @@ if (error) throw new Error(error.message);
   href="/companies"
   className="mt-3 inline-flex items-center rounded-xl border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-50"
 >
-{browseCompaniesText}
+  BOTON TEST 123
 </Link>
                   <div className="mt-4 flex flex-wrap items-center gap-2">
                     <button
