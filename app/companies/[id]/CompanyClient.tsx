@@ -1511,7 +1511,8 @@ const trustScoreUI = useMemo(() => {
   }, [company?.trust_score, avg, t]);
 
   const riskLabel = useMemo(() => {
-    const lvl = String(company?.risk_level || "").toLowerCase();
+    const lvl = reviews.length === 0 ? "" : String(company?.risk_level || "").toLowerCase();
+
     if (lvl === "high") {
       return { text: t.riskHigh, cls: "bg-red-50 text-red-800 border-red-200" };
     }
@@ -1528,6 +1529,13 @@ const trustScoreUI = useMemo(() => {
       };
     }
 
+    if (reviews.length === 0) {
+      return {
+        text: "NO REVIEWS TEST",
+        cls: "bg-blue-50 text-blue-800 border-blue-200",
+      };
+    }
+    
     if (typeof trustScoreUI === "number") {
       if (trustScoreUI >= 75) {
         return {
@@ -1544,7 +1552,7 @@ const trustScoreUI = useMemo(() => {
       return { text: t.riskHigh, cls: "bg-red-50 text-red-800 border-red-200" };
     }
     return null;
-  }, [company?.risk_level, trustScoreUI, t]);
+    }, [company?.risk_level, trustScoreUI, t, reviews.length]);
 
   const trustBadge = useMemo(() => {
     if (trustScoreUI === null) {
