@@ -1531,8 +1531,8 @@ const trustScoreUI = useMemo(() => {
 
     if (reviews.length === 0) {
       return {
-        text: "NO REVIEWS TEST",
-        cls: "bg-blue-50 text-blue-800 border-blue-200",
+        text: "No review",
+        cls: "bg-slate-50 text-slate-700 border-slate-200",
       };
     }
     
