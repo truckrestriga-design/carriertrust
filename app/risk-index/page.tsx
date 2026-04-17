@@ -445,7 +445,7 @@ function RotatingBanner({ side, banners, onAddClick, t }: RotatingBannerProps) {
 
 export default function RiskIndexPage() {
   const { t, lang } = useLang();
-const l = (lang || "en").toLowerCase();
+  const l = String(lang).toLowerCase();
   const modalT = useMemo(() => TEXT[(lang as Lang) || "en"] ?? TEXT.en, [lang]);
 
   const [loading, setLoading] = useState(true);
@@ -610,24 +610,30 @@ const l = (lang || "en").toLowerCase();
       setLoading(true);
       setErr(null);
 
-      const { data, error } = await supabase
-  .from("companies")
-  .select(`
-    id,
-    name,
-    vat_uid,
-    country,
-    trust_score,
-    trust_updated_at,
-    fraud_score,
-    risk_level,
-    auto_flagged,
-    reviews!inner(id,status)
-  `)
-  .eq("risk_level", tab)
-  .eq("reviews.status", "published")
-  .order("fraud_score", { ascending: false })
-  .limit(clamp(limit, 10, 200));
+      const { data: reviewRows } = await supabase
+      .from("reviews")
+      .select("company_id")
+      .eq("status", "published");
+    
+    const companyIds = [...new Set((reviewRows || []).map((r) => r.company_id))];
+    
+    const { data, error } = await supabase
+      .from("companies")
+      .select(`
+        id,
+        name,
+        vat_uid,
+        country,
+        trust_score,
+        trust_updated_at,
+        fraud_score,
+        risk_level,
+        auto_flagged
+      `)
+      .eq("risk_level", tab)
+      .in("id", companyIds)
+      .order("fraud_score", { ascending: false })
+      .limit(clamp(limit, 10, 200));
 
 if (error) throw new Error(error.message);
 
@@ -778,15 +784,15 @@ if (error) throw new Error(error.message);
   href="/companies"
   className="mt-3 inline-flex items-center rounded-xl border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-50"
 >
-  {String(lang).toLowerCase() === "ru"
+  {l === "ru"
     ? "Каталог компаний"
-    : String(lang).toLowerCase() === "es"
+    : l === "es"
     ? "Directorio de empresas"
-    : String(lang).toLowerCase() === "de"
+    : l === "de"
     ? "Unternehmensverzeichnis durchsuchen"
-    : String(lang).toLowerCase() === "fr"
+    : l === "fr"
     ? "Parcourir l’annuaire des entreprises"
-    : String(lang).toLowerCase() === "it"
+    : l === "it"
     ? "Sfoglia il registro aziende"
     : "Browse Companies Directory"}
 </Link>
