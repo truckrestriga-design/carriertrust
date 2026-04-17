@@ -123,6 +123,7 @@ export const DICT: Record<Lang, Dict> = {
       "Invoice overdue 45 days. Cargo delivered but no payment received.",
 
       riskIndexTitle: "Company risk index",
+      browseCompaniesDirectory: "Browse Companies Directory",
 riskIndexDesc:
   "Public index of logistics companies based on automated trust signals (fraud events, coordinated attacks, review risk).",
 highRisk: "High risk",
@@ -317,6 +318,7 @@ tipReply:
       "Rechnung 45 Tage überfällig. Fracht geliefert, aber keine Zahlung erhalten.",
 
       riskIndexTitle: "Unternehmens-Risikoindex",
+      browseCompaniesDirectory: "Unternehmensverzeichnis durchsuchen",
 riskIndexDesc:
   "Öffentlicher Index von Logistikunternehmen basierend auf automatisierten Vertrauenssignalen.",
 highRisk: "Hohes Risiko",
@@ -511,6 +513,7 @@ tipReply:
       "Счёт просрочен на 45 дней. Груз доставлен, но оплаты нет.",
 
       riskIndexTitle: "Индекс риска компаний",
+      browseCompaniesDirectory: "Каталог компаний",
 riskIndexDesc:
   "Публичный индекс логистических компаний на основе автоматических сигналов доверия.",
 highRisk: "Высокий риск",
@@ -705,6 +708,7 @@ tipReply:
       "Facture en retard de 45 jours. Marchandise livrée mais aucun paiement reçu.",
 
       riskIndexTitle: "Indice de risque des entreprises",
+      browseCompaniesDirectory: "Parcourir l’annuaire des entreprises",
 riskIndexDesc:
   "Indice public des entreprises logistiques basé sur des signaux automatisés.",
 highRisk: "Risque élevé",
@@ -899,6 +903,7 @@ tipReply:
       "Factura vencida 45 días. La carga fue entregada pero no se recibió el pago.",
 
       riskIndexTitle: "Índice de riesgo empresarial",
+      browseCompaniesDirectory: "Explorar directorio de empresas",
 riskIndexDesc:
   "Índice público de empresas logísticas basado en señales automáticas.",
 highRisk: "Alto riesgo",
@@ -1093,6 +1098,7 @@ tipReply:
       "Fattura scaduta da 45 giorni. Merce consegnata ma pagamento non ricevuto.",
 
       riskIndexTitle: "Indice di rischio aziendale",
+      browseCompaniesDirectory: "Sfoglia il registro aziende",
 riskIndexDesc:
   "Indice pubblico delle aziende logistiche basato su segnali automatici.",
 highRisk: "Alto rischio",

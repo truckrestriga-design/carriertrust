@@ -127,6 +127,14 @@ Deno.serve(async (req) => {
           new_status: "hidden",
         },
       });
+      
+      if (existingReview.company_id) {
+        await service.functions.invoke("recompute-trust-score", {
+          body: {
+            company_id: existingReview.company_id,
+          },
+        });
+      }
 
       return json({ ok: true });
     }
