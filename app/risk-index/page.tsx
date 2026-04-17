@@ -777,7 +777,22 @@ if (error) throw new Error(error.message);
   href="/companies"
   className="mt-3 inline-flex items-center rounded-xl border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-50"
 >
-{t("browseCompaniesDirectory")}
+<Link
+  href="/companies"
+  className="mt-3 inline-flex items-center rounded-xl border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-50"
+>
+  {lang === "ru"
+    ? "Каталог компаний"
+    : lang === "es"
+    ? "Directorio de empresas"
+    : lang === "de"
+    ? "Unternehmensverzeichnis durchsuchen"
+    : lang === "fr"
+    ? "Parcourir l’annuaire des entreprises"
+    : lang === "it"
+    ? "Sfoglia il registro aziende"
+    : "Browse Companies Directory"}
+    </Link>
 </Link>
                   <div className="mt-4 flex flex-wrap items-center gap-2">
                     <button
