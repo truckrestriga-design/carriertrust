@@ -162,6 +162,25 @@ Deno.serve(async (req) => {
 
       const ratings = (reviewAgg ?? []).map((x: any) => Number(x.rating)).filter((n: any) => Number.isFinite(n));
       const reviews_count = ratings.length;
+
+      if (reviews_count === 0) {
+        const now = new Date().toISOString();
+      
+        await service
+          .from("companies")
+          .update({
+            trust_score: 0,
+            trust_level: "low",
+            fraud_score: 0,
+            risk_level: null,
+            auto_flagged: false,
+            trust_updated_at: now,
+          })
+          .eq("id", c.id);
+      
+        continue;
+      }
+
       const avg_rating = reviews_count ? ratings.reduce((a: number, b: number) => a + b, 0) / reviews_count : 0;
 
       const reviewIds = (reviewAgg ?? []).map((x: any) => x.id);

@@ -447,6 +447,19 @@ export default function RiskIndexPage() {
   const { t, lang } = useLang();
   const modalT = useMemo(() => TEXT[(lang as Lang) || "en"] ?? TEXT.en, [lang]);
 
+  const browseCompaniesText = useMemo(() => {
+    const map: Record<Lang, string> = {
+      en: "Browse Companies Directory",
+      de: "Unternehmensverzeichnis öffnen",
+      ru: "Открыть каталог компаний",
+      fr: "Ouvrir l’annuaire des entreprises",
+      es: "Abrir el directorio de empresas",
+      it: "Apri l’elenco aziende",
+    };
+  
+    return map[(lang as Lang) || "en"] ?? map.en;
+  }, [lang]);
+
   const [loading, setLoading] = useState(true);
   const [err, setErr] = useState<string | null>(null);
 
@@ -610,15 +623,25 @@ export default function RiskIndexPage() {
       setErr(null);
 
       const { data, error } = await supabase
-        .from("companies")
-        .select(
-          "id, name, vat_uid, country, trust_score, trust_updated_at, fraud_score, risk_level, auto_flagged"
-        )
-        .eq("risk_level", tab)
-        .order("fraud_score", { ascending: false })
-        .limit(clamp(limit, 10, 200));
+  .from("companies")
+  .select(`
+    id,
+    name,
+    vat_uid,
+    country,
+    trust_score,
+    trust_updated_at,
+    fraud_score,
+    risk_level,
+    auto_flagged,
+    reviews!inner(id,status)
+  `)
+  .eq("risk_level", tab)
+  .eq("reviews.status", "published")
+  .order("fraud_score", { ascending: false })
+  .limit(clamp(limit, 10, 200));
 
-      if (error) throw new Error(error.message);
+if (error) throw new Error(error.message);
 
       setRows((data || []) as CompanyRow[]);
     } catch (e: any) {
@@ -767,7 +790,7 @@ export default function RiskIndexPage() {
   href="/companies"
   className="mt-3 inline-flex items-center rounded-xl border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-50"
 >
-  Browse Companies Directory
+{browseCompaniesText}
 </Link>
                   <div className="mt-4 flex flex-wrap items-center gap-2">
                     <button
