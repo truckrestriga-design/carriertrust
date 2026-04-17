@@ -445,6 +445,7 @@ function RotatingBanner({ side, banners, onAddClick, t }: RotatingBannerProps) {
 
 export default function RiskIndexPage() {
   const { t, lang } = useLang();
+const l = (lang || "en").toLowerCase();
   const modalT = useMemo(() => TEXT[(lang as Lang) || "en"] ?? TEXT.en, [lang]);
 
   const [loading, setLoading] = useState(true);
@@ -777,22 +778,17 @@ if (error) throw new Error(error.message);
   href="/companies"
   className="mt-3 inline-flex items-center rounded-xl border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-50"
 >
-<Link
-  href="/companies"
-  className="mt-3 inline-flex items-center rounded-xl border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-50"
->
-  {lang === "ru"
+  {String(lang).toLowerCase() === "ru"
     ? "Каталог компаний"
-    : lang === "es"
+    : String(lang).toLowerCase() === "es"
     ? "Directorio de empresas"
-    : lang === "de"
+    : String(lang).toLowerCase() === "de"
     ? "Unternehmensverzeichnis durchsuchen"
-    : lang === "fr"
+    : String(lang).toLowerCase() === "fr"
     ? "Parcourir l’annuaire des entreprises"
-    : lang === "it"
+    : String(lang).toLowerCase() === "it"
     ? "Sfoglia il registro aziende"
     : "Browse Companies Directory"}
-    </Link>
 </Link>
                   <div className="mt-4 flex flex-wrap items-center gap-2">
                     <button
