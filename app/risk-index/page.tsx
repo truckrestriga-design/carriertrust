@@ -446,7 +446,7 @@ function RotatingBanner({ side, banners, onAddClick, t }: RotatingBannerProps) {
 export default function RiskIndexPage() {
   const { t, lang } = useLang();
   const l = String(lang).toLowerCase();
-  const modalT = useMemo(() => TEXT[(lang as Lang) || "en"] ?? TEXT.en, [lang]);
+  const modalT = useMemo(() => TEXT[(l as Lang) || "en"] ?? TEXT.en, [l]);
 
   const [loading, setLoading] = useState(true);
   const [err, setErr] = useState<string | null>(null);
