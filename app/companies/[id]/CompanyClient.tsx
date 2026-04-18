@@ -94,6 +94,7 @@ type TextPack = {
   riskLow: string;
   riskMedium: string;
   riskHigh: string;
+  riskNoReviews: string;
   updatedLabel: string;
 
   verifiedCompany: string;
@@ -218,6 +219,7 @@ const EN: TextPack = {
   riskLow: "Low",
   riskMedium: "Medium",
   riskHigh: "High",
+  riskNoReviews: "No reviews",
   updatedLabel: "Updated",
 
   verifiedCompany: "Verified company",
@@ -343,6 +345,7 @@ timelineVerification: "Unternehmensverifizierung erfasst am",
     riskLow: "Niedrig",
     riskMedium: "Mittel",
     riskHigh: "Hoch",
+    riskNoReviews: "Keine Bewertungen",
     updatedLabel: "Aktualisiert",
     verifiedCompany: "Verifiziertes Unternehmen",
     verifiedCompanyHelp: "Identität geprüft (VAT / Domain / Admin).",
@@ -459,6 +462,7 @@ timelineVerification: "Верификация компании зафиксир�
     riskLow: "Низкий",
     riskMedium: "Средний",
     riskHigh: "Высокий",
+    riskNoReviews: "Нет отзывов",
     updatedLabel: "Обновлено",
     verifiedCompany: "Компания подтверждена",
     verifiedCompanyHelp:
@@ -578,6 +582,7 @@ timelineVerification: "Vérification enregistrée le",
     riskLow: "Faible",
     riskMedium: "Moyen",
     riskHigh: "Élevé",
+    riskNoReviews: "Aucun avis",
     updatedLabel: "Mis à jour",
     verifiedCompany: "Entreprise vérifiée",
     verifiedCompanyHelp: "Identité vérifiée (VAT / domaine / contrôle admin).",
@@ -695,6 +700,7 @@ timelineVerification: "Verificación registrada el",
     riskLow: "Bajo",
     riskMedium: "Medio",
     riskHigh: "Alto",
+    riskNoReviews: "Sin reseñas",
     updatedLabel: "Actualizado",
     verifiedCompany: "Empresa verificada",
     verifiedCompanyHelp: "Identidad verificada (VAT / dominio / revisión admin).",
@@ -813,6 +819,7 @@ timelineVerification: "Verifica registrata il",
     riskLow: "Basso",
     riskMedium: "Medio",
     riskHigh: "Alto",
+    riskNoReviews: "Nessuna recensione",
     updatedLabel: "Aggiornato",
     verifiedCompany: "Azienda verificata",
     verifiedCompanyHelp: "Identità verificata (VAT / dominio / controllo admin).",
@@ -1531,7 +1538,7 @@ const trustScoreUI = useMemo(() => {
 
     if (reviews.length === 0) {
       return {
-        text: "No review",
+        text: t.riskNoReviews,
         cls: "bg-slate-50 text-slate-700 border-slate-200",
       };
     }
