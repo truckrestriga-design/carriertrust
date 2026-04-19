@@ -1075,7 +1075,7 @@ setLoading(false);
 
         {isModalOpen && (
           <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-slate-900/55 p-4 backdrop-blur-sm">
-            <div className="relative w-full max-w-4xl rounded-[2rem] border border-white/50 bg-white/92 shadow-[0_40px_120px_rgba(15,23,42,0.25)]">
+            <div className="relative w-full max-w-4xl scale-[0.97] origin-center rounded-[2rem] border border-white/50 bg-white/92 shadow-[0_40px_120px_rgba(15,23,42,0.25)]">
               <button
                 onClick={closeModal}
                 className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 transition-colors hover:bg-slate-200"

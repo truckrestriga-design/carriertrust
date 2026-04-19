@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { useLang } from "@/lib/language-context";
+import { getRiskLevelFromReviews } from "@/lib/risk";
 
 type Lang = "en" | "de" | "ru" | "fr" | "es" | "it";
 type RiskTab = "high" | "medium" | "low";
@@ -19,6 +20,13 @@ type CompanyRow = {
   risk_level: string | null;
   auto_flagged: boolean | null;
   trust_updated_at?: string | null;
+};
+
+type ReviewRiskRow = {
+  company_id: string;
+  rating: number | null;
+  review_text: string | null;
+  status: string | null;
 };
 
 type PricingPlan = {
@@ -357,6 +365,9 @@ function pillForRisk(r: RiskTab) {
   return "bg-emerald-50 text-emerald-800 border-emerald-200";
 }
 
+
+
+
 function RotatingBanner({ side, banners, onAddClick, t }: RotatingBannerProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -609,35 +620,61 @@ export default function RiskIndexPage() {
     try {
       setLoading(true);
       setErr(null);
+  
+      const { data: companiesData, error: companiesError } = await supabase
+  .from("companies")
+  .select(`
+    id,
+    name,
+    vat_uid,
+    country,
+    trust_score,
+    trust_updated_at,
+    fraud_score,
+    risk_level,
+    auto_flagged
+  `);
+  
+      if (companiesError) throw new Error(companiesError.message);
+  
+      const companies = (companiesData || []) as CompanyRow[];
+      const companyIds = companies.map((c) => c.id).filter(Boolean);
+  
+      const reviewsByCompany = new Map<string, ReviewRiskRow[]>();
+  
+      if (companyIds.length > 0) {
+        const { data: reviewsData, error: reviewsError } = await supabase
+          .from("reviews")
+          .select("company_id, rating, review_text, status")
+          .in("company_id", companyIds)
+          .eq("status", "published");
+  
+        if (reviewsError) throw new Error(reviewsError.message);
+  
+        for (const row of (reviewsData || []) as ReviewRiskRow[]) {
+          const list = reviewsByCompany.get(row.company_id) || [];
+          list.push(row);
+          reviewsByCompany.set(row.company_id, list);
+        }
+      }
+  
+      const liveRows = companies
+  .filter((company) => {
+    const companyReviews = reviewsByCompany.get(company.id) || [];
+    const liveRisk = getRiskLevelFromReviews(companyReviews);
 
-      const { data: reviewRows } = await supabase
-      .from("reviews")
-      .select("company_id")
-      .eq("status", "published");
-    
-    const companyIds = [...new Set((reviewRows || []).map((r) => r.company_id))];
-    
-    const { data, error } = await supabase
-      .from("companies")
-      .select(`
-        id,
-        name,
-        vat_uid,
-        country,
-        trust_score,
-        trust_updated_at,
-        fraud_score,
-        risk_level,
-        auto_flagged
-      `)
-      .eq("risk_level", tab)
-      .in("id", companyIds)
-      .order("fraud_score", { ascending: false })
-      .limit(clamp(limit, 10, 200));
+    if (liveRisk === null) return false;
 
-if (error) throw new Error(error.message);
-
-      setRows((data || []) as CompanyRow[]);
+    return liveRisk === tab;
+  })
+  .sort((a, b) => {
+    const aFraud = typeof a.fraud_score === "number" ? a.fraud_score : 0;
+    const bFraud = typeof b.fraud_score === "number" ? b.fraud_score : 0;
+    return bFraud - aFraud;
+  })
+  .slice(0, clamp(limit, 10, 200));
+  
+      setRows(liveRows);
     } catch (e: any) {
       setErr(String(e?.message || e));
     } finally {
@@ -987,7 +1024,7 @@ if (error) throw new Error(error.message);
 
         {isModalOpen && (
           <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/50 px-4 py-6">
-            <div className="relative w-full max-w-4xl rounded-[2rem] border border-white/50 bg-white/92 shadow-[0_40px_120px_rgba(15,23,42,0.25)]">
+            <div className="relative w-full max-w-4xl scale-[0.97] origin-center rounded-[2rem] border border-white/50 bg-white/92 shadow-[0_40px_120px_rgba(15,23,42,0.25)]">
               <button
                 onClick={closeModal}
                 className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 transition-colors hover:bg-slate-200"

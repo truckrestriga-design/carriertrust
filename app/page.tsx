@@ -121,16 +121,24 @@ function FloatingOrb({
 }) {
   return (
     <div
-      className={`absolute rounded-full blur-3xl opacity-30 animate-pulse ${color}`}
-      style={{
-        width: size,
-        height: size,
-        top,
-        left,
-        animationDelay: `${delay}s`,
-        animationDuration: "8s",
-      }}
-    />
+  className="absolute rounded-full animate-pulse"
+  style={{
+    width: size,
+    height: size,
+    top,
+    left,
+    animationDelay: `${delay}s`,
+    animationDuration: "8s",
+    opacity: 0.18,
+    filter: "blur(120px)",
+    background:
+      color === "bg-emerald-400"
+        ? "radial-gradient(circle, rgba(16,185,129,0.45) 0%, rgba(16,185,129,0.18) 35%, rgba(16,185,129,0) 75%)"
+        : color === "bg-teal-400"
+        ? "radial-gradient(circle, rgba(45,212,191,0.4) 0%, rgba(45,212,191,0.16) 35%, rgba(45,212,191,0) 75%)"
+        : "radial-gradient(circle, rgba(34,211,238,0.38) 0%, rgba(34,211,238,0.14) 35%, rgba(34,211,238,0) 75%)",
+  }}
+/>
   );
 }
 

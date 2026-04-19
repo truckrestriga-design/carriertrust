@@ -6,6 +6,7 @@ import { useParams } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 import { useLang } from "@/lib/language-context";
 import { trackEvent } from "@/lib/analytics";
+import { getRiskLevelFromReviews } from "@/lib/risk";
 
 type Lang = "en" | "de" | "ru" | "fr" | "es" | "it";
 type TabKey = "reviews" | "timeline" | "about";
@@ -1518,48 +1519,34 @@ const trustScoreUI = useMemo(() => {
   }, [company?.trust_score, avg, t]);
 
   const riskLabel = useMemo(() => {
-    const lvl = reviews.length === 0 ? "" : String(company?.risk_level || "").toLowerCase();
-
-    if (lvl === "high") {
-      return { text: t.riskHigh, cls: "bg-red-50 text-red-800 border-red-200" };
-    }
-    if (lvl === "medium") {
-      return {
-        text: t.riskMedium,
-        cls: "bg-yellow-50 text-yellow-800 border-yellow-200",
-      };
-    }
-    if (lvl === "low") {
-      return {
-        text: t.riskLow,
-        cls: "bg-emerald-50 text-emerald-800 border-emerald-200",
-      };
-    }
-
-    if (reviews.length === 0) {
+    const liveRisk = getRiskLevelFromReviews(reviews);
+  
+    if (liveRisk === null) {
       return {
         text: t.riskNoReviews,
         cls: "bg-slate-50 text-slate-700 border-slate-200",
       };
     }
-    
-    if (typeof trustScoreUI === "number") {
-      if (trustScoreUI >= 75) {
-        return {
-          text: t.riskLow,
-          cls: "bg-emerald-50 text-emerald-800 border-emerald-200",
-        };
-      }
-      if (trustScoreUI >= 45) {
-        return {
-          text: t.riskMedium,
-          cls: "bg-yellow-50 text-yellow-800 border-yellow-200",
-        };
-      }
-      return { text: t.riskHigh, cls: "bg-red-50 text-red-800 border-red-200" };
+  
+    if (liveRisk === "high") {
+      return {
+        text: t.riskHigh,
+        cls: "bg-red-50 text-red-800 border-red-200",
+      };
     }
-    return null;
-    }, [company?.risk_level, trustScoreUI, t, reviews.length]);
+  
+    if (liveRisk === "medium") {
+      return {
+        text: t.riskMedium,
+        cls: "bg-yellow-50 text-yellow-800 border-yellow-200",
+      };
+    }
+  
+    return {
+      text: t.riskLow,
+      cls: "bg-emerald-50 text-emerald-800 border-emerald-200",
+    };
+  }, [reviews, t]);
 
   const trustBadge = useMemo(() => {
     if (trustScoreUI === null) {
@@ -2411,7 +2398,7 @@ const trustScoreUI = useMemo(() => {
 
         {isBannerModalOpen && (
           <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-slate-900/55 p-4 backdrop-blur-sm">
-            <div className="relative w-full max-w-4xl rounded-[2rem] border border-white/50 bg-white/92 shadow-[0_40px_120px_rgba(15,23,42,0.25)]">
+            <div className="relative w-full max-w-4xl scale-[0.97] origin-center rounded-[2rem] border border-white/50 bg-white/92 shadow-[0_40px_120px_rgba(15,23,42,0.25)]">
               <button
                 onClick={closeBannerModal}
                 className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 transition-colors hover:bg-slate-200"
