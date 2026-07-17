@@ -160,17 +160,6 @@ export default async function CompanyPage({ params }: Props) {
               ],
             }
           : {}),
-        ...(typeof company?.trust_score === "number"
-          ? {
-              aggregateRating: {
-                "@type": "AggregateRating",
-                ratingValue: company.trust_score,
-                bestRating: 100,
-                worstRating: 0,
-                ratingCount: 1,
-              },
-            }
-          : {}),
       },
       {
         "@type": "BreadcrumbList",
