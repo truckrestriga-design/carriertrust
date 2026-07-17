@@ -1586,53 +1586,6 @@ const trustScoreUI = useMemo(() => {
     };
   }, [trustScoreUI]);
 
-  const companySchema = useMemo(() => {
-    if (!company) return null;
-
-    const pageUrl = `https://carriertrust.eu/companies/${companySlug}`;
-
-    const schema: Record<string, any> = {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "@id": `${pageUrl}#organization`,
-      name: company.name || "Company",
-      url: pageUrl,
-    };
-
-    if (company.country) {
-      schema.address = {
-        "@type": "PostalAddress",
-        addressCountry: company.country,
-      };
-    }
-
-    if (company.vat_uid) {
-      schema.identifier = [
-        {
-          "@type": "PropertyValue",
-          name: "VAT",
-          value: company.vat_uid,
-        },
-      ];
-    }
-
-    if (company.is_verified_company) {
-      schema.award = ["Verified company"];
-    }
-
-    if (typeof trustScoreUI === "number") {
-      schema.aggregateRating = {
-        "@type": "AggregateRating",
-        ratingValue: trustScoreUI,
-        bestRating: 100,
-        worstRating: 0,
-        ratingCount: Math.max(reviewsCount || 0, 1),
-      };
-    }
-
-    return schema;
-  }, [company, companySlug, trustScoreUI, reviewsCount]);
-
   function openReport(reviewId: string) {
     setReportMsg(null);
     setReportReviewId(reviewId);
@@ -1915,15 +1868,6 @@ const trustScoreUI = useMemo(() => {
 
   return (
     <main className="min-h-screen text-black">
-      {companySchema ? (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(companySchema),
-          }}
-        />
-      ) : null}
-
       <div className="relative px-6 pb-16 pt-44 md:pt-48">
         <div className="mx-auto flex max-w-[1520px] items-start gap-10 xl:gap-20">
           <RotatingBanner
