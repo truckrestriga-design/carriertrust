@@ -3,10 +3,14 @@ import { createClient } from "@supabase/supabase-js";
 
 export async function GET(request: Request) {
   const url = new URL(request.url);
-  const code = url.searchParams.get("code");
 
-  if (!code) {
-    return NextResponse.redirect(new URL("/auth?confirmed=1", request.url));
+  const token_hash = url.searchParams.get("token_hash");
+  const type = url.searchParams.get("type");
+
+  if (!token_hash || !type) {
+    return NextResponse.redirect(
+      new URL("/auth?error=link_invalid", url.origin)
+    );
   }
 
   const supabase = createClient(
@@ -14,7 +18,10 @@ export async function GET(request: Request) {
     process.env.SUPABASE_SERVICE_ROLE_KEY!
   );
 
-  const { data, error } = await supabase.auth.exchangeCodeForSession(code);
+  const { data, error } = await supabase.auth.verifyOtp({
+    token_hash,
+    type: type as any,
+  });
 
   if (error || !data?.user) {
     return NextResponse.redirect(
@@ -45,12 +52,8 @@ export async function GET(request: Request) {
     });
 
     const text = await res.text();
-
-    if (!res.ok) {
-      console.error("Admin signup alert HTTP error:", res.status, text);
-    } else {
-      console.log("Admin signup alert sent:", text);
-    }
+    console.log("ADMIN ALERT STATUS:", res.status);
+    console.log("ADMIN ALERT RESPONSE:", text);
   } catch (e) {
     console.error("Admin signup alert failed:", e);
   }

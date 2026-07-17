@@ -735,9 +735,9 @@ export default function HomePage() {
 
       <div className="pointer-events-none fixed inset-0 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(16,185,129,0.15),transparent)]" />
-        <FloatingOrb color="bg-emerald-400" size={400} top="10%" left="10%" delay={0} />
-        <FloatingOrb color="bg-teal-400" size={300} top="60%" left="70%" delay={2} />
-        <FloatingOrb color="bg-cyan-400" size={250} top="30%" left="80%" delay={4} />
+        <FloatingOrb color="bg-emerald-400" size={260} top="12%" left="8%" delay={0} />
+<FloatingOrb color="bg-teal-400" size={180} top="62%" left="72%" delay={2} />
+<FloatingOrb color="bg-cyan-400" size={160} top="34%" left="78%" delay={4} />
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
       </div>
 

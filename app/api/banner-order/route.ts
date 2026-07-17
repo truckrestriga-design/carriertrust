@@ -31,6 +31,10 @@ export async function POST(req: Request) {
     const price = Number(formData.get("price") || 0);
 
     const companyName = String(formData.get("companyName") || "").trim();
+    const vatNumber = String(formData.get("vatNumber") || "").trim();
+    const isLatvianVat = vatNumber.toUpperCase().startsWith("LV");
+const vatPercent = isLatvianVat ? 21 : 0;
+const totalPrice = price + (price * vatPercent) / 100;
     const invoiceEmail = String(formData.get("invoiceEmail") || "").trim();
     const paymentPurpose = String(formData.get("paymentPurpose") || "").trim();
 
@@ -202,7 +206,7 @@ export async function POST(req: Request) {
 
       period,
       period_label: periodLabel,
-      price,
+      price: totalPrice,
 
       banner_file_url: bannerFileUrl,
       payment_proof_url: paymentProofUrl,
@@ -239,13 +243,14 @@ export async function POST(req: Request) {
         <h2>New banner order</h2>
 
         <p><strong>Company:</strong> ${companyName}</p>
-        <p><strong>Invoice email:</strong> ${invoiceEmail}</p>
-        <p><strong>Placement:</strong> ${placement}</p>
-        <p><strong>Side:</strong> ${side}</p>
-        <p><strong>Target company:</strong> ${targetCompanyName || "-"}</p>
-        <p><strong>Target company ID:</strong> ${targetCompanyId || "-"}</p>
+<p><strong>VAT number:</strong> ${vatNumber || "-"}</p>
+<p><strong>Email:</strong> ${invoiceEmail}</p>
+<p><strong>Placement:</strong> ${placement}</p>
+<p><strong>Side:</strong> ${side}</p>
         <p><strong>Period:</strong> ${periodLabel}</p>
-        <p><strong>Price:</strong> €${price}</p>
+        <p><strong>Price:</strong> €${totalPrice.toFixed(2)} ${
+  vatPercent === 21 ? "(incl. 21% VAT)" : "(VAT 0%)"
+}</p>
         <p><strong>Payment purpose:</strong> ${paymentPurpose}</p>
         <p><strong>Banner:</strong> <a href="${bannerFileUrl}" target="_blank">Open banner</a></p>
         <p><strong>Payment proof:</strong> <a href="${paymentProofUrl}" target="_blank">Open proof</a></p>

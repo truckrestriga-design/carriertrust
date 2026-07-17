@@ -483,10 +483,10 @@ export default function AdminPage() {
     setTimeout(() => setMsg(null), 1200);
   }
 
-  async function updateReportStatus(id: string, status: ReportRow["status"]) {
+  async function updateReportStatus(id: string, status: ReportRow["status"] | "delete") {
     setMsg(null);
     setReportSaving(id);
-
+  
     try {
       const headers = await getFunctionHeaders();
       const resp = await fetch(`${SUPABASE_URL}/functions/v1/admin-reports`, {
@@ -494,15 +494,15 @@ export default function AdminPage() {
         headers,
         body: JSON.stringify({ id, status }),
       });
-
+  
       const out = await resp.json().catch(() => ({}));
       setReportSaving(null);
-
+  
       if (!resp.ok) {
         setMsg(out?.error || out?.details || `Failed to update report (${resp.status})`);
         return;
       }
-
+  
       await loadReports();
     } catch (e: any) {
       setReportSaving(null);
@@ -1195,6 +1195,14 @@ export default function AdminPage() {
                           >
                             Reject
                           </button>
+
+                          <button
+  onClick={() => updateReportStatus(r.id, "delete")}
+  disabled={reportSaving === r.id}
+  className="px-3 py-1.5 rounded-lg border border-red-500 text-red-800 hover:bg-red-50 disabled:opacity-60"
+>
+  Delete
+</button>
 
                           <button
                             onClick={() => openNotes(r)}

@@ -123,19 +123,11 @@ export default function AdminImportCompaniesPage() {
 
   return (
     <main className="min-h-screen text-black px-6">
-      <div className="max-w-6xl mx-auto pt-24 pb-16">
+      <div className="max-w-6xl mx-auto pt-48 pb-16">
         <div className="flex items-center justify-between gap-4">
-          <Link href="/admin" className="text-sm text-black/55 hover:text-black transition">
-            ← Admin
-          </Link>
+         
 
           <div className="flex items-center gap-3">
-            <Link
-              href="/admin/billing"
-              className="inline-flex items-center justify-center rounded-2xl px-4 py-3 border border-black/10 bg-white/70 text-sm font-semibold hover:bg-white transition"
-            >
-              Billing
-            </Link>
           </div>
         </div>
 

@@ -13,13 +13,29 @@ export const metadata: Metadata = {
 };
 
 export default async function CompaniesPage() {
-  const { data } = await supabaseServer
+  const allCompanies: any[] = [];
+const pageSize = 1000;
+
+for (let from = 0; ; from += pageSize) {
+  const to = from + pageSize - 1;
+
+  const { data, error } = await supabaseServer
     .from("companies")
     .select("id, slug, name, country, vat_uid")
-    .order("created_at", { ascending: false })
-    .limit(1000);
+    .order("name", { ascending: true })
+    .range(from, to);
 
-  const companies = data || [];
+  if (error) {
+    console.error("Companies load error:", error);
+    break;
+  }
+
+  allCompanies.push(...(data || []));
+
+  if (!data || data.length < pageSize) break;
+}
+
+const companies = allCompanies;
 
   return (
     <main className="min-h-screen px-6 pt-46 pb-24">

@@ -64,6 +64,14 @@ function parseCsv(text: string) {
   });
 }
 
+function makeSlug(value: string) {
+  return value
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
 function normalizeCompany(row: Record<string, string>) {
   const name = String(row.name || "").trim();
   const vat_uid = String(row.vat_uid || "").trim().toUpperCase();
@@ -211,11 +219,13 @@ Deno.serve(async (req) => {
         }
 
         updated += 1;
-      } else {
+      }
+       else {
         const insertRes = await service
         .from("companies")
         .insert({
           name: row.name,
+          slug: `${makeSlug(row.name)}-${row.vat_uid}`,
           vat_uid: row.vat_uid,
           country: row.country,
         })
@@ -251,17 +261,6 @@ Deno.serve(async (req) => {
       }
       
       inserted += 1;
-      continue;
-
-        if (insertRes.error) {
-          importErrors.push({
-            row_number: row.row_number,
-            error: insertRes.error.message,
-          });
-          continue;
-        }
-
-        inserted += 1;
       }
     }
 

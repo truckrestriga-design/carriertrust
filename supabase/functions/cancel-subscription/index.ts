@@ -153,12 +153,8 @@ Deno.serve(async (req) => {
       return json({
         ok: true,
         cancel_at_period_end: true,
-        early_cancellation_fee_applied: earlyCancellationFeeApplied,
-        fee_invoice_id: feeInvoiceId,
-        fee_payment_status: feePaymentStatus,
-        current_period_end: stripeCurrentPeriodEnd,
-        payment_method_used: paymentMethodToUse,
-        source_used: sourceToUse,
+        already_canceled: true,
+        current_period_end: currentPeriodEndRaw || null,
       });
     }
 

@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useLang } from "@/lib/language-context";
+import { supabase } from "@/lib/supabaseClient";
 
 type Lang = "en" | "de" | "ru" | "fr" | "es" | "it";
 
@@ -444,6 +445,25 @@ const TEXT: Record<Lang, TextPack> = {
 export default function VerifiedProfilePage() {
   const { lang } = useLang();
   const t = useMemo(() => TEXT[(lang as Lang) || "en"] ?? TEXT.en, [lang]);
+  const [isAuthed, setIsAuthed] = useState(false);
+
+  useEffect(() => {
+    let mounted = true;
+  
+    supabase.auth.getUser().then(({ data }) => {
+      if (!mounted) return;
+      setIsAuthed(!!data.user);
+    });
+  
+    return () => {
+      mounted = false;
+    };
+  }, []);
+  
+  const pricingHref = isAuthed ? "/pricing" : "/auth?next=/pricing";
+  const companyProfileHref = isAuthed
+  ? "/company/profile"
+  : "/auth?next=/company/profile";
 
   const card =
     "rounded-[28px] border border-black/10 bg-white/70 backdrop-blur shadow-[0_14px_60px_rgba(15,20,30,0.08)]";
@@ -474,12 +494,13 @@ export default function VerifiedProfilePage() {
               </p>
 
               <div className="mt-6 flex flex-wrap gap-3">
-                <Link href="/pricing" className={blackBtn}>
-                  {t.openPricing}
-                </Link>
-                <Link href="/auth?next=/company/profile" className={ghostBtn}>
-                  {t.createCompanyAccount}
-                </Link>
+              <Link href={pricingHref} className={blackBtn}>
+  {t.openPricing}
+</Link>
+<Link href={companyProfileHref} className={ghostBtn}>
+  {t.createCompanyAccount}
+</Link>
+
               </div>
             </div>
           </div>
@@ -582,12 +603,12 @@ export default function VerifiedProfilePage() {
             </div>
 
             <div className="mt-6 flex flex-wrap gap-3">
-              <Link href="/auth?next=/company/profile" className={blackBtn}>
-                {t.createCompanyAccount}
-              </Link>
-              <Link href="/pricing" className={ghostBtn}>
-                {t.viewFullPricing}
-              </Link>
+            <Link href={companyProfileHref} className={blackBtn}>
+  {t.createCompanyAccount}
+</Link>
+              <Link href={pricingHref} className={ghostBtn}>
+  {t.viewFullPricing}
+</Link>
             </div>
           </div>
         </div>

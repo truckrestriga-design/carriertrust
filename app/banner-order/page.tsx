@@ -65,7 +65,7 @@ type Placement =
   const companyBankData = useMemo(
     () => ({
       companyName: 'SIA "JAKOVLEV CAPITAL"',
-      accountNumber: "LV00HABA0000000000000",
+      accountNumber: "LV60HABA0551065502940",
       bic: "HABALV22",
     }),
     []

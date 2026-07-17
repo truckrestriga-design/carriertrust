@@ -10,6 +10,7 @@ export default function SiteHeader() {
   const { lang, setLang, t } = useLang();
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
@@ -23,10 +24,12 @@ export default function SiteHeader() {
   useEffect(() => {
     supabase.auth.getUser().then(({ data }) => {
       setIsLoggedIn(!!data.user);
+setIsAdmin(data.user?.email === "carriertrust.eu@gmail.com");
     });
 
     const { data: sub } = supabase.auth.onAuthStateChange((_e, session) => {
       setIsLoggedIn(!!session?.user);
+setIsAdmin(session?.user?.email === "carriertrust.eu@gmail.com");
     });
 
     lastY.current = window.scrollY || 0;
@@ -116,6 +119,9 @@ export default function SiteHeader() {
 
   const navLink =
     "inline-flex shrink-0 items-center justify-center whitespace-nowrap rounded-2xl border border-transparent px-4 py-2.5 text-sm font-medium text-slate-600 transition-all duration-200 hover:border-slate-200/80 hover:bg-white/85 hover:text-slate-900 hover:shadow-[0_8px_24px_rgba(15,23,42,0.06)]";
+    const companyProfileLink = isLoggedIn
+    ? "inline-flex shrink-0 items-center justify-center whitespace-nowrap rounded-2xl border border-emerald-200 bg-emerald-50/90 px-4 py-2.5 text-sm font-semibold text-emerald-700 shadow-[0_10px_24px_rgba(16,185,129,0.10)] transition-all duration-200 hover:-translate-y-[1px] hover:border-emerald-300 hover:bg-emerald-100 hover:text-emerald-800"
+    : navLink;
 
   const subtleBtn =
     "inline-flex shrink-0 items-center justify-center whitespace-nowrap rounded-2xl border border-slate-200/80 bg-white/72 px-4 py-2.5 text-sm font-medium text-slate-700 backdrop-blur-xl transition-all duration-200 hover:-translate-y-[1px] hover:bg-white hover:text-slate-900 hover:shadow-[0_10px_24px_rgba(15,23,42,0.07)]";
@@ -184,9 +190,17 @@ export default function SiteHeader() {
                 {t("riskIndex")}
               </Link>
 
-              <Link href="/company/profile" className={navLink}>
-                {t("companyProfile")}
-              </Link>
+              <Link
+ href={isAdmin ? "/admin" : "/company/profile"}
+  className={companyProfileLink}
+>
+  <span className="flex items-center gap-2">
+    {isLoggedIn ? (
+      <span className="h-2 w-2 rounded-full bg-emerald-500" />
+    ) : null}
+    <span>{t("companyProfile")}</span>
+  </span>
+</Link>
 
               <Link href="/verified-profile" className={navLink}>
                 {t("forCompanies")}
@@ -395,8 +409,8 @@ export default function SiteHeader() {
               </Link>
 
               <Link
-                href="/company/profile"
-                className={mobileNavItem}
+  href={isAdmin ? "/admin" : "/company/profile"}
+  className={mobileNavItem}
                 onClick={() => setMobileMenuOpen(false)}
               >
                 <span>{t("companyProfile")}</span>

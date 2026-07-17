@@ -43,3 +43,53 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(180deg, #10b981, #0d9488);
 }
+
+.banner-scroll {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.banner-scroll::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+.banner-scroll-indicator-dot {
+  animation: bannerScrollDot 1.5s ease-in-out infinite;
+}
+
+@keyframes bannerScrollDot {
+  0% {
+    transform: translateY(0);
+    opacity: 0.45;
+  }
+  50% {
+    transform: translateY(8px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 0.45;
+  }
+}
+
+@keyframes popupIn {
+  0% {
+    opacity: 0;
+    transform: translateY(10px) scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes progressShrink {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0%;
+  }
+}

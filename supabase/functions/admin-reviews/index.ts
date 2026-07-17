@@ -135,6 +135,21 @@ Deno.serve(async (req) => {
           },
         });
       }
+      if (existingReview.company_id) {
+        await service.functions.invoke("recompute-trust-score", {
+          body: {
+            company_id: existingReview.company_id,
+          },
+        });
+      }
+
+      if (existingReview.company_id) {
+        await service.functions.invoke("recompute-trust-score", {
+          body: {
+            company_id: existingReview.company_id,
+          },
+        });
+      }
 
       return json({ ok: true });
     }
@@ -159,10 +174,17 @@ Deno.serve(async (req) => {
           new_status: "published",
         },
       });
-
+      
+      if (existingReview.company_id) {
+        await service.functions.invoke("recompute-trust-score", {
+          body: {
+            company_id: existingReview.company_id,
+          },
+        });
+      }
+      
       return json({ ok: true });
     }
-
     if (action === "edit") {
       const suffix = edit_reason ? `\n\n[Edited by admin: ${edit_reason}]` : "";
       const finalText = review_text.endsWith(suffix) || !suffix ? review_text : review_text + suffix;

@@ -123,6 +123,8 @@ type TextPack = {
   choosePeriod: string;
   companyName: string;
   companyNamePlaceholder: string;
+  vatNumber: string;
+  vatPlaceholder: string;
   invoiceEmail: string;
   invoiceEmailPlaceholder: string;
   uploadBanner: string;
@@ -249,7 +251,9 @@ const EN: TextPack = {
   choosePeriod: "Choose a period:",
   companyName: "Company name",
   companyNamePlaceholder: "For example, EXPORTO LTD",
-  invoiceEmail: "Invoice email",
+  vatNumber: "VAT number",
+vatPlaceholder: "For example LV40000000000",
+  invoiceEmail: "Email",
   invoiceEmailPlaceholder: "invoice@company.com",
   uploadBanner: "Upload banner",
   chooseBannerFile: "Click to choose a file",
@@ -371,7 +375,9 @@ timelineVerification: "Unternehmensverifizierung erfasst am",
     choosePeriod: "Zeitraum wählen:",
     companyName: "Firmenname",
     companyNamePlaceholder: "Zum Beispiel EXPORTO LTD",
-    invoiceEmail: "Rechnungs-E-Mail",
+    vatNumber: "USt-IdNr.",
+vatPlaceholder: "Zum Beispiel LV40000000000",
+    invoiceEmail: "EMail",
     invoiceEmailPlaceholder: "invoice@company.com",
     uploadBanner: "Banner hochladen",
     chooseBannerFile: "Klicken, um eine Datei auszuwählen",
@@ -489,7 +495,9 @@ timelineVerification: "Верификация компании зафиксир�
     choosePeriod: "Выберите период:",
     companyName: "Название компании",
     companyNamePlaceholder: "Например, EXPORTO LTD",
-    invoiceEmail: "Email для счёта",
+    vatNumber: "VAT номер",
+vatPlaceholder: "Например LV40000000000",
+    invoiceEmail: "Email",
     invoiceEmailPlaceholder: "invoice@company.com",
     uploadBanner: "Загрузить баннер",
     chooseBannerFile: "Нажмите, чтобы выбрать файл",
@@ -608,7 +616,9 @@ timelineVerification: "Vérification enregistrée le",
     choosePeriod: "Choisissez une période :",
     companyName: "Nom de l’entreprise",
     companyNamePlaceholder: "Par exemple, EXPORTO LTD",
-    invoiceEmail: "E-mail de facturation",
+    vatNumber: "Numéro TVA",
+vatPlaceholder: "Par exemple LV40000000000",
+    invoiceEmail: "Email",
     invoiceEmailPlaceholder: "invoice@company.com",
     uploadBanner: "Télécharger la bannière",
     chooseBannerFile: "Cliquez pour choisir un fichier",
@@ -726,7 +736,9 @@ timelineVerification: "Verificación registrada el",
     choosePeriod: "Elige un período:",
     companyName: "Nombre de la empresa",
     companyNamePlaceholder: "Por ejemplo, EXPORTO LTD",
-    invoiceEmail: "Email de factura",
+    vatNumber: "Número VAT",
+vatPlaceholder: "Por ejemplo LV40000000000",
+    invoiceEmail: "Email",
     invoiceEmailPlaceholder: "invoice@company.com",
     uploadBanner: "Subir banner",
     chooseBannerFile: "Haz clic para elegir un archivo",
@@ -845,7 +857,9 @@ timelineVerification: "Verifica registrata il",
     choosePeriod: "Scegli un periodo:",
     companyName: "Nome azienda",
     companyNamePlaceholder: "Ad esempio, EXPORTO LTD",
-    invoiceEmail: "Email fattura",
+    vatNumber: "Numero VAT",
+vatPlaceholder: "Ad esempio LV40000000000",
+    invoiceEmail: "Email",
     invoiceEmailPlaceholder: "invoice@company.com",
     uploadBanner: "Carica banner",
     chooseBannerFile: "Clicca per scegliere un file",
@@ -1198,6 +1212,7 @@ export default function CompanyPage() {
   const [paymentProofFile, setPaymentProofFile] = useState<File | null>(null);
   const [paymentProofName, setPaymentProofName] = useState<string | null>(null);
   const [bannerOrderCompanyName, setBannerOrderCompanyName] = useState("");
+  const [bannerOrderVatNumber, setBannerOrderVatNumber] = useState("");
   const [bannerOrderInvoiceEmail, setBannerOrderInvoiceEmail] = useState("");
   const [bannerOrderSubmitting, setBannerOrderSubmitting] = useState(false);
   const [bannerOrderSuccess, setBannerOrderSuccess] = useState("");
@@ -1246,7 +1261,7 @@ export default function CompanyPage() {
   const companyBankData = useMemo(
     () => ({
       companyName: 'SIA "JAKOVLEV CAPITAL"',
-      accountNumber: "LV00HABA0000000000000",
+      accountNumber: "LV60HABA0551065502940",
       bic: "HABALV22",
     }),
     []
@@ -1473,6 +1488,7 @@ setCompanyPlan(planRow?.plan ?? null);
       setPaymentProofFile(null);
       setPaymentProofName(null);
       setBannerOrderCompanyName("");
+      setBannerOrderVatNumber("");
       setBannerOrderInvoiceEmail("");
     }, 2500);
 
@@ -1631,6 +1647,7 @@ const trustScoreUI = useMemo(() => {
     setPaymentProofFile(null);
     setPaymentProofName(null);
     setBannerOrderCompanyName("");
+    setBannerOrderVatNumber("");
     setBannerOrderInvoiceEmail("");
     setBannerOrderSuccess("");
     setBannerOrderError("");
@@ -1692,6 +1709,7 @@ const trustScoreUI = useMemo(() => {
       body.append("periodLabel", selectedPlanData.label);
       body.append("price", String(selectedPlanData.price));
       body.append("companyName", bannerOrderCompanyName.trim());
+      body.append("vatNumber", bannerOrderVatNumber.trim());
       body.append("invoiceEmail", bannerOrderInvoiceEmail.trim());
       body.append("paymentPurpose", bannerPaymentPurpose);
       body.append("targetCompanyId", realCompanyId);
@@ -2151,8 +2169,7 @@ const trustScoreUI = useMemo(() => {
                 ) : (
                   <div className="mt-4 space-y-4">
                     {reviews.map((r) => {
-                      const risk = Number(r.risk_score ?? 0);
-                      const flagged = Boolean(r.is_flagged) || risk >= 3;
+                      const flagged = Boolean(r.is_flagged);
 
                       const reply =
                         r.review_replies && r.review_replies.length > 0
@@ -2197,10 +2214,9 @@ const trustScoreUI = useMemo(() => {
                               </div>
 
                               <div className="mt-1 text-xs text-slate-500">
-                                {new Date(r.created_at).toLocaleDateString()}
-                                {r.issue_type ? ` • ${r.issue_type}` : ""}
-                                {risk > 0 ? ` • risk ${risk}` : ""}
-                              </div>
+  {new Date(r.created_at).toLocaleDateString()}
+  {r.issue_type ? ` • ${r.issue_type}` : ""}
+</div>
                             </div>
 
                             <button
@@ -2398,7 +2414,7 @@ const trustScoreUI = useMemo(() => {
 
         {isBannerModalOpen && (
           <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-slate-900/55 p-4 backdrop-blur-sm">
-            <div className="relative w-full max-w-4xl scale-[0.97] origin-center rounded-[2rem] border border-white/50 bg-white/92 shadow-[0_40px_120px_rgba(15,23,42,0.25)]">
+            <div className="relative w-full max-w-5xl rounded-[2rem] border border-slate-200 bg-white shadow-[0_30px_90px_rgba(15,23,42,0.14)] overflow-hidden">
               <button
                 onClick={closeBannerModal}
                 className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 transition-colors hover:bg-slate-200"
@@ -2418,7 +2434,7 @@ const trustScoreUI = useMemo(() => {
                 </svg>
               </button>
 
-              <div className="p-4 md:p-4">
+              <div className="banner-scroll max-h-[85vh] overflow-y-auto px-5 pb-5 pt-6 pr-16 md:px-6 md:pb-6 md:pt-6 md:pr-16">
                 <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-2xl bg-emerald-100">
                   <svg
                     className="h-5 w-5 text-emerald-600"
@@ -2441,7 +2457,7 @@ const trustScoreUI = useMemo(() => {
                   {selectedBannerSide === "left" ? t.sideLeft : t.sideRight} • {t.sizeLabel} 180×600px
                 </p>
 
-                <div className="mt-3 grid grid-cols-1 gap-4 xl:grid-cols-[1fr_220px]">
+                <div className="mt-3 grid grid-cols-1 gap-4 xl:grid-cols-[1fr_36px_220px]">
                   <div>
                     <div className="space-y-1">
                       <p className="text-[13px] font-semibold text-slate-700">
@@ -2492,6 +2508,18 @@ const trustScoreUI = useMemo(() => {
                       </div>
 
                       <div>
+  <label className="mb-1 block text-[13px] font-semibold text-slate-700">
+    {t.vatNumber}
+  </label>
+
+  <input
+    value={bannerOrderVatNumber}
+    onChange={(e) => setBannerOrderVatNumber(e.target.value)}
+    className="h-9 w-full rounded-xl border border-slate-200 px-3 outline-none transition-colors focus:border-emerald-400"
+    placeholder={t.vatPlaceholder}
+  />
+</div>
+                      <div>
                         <label className="mb-1 block text-[13px] font-semibold text-slate-700">
                           {t.invoiceEmail}
                         </label>
@@ -2522,7 +2550,7 @@ const trustScoreUI = useMemo(() => {
                         <label className="mb-1 block text-[13px] font-semibold text-slate-700">
                           {t.uploadBanner}
                         </label>
-                        <label className="block cursor-pointer rounded-2xl border-2 border-dashed border-slate-300 p-2.5 text-center transition-colors hover:border-emerald-300">
+                        <label className="flex h-[76px] cursor-pointer flex-col items-center justify-center rounded-2xl border-2 border-dashed border-slate-300 bg-slate-50 text-center transition-colors hover:border-emerald-300 hover:bg-slate-100">
                           <p className="text-sm font-medium leading-tight text-slate-700">
                             {t.chooseBannerFile}
                           </p>
@@ -2557,7 +2585,18 @@ const trustScoreUI = useMemo(() => {
                               <span className="font-semibold">{t.bankBic}:</span> {companyBankData.bic}
                             </p>
                             <p>
-                              <span className="font-semibold">{t.amount}:</span> €{selectedPlanData.price} + VAT (EU 0%, LV 21%)
+                            <span className="font-semibold">{t.amount}:</span>{" "}
+€{(
+  bannerOrderVatNumber.trim().toUpperCase().startsWith("LV")
+    ? selectedPlanData.price * 1.21
+    : selectedPlanData.price
+).toFixed(2)}
+{" "}
+<span className="text-slate-500">
+  {bannerOrderVatNumber.trim().toUpperCase().startsWith("LV")
+    ? "(incl. 21% VAT)"
+    : "(VAT 0%)"}
+</span>
                             </p>
                             <p className="col-span-2">
                               <span className="font-semibold">{t.paymentPurpose}:</span>{" "}
@@ -2565,13 +2604,14 @@ const trustScoreUI = useMemo(() => {
                             </p>
                           </div>
                         </div>
+                        
                       )}
 
                       <div>
                         <label className="mb-1 block text-[13px] font-semibold text-slate-700">
                           {t.uploadPaymentProof}
                         </label>
-                        <label className="block cursor-pointer rounded-2xl border-2 border-dashed border-slate-300 p-2.5 text-center transition-colors hover:border-emerald-300">
+                        <label className="flex h-[76px] cursor-pointer flex-col items-center justify-center rounded-2xl border-2 border-dashed border-slate-300 bg-slate-50 text-center transition-colors hover:border-emerald-300 hover:bg-slate-100">
                           <p className="text-sm font-medium leading-tight text-slate-700">
                             {t.uploadPaymentConfirmation}
                           </p>
@@ -2594,13 +2634,25 @@ const trustScoreUI = useMemo(() => {
                       </div>
                     </div>
                   </div>
+                  
+                  <div className="hidden xl:flex items-center justify-center">
+                    <div className="flex flex-col items-center">
+                      <div className="h-20 w-[1.5px] rounded-full bg-emerald-400/80"></div>
 
-                  <div>
-                    <p className="mb-1 text-[13px] font-semibold text-slate-700">
-                      {t.bannerPreview}
-                    </p>
+                      <div className="my-3 flex h-11 w-6 items-start justify-center rounded-full border-2 border-emerald-400/90 bg-white/85 pt-2 shadow-[0_6px_18px_rgba(16,185,129,0.14)]">
+                        <div className="banner-scroll-indicator-dot h-2.5 w-[2px] rounded-full bg-emerald-500"></div>
+                      </div>
 
-                    <div className="h-[600px] w-[180px] overflow-hidden rounded-[1.5rem] border border-slate-200 bg-slate-100 shadow-sm">
+                      <div className="h-20 w-[1.5px] rounded-full bg-emerald-400/80"></div>
+                    </div>
+                  </div>
+
+                  <div className="flex flex-col items-center">
+  <p className="mb-3 text-[13px] font-semibold text-slate-700">
+    {t.bannerPreview}
+  </p>
+
+  <div className="h-[600px] w-[180px] overflow-visible rounded-[1.5rem] border border-slate-200 bg-slate-100 shadow-sm">
                       {bannerPreview ? (
                         <img
                           src={bannerPreview}
@@ -2620,7 +2672,7 @@ const trustScoreUI = useMemo(() => {
                   <button
                     disabled={!canSubmitBannerOrder || bannerOrderSubmitting}
                     onClick={handleSubmitBannerOrder}
-                    className={`flex h-12 w-full items-center justify-center rounded-2xl text-base font-semibold transition-all ${
+                    className={`flex h-14 w-full items-center justify-center rounded-2xl text-base font-semibold transition-all ${
                       canSubmitBannerOrder && !bannerOrderSubmitting
                         ? "bg-slate-900 text-white shadow-[0_18px_40px_rgba(15,23,42,0.22)] hover:-translate-y-0.5 hover:bg-slate-800"
                         : "cursor-not-allowed bg-slate-100 text-slate-400"

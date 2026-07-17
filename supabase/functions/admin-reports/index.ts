@@ -1,5 +1,7 @@
+// @ts-nocheck
 import { serve } from "https://deno.land/std@0.224.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+
 
 const CORS_HEADERS: Record<string, string> = {
   "Access-Control-Allow-Origin": "*",
@@ -121,28 +123,83 @@ serve(async (req) => {
       } catch {
         return json(400, { error: "Invalid JSON body" });
       }
-
+    
       const id = String(body?.id || "").trim();
       if (!id) return json(400, { error: "Missing id" });
-
+    
+      // DELETE REPORT
+      if (body?.status === "delete") {
+        const { data: report, error: loadError } = await supabaseAdmin
+          .from("reports_v2")
+          .select("review_id")
+          .eq("id", id)
+          .maybeSingle();
+    
+        if (loadError) {
+          return json(500, { error: "Failed to load report", details: loadError.message });
+        }
+    
+        const reviewId = report?.review_id || null;
+    
+        const { error: deleteError } = await supabaseAdmin
+          .from("reports_v2")
+          .delete()
+          .eq("id", id);
+    
+        if (deleteError) {
+          return json(500, { error: "Failed to delete report", details: deleteError.message });
+        }
+    
+        if (reviewId) {
+          const { data: leftReports, error: leftError } = await supabaseAdmin
+            .from("reports_v2")
+            .select("id")
+            .eq("review_id", reviewId)
+            .in("status", ["new", "in_review"]);
+    
+          if (leftError) {
+            return json(500, { error: "Failed to check remaining reports", details: leftError.message });
+          }
+    
+          if (!leftReports || leftReports.length === 0) {
+            const { error: reviewUpdateError } = await supabaseAdmin
+              .from("reviews")
+              .update({ is_flagged: false })
+              .eq("id", reviewId);
+    
+            if (reviewUpdateError) {
+              return json(500, { error: "Failed to update review flag", details: reviewUpdateError.message });
+            }
+          }
+        }
+    
+        return json(200, { ok: true });
+      }
+    
       const patch: Record<string, any> = {};
-
+    
       if (typeof body?.status === "string" && body.status.trim()) {
         patch.status = body.status.trim();
         patch.processed_at = new Date().toISOString();
       }
-
+    
       if (typeof body?.admin_notes === "string") {
         patch.admin_notes = body.admin_notes;
       }
-
+    
       if (Object.keys(patch).length === 0) {
         return json(400, { error: "Nothing to update" });
       }
-
-      const { error } = await supabaseAdmin.from("reports_v2").update(patch).eq("id", id);
-      if (error) return json(500, { error: "Failed to update report", details: error.message });
-
+    
+      const { error } = await supabaseAdmin
+        .from("reports_v2")
+        .update(patch)
+        .eq("id", id);
+    
+      if (error) {
+        return json(500, { error: "Failed to update report", details: error.message });
+      }
+    
       return json(200, { ok: true });
     }
 

@@ -12,6 +12,7 @@ type BannerSide = "left" | "right";
 
 type CompanyRow = {
   id: string;
+  slug: string | null;
   name: string | null;
   vat_uid: string | null;
   country: string | null;
@@ -50,6 +51,7 @@ type RotatingBannerProps = {
 
 type BannerOrderForm = {
   companyName: string;
+  vatNumber: string;
   invoiceEmail: string;
 };
 
@@ -68,6 +70,8 @@ type TextPack = {
   choosePeriod: string;
   companyName: string;
   companyNamePlaceholder: string;
+  vatNumber: string;
+vatPlaceholder: string;
   invoiceEmail: string;
   invoiceEmailPlaceholder: string;
   invalidEmail: string;
@@ -113,8 +117,10 @@ const EN: TextPack = {
 
   choosePeriod: "Choose a period:",
   companyName: "Company name",
+  vatNumber: "VAT number",
+  vatPlaceholder: "For example LV773322445",
   companyNamePlaceholder: "For example, EXPORTO LTD",
-  invoiceEmail: "Invoice email",
+  invoiceEmail: "Email",
   invoiceEmailPlaceholder: "invoice@company.com",
   invalidEmail: "Please enter a valid email",
 
@@ -163,7 +169,9 @@ const TEXT: Record<Lang, TextPack> = {
     choosePeriod: "Zeitraum wählen:",
     companyName: "Firmenname",
     companyNamePlaceholder: "Zum Beispiel EXPORTO LTD",
-    invoiceEmail: "Rechnungs-E-Mail",
+    vatNumber: "USt-IdNr.",
+vatPlaceholder: "Zum Beispiel LV773322445",
+    invoiceEmail: "EMail",
     invoiceEmailPlaceholder: "invoice@company.com",
     invalidEmail: "Bitte geben Sie eine gültige E-Mail ein",
     uploadBanner: "Banner hochladen",
@@ -203,7 +211,9 @@ const TEXT: Record<Lang, TextPack> = {
     choosePeriod: "Выберите период:",
     companyName: "Название компании",
     companyNamePlaceholder: "Например, EXPORTO LTD",
-    invoiceEmail: "Email для счёта",
+    vatNumber: "VAT номер",
+vatPlaceholder: "Например LV773322445",
+    invoiceEmail: "Email",
     invoiceEmailPlaceholder: "invoice@company.com",
     invalidEmail: "Введите корректный email",
     uploadBanner: "Загрузить баннер",
@@ -243,7 +253,9 @@ const TEXT: Record<Lang, TextPack> = {
     choosePeriod: "Choisissez une période :",
     companyName: "Nom de l’entreprise",
     companyNamePlaceholder: "Par exemple, EXPORTO LTD",
-    invoiceEmail: "E-mail de facturation",
+    vatNumber: "Numéro TVA",
+vatPlaceholder: "Par exemple LV773322445",
+    invoiceEmail: "Email",
     invoiceEmailPlaceholder: "invoice@company.com",
     invalidEmail: "Veuillez entrer un e-mail valide",
     uploadBanner: "Télécharger la bannière",
@@ -283,7 +295,9 @@ const TEXT: Record<Lang, TextPack> = {
     choosePeriod: "Elige un período:",
     companyName: "Nombre de la empresa",
     companyNamePlaceholder: "Por ejemplo, EXPORTO LTD",
-    invoiceEmail: "Email de factura",
+    vatNumber: "Número VAT",
+vatPlaceholder: "Por ejemplo LV773322445",
+    invoiceEmail: "Email",
     invoiceEmailPlaceholder: "invoice@company.com",
     invalidEmail: "Introduce un email válido",
     uploadBanner: "Subir banner",
@@ -323,7 +337,9 @@ const TEXT: Record<Lang, TextPack> = {
     choosePeriod: "Scegli un periodo:",
     companyName: "Nome azienda",
     companyNamePlaceholder: "Ad esempio, EXPORTO LTD",
-    invoiceEmail: "Email fattura",
+    vatNumber: "Numero VAT",
+vatPlaceholder: "Ad esempio LV773322445",
+    invoiceEmail: "Email",
     invoiceEmailPlaceholder: "invoice@company.com",
     invalidEmail: "Inserisci un’email valida",
     uploadBanner: "Carica banner",
@@ -401,7 +417,7 @@ function RotatingBanner({ side, banners, onAddClick, t }: RotatingBannerProps) {
             <div className="flex h-full w-full flex-col items-center justify-center gap-4 bg-[linear-gradient(180deg,rgba(255,255,255,0.92),rgba(241,245,249,0.96))] p-5 text-center">
               <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-emerald-100 shadow-inner">
                 <svg
-                  className="h-8 w-8 text-emerald-600"
+                  className="h-5 w-5 text-emerald-600"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -482,6 +498,7 @@ export default function RiskIndexPage() {
 
   const [form, setForm] = useState<BannerOrderForm>({
     companyName: "",
+    vatNumber: "",
     invoiceEmail: "",
   });
 
@@ -532,7 +549,7 @@ export default function RiskIndexPage() {
   const companyBankData = useMemo(
     () => ({
       companyName: 'SIA "JAKOVLEV CAPITAL"',
-      accountNumber: "LV00HABA0000000000000",
+      accountNumber: "LV60HABA0551065502940",
       bic: "HABALV22",
     }),
     []
@@ -609,6 +626,7 @@ export default function RiskIndexPage() {
       setPaymentProofName(null);
       setForm({
         companyName: "",
+        vatNumber: "",
         invoiceEmail: "",
       });
     }, 2500);
@@ -621,33 +639,48 @@ export default function RiskIndexPage() {
       setLoading(true);
       setErr(null);
   
-      const { data: companiesData, error: companiesError } = await supabase
-  .from("companies")
-  .select(`
-    id,
-    name,
-    vat_uid,
-    country,
-    trust_score,
-    trust_updated_at,
-    fraud_score,
-    risk_level,
-    auto_flagged
-  `);
-  
-      if (companiesError) throw new Error(companiesError.message);
-  
-      const companies = (companiesData || []) as CompanyRow[];
-      const companyIds = companies.map((c) => c.id).filter(Boolean);
+      const allCompanies: CompanyRow[] = [];
+      const pageSize = 1000;
+      
+      for (let from = 0; ; from += pageSize) {
+        const to = from + pageSize - 1;
+      
+        const { data, error } = await supabase
+          .from("companies")
+          .select(`
+            id,
+            slug,
+            name,
+            vat_uid,
+            country,
+            trust_score,
+            trust_updated_at,
+            fraud_score,
+            risk_level,
+            auto_flagged
+          `)
+          .order("name", { ascending: true })
+          .range(from, to);
+      
+        if (error) throw new Error(error.message);
+      
+        allCompanies.push(...((data || []) as CompanyRow[]));
+      
+        if (!data || data.length < pageSize) break;
+      }
+      
+      const companies = allCompanies;
+      const companyIds = companies
+  .map((c) => c.id)
+  .filter((id): id is string => !!id);
   
       const reviewsByCompany = new Map<string, ReviewRiskRow[]>();
   
       if (companyIds.length > 0) {
         const { data: reviewsData, error: reviewsError } = await supabase
-          .from("reviews")
-          .select("company_id, rating, review_text, status")
-          .in("company_id", companyIds)
-          .eq("status", "published");
+        .from("reviews")
+        .select("company_id, rating, review_text, status")
+        .eq("status", "published");
   
         if (reviewsError) throw new Error(reviewsError.message);
   
@@ -659,20 +692,53 @@ export default function RiskIndexPage() {
       }
   
       const liveRows = companies
-  .filter((company) => {
+  .map((company) => {
     const companyReviews = reviewsByCompany.get(company.id) || [];
-    const liveRisk = getRiskLevelFromReviews(companyReviews);
 
-    if (liveRisk === null) return false;
+    if (companyReviews.length === 0) {
+      return null;
+    }
 
-    return liveRisk === tab;
+    const ratings = companyReviews
+      .map((review) => Number(review.rating || 0))
+      .filter((rating) => rating > 0);
+
+    if (ratings.length === 0) {
+      return null;
+    }
+
+    const worstRating = Math.min(...ratings);
+
+    let liveRisk: RiskTab = "low";
+    let computedFraudScore = 0;
+
+    if (worstRating <= 2) {
+      liveRisk = "high";
+      computedFraudScore = 100;
+    } else if (worstRating === 3) {
+      liveRisk = "medium";
+      computedFraudScore = 50;
+    } else {
+      liveRisk = "low";
+      computedFraudScore = 0;
+    }
+
+    return {
+      ...company,
+      risk_level: liveRisk,
+      fraud_score: computedFraudScore,
+    };
+  })
+  .filter((company) => {
+    if (!company) return false;
+    return company.risk_level === tab;
   })
   .sort((a, b) => {
     const aFraud = typeof a.fraud_score === "number" ? a.fraud_score : 0;
     const bFraud = typeof b.fraud_score === "number" ? b.fraud_score : 0;
     return bFraud - aFraud;
   })
-  .slice(0, clamp(limit, 10, 200));
+  .slice(0, clamp(limit, 10, 200)) as CompanyRow[];
   
       setRows(liveRows);
     } catch (e: any) {
@@ -691,6 +757,7 @@ export default function RiskIndexPage() {
     setPaymentProofName(null);
     setForm({
       companyName: "",
+      vatNumber: "",
       invoiceEmail: "",
     });
     setSuccessMessage("");
@@ -746,6 +813,7 @@ export default function RiskIndexPage() {
       body.append("periodLabel", selectedPlanData.label);
       body.append("price", String(selectedPlanData.price));
       body.append("companyName", form.companyName.trim());
+      body.append("vatNumber", form.vatNumber.trim());
       body.append("invoiceEmail", form.invoiceEmail.trim());
       body.append("paymentPurpose", paymentPurpose);
       body.append("bannerFile", bannerFile, bannerFile.name);
@@ -936,12 +1004,12 @@ export default function RiskIndexPage() {
                             className="border-t border-black/10 transition hover:bg-black/[0.02]"
                           >
                             <td className="px-4 py-3">
-                              <Link
-                                href={`/companies/${c.id}`}
-                                className="font-semibold text-black hover:underline"
-                              >
-                                {c.name || t("company")}
-                              </Link>
+                            <Link
+  href={`/companies/${c.slug || c.id}`}
+  className="font-semibold text-black hover:underline"
+>
+  {c.name || t("company")}
+</Link>
                             </td>
 
                             <td className="px-4 py-3 text-black/70">
@@ -1025,49 +1093,56 @@ export default function RiskIndexPage() {
         {isModalOpen && (
           <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/50 px-4 py-6">
             <div className="relative w-full max-w-4xl scale-[0.97] origin-center rounded-[2rem] border border-white/50 bg-white/92 shadow-[0_40px_120px_rgba(15,23,42,0.25)]">
-              <button
-                onClick={closeModal}
-                className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 transition-colors hover:bg-slate-200"
-              >
-                <svg
-                  className="h-5 w-5 text-slate-500"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-              </button>
+            <button
+  onClick={closeModal}
+  className="absolute right-4 top-4 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 transition-colors hover:bg-slate-200"
+>
+  <svg
+    className="h-5 w-5 text-slate-500"
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="M6 18L18 6M6 6l12 12"
+    />
+  </svg>
+</button>
 
-              <div className="p-4 md:p-4">
-                <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-2xl bg-emerald-100">
-                  <svg
-                    className="h-5 w-5 text-emerald-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"
-                    />
-                  </svg>
-                </div>
 
-                <h2 className="text-[18px] font-bold text-slate-900">{modalT.orderBanner}</h2>
-                <p className="mt-1 text-[13px] text-slate-500">
-                  {modalT.searchPageLabel} • {modalT.sideLabel}:{" "}
-                  {selectedSide === "left" ? modalT.sideLeft : modalT.sideRight} • {modalT.sizeLabel} 180×600px
-                </p>
 
-                <div className="mt-3 grid grid-cols-1 gap-4 xl:grid-cols-[1fr_220px]">
+<div className="banner-scroll max-h-[85vh] overflow-y-auto px-5 pb-5 pt-6 pr-16 md:px-6 md:pb-6 md:pt-6 md:pr-16">
+  <div className="mb-4">
+    <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-2xl bg-emerald-100">
+      <svg
+        className="h-5 w-5 text-emerald-600"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"
+        />
+      </svg>
+    </div>
+
+    <h2 className="text-[18px] font-bold text-slate-900">
+      {modalT.orderBanner}
+    </h2>
+
+    <p className="mt-1 text-[13px] text-slate-500">
+      {modalT.searchPageLabel} • {modalT.sideLabel}:{" "}
+      {selectedSide === "left" ? modalT.sideLeft : modalT.sideRight} • {modalT.sizeLabel} 180×600px
+    </p>
+  </div>
+
+                <div className="mt-3 grid grid-cols-1 gap-4 xl:grid-cols-[1fr_36px_220px]">
                   <div>
                     <div className="space-y-1">
                       <p className="text-[13px] font-semibold text-slate-700">
@@ -1116,6 +1191,18 @@ export default function RiskIndexPage() {
                         />
                       </div>
 
+                      <div>
+  <label className="mb-1 block text-[13px] font-semibold text-slate-700">
+    {modalT.vatNumber}
+  </label>
+
+  <input
+    value={form.vatNumber}
+    onChange={(e) => updateForm("vatNumber", e.target.value)}
+    className="h-9 w-full rounded-xl border border-slate-200 px-3 outline-none transition-colors focus:border-emerald-400"
+    placeholder={modalT.vatPlaceholder}
+  />
+</div>
                       <div>
                         <label className="mb-1 block text-[13px] font-semibold text-slate-700">
                           {modalT.invoiceEmail}
@@ -1180,8 +1267,18 @@ export default function RiskIndexPage() {
                               {companyBankData.bic}
                             </p>
                             <p>
-                              <span className="font-semibold">{modalT.amount}:</span> €
-                              {selectedPlanData.price} + VAT (EU 0%, LV 21%)
+                            <span className="font-semibold">{modalT.amount}:</span>{" "}
+€{(
+  form.vatNumber.trim().toUpperCase().startsWith("LV")
+    ? selectedPlanData.price * 1.21
+    : selectedPlanData.price
+).toFixed(2)}
+{" "}
+<span className="text-slate-500">
+  {form.vatNumber.trim().toUpperCase().startsWith("LV")
+    ? "(incl. 21% VAT)"
+    : "(VAT 0%)"}
+</span>
                             </p>
                             <p className="col-span-2">
                               <span className="font-semibold">{modalT.paymentPurpose}:</span>{" "}
@@ -1219,12 +1316,25 @@ export default function RiskIndexPage() {
                     </div>
                   </div>
 
-                  <div>
-                    <p className="mb-1 text-[13px] font-semibold text-slate-700">
-                      {modalT.bannerPreview}
-                    </p>
 
-                    <div className="h-[600px] w-[180px] overflow-hidden rounded-[1.5rem] border border-slate-200 bg-slate-100 shadow-sm">
+                  <div className="hidden xl:flex items-center justify-center">
+  <div className="flex flex-col items-center">
+    <div className="h-20 w-[1.5px] rounded-full bg-emerald-400/80"></div>
+
+    <div className="my-3 flex h-11 w-6 items-start justify-center rounded-full border-2 border-emerald-400/90 bg-white/85 pt-2 shadow-[0_6px_18px_rgba(16,185,129,0.14)]">
+      <div className="banner-scroll-indicator-dot h-2.5 w-[2px] rounded-full bg-emerald-500"></div>
+    </div>
+
+    <div className="h-20 w-[1.5px] rounded-full bg-emerald-400/80"></div>
+  </div>
+</div>
+
+<div className="flex flex-col items-center">
+  <p className="mb-3 text-[13px] font-semibold text-slate-700">
+    {modalT.bannerPreview}
+  </p>
+
+  <div className="h-[600px] w-[180px] overflow-visible rounded-[1.5rem] border border-slate-200 bg-slate-100 shadow-sm">
                       {bannerPreview ? (
                         <img
                           src={bannerPreview}
@@ -1269,6 +1379,7 @@ export default function RiskIndexPage() {
                 <p className="mt-1.5 text-center text-xs text-slate-400">
                   {modalT.publishAfterModeration}
                 </p>
+             
               </div>
             </div>
           </div>

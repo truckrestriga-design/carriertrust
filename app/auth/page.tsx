@@ -66,6 +66,8 @@ type TextPack = {
   pleaseFillAllFields: string;
   pleaseSelectCountry: string;
   accountCreated: string;
+  accountMayExist: string;
+  linkInvalid: string;
   pleaseWait: string;
 
   ifCountryNotDetected: string;
@@ -128,7 +130,10 @@ const TEXT: Record<Lang, TextPack> = {
     pleaseSelectCountry: "Please select company country.",
     accountCreated:
       "Account created successfully. Please check your email and confirm your account before logging in.",
-    pleaseWait: "Please wait...",
+      linkInvalid: "This confirmation link has already been used or is no longer valid.",
+      pleaseWait: "Please wait...",
+      accountMayExist:
+      "This email may already be registered. Please sign in or use password reset if you already have an account.",
 
     ifCountryNotDetected: "If country is not detected from VAT, please select it manually.",
     loginOrRegisterToClaim: "Login or register to claim your selected company.",
@@ -193,7 +198,12 @@ const TEXT: Record<Lang, TextPack> = {
     pleaseSelectCountry: "Bitte wählen Sie das Firmenland aus.",
     accountCreated:
       "Konto erfolgreich erstellt. Bitte prüfen Sie Ihre E-Mails und bestätigen Sie Ihr Konto, bevor Sie sich anmelden.",
-    pleaseWait: "Bitte warten...",
+      accountMayExist:
+      "Diese E-Mail-Adresse ist möglicherweise bereits registriert. Bitte melden Sie sich an oder nutzen Sie die Passwortwiederherstellung, falls Sie bereits ein Konto haben.",
+
+      linkInvalid:
+      "Dieser Bestätigungslink wurde bereits verwendet oder ist nicht mehr gültig.",
+      pleaseWait: "Bitte warten...",
 
     ifCountryNotDetected:
       "Wenn das Land nicht anhand der USt-IdNr. erkannt wird, wählen Sie es bitte manuell aus.",
@@ -260,7 +270,12 @@ const TEXT: Record<Lang, TextPack> = {
     pleaseSelectCountry: "Пожалуйста, выберите страну компании.",
     accountCreated:
       "Аккаунт успешно создан. Пожалуйста, проверьте почту и подтвердите аккаунт перед входом.",
-    pleaseWait: "Пожалуйста, подождите...",
+      accountMayExist:
+      "Этот email уже может быть зарегистрирован. Войдите в аккаунт или используйте восстановление пароля.",
+
+      linkInvalid:
+      "Эта ссылка подтверждения уже была использована или больше недействительна.",
+      pleaseWait: "Пожалуйста, подождите...",
 
     ifCountryNotDetected:
       "Если страна не определилась по VAT, пожалуйста, выберите её вручную.",
@@ -328,7 +343,11 @@ const TEXT: Record<Lang, TextPack> = {
     pleaseSelectCountry: "Veuillez sélectionner le pays de l’entreprise.",
     accountCreated:
       "Compte créé avec succès. Veuillez vérifier votre email et confirmer votre compte avant de vous connecter.",
-    pleaseWait: "Veuillez patienter...",
+      accountMayExist:
+  "Cette adresse e-mail est peut-être déjà enregistrée. Veuillez vous connecter ou utiliser la réinitialisation du mot de passe si vous possédez déjà un compte.",
+      linkInvalid:
+      "Ce lien de confirmation a déjà été utilisé ou n’est plus valide.",
+      pleaseWait: "Veuillez patienter...",
 
     ifCountryNotDetected:
       "Si le pays n’est pas détecté à partir du numéro de TVA, veuillez le sélectionner manuellement.",
@@ -396,7 +415,12 @@ const TEXT: Record<Lang, TextPack> = {
     pleaseSelectCountry: "Por favor, selecciona el país de la empresa.",
     accountCreated:
       "Cuenta creada correctamente. Revisa tu correo y confirma tu cuenta antes de iniciar sesión.",
-    pleaseWait: "Por favor, espera...",
+      accountMayExist:
+      "Este correo electrónico ya podría estar registrado. Inicia sesión o utiliza la recuperación de contraseña si ya tienes una cuenta.",
+
+      linkInvalid:
+      "Este enlace de confirmación ya ha sido utilizado o ya no es válido.",
+      pleaseWait: "Por favor, espera...",
 
     ifCountryNotDetected:
       "Si el país no se detecta a partir del VAT, selecciónalo manualmente.",
@@ -464,7 +488,11 @@ const TEXT: Record<Lang, TextPack> = {
     pleaseSelectCountry: "Seleziona il paese dell’azienda.",
     accountCreated:
       "Account creato con successo. Controlla la tua email e conferma il tuo account prima di accedere.",
-    pleaseWait: "Attendere prego...",
+      accountMayExist:
+  "Questo indirizzo email potrebbe essere già registrato. Accedi oppure utilizza il recupero della password se possiedi già un account.",
+      linkInvalid:
+      "Questo link di conferma è già stato utilizzato oppure non è più valido.",
+      pleaseWait: "Attendere prego...",
 
     ifCountryNotDetected:
       "Se il paese non viene rilevato dal VAT, selezionalo manualmente.",
@@ -607,6 +635,9 @@ function AuthPageInner() {
   const [resetEmail, setResetEmail] = useState("");
 
   const next = useMemo(() => sp.get("next") || "/", [sp]);
+  const confirmed = useMemo(() => sp.get("confirmed") === "1", [sp]);
+  const [hasLinkError, setHasLinkError] = useState(false);
+  const authError = useMemo(() => sp.get("error") || "", [sp]);
 
   const normalizedCompanyName = companyName.trim().toUpperCase();
   const normalizedCompanyVat = companyVat.trim().toUpperCase();
@@ -632,12 +663,55 @@ function AuthPageInner() {
     setMode(initialMode);
   }, [initialMode]);
 
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const hash = window.location.hash || "";
+
+    if (
+      hash.includes("error=access_denied") ||
+      hash.includes("error_code=otp_expired") ||
+      hash.includes("Email+link+is+invalid") ||
+      hash.includes("has+expired")
+    ) {
+      setHasLinkError(true);
+      setMsg("link_invalid");
+
+      const cleanUrl = window.location.pathname + window.location.search;
+      window.history.replaceState({}, "", cleanUrl);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (authError !== "link_invalid") return;
+  
+    setHasLinkError(true);
+    setMsg("linkInvalid");
+  }, [authError]);
+
+  useEffect(() => {
+    if (!confirmed || hasLinkError) return;
+  
+    setMsg("Your email has been confirmed successfully. You can now sign in to CarrierTrust.");
+  
+    const timer = setTimeout(() => {
+      window.history.replaceState({}, "", "/auth");
+    }, 7000);
+  
+    return () => clearTimeout(timer);
+  }, [confirmed, hasLinkError]);
+  
+
   function setError(m: string) {
     setMsg(m);
   }
 
   function resolveMsg(value: keyof TextPack | string | null) {
     if (!value) return null;
+
+    if (value === "link_invalid") {
+      return t.linkInvalid;
+    }
   
     if (value in t) {
       return t[value as keyof TextPack];
@@ -938,11 +1012,23 @@ function AuthPageInner() {
 
     setBusy(true);
 
-    try {
-      const { error } = await supabase.auth.signUp({
+try {
+  const existsRes = await supabase.functions.invoke("check-email-exists", {
+    body: { email: em },
+  });
+
+  if (existsRes.data?.exists) {
+    setMsg("accountMayExist");
+    setMode("login");
+    setBusy(false);
+    return;
+  }
+
+  const { error } = await supabase.auth.signUp({
         email: em,
         password: pass,
         options: {
+          emailRedirectTo: `${window.location.origin}/auth/callback`,
           data: {
             company_name: finalCompanyName,
             company_vat: finalCompanyVat,
@@ -976,7 +1062,7 @@ function AuthPageInner() {
 
     try {
       const { error } = await supabase.auth.resetPasswordForEmail(emailToReset, {
-        redirectTo: `${window.location.origin}/auth/callback?next=/auth?mode=reset`,
+        redirectTo: `${window.location.origin}/auth?mode=reset`,
       });
 
       if (error) throw new Error(error.message);
@@ -1042,6 +1128,74 @@ function AuthPageInner() {
 
   const card =
     "rounded-2xl border border-slate-200 bg-white/80 p-4 text-sm text-slate-700 shadow-sm";
+    const ConfirmedSuccessScreen = () => (
+      <div className="relative flex min-h-screen items-center justify-center px-4 pt-32 pb-10 md:px-6">
+        <div className="relative w-full max-w-[920px] overflow-hidden rounded-[2.75rem] border border-white/70 bg-white/78 px-8 py-10 shadow-[0_40px_120px_rgba(15,23,42,0.12)] backdrop-blur-2xl md:px-14 md:py-14">
+          <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-[2.75rem]">
+            <div className="absolute -top-24 -right-20 h-72 w-72 rounded-full bg-emerald-200/50 blur-3xl" />
+            <div className="absolute -bottom-28 -left-20 h-72 w-72 rounded-full bg-cyan-200/35 blur-3xl" />
+            <div className="absolute inset-0 opacity-[0.03] bg-[linear-gradient(to_right,rgba(15,23,42,0.5)_1px,transparent_1px),linear-gradient(to_bottom,rgba(15,23,42,0.5)_1px,transparent_1px)] bg-[size:3.75rem_3.75rem]" />
+          </div>
+    
+          <div className="relative">
+            <div className="mx-auto flex max-w-[720px] flex-col items-center text-center">
+              <div className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50/90 px-4 py-2 text-[12px] font-semibold uppercase tracking-[0.18em] text-emerald-700">
+                <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+                Email verified
+              </div>
+    
+              <div className="mt-8 flex h-24 w-24 items-center justify-center rounded-full bg-white/80 shadow-[0_22px_50px_rgba(16,185,129,0.16)] ring-1 ring-emerald-100">
+                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100">
+                  <svg
+                    className="h-9 w-9 text-emerald-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2.6}
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                </div>
+              </div>
+    
+              <div className="mt-8 flex justify-center">
+                <AppBrand tagline={t.brandTagline} />
+              </div>
+    
+              <h1 className="mt-10 text-4xl font-extrabold tracking-tight text-slate-900 md:text-6xl">
+                Your account is ready
+              </h1>
+    
+              <p className="mt-5 max-w-2xl text-base leading-8 text-slate-600 md:text-lg">
+                Your email has been confirmed successfully.
+                <br className="hidden md:block" />
+                You can now sign in to CarrierTrust and start managing your company presence.
+              </p>
+    
+              <div className="mt-8 inline-flex items-center gap-3 rounded-full bg-slate-900 px-5 py-3 text-sm font-semibold text-white shadow-[0_18px_40px_rgba(15,23,42,0.18)]">
+                <span className="h-2.5 w-2.5 rounded-full bg-emerald-400 animate-pulse" />
+                Redirecting to sign in…
+              </div>
+    
+              <div className="mt-8 w-full max-w-[420px]">
+                <div className="h-2.5 overflow-hidden rounded-full bg-slate-200/70">
+                  <div className="h-full rounded-full bg-gradient-to-r from-emerald-400 via-teal-500 to-cyan-500 animate-[progressShrink_7s_linear_forwards]" />
+                </div>
+              </div>
+    
+              <p className="mt-6 text-sm text-slate-400">
+                You will be redirected automatically in a few seconds.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+
 
   if (!claimContextLoaded) {
     return (
@@ -1070,6 +1224,10 @@ function AuthPageInner() {
         <div className="absolute right-[10%] bottom-[8%] h-[20rem] w-[20rem] rounded-full bg-cyan-300/20 blur-3xl" />
         <div className="absolute inset-0 opacity-[0.04] bg-[linear-gradient(to_right,rgba(15,23,42,0.55)_1px,transparent_1px),linear-gradient(to_bottom,rgba(15,23,42,0.55)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
       </div>
+
+      {confirmed && !hasLinkError ? (
+        <ConfirmedSuccessScreen />
+      ) : (
 
       <div className="relative flex min-h-screen items-center justify-center px-4 pt-36 pb-10">
         <div className="relative w-full max-w-xl rounded-[2rem] border border-white/60 bg-white/70 p-6 shadow-[0_25px_80px_rgba(15,23,42,0.10)] backdrop-blur-xl md:p-8">
@@ -1422,11 +1580,13 @@ function AuthPageInner() {
           </div>
         </div>
       </div>
+      )}
     </main>
   );
 }
 
 export default function AuthPage() {
+  
   return (
     <Suspense fallback={<div className="min-h-screen bg-slate-50" />}>
       <AuthPageInner />

@@ -135,7 +135,7 @@ const EN: TextPack = {
 
   pricingTitle: "Pricing",
   pricingSub: "Choose the plan format that fits your company.",
-  detectedCompany: "Detected company",
+  detectedCompany: "My company",
   companyFallback: "Company",
 
   success: "Success",
@@ -241,7 +241,7 @@ const RU: TextPack = {
 
   pricingTitle: "Тарифы",
   pricingSub: "Выберите формат тарифа, который подходит вашей компании.",
-  detectedCompany: "Определённая компания",
+  detectedCompany: "Моя компания",
   companyFallback: "Компания",
 
   success: "Успешно",
@@ -349,7 +349,7 @@ const DE: TextPack = {
 
   pricingTitle: "Preise",
   pricingSub: "Wählen Sie das Tarifmodell, das zu Ihrem Unternehmen passt.",
-  detectedCompany: "Erkanntes Unternehmen",
+  detectedCompany: "Mein Unternehmen",
   companyFallback: "Unternehmen",
 
   success: "Erfolg",
@@ -457,7 +457,7 @@ const FR: TextPack = {
 
   pricingTitle: "Tarifs",
   pricingSub: "Choisissez la formule adaptée à votre entreprise.",
-  detectedCompany: "Entreprise détectée",
+  detectedCompany: "Mon entreprise",
   companyFallback: "Entreprise",
 
   success: "Succès",
@@ -565,7 +565,7 @@ const ES: TextPack = {
 
   pricingTitle: "Precios",
   pricingSub: "Elige el plan que mejor se adapta a tu empresa.",
-  detectedCompany: "Empresa detectada",
+  detectedCompany: "Mi empresa",
   companyFallback: "Empresa",
 
   success: "Éxito",
@@ -673,7 +673,7 @@ const IT: TextPack = {
 
   pricingTitle: "Prezzi",
   pricingSub: "Scegli il piano più adatto alla tua azienda.",
-  detectedCompany: "Azienda rilevata",
+  detectedCompany: "La mia azienda",
   companyFallback: "Azienda",
 
   success: "Successo",
@@ -1349,13 +1349,7 @@ export default function PricingPage() {
   return (
     <main className="min-h-screen text-slate-900">
       <div className="relative overflow-hidden px-6 pb-20 pt-40 md:pt-44">
-        <div className="pointer-events-none absolute inset-0 -z-10">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_50%_0%,rgba(99,102,241,0.08),transparent_55%)]" />
-          <div className="absolute left-[10%] top-20 h-72 w-72 rounded-full bg-violet-300/10 blur-3xl" />
-          <div className="absolute right-[8%] top-32 h-72 w-72 rounded-full bg-cyan-300/10 blur-3xl" />
-          <div className="absolute bottom-0 left-1/2 h-80 w-80 -translate-x-1/2 rounded-full bg-emerald-300/10 blur-3xl" />
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(15,23,42,0.8)_1px,transparent_1px),linear-gradient(to_bottom,rgba(15,23,42,0.8)_1px,transparent_1px)] bg-[size:5rem_5rem] opacity-[0.035]" />
-        </div>
+        
 
         <div className="mx-auto max-w-6xl">
           <div className="mb-5 flex items-center justify-end gap-3">

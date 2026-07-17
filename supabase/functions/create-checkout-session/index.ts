@@ -258,6 +258,7 @@ Deno.serve(async (req) => {
       form.set("metadata[purchase]", purchase);
       form.set("metadata[upgrade_mode]", "delayed_from_one_month");
       form.set("metadata[delayed_until]", currentPeriodEnd);
+      form.set("tax_id_collection[enabled]", "true");
 
       const stripeResp = await fetch("https://api.stripe.com/v1/checkout/sessions", {
         method: "POST",
@@ -327,6 +328,10 @@ Deno.serve(async (req) => {
 
     form.set("line_items[0][price]", priceId);
     form.set("line_items[0][quantity]", "1");
+
+    form.set("automatic_tax[enabled]", "true");
+form.set("tax_id_collection[enabled]", "true");
+form.set("customer_creation", "always");
 
     form.set("metadata[user_id]", user.id);
     form.set("metadata[company_id]", companyId);

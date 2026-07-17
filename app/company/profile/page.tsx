@@ -11,7 +11,15 @@ type Review = {
   created_at: string;
   rating: number | null;
   issue_type: string | null;
-  review_replies?: { id: string; reply_text: string | null; updated_at: string | null }[] | null;
+
+  author_company: string | null;
+  author_company_vat: string | null;
+
+  review_replies?: {
+    id: string;
+    reply_text: string | null;
+    updated_at: string | null;
+  }[] | null;
 };
 
 type Company = {
@@ -380,21 +388,23 @@ export default function CompanyProfilePage() {
         .select("id, name, vat_uid, country")
         .eq("id", activeClaim.company_id)
         .single(),
+    
       supabase
         .from("company_plans")
         .select("plan, replies_limit, replies_used")
         .eq("company_id", activeClaim.company_id)
         .maybeSingle(),
+    
       supabase
         .from("reviews")
         .select(
-          "id, created_at, rating, issue_type, review_text, review_replies(id, reply_text, updated_at)"
+          "id, created_at, rating, issue_type, review_text, author_company, author_company_vat, review_replies(id, reply_text, updated_at)"
         )
         .eq("company_id", activeClaim.company_id)
         .eq("status", "published")
         .order("created_at", { ascending: false }),
     ]);
-
+    
     setCompany((c as any) || null);
     setCompanyPlanRow((pr as any) || null);
 
@@ -836,7 +846,21 @@ export default function CompanyProfilePage() {
                           </div>
                         )}
                       </div>
+                      <div className="mt-3 rounded-2xl border border-black/10 bg-black/[0.03] px-4 py-3">
+  <div className="text-xs text-black/50">
+    Review from
+  </div>
 
+  <div className="mt-1 text-sm font-semibold text-black">
+    {r.author_company || "Unknown company"}
+  </div>
+
+  {r.author_company_vat && (
+    <div className="mt-1 text-xs text-black/50">
+      VAT: {r.author_company_vat.toUpperCase()}
+    </div>
+  )}
+</div>
                       <div className="mt-2 text-sm">{r.review_text}</div>
 
                       <div className="mt-2 text-xs text-black/50">
