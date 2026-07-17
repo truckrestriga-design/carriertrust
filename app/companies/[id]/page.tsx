@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { permanentRedirect } from "next/navigation";
 import CompanyClient from "./CompanyClient";
 import { supabaseServer } from "@/lib/supabaseServer";
 
@@ -8,46 +9,55 @@ type Props = {
   }>;
 };
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { id } = await params;
+type CompanySeoData = {
+  id?: string | null;
+  slug?: string | null;
+  name?: string | null;
+  country?: string | null;
+  vat_uid?: string | null;
+  trust_score?: number | null;
+  risk_level?: string | null;
+};
 
-  let companyName = "Company";
-  let country = "Europe";
-  let vat = "";
-  let trustScore = "";
-  let riskLevel = "";
-
+async function getCompany(id: string): Promise<CompanySeoData | null> {
   try {
-    let company = null;
+    const bySlug = await supabaseServer
+      .from("companies")
+      .select("id, name, slug, country, vat_uid, trust_score, risk_level")
+      .eq("slug", id)
+      .maybeSingle();
 
-const bySlug = await supabaseServer
-  .from("companies")
-  .select("id, name, slug, country, vat_uid, trust_score, risk_level")
-  .eq("slug", id)
-  .maybeSingle();
+    if (bySlug.data) {
+      return bySlug.data;
+    }
 
-if (bySlug.data) {
-  company = bySlug.data;
-} else {
-  const byId = await supabaseServer
-    .from("companies")
-    .select("id, name, slug, country, vat_uid, trust_score, risk_level")
-    .eq("id", id)
-    .maybeSingle();
+    const byId = await supabaseServer
+      .from("companies")
+      .select("id, name, slug, country, vat_uid, trust_score, risk_level")
+      .eq("id", id)
+      .maybeSingle();
 
-  company = byId.data;
+    return byId.data ?? null;
+  } catch {
+    return null;
+  }
 }
 
-    if (company?.name) companyName = String(company.name);
-    if (company?.country) country = String(company.country);
-    if (company?.vat_uid) vat = String(company.vat_uid);
-    if (company?.trust_score !== null && company?.trust_score !== undefined) {
-      trustScore = String(company.trust_score);
-    }
-    if (company?.risk_level) riskLevel = String(company.risk_level);
-  } catch {
-    // safe fallback
-  }
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { id } = await params;
+  const company = await getCompany(id);
+
+  const companyName = company?.name ? String(company.name) : "Company";
+  const country = company?.country ? String(company.country) : "Europe";
+  const vat = company?.vat_uid ? String(company.vat_uid) : "";
+  const trustScore =
+    company?.trust_score !== null && company?.trust_score !== undefined
+      ? String(company.trust_score)
+      : "";
+  const riskLevel = company?.risk_level ? String(company.risk_level) : "";
+
+  const canonicalId = company?.slug ? String(company.slug) : id;
+  const url = `https://carriertrust.eu/companies/${canonicalId}`;
 
   const title = `${companyName} Reviews, Trust Score & Carrier Reputation`;
 
@@ -58,9 +68,8 @@ if (bySlug.data) {
     riskLevel ? `risk level ${riskLevel}` : null,
     vat ? `VAT ${vat}` : null,
   ].filter(Boolean);
-  
+
   const description = `${descriptionParts.join(", ")}.`;
-  const url = `https://carriertrust.eu/companies/${id}`;
 
   return {
     title,
@@ -99,36 +108,10 @@ if (bySlug.data) {
 
 export default async function CompanyPage({ params }: Props) {
   const { id } = await params;
+  const company = await getCompany(id);
 
-  let company: {
-    id?: string | null;
-    slug?: string | null;
-    name?: string | null;
-    country?: string | null;
-    vat_uid?: string | null;
-    trust_score?: number | null;
-  } | null = null;
-
-  try {
-    const bySlug = await supabaseServer
-      .from("companies")
-      .select("id, slug, name, country, vat_uid, trust_score")
-      .eq("slug", id)
-      .maybeSingle();
-  
-    if (bySlug.data) {
-      company = bySlug.data;
-    } else {
-      const byId = await supabaseServer
-        .from("companies")
-        .select("id, slug, name, country, vat_uid, trust_score")
-        .eq("id", id)
-        .maybeSingle();
-  
-      company = byId.data ?? null;
-    }
-  } catch {
-    company = null;
+  if (company?.slug && company.slug !== id) {
+    permanentRedirect(`/companies/${company.slug}`);
   }
 
   const companyUrl = `https://carriertrust.eu/companies/${company?.slug || id}`;
@@ -141,7 +124,9 @@ export default async function CompanyPage({ params }: Props) {
         "@id": `${companyUrl}#organization`,
         name: company?.name || "Company",
         url: companyUrl,
-        description: `Read reviews and trust signals for ${company?.name || "this company"}, logistics company profile${
+        description: `Read reviews and trust signals for ${
+          company?.name || "this company"
+        }, logistics company profile${
           company?.country ? ` in ${company.country}` : " in Europe"
         }${company?.vat_uid ? `, VAT ${company.vat_uid}` : ""}.`,
         areaServed: {
