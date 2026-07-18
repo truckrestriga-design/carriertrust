@@ -143,7 +143,7 @@ trust: "Trust",
 signals: "Signals",
 autoFlagged: "Auto-flagged",
 riskDisclaimer:
-  "Disclaimer: Risk index is automated and may contain false positives.",
+  "Risk Index is an automated indicator based on published reviews. We recommend reviewing the company's full profile before making business decisions.",
 
   noResults: "No results found",
 howToUseRiskIndex: "How to use risk index",
@@ -338,7 +338,7 @@ trust: "Vertrauen",
 signals: "Signale",
 autoFlagged: "Automatisch markiert",
 riskDisclaimer:
-  "Hinweis: Risikoindex ist automatisiert und kann Fehlalarme enthalten.",
+  "Der Risk Index ist ein automatisch berechneter Indikator auf Grundlage veröffentlichter Bewertungen. Wir empfehlen, vor geschäftlichen Entscheidungen das vollständige Unternehmensprofil zu prüfen.",
 
   noResults: "Keine Ergebnisse gefunden",
 howToUseRiskIndex: "So nutzen Sie den Risikoindex",
@@ -533,7 +533,7 @@ trust: "Доверие",
 signals: "Сигналы",
 autoFlagged: "Авто-флаг",
 riskDisclaimer:
-  "Важно: индекс риска автоматизирован и может содержать ложные срабатывания.",
+  "Индекс риска — это автоматический показатель, основанный на опубликованных отзывах. Перед принятием деловых решений рекомендуем ознакомиться с полным профилем компании.",
 
   noResults: "Ничего не найдено",
 howToUseRiskIndex: "Как использовать индекс риска",
@@ -728,7 +728,7 @@ trust: "Confiance",
 signals: "Signaux",
 autoFlagged: "Signalé automatiquement",
 riskDisclaimer:
-  "Indice automatisé pouvant contenir des faux positifs.",
+  "Le Risk Index est un indicateur automatisé basé sur les avis publiés. Nous recommandons de consulter le profil complet de l’entreprise avant de prendre une décision commerciale.",
 
   noResults: "Aucun résultat trouvé",
 howToUseRiskIndex: "Comment utiliser l’indice de risque",
@@ -923,7 +923,7 @@ trust: "Confianza",
 signals: "Señales",
 autoFlagged: "Marcado automáticamente",
 riskDisclaimer:
-  "Índice automático con posibles falsos positivos.",
+  "El Risk Index es un indicador automatizado basado en reseñas publicadas. Recomendamos revisar el perfil completo de la empresa antes de tomar decisiones comerciales.",
 
   noResults: "No se encontraron resultados",
 howToUseRiskIndex: "Cómo usar el índice de riesgo",
@@ -1118,7 +1118,7 @@ trust: "Affidabilità",
 signals: "Segnali",
 autoFlagged: "Segnalato automaticamente",
 riskDisclaimer:
-  "Indice automatico con possibili falsi positivi.",
+  "Il Risk Index è un indicatore automatizzato basato sulle recensioni pubblicate. Consigliamo di consultare il profilo completo dell’azienda prima di prendere decisioni commerciali.",
 
   noResults: "Nessun risultato trovato",
 howToUseRiskIndex: "Come usare l’indice di rischio",

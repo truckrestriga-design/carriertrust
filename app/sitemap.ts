@@ -106,9 +106,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     return staticPages;
   }
 
-  const companyPages: MetadataRoute.Sitemap = companies.map((company) => ({
-    url: `${base}/companies/${company.slug || company.id}`,
-    lastModified: company.updated_at ? new Date(company.updated_at) : new Date(),
+  const companyPages: MetadataRoute.Sitemap = companies
+  .filter(
+    (
+      company
+    ): company is typeof company & { slug: string } =>
+      typeof company.slug === "string" && company.slug.trim().length > 0
+  )
+  .map((company) => ({
+    url: `${base}/companies/${company.slug}`,
+    lastModified: company.updated_at
+      ? new Date(company.updated_at)
+      : new Date(),
     changeFrequency: "weekly",
     priority: 0.8,
   }));

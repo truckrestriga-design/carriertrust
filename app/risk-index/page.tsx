@@ -12,14 +12,19 @@ type BannerSide = "left" | "right";
 
 type CompanyRow = {
   id: string;
+  slug: string | null;
   name: string | null;
   vat_uid: string | null;
   country: string | null;
   trust_score: number | null;
-  fraud_score: number | null;
-  risk_level: string | null;
   auto_flagged: boolean | null;
   trust_updated_at?: string | null;
+};
+
+type RiskCompanyRow = CompanyRow & {
+  calculated_risk: RiskTab;
+  average_rating: number;
+  review_count: number;
 };
 
 type ReviewRiskRow = {
@@ -463,7 +468,7 @@ export default function RiskIndexPage() {
   const [err, setErr] = useState<string | null>(null);
 
   const [tab, setTab] = useState<RiskTab>("high");
-  const [rows, setRows] = useState<CompanyRow[]>([]);
+  const [allRows, setAllRows] = useState<RiskCompanyRow[]>([]);
   const [q, setQ] = useState("");
   const [limit, setLimit] = useState(50);
 
@@ -552,8 +557,9 @@ export default function RiskIndexPage() {
 
   useEffect(() => {
     void load();
+    // Data is loaded once. Tabs, search and limit are handled locally.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [tab, limit]);
+  }, []);
 
   useEffect(() => {
     async function loadBanners() {
@@ -620,63 +626,113 @@ export default function RiskIndexPage() {
     try {
       setLoading(true);
       setErr(null);
-  
-      const { data: companiesData, error: companiesError } = await supabase
-  .from("companies")
-  .select(`
-    id,
-    name,
-    vat_uid,
-    country,
-    trust_score,
-    trust_updated_at,
-    fraud_score,
-    risk_level,
-    auto_flagged
-  `);
-  
-      if (companiesError) throw new Error(companiesError.message);
-  
-      const companies = (companiesData || []) as CompanyRow[];
-      const companyIds = companies.map((c) => c.id).filter(Boolean);
-  
-      const reviewsByCompany = new Map<string, ReviewRiskRow[]>();
-  
-      if (companyIds.length > 0) {
+
+      const publishedReviews: ReviewRiskRow[] = [];
+      const reviewPageSize = 1000;
+
+      for (let from = 0; ; from += reviewPageSize) {
+        const to = from + reviewPageSize - 1;
+
         const { data: reviewsData, error: reviewsError } = await supabase
           .from("reviews")
           .select("company_id, rating, review_text, status")
-          .in("company_id", companyIds)
-          .eq("status", "published");
-  
-        if (reviewsError) throw new Error(reviewsError.message);
-  
-        for (const row of (reviewsData || []) as ReviewRiskRow[]) {
-          const list = reviewsByCompany.get(row.company_id) || [];
-          list.push(row);
-          reviewsByCompany.set(row.company_id, list);
+          .eq("status", "published")
+          .range(from, to);
+
+        if (reviewsError) {
+          throw new Error(reviewsError.message);
+        }
+
+        const reviewPage = (reviewsData || []) as ReviewRiskRow[];
+        publishedReviews.push(...reviewPage);
+
+        if (reviewPage.length < reviewPageSize) {
+          break;
         }
       }
-  
-      const liveRows = companies
-  .filter((company) => {
-    const companyReviews = reviewsByCompany.get(company.id) || [];
-    const liveRisk = getRiskLevelFromReviews(companyReviews);
 
-    if (liveRisk === null) return false;
+      const companyIds = Array.from(
+        new Set(
+          publishedReviews
+            .map((review) => review.company_id)
+            .filter((companyId): companyId is string => Boolean(companyId))
+        )
+      );
 
-    return liveRisk === tab;
-  })
-  .sort((a, b) => {
-    const aFraud = typeof a.fraud_score === "number" ? a.fraud_score : 0;
-    const bFraud = typeof b.fraud_score === "number" ? b.fraud_score : 0;
-    return bFraud - aFraud;
-  })
-  .slice(0, clamp(limit, 10, 200));
-  
-      setRows(liveRows);
-    } catch (e: any) {
-      setErr(String(e?.message || e));
+      if (companyIds.length === 0) {
+        setAllRows([]);
+        return;
+      }
+
+      const companies: CompanyRow[] = [];
+      const companyChunkSize = 100;
+
+      for (let index = 0; index < companyIds.length; index += companyChunkSize) {
+        const companyIdChunk = companyIds.slice(index, index + companyChunkSize);
+
+        const { data: companiesData, error: companiesError } = await supabase
+          .from("companies")
+          .select(`
+            id,
+            slug,
+            name,
+            vat_uid,
+            country,
+            trust_score,
+            trust_updated_at,
+            auto_flagged
+          `)
+          .in("id", companyIdChunk);
+
+        if (companiesError) {
+          throw new Error(companiesError.message);
+        }
+
+        companies.push(...((companiesData || []) as CompanyRow[]));
+      }
+
+      const reviewsByCompany = new Map<string, ReviewRiskRow[]>();
+
+      for (const review of publishedReviews) {
+        const existingReviews = reviewsByCompany.get(review.company_id) || [];
+        existingReviews.push(review);
+        reviewsByCompany.set(review.company_id, existingReviews);
+      }
+
+      const calculatedRows: RiskCompanyRow[] = companies.flatMap((company) => {
+        const companyReviews = reviewsByCompany.get(company.id) || [];
+        const calculatedRisk = getRiskLevelFromReviews(companyReviews);
+
+        if (calculatedRisk === null) {
+          return [];
+        }
+
+        const ratings = companyReviews
+          .map((review) =>
+            typeof review.rating === "number" ? review.rating : null
+          )
+          .filter((rating): rating is number => rating !== null);
+
+        if (ratings.length === 0) {
+          return [];
+        }
+
+        const averageRating =
+          ratings.reduce((sum, rating) => sum + rating, 0) / ratings.length;
+
+        return [
+          {
+            ...company,
+            calculated_risk: calculatedRisk,
+            average_rating: averageRating,
+            review_count: ratings.length,
+          },
+        ];
+      });
+
+      setAllRows(calculatedRows);
+    } catch (error) {
+      setErr(error instanceof Error ? error.message : String(error));
     } finally {
       setLoading(false);
     }
@@ -778,16 +834,38 @@ export default function RiskIndexPage() {
   }
 
   const filtered = useMemo(() => {
-    const s = q.trim().toLowerCase();
-    if (!s) return rows;
+    const search = q.trim().toLowerCase();
 
-    return rows.filter((c) => {
-      const name = String(c.name || "").toLowerCase();
-      const vat = String(c.vat_uid || "").toLowerCase();
-      const country = String(c.country || "").toLowerCase();
-      return name.includes(s) || vat.includes(s) || country.includes(s);
+    const matchingRows = allRows.filter((company) => {
+      if (company.calculated_risk !== tab) {
+        return false;
+      }
+
+      if (!search) {
+        return true;
+      }
+
+      const name = String(company.name || "").toLowerCase();
+      const vat = String(company.vat_uid || "").toLowerCase();
+      const country = String(company.country || "").toLowerCase();
+
+      return (
+        name.includes(search) ||
+        vat.includes(search) ||
+        country.includes(search)
+      );
     });
-  }, [rows, q]);
+
+    matchingRows.sort((a, b) => {
+      if (tab === "low") {
+        return b.average_rating - a.average_rating;
+      }
+
+      return a.average_rating - b.average_rating;
+    });
+
+    return matchingRows.slice(0, clamp(limit, 10, 200));
+  }, [allRows, tab, q, limit]);
 
   const card =
     "rounded-[28px] border border-black/10 bg-white/70 backdrop-blur shadow-[0_14px_60px_rgba(15,20,30,0.08)]";
@@ -908,79 +986,125 @@ export default function RiskIndexPage() {
                   <div className="text-sm font-semibold">
                     {t("companies")}: <span className="text-black">{filtered.length}</span>
                   </div>
-                  <div className="text-xs text-black/45">{t("sortedByFraud")}</div>
+                  <div className="text-xs text-black/45">
+                    {l === "ru"
+                      ? "Сортировка по средней оценке"
+                      : l === "de"
+                      ? "Nach Durchschnittsbewertung sortiert"
+                      : l === "fr"
+                      ? "Trié par note moyenne"
+                      : l === "es"
+                      ? "Ordenado por valoración media"
+                      : l === "it"
+                      ? "Ordinato per valutazione media"
+                      : "Sorted by average rating"}
+                  </div>
                 </div>
 
                 <div className="overflow-x-auto">
                   <table className="w-full text-sm">
-                    <thead className="bg-black/[0.03] text-black/70">
-                      <tr>
-                        <th className="px-4 py-3 text-left font-semibold">{t("company")}</th>
-                        <th className="px-4 py-3 text-left font-semibold">VAT</th>
-                        <th className="px-4 py-3 text-left font-semibold">{t("country")}</th>
-                        <th className="px-4 py-3 text-left font-semibold">{t("fraudScore")}</th>
-                        <th className="px-4 py-3 text-left font-semibold">{t("trust")}</th>
-                        <th className="px-4 py-3 text-left font-semibold">{t("signals")}</th>
-                      </tr>
-                    </thead>
+                  <thead className="bg-black/[0.03] text-black/70">
+  <tr>
+    <th className="px-4 py-3 text-left font-semibold">
+      {t("company")}
+    </th>
 
-                    <tbody>
-                      {filtered.map((c) => {
-                        const fraud = typeof c.fraud_score === "number" ? c.fraud_score : 0;
-                        const trust =
-                          typeof c.trust_score === "number" ? Math.round(c.trust_score) : null;
+    <th className="px-4 py-3 text-left font-semibold">
+      VAT
+    </th>
 
-                        return (
-                          <tr
-                            key={c.id}
-                            className="border-t border-black/10 transition hover:bg-black/[0.02]"
-                          >
-                            <td className="px-4 py-3">
-                              <Link
-                                href={`/companies/${c.id}`}
-                                className="font-semibold text-black hover:underline"
-                              >
-                                {c.name || t("company")}
-                              </Link>
-                            </td>
+    <th className="px-4 py-3 text-left font-semibold">
+      {t("country")}
+    </th>
 
-                            <td className="px-4 py-3 text-black/70">
-                              {(c.vat_uid || "—").toUpperCase()}
-                            </td>
+    <th className="px-4 py-3 text-center font-semibold">
+      {l === "ru"
+        ? "Средняя оценка"
+        : l === "de"
+        ? "Durchschnitt"
+        : l === "fr"
+        ? "Note moyenne"
+        : l === "es"
+        ? "Valoración media"
+        : l === "it"
+        ? "Valutazione media"
+        : "Average rating"}
+    </th>
 
-                            <td className="px-4 py-3 text-black/70">{c.country || "—"}</td>
+    <th className="px-4 py-3 text-center font-semibold">
+      {l === "ru"
+        ? "Отзывы"
+        : l === "de"
+        ? "Bewertungen"
+        : l === "fr"
+        ? "Avis"
+        : l === "es"
+        ? "Reseñas"
+        : l === "it"
+        ? "Recensioni"
+        : "Reviews"}
+    </th>
 
-                            <td className="px-4 py-3">
-                              <span
-                                className={[
-                                  "inline-flex items-center rounded-xl border px-2.5 py-1 text-xs font-extrabold",
-                                  tab === "high"
-                                    ? "border-red-200 bg-red-50 text-red-900"
-                                    : tab === "medium"
-                                    ? "border-yellow-200 bg-yellow-50 text-yellow-900"
-                                    : "border-emerald-200 bg-emerald-50 text-emerald-900",
-                                ].join(" ")}
-                              >
-                                {fraud}
-                              </span>
-                            </td>
+    <th className="px-4 py-3 text-center font-semibold">
+      {t("trust")}
+    </th>
+  </tr>
+</thead>
 
-                            <td className="px-4 py-3 text-black/70">
-                              {trust === null ? "—" : `${trust}/100`}
-                            </td>
+<tbody>
+  {filtered.map((c) => {
+    const trust =
+      typeof c.trust_score === "number"
+        ? Math.round(c.trust_score)
+        : null;
 
-                            <td className="px-4 py-3">
-                              {c.auto_flagged ? (
-                                <span className="inline-flex items-center rounded-full border border-red-200 bg-red-50 px-3 py-1 text-xs font-semibold text-red-800">
-                                  {t("autoFlagged")}
-                                </span>
-                              ) : (
-                                <span className="text-black/40">—</span>
-                              )}
-                            </td>
-                          </tr>
-                        );
-                      })}
+    return (
+      <tr
+        key={c.id}
+        className="border-t border-black/10 transition hover:bg-black/[0.02]"
+      >
+        <td className="px-4 py-3">
+          <Link
+            href={`/companies/${c.slug || c.id}`}
+            className="font-semibold text-black hover:underline"
+          >
+            {c.name || t("company")}
+          </Link>
+        </td>
+
+        <td className="px-4 py-3 text-black/70">
+          {(c.vat_uid || "—").toUpperCase()}
+        </td>
+
+        <td className="px-4 py-3 text-black/70">
+          {c.country || "—"}
+        </td>
+
+        <td className="px-4 py-3 text-center">
+          <span
+            className={[
+              "inline-flex items-center rounded-xl border px-2.5 py-1 text-xs font-extrabold",
+              tab === "high"
+                ? "border-red-200 bg-red-50 text-red-900"
+                : tab === "medium"
+                ? "border-yellow-200 bg-yellow-50 text-yellow-900"
+                : "border-emerald-200 bg-emerald-50 text-emerald-900",
+            ].join(" ")}
+          >
+            {c.average_rating.toFixed(1)}/5
+          </span>
+        </td>
+
+        <td className="px-4 py-3 text-center text-black/70">
+          {c.review_count}
+        </td>
+
+        <td className="px-4 py-3 text-center text-black/70">
+          {trust === null ? "—" : `${trust}/100`}
+        </td>
+      </tr>
+    );
+  })}
 
                       {filtered.length === 0 ? (
                         <tr>

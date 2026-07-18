@@ -646,13 +646,98 @@ export default function SearchPage() {
         return;
       }
 
+      const normalizeSearchText = (value: string | null | undefined) =>
+        String(value || "")
+          .normalize("NFKD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .toLowerCase()
+          .replace(/[^a-z0-9]/g, "");
+      
+      const normalizedQuery = normalizeSearchText(query);
+      const digitsOnly = normalizedQuery.replace(/\D/g, "");
+      
+      const safeQuery = query
+        .replace(/[,%_()]/g, " ")
+        .trim();
+      
+      const searchFilters = [
+        safeQuery ? `name.ilike.%${safeQuery}%` : null,
+        normalizedQuery ? `vat_uid.ilike.%${normalizedQuery}%` : null,
+        digitsOnly.length >= 3 ? `vat_uid.ilike.%${digitsOnly}%` : null,
+      ].filter((value): value is string => Boolean(value));
+      
       const { data, error } = await supabase
-  .from("companies")
-  .select("id, slug, name, vat_uid, country")
-  .ilike("name", `%${query}%`)
-  .order("name", { ascending: true })
-  .limit(50);
-  const companies = (data || []) as SearchCompany[];
+        .from("companies")
+        .select("id, slug, name, vat_uid, country")
+        .or(searchFilters.join(","))
+        .limit(100);
+      
+      const calculateRelevance = (company: SearchCompany) => {
+        const normalizedName = normalizeSearchText(company.name);
+        const normalizedVat = normalizeSearchText(company.vat_uid);
+        const normalizedWords = String(company.name || "")
+          .toLowerCase()
+          .split(/[\s\-.,/()]+/)
+          .map(normalizeSearchText)
+          .filter(Boolean);
+      
+        let score = 0;
+      
+        // Полное совпадение VAT — самый высокий приоритет
+        if (normalizedVat === normalizedQuery) {
+          score += 10000;
+        }
+      
+        // Поиск VAT без букв страны
+        if (digitsOnly && normalizedVat.replace(/\D/g, "") === digitsOnly) {
+          score += 9500;
+        }
+      
+        // Полное совпадение названия
+        if (normalizedName === normalizedQuery) {
+          score += 9000;
+        }
+      
+        // Название начинается с запроса
+        if (normalizedName.startsWith(normalizedQuery)) {
+          score += 7000;
+        }
+      
+        // Отдельное слово начинается с запроса
+        if (normalizedWords.some((word) => word.startsWith(normalizedQuery))) {
+          score += 6000;
+        }
+      
+        // Запрос содержится внутри названия
+        if (normalizedName.includes(normalizedQuery)) {
+          score += 4000;
+        }
+      
+        // Частичное совпадение VAT
+        if (
+          normalizedVat.includes(normalizedQuery) ||
+          (digitsOnly && normalizedVat.includes(digitsOnly))
+        ) {
+          score += 3000;
+        }
+      
+        // Более короткое название при равном совпадении считается точнее
+        score -= normalizedName.length;
+      
+        return score;
+      };
+      
+      const companies = ((data || []) as SearchCompany[]).sort((a, b) => {
+        const scoreDifference =
+          calculateRelevance(b) - calculateRelevance(a);
+      
+        if (scoreDifference !== 0) {
+          return scoreDifference;
+        }
+      
+        return String(a.name || "").localeCompare(String(b.name || ""));
+      });
+
   const companyIds = companies.map((x) => x.id).filter(Boolean);
   
   let merged: SearchCompany[] = companies;
@@ -922,7 +1007,7 @@ setLoading(false);
           <RotatingBanner side="left" banners={leftBanners} onAddClick={openOrder} t={t} />
 
           <div className="mx-auto min-w-0 max-w-4xl flex-1">
-            <div className="relative overflow-hidden rounded-[2rem] border border-white/60 bg-white/70 p-6 shadow-[0_25px_80px_rgba(15,23,42,0.08)] backdrop-blur-xl md:p-8">
+          <div className="relative select-none overflow-hidden rounded-[2rem] border border-white/60 bg-white/70 p-6 shadow-[0_25px_80px_rgba(15,23,42,0.08)] backdrop-blur-xl md:p-8">
               <div className="pointer-events-none absolute inset-0">
                 <div className="absolute -right-16 -top-20 h-56 w-56 rounded-full bg-emerald-200/40 blur-3xl" />
                 <div className="absolute -bottom-24 -left-12 h-56 w-56 rounded-full bg-cyan-200/30 blur-3xl" />

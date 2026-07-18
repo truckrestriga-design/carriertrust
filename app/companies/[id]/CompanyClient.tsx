@@ -1756,8 +1756,8 @@ const trustScoreUI = useMemo(() => {
 
   const hero =
     "rounded-[2rem] border border-white/60 bg-white/70 backdrop-blur-xl shadow-[0_25px_80px_rgba(15,23,42,0.08)]";
-  const card =
-    "rounded-[1.75rem] border border-slate-200/70 bg-white/75 backdrop-blur-xl shadow-sm";
+    const card =
+    "select-none rounded-[1.75rem] border border-slate-200/70 bg-white/75 backdrop-blur-xl shadow-sm";
   const input =
     "w-full rounded-2xl border border-slate-200 bg-white/85 backdrop-blur px-4 py-3 outline-none text-slate-900 placeholder:text-slate-400 focus:border-slate-300 shadow-sm";
   const primaryBtn =
@@ -1859,7 +1859,7 @@ const trustScoreUI = useMemo(() => {
           />
 
           <div className="mx-auto min-w-0 max-w-4xl flex-1">
-            <div className={`relative overflow-hidden p-6 md:p-8 ${hero}`}>
+          <div className={`${hero} select-none p-6 md:p-8`}>
               <div className="pointer-events-none absolute inset-0">
                 <div className="absolute -right-16 -top-20 h-56 w-56 rounded-full bg-emerald-200/40 blur-3xl" />
                 <div className="absolute -bottom-24 -left-12 h-56 w-56 rounded-full bg-cyan-200/30 blur-3xl" />
@@ -2095,8 +2095,7 @@ const trustScoreUI = useMemo(() => {
                 ) : (
                   <div className="mt-4 space-y-4">
                     {reviews.map((r) => {
-                      const risk = Number(r.risk_score ?? 0);
-                      const flagged = Boolean(r.is_flagged) || risk >= 3;
+                      const flagged = Boolean(r.is_flagged);
 
                       const reply =
                         r.review_replies && r.review_replies.length > 0
@@ -2143,7 +2142,6 @@ const trustScoreUI = useMemo(() => {
                               <div className="mt-1 text-xs text-slate-500">
                                 {new Date(r.created_at).toLocaleDateString()}
                                 {r.issue_type ? ` • ${r.issue_type}` : ""}
-                                {risk > 0 ? ` • risk ${risk}` : ""}
                               </div>
                             </div>
 

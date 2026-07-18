@@ -31,13 +31,14 @@ export default async function CompaniesPage() {
             <Link
               key={company.id}
               href={`/companies/${company.slug || company.id}`}
-              className="block rounded-xl border border-slate-200 bg-white px-5 py-4 hover:bg-slate-50"
+              draggable={false}
+              className="block select-none rounded-xl border border-slate-200 bg-white px-5 py-4 hover:bg-slate-50"
             >
               <div className="text-lg font-semibold text-slate-900">
                 {company.name || "Company"}
               </div>
 
-              <div className="text-sm text-slate-500 mt-1">
+              <div className="mt-1 text-sm text-slate-500">
                 {company.country || "—"} • VAT: {company.vat_uid || "—"}
               </div>
             </Link>

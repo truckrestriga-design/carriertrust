@@ -626,45 +626,13 @@ export default function HomePage() {
 
   async function search() {
     setMsg(null);
+  
     const query = q.trim();
     if (!query) return;
-
+  
     setSearching(true);
-    try {
-      const vatCandidate = query.toUpperCase();
-      const { data: byVat, error: vatErr } = await supabase
-        .from("companies")
-        .select("id, name, vat_uid, country")
-        .eq("vat_uid", vatCandidate)
-        .limit(1);
-
-      if (vatErr) throw new Error(vatErr.message);
-      if (byVat && byVat.length > 0) {
-        window.location.href = `/search?q=${encodeURIComponent(query)}`;
-        return;
-      }
-
-      const { data: byName, error: nameErr } = await supabase
-        .from("companies")
-        .select("id, name, vat_uid, country")
-        .ilike("name", `%${query}%`)
-        .order("name", { ascending: true })
-        .limit(20);
-
-      if (nameErr) throw new Error(nameErr.message);
-      const rows = (byName || []) as SearchCompany[];
-
-      if (rows.length === 0) {
-        setMsg(t("heroNotFound"));
-      } else {
-        window.location.href = `/search?q=${encodeURIComponent(query)}`;
-      }
-
-    } catch (e: any) {
-      setMsg(String(e?.message || e));
-    } finally {
-      setSearching(false);
-    }
+  
+    window.location.href = `/search?q=${encodeURIComponent(query)}`;
   }
 
   function scrollToSections() {
