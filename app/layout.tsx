@@ -19,6 +19,25 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://carriertrust.eu"),
 
+  icons: {
+    icon: [
+      {
+        url: "/icon.png",
+        type: "image/png",
+        sizes: "512x512",
+      },
+     
+    ],
+    shortcut: "/icon.png",
+    apple: [
+      {
+        url: "/apple-icon.png",
+        sizes: "180x180",
+        type: "image/png",
+      },
+    ],
+  },
+
   title: {
     default:
       "CarrierTrust — EU Logistics Reviews, Cargo Risk Index & Company Verification",
