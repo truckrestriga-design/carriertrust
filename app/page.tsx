@@ -34,20 +34,61 @@ function useInView(threshold = 0.2) {
   return { ref, isInView };
 }
 
-function useMousePosition() {
+function useDesktopMode() {
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia(
+      "(min-width: 1024px) and (hover: hover) and (pointer: fine)"
+    );
+
+    const updateDesktopMode = () => {
+      setIsDesktop(mediaQuery.matches);
+    };
+
+    updateDesktopMode();
+
+    mediaQuery.addEventListener("change", updateDesktopMode);
+
+    return () => {
+      mediaQuery.removeEventListener("change", updateDesktopMode);
+    };
+  }, []);
+
+  return isDesktop;
+}
+
+function useMousePosition(enabled: boolean) {
   const [pos, setPos] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
-    const handleMove = (e: MouseEvent) => {
-      setPos({
-        x: (e.clientX / window.innerWidth - 0.5) * 2,
-        y: (e.clientY / window.innerHeight - 0.5) * 2,
+    if (!enabled) return;
+
+    let animationId: number | null = null;
+
+    const handleMove = (event: MouseEvent) => {
+      if (animationId !== null) return;
+
+      animationId = requestAnimationFrame(() => {
+        setPos({
+          x: (event.clientX / window.innerWidth - 0.5) * 2,
+          y: (event.clientY / window.innerHeight - 0.5) * 2,
+        });
+
+        animationId = null;
       });
     };
 
     window.addEventListener("mousemove", handleMove, { passive: true });
-    return () => window.removeEventListener("mousemove", handleMove);
-  }, []);
+
+    return () => {
+      window.removeEventListener("mousemove", handleMove);
+
+      if (animationId !== null) {
+        cancelAnimationFrame(animationId);
+      }
+    };
+  }, [enabled]);
 
   return pos;
 }
@@ -121,7 +162,7 @@ function FloatingOrb({
 }) {
   return (
     <div
-  className="absolute rounded-full animate-pulse"
+  className="absolute hidden rounded-full animate-pulse lg:block"
   style={{
     width: size,
     height: size,
@@ -592,7 +633,8 @@ export default function HomePage() {
     null
   );
 
-  const mouse = useMousePosition();
+  const isDesktop = useDesktopMode();
+  const mouse = useMousePosition(isDesktop);
   const sectionsRef = useRef<HTMLDivElement>(null);
   const { ref: heroRef, isInView: heroInView } = useInView(0.1);
   const [mounted, setMounted] = useState(false);
@@ -860,7 +902,9 @@ export default function HomePage() {
             </div>
 
             <div className="relative hidden h-[450px] lg:block">
-              {mounted && <OrbitingCards mouse={mouse} t={t} />}
+            {mounted && isDesktop && (
+  <OrbitingCards mouse={mouse} t={t} />
+)}
             </div>
           </div>
 

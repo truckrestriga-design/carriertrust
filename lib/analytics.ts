@@ -14,13 +14,26 @@ export type AnalyticsEventPayload = {
     banner_id?: string;
     banner_placement?: string;
   };
+
+  function createId() {
+    if (
+      typeof crypto !== "undefined" &&
+      typeof crypto.randomUUID === "function"
+    ) {
+      return crypto.randomUUID();
+    }
   
+    return `${Date.now()}-${Math.random().toString(36).slice(2)}-${Math.random()
+      .toString(36)
+      .slice(2)}`;
+  }
+
   function getOrCreateStorageValue(key: string) {
     if (typeof window === "undefined") return "";
   
     let value = localStorage.getItem(key);
     if (!value) {
-      value = crypto.randomUUID();
+      value = createId();
       localStorage.setItem(key, value);
     }
     return value;
@@ -31,7 +44,7 @@ export type AnalyticsEventPayload = {
   
     let value = sessionStorage.getItem("site_session_id");
     if (!value) {
-      value = crypto.randomUUID();
+      value = createId();
       sessionStorage.setItem("site_session_id", value);
     }
     return value;
