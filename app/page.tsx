@@ -760,7 +760,7 @@ export default function HomePage() {
             <div className="relative z-10 space-y-4 sm:space-y-5">
               <div
                 className={`inline-flex items-center gap-2 rounded-full bg-emerald-100 px-3 py-2 text-xs font-semibold text-emerald-700 transition-all duration-1000 sm:px-4 sm:text-sm ${
-                  heroInView ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
+                  !isDesktop || heroInView ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
                 }`}
               >
                 <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
@@ -769,7 +769,7 @@ export default function HomePage() {
 
               <h1
                 className={`max-w-[14ch] text-4xl font-bold leading-[0.98] tracking-tight text-slate-900 transition-all duration-1000 delay-100 sm:max-w-none sm:text-5xl md:text-5xl xl:text-[4.25rem] ${
-                  heroInView ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+                  !isDesktop || heroInView ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
                 }`}
               >
                 {t("heroTitleStart")}{" "}
@@ -781,7 +781,7 @@ export default function HomePage() {
 
               <p
                 className={`max-w-xl text-base leading-relaxed text-slate-600 transition-all duration-1000 delay-200 sm:text-lg md:text-xl ${
-                  heroInView ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+                  !isDesktop || heroInView ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
                 }`}
               >
                 {t("heroSub")}
@@ -789,7 +789,7 @@ export default function HomePage() {
 
               <div
                 className={`relative max-w-lg transition-all duration-1000 delay-300 ${
-                  heroInView ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+                  !isDesktop || heroInView ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
                 }`}
               >
                 <div className="group relative">
