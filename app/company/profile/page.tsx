@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { useLang } from "@/lib/language-context";
+import CompanyTeamManager from "@/components/company/CompanyTeamManager";
 
 type Review = {
   id: string;
@@ -703,6 +704,12 @@ export default function CompanyProfilePage() {
               </div>
             )}
           </div>
+
+          {companyId && hasApprovedAccess && (
+  <div className="mt-8">
+    <CompanyTeamManager companyId={companyId} />
+  </div>
+)}
 
           <div className="mt-8">
             {isPaid ? (

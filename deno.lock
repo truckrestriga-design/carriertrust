@@ -1,0 +1,33 @@
+{
+  "version": "5",
+  "redirects": {
+    "https://esm.sh/@supabase/supabase-js@2": "https://esm.sh/@supabase/supabase-js@2.110.7"
+  },
+  "remote": {
+    "https://esm.sh/@supabase/supabase-js@2.110.7": "271bd1acce2a284be1c9539bc960a705314a71a322a88705f0ffce88f9e7b97c"
+  },
+  "workspace": {
+    "packageJson": {
+      "dependencies": [
+        "npm:@react-three/drei@^10.7.7",
+        "npm:@react-three/fiber@^9.5.0",
+        "npm:@react-three/postprocessing@^3.0.4",
+        "npm:@supabase/supabase-js@^2.95.3",
+        "npm:@tailwindcss/postcss@4",
+        "npm:@types/node@20",
+        "npm:@types/react-dom@19",
+        "npm:@types/react@19",
+        "npm:eslint-config-next@16.1.6",
+        "npm:eslint@9",
+        "npm:next@16.1.6",
+        "npm:react-dom@19.2.3",
+        "npm:react@19.2.3",
+        "npm:recharts@^3.8.1",
+        "npm:resend@^6.9.4",
+        "npm:tailwindcss@4",
+        "npm:three@~0.183.1",
+        "npm:typescript@5"
+      ]
+    }
+  }
+}
