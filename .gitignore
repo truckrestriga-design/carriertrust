@@ -3,3 +3,8 @@ node_modules
 .env.local
 .DS_Store
 .vercel
+# Local generated files
+*.backup-before-*
+tsconfig.tsbuildinfo
+patch_*.py
+fix_*.py
