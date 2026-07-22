@@ -253,6 +253,40 @@ Deno.serve(async (req) => {
       },
     });
 
+// Prevent inviting an email that already has a CarrierTrust account.
+const { data: usersPage, error: usersError } =
+  await admin.auth.admin.listUsers({
+    page: 1,
+    perPage: 1000,
+  });
+
+if (usersError) {
+  console.error("User lookup failed:", usersError);
+
+  return json(
+    {
+      ok: false,
+      error: "Could not verify whether this email is already registered.",
+    },
+    500,
+  );
+}
+
+const existingUser = usersPage.users.find(
+  (u) => normalizeEmail(u.email) === email,
+);
+
+if (existingUser) {
+  return json(
+    {
+      ok: false,
+      error: "This email is already registered on CarrierTrust.",
+      code: "USER_ALREADY_EXISTS",
+    },
+    409,
+  );
+}
+
     const { data: ownership, error: ownershipError } = await admin
       .from("company_claims")
       .select("id")
