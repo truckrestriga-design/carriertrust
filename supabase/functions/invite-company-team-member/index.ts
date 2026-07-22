@@ -90,46 +90,50 @@ async function sendEmail(params: {
   };
 }
 
-function brandHeader() {
-  return `
-    <div style="padding:30px 32px 18px 32px;background:#ffffff;">
-      <img
-        src="https://www.carriertrust.eu/ct-email-logo.png"
-        width="230"
-        alt="CarrierTrust"
-        style="display:block;width:230px;max-width:100%;height:auto;border:0;outline:none;text-decoration:none;"
-      />
-    </div>
-  `;
-}
-
 function emailShell(content: string) {
   return `
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CarrierTrust company invitation</title>
   </head>
-  <body style="margin:0;padding:0;background:#f5f7fa;font-family:Inter,Arial,sans-serif;color:#0f172a;">
-    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background:#f5f7fa;">
+  <body style="margin:0;padding:0;background:#f3f6f8;font-family:Arial,Helvetica,sans-serif;color:#0f172a;">
+    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background:#f3f6f8;padding:32px 16px;">
       <tr>
-        <td align="center" style="padding:32px 14px;">
-          <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="max-width:640px;background:#ffffff;border:1px solid #e7ebef;border-radius:24px;overflow:hidden;">
+        <td align="center">
+          <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="max-width:760px;background:#ffffff;border:1px solid #e2e8f0;border-radius:28px;overflow:hidden;box-shadow:0 18px 60px rgba(15,23,42,0.08);">
             <tr>
-              <td>${brandHeader()}</td>
+              <td style="padding:32px 36px;background:linear-gradient(135deg,#f7fffb 0%,#eefcf7 45%,#ebfaf7 100%);border-bottom:1px solid #e2e8f0;">
+                <table role="presentation" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td style="vertical-align:middle;">
+                      <table role="presentation" cellspacing="0" cellpadding="0">
+                        <tr>
+                          <td width="72" height="72" align="center" valign="middle" style="width:72px;height:72px;border-radius:22px;background:linear-gradient(135deg,#16d39a 0%,#12b8cc 100%);font-size:28px;font-weight:700;color:#ffffff;box-shadow:0 14px 32px rgba(16,185,129,0.22);">
+                            CT
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                    <td style="padding-left:18px;vertical-align:middle;">
+                      <div style="font-size:34px;line-height:1.1;font-weight:800;color:#0b1635;">CarrierTrust</div>
+                      <div style="margin-top:8px;font-size:17px;line-height:1.4;color:#64748b;">EU logistics reputation network</div>
+                    </td>
+                  </tr>
+                </table>
+              </td>
             </tr>
             <tr>
-              <td style="padding:6px 32px 34px 32px;">
+              <td style="padding:40px 48px 44px;">
                 ${content}
+                <div style="margin-top:34px;font-size:15px;line-height:1.7;color:#64748b;">
+                  This email was sent by CarrierTrust.
+                </div>
               </td>
             </tr>
           </table>
-
-          <div style="max-width:640px;padding:16px 6px 0 6px;font-size:12px;line-height:1.7;color:#8a94a3;text-align:left;">
-            CarrierTrust.eu<br />
-            Trust infrastructure for European logistics
-          </div>
         </td>
       </tr>
     </table>
@@ -435,49 +439,37 @@ if (existingUser) {
     const companyName = String(company.name ?? "the company");
 
     const html = emailShell(`
-      <div style="font-size:12px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;color:#10b981;">
-        Company access
+      <div style="font-size:34px;line-height:1.2;font-weight:800;color:#0b1635;margin:0 0 20px;">
+        Join ${escapeHtml(companyName)} on CarrierTrust
       </div>
 
-      <h1 style="margin:10px 0 14px 0;font-size:32px;line-height:1.18;letter-spacing:-0.03em;color:#0f172a;">
-        Join ${escapeHtml(companyName)} on CarrierTrust
-      </h1>
+      <div style="font-size:18px;line-height:1.7;color:#334155;margin:0 0 26px;">
+        You have been invited to create a secure CarrierTrust manager account and help manage the company profile.
+      </div>
 
-      <p style="margin:0 0 22px 0;font-size:16px;line-height:1.7;color:#475569;">
-        You have been invited to manage this company profile using your own secure CarrierTrust account.
-      </p>
-
-      <div style="margin:0 0 24px 0;padding:18px 20px;border:1px solid #e2e8f0;border-radius:16px;background:#f8fafc;">
-        <div style="margin:0 0 10px 0;font-size:14px;color:#64748b;">Company</div>
-        <div style="font-size:18px;font-weight:800;color:#0f172a;">
+      <div style="margin:0 0 28px;padding:20px 22px;border:1px solid #dbe4ef;border-radius:20px;background:#f8fafc;">
+        <div style="font-size:14px;line-height:1.5;color:#64748b;">Company</div>
+        <div style="margin-top:7px;font-size:20px;line-height:1.4;font-weight:800;color:#0b1635;">
           ${escapeHtml(companyName)}
         </div>
-        <div style="margin-top:14px;font-size:14px;line-height:1.7;color:#475569;">
-          You will be able to help manage the company profile and publish official replies to reviews.
+        <div style="margin-top:14px;font-size:16px;line-height:1.7;color:#475569;">
+          The invitation is linked to <strong>${escapeHtml(email)}</strong>. You will be able to manage the company profile and publish official replies to reviews.
         </div>
       </div>
 
-      <table role="presentation" cellspacing="0" cellpadding="0" border="0">
+      <table role="presentation" cellspacing="0" cellpadding="0" style="margin:0 0 28px;">
         <tr>
-          <td style="border-radius:14px;background:#0f172a;">
-            <a
-              href="${inviteUrl}"
-              style="display:inline-block;padding:15px 24px;color:#ffffff;text-decoration:none;font-size:15px;font-weight:800;"
-            >
-              Accept invitation
+          <td>
+            <a href="${inviteUrl}" style="display:inline-block;background:#07153d;color:#ffffff;text-decoration:none;font-size:18px;font-weight:700;padding:18px 28px;border-radius:18px;box-shadow:0 12px 30px rgba(7,21,61,0.18);">
+              Create manager account
             </a>
           </td>
         </tr>
       </table>
 
-      <p style="margin:22px 0 0 0;font-size:13px;line-height:1.7;color:#64748b;">
-        Sign in with <strong style="color:#334155;">${escapeHtml(email)}</strong>.
-        This invitation expires in 7 days.
-      </p>
-
-      <p style="margin:8px 0 0 0;font-size:12px;line-height:1.7;color:#94a3b8;">
-        If you did not expect this invitation, you can ignore this email.
-      </p>
+      <div style="margin:0 0 22px;padding:20px 22px;border:1px solid #dbe4ef;border-radius:20px;background:#f8fafc;font-size:16px;line-height:1.7;color:#475569;">
+        This invitation expires in 7 days and can be used only once. If you did not expect this invitation, you can safely ignore this email.
+      </div>
     `);
 
     const emailResult = await sendEmail({

@@ -206,11 +206,39 @@ async function getFunctionError(error: unknown, fallback: string) {
 
 function Shell({ children }: { children: React.ReactNode }) {
   return (
-    <main className="min-h-screen bg-slate-50 px-4 pb-12 pt-32">
-      <div className="mx-auto max-w-3xl rounded-[2.5rem] border border-white bg-white px-7 py-10 shadow-[0_35px_100px_rgba(15,23,42,0.12)] md:px-12 md:py-14">
-        {children}
+    <main className="min-h-screen text-slate-900">
+      <div className="pointer-events-none fixed inset-0 overflow-hidden">
+        <div className="absolute inset-0 bg-slate-50" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(16,185,129,0.14),transparent)]" />
+        <div className="absolute top-[8%] left-[8%] h-[24rem] w-[24rem] rounded-full bg-emerald-300/20 blur-3xl" />
+        <div className="absolute right-[10%] bottom-[8%] h-[20rem] w-[20rem] rounded-full bg-cyan-300/20 blur-3xl" />
+        <div className="absolute inset-0 opacity-[0.04] bg-[linear-gradient(to_right,rgba(15,23,42,0.55)_1px,transparent_1px),linear-gradient(to_bottom,rgba(15,23,42,0.55)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+      </div>
+
+      <div className="relative flex min-h-screen items-center justify-center px-4 pt-36 pb-10">
+        <div className="relative w-full max-w-xl rounded-[2rem] border border-white/60 bg-white/70 p-6 shadow-[0_25px_80px_rgba(15,23,42,0.10)] backdrop-blur-xl md:p-8">
+          <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-[2rem]">
+            <div className="absolute -top-20 -right-16 h-56 w-56 rounded-full bg-emerald-200/50 blur-3xl" />
+            <div className="absolute -bottom-24 -left-12 h-56 w-56 rounded-full bg-cyan-200/40 blur-3xl" />
+          </div>
+          <div className="relative">{children}</div>
+        </div>
       </div>
     </main>
+  );
+}
+
+function AppBrand() {
+  return (
+    <div className="flex items-center justify-center gap-4">
+      <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-400 to-teal-500 text-2xl font-bold text-white shadow-[0_12px_30px_rgba(16,185,129,0.28)]">
+        CT
+      </div>
+      <div className="text-left">
+        <div className="text-3xl font-bold tracking-tight text-slate-900">CarrierTrust</div>
+        <div className="mt-1 text-sm text-slate-500">EU logistics reputation network</div>
+      </div>
+    </div>
   );
 }
 
@@ -375,7 +403,7 @@ function TeamInvitePageInner() {
   return (
     <Shell>
       <div className="text-center">
-        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-emerald-500 text-xl font-bold text-white">CT</div>
+        <AppBrand />
         <h1 className="mt-6 text-3xl font-bold text-slate-900">{t.title}</h1>
         <p className="mx-auto mt-3 max-w-xl text-slate-600">{t.subtitle}</p>
 

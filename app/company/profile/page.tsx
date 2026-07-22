@@ -267,6 +267,7 @@ export default function CompanyProfilePage() {
   const [claimStatus, setClaimStatus] = useState<ClaimStatus>(null);
   const [companyId, setCompanyId] = useState<string | null>(null);
   const [company, setCompany] = useState<Company | null>(null);
+  const [isOwner, setIsOwner] = useState(false);
 
   const [profilePlan, setProfilePlan] = useState<AccessPlan>("free");
   const [companyPlanRow, setCompanyPlanRow] = useState<CompanyPlanRow | null>(null);
@@ -354,12 +355,33 @@ export default function CompanyProfilePage() {
 
     const approvedClaim = (claims || []).find((c: any) => c.status === "approved") || null;
     const pendingClaim = (claims || []).find((c: any) => c.status === "pending") || null;
-    const activeClaim = approvedClaim || pendingClaim || null;
 
-    if (!activeClaim?.company_id) {
+    const { data: teamMembership } = await supabase
+      .from("company_team_members")
+      .select("company_id, status, accepted_at")
+      .eq("user_id", user.id)
+      .eq("status", "active")
+      .order("accepted_at", { ascending: false })
+      .limit(1)
+      .maybeSingle();
+
+    const activeCompanyId =
+      approvedClaim?.company_id ||
+      teamMembership?.company_id ||
+      pendingClaim?.company_id ||
+      null;
+
+    const ownerAccess = Boolean(approvedClaim?.company_id);
+    const managerAccess =
+      !ownerAccess &&
+      Boolean(teamMembership?.company_id) &&
+      teamMembership?.status === "active";
+
+    if (!activeCompanyId) {
       setCompanyId(null);
       setCompany(null);
       setClaimStatus(null);
+      setIsOwner(false);
       setCompanyPlanRow(null);
       setReviews([]);
       setReplyDraft({});
@@ -372,26 +394,33 @@ export default function CompanyProfilePage() {
       return;
     }
 
-    setClaimStatus(activeClaim.status);
-    setCompanyId(activeClaim.company_id);
+    setIsOwner(ownerAccess);
+    setClaimStatus(
+      ownerAccess || managerAccess
+        ? "approved"
+        : pendingClaim?.company_id
+          ? "pending"
+          : null
+    );
+    setCompanyId(activeCompanyId);
 
     const [{ data: c }, { data: pr }, { data: r }] = await Promise.all([
       supabase
         .from("companies")
         .select("id, name, vat_uid, country")
-        .eq("id", activeClaim.company_id)
+        .eq("id", activeCompanyId)
         .single(),
       supabase
         .from("company_plans")
         .select("plan, replies_limit, replies_used")
-        .eq("company_id", activeClaim.company_id)
+        .eq("company_id", activeCompanyId)
         .maybeSingle(),
       supabase
         .from("reviews")
         .select(
           "id, created_at, rating, issue_type, review_text, review_replies(id, reply_text, updated_at)"
         )
-        .eq("company_id", activeClaim.company_id)
+        .eq("company_id", activeCompanyId)
         .eq("status", "published")
         .order("created_at", { ascending: false }),
     ]);
@@ -410,7 +439,7 @@ export default function CompanyProfilePage() {
 
     const nextPlan = normalizeAccessPlan((pr as any)?.plan);
     if (nextPlan === "pro" || nextPlan === "business" || nextPlan === "one_month") {
-      await loadAnalytics(activeClaim.company_id);
+      await loadAnalytics(activeCompanyId);
     } else {
       setAnalytics({
         views30d: 0,
@@ -705,7 +734,7 @@ export default function CompanyProfilePage() {
             )}
           </div>
 
-          {companyId && hasApprovedAccess && (
+          {companyId && isOwner && (
   <div className="mt-8">
     <CompanyTeamManager companyId={companyId} />
   </div>
