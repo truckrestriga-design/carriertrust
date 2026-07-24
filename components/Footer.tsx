@@ -26,9 +26,13 @@ export default function SiteFooter() {
               </div>
             </div>
 
-            <p className="mt-5 max-w-md text-sm leading-7 text-slate-500">
-              {t("footerDescription")}
-            </p>
+            <div className="mt-5 max-w-md text-sm leading-6 text-slate-500">
+              <div className="font-semibold text-slate-700">CarrierTrust is operated by</div>
+              <div className="mt-1 font-bold text-slate-800">SIA “JAKOVLEV CAPITAL”</div>
+              <div className="mt-2 text-xs leading-5">VAT No. LV44103016716</div>
+              <div className="text-xs leading-5">Kupriču iela 1E–93, Rīga, LV-1021, Latvia</div>
+              <a href="mailto:support@carriertrust.eu" className="mt-1 inline-block text-xs font-semibold text-slate-600 underline underline-offset-4 hover:text-emerald-600">support@carriertrust.eu</a>
+            </div>
           </div>
 
           <div>
@@ -111,29 +115,6 @@ export default function SiteFooter() {
         <div className="mt-12 flex flex-col gap-3 border-t border-slate-200 pt-6 text-sm text-slate-400 md:flex-row md:items-center md:justify-between">
           <div>{t("footerRights")}</div>
           <div>{t("footerBottomText")}</div>
-        </div>
-
-        <div className="mt-5 border-t border-slate-200 pt-5 text-xs leading-6 text-slate-500">
-          <div className="font-semibold text-slate-600">
-            CarrierTrust is operated by
-          </div>
-
-          <div>SIA “JAKOVLEV CAPITAL”</div>
-
-          <div>
-            Registration No. 44103016716 · VAT No. LV44103016716
-          </div>
-
-          <div>
-            Kupriču iela 1E–93, Rīga, LV-1021, Latvia
-          </div>
-
-          <a
-            href="mailto:support@carriertrust.eu"
-            className="underline underline-offset-4 transition hover:text-emerald-600"
-          >
-            support@carriertrust.eu
-          </a>
         </div>
       </div>
     </footer>
