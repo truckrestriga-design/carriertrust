@@ -42,6 +42,53 @@ async function requireApprovedClaim(service: any, user_id: string, company_id: s
   return { ok: true, error: null };
 }
 
+async function requireCompanyReplyAccess(
+  service: any,
+  user_id: string,
+  company_id: string,
+) {
+  const claim = await requireApprovedClaim(service, user_id, company_id);
+
+  if (claim.ok) {
+    return {
+      ok: true,
+      role: "owner",
+      error: null,
+    };
+  }
+
+  const { data, error } = await service
+    .from("company_team_members")
+    .select("id")
+    .eq("company_id", company_id)
+    .eq("user_id", user_id)
+    .eq("role", "manager")
+    .eq("status", "active")
+    .limit(1);
+
+  if (error) {
+    return {
+      ok: false,
+      role: null,
+      error: error.message,
+    };
+  }
+
+  if (!data?.length) {
+    return {
+      ok: false,
+      role: null,
+      error: "No approved company access",
+    };
+  }
+
+  return {
+    ok: true,
+    role: "manager",
+    error: null,
+  };
+}
+
 type UserPlan = "free" | "pro" | "business";
 
 function normalizePlan(v: unknown): UserPlan {
@@ -157,7 +204,7 @@ Deno.serve(async (req) => {
       return json({ ok: true, replies: result.replies });
     }
 
-    // PATCH (owner only)
+    // PATCH (approved owner or active manager)
     if (req.method === "PATCH") {
       const auth = req.headers.get("authorization") || "";
       const user = await requireUser(SUPABASE_URL, ANON, auth);
@@ -184,9 +231,22 @@ Deno.serve(async (req) => {
       const company_id = String((review as any).company_id || "");
       if (!company_id) return json({ ok: false, error: "Review has no company_id" }, 500);
 
-      // 2) check claim
-      const claim = await requireApprovedClaim(service, user.id, company_id);
-      if (!claim.ok) return json({ ok: false, error: "Not company owner" }, 403);
+      // 2) check approved owner or active company manager access
+      const access = await requireCompanyReplyAccess(
+        service,
+        user.id,
+        company_id,
+      );
+
+      if (!access.ok) {
+        return json(
+          {
+            ok: false,
+            error: "Not authorized for this company",
+          },
+          403,
+        );
+      }
 
       // 3) check existing reply
       const { data: existing, error: exErr } = await service

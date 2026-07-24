@@ -5,6 +5,13 @@ import { supabase } from "@/lib/supabaseClient";
 
 type CompanyTeamManagerProps = {
   companyId: string;
+  isOwner: boolean;
+};
+
+type TeamOwner = {
+  user_id: string;
+  email: string | null;
+  role: "owner";
 };
 
 type TeamMember = {
@@ -56,8 +63,12 @@ function getErrorMessage(error: unknown) {
   return "Something went wrong.";
 }
 
-export default function CompanyTeamManager({ companyId }: CompanyTeamManagerProps) {
+export default function CompanyTeamManager({
+  companyId,
+  isOwner,
+}: CompanyTeamManagerProps) {
   const [email, setEmail] = useState("");
+  const [owner, setOwner] = useState<TeamOwner | null>(null);
   const [members, setMembers] = useState<TeamMember[]>([]);
   const [invites, setInvites] = useState<TeamInvite[]>([]);
   const [loading, setLoading] = useState(true);
@@ -65,6 +76,12 @@ export default function CompanyTeamManager({ companyId }: CompanyTeamManagerProp
   const [loadError, setLoadError] = useState<string | null>(null);
   const [formError, setFormError] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
+  const [removeCandidate, setRemoveCandidate] = useState<TeamMember | null>(null);
+  const [removingMemberId, setRemovingMemberId] = useState<string | null>(null);
+  const [revokeCandidate, setRevokeCandidate] = useState<TeamInvite | null>(null);
+  const [revokingInviteId, setRevokingInviteId] = useState<string | null>(null);
+  const [teamActionError, setTeamActionError] = useState<string | null>(null);
+  const [teamActionSuccess, setTeamActionSuccess] = useState<string | null>(null);
 
   const activeMembers = useMemo(
     () => members.filter((member) => member.status === "active"),
@@ -82,32 +99,72 @@ export default function CompanyTeamManager({ companyId }: CompanyTeamManagerProp
     setLoading(true);
     setLoadError(null);
 
-    const [membersResult, invitesResult] = await Promise.all([
-      supabase
-        .from("company_team_members")
-        .select("id, user_id, email, role, status, created_at, accepted_at")
-        .eq("company_id", companyId)
-        .order("created_at", { ascending: false }),
-      supabase
-        .from("company_team_invites")
-        .select("id, email, role, status, expires_at, created_at")
-        .eq("company_id", companyId)
-        .eq("status", "pending")
-        .order("created_at", { ascending: false }),
-    ]);
-
-    if (membersResult.error || invitesResult.error) {
-      setLoadError(
-        membersResult.error?.message ||
-          invitesResult.error?.message ||
-          "Could not load the company team.",
+    try {
+      const { data, error } = await supabase.functions.invoke(
+        "manage-company-team-member",
+        {
+          body: {
+            action: "list_team",
+            company_id: companyId,
+          },
+        },
       );
-    } else {
-      setMembers((membersResult.data || []) as TeamMember[]);
-      setInvites((invitesResult.data || []) as TeamInvite[]);
-    }
 
-    setLoading(false);
+      if (error) {
+        let message = getErrorMessage(error);
+
+        const context = (
+          error as {
+            context?: {
+              json?: () => Promise<{
+                error?: string;
+                message?: string;
+                code?: string;
+              }>;
+            };
+          }
+        ).context;
+
+        try {
+          const responseBody = await context?.json?.();
+
+          if (
+            typeof responseBody?.error === "string" &&
+            responseBody.error.trim()
+          ) {
+            message = responseBody.error;
+          } else if (
+            typeof responseBody?.message === "string" &&
+            responseBody.message.trim()
+          ) {
+            message = responseBody.message;
+          }
+        } catch {
+          // Keep the original Supabase error message.
+        }
+
+        throw new Error(message);
+      }
+
+      if (data?.ok === false) {
+        throw new Error(
+          typeof data.error === "string"
+            ? data.error
+            : "Could not load the company team.",
+        );
+      }
+
+      setOwner((data?.owner || null) as TeamOwner | null);
+      setMembers((data?.managers || []) as TeamMember[]);
+      setInvites((data?.pending_invites || []) as TeamInvite[]);
+    } catch (error) {
+      setOwner(null);
+      setMembers([]);
+      setInvites([]);
+      setLoadError(getErrorMessage(error));
+    } finally {
+      setLoading(false);
+    }
   }, [companyId]);
 
   useEffect(() => {
@@ -180,12 +237,174 @@ export default function CompanyTeamManager({ companyId }: CompanyTeamManagerProp
       }
 
       setEmail("");
-      setSuccessMessage(`Invitation sent to ${normalizedEmail}.`);
+      setSuccessMessage(
+        data?.access_restored === true
+          ? data?.email_sent === false
+            ? `Manager access restored for ${normalizedEmail}, but the notification email could not be sent.`
+            : `Manager access restored and notification sent to ${normalizedEmail}.`
+          : `Invitation sent to ${normalizedEmail}.`,
+      );
       await loadTeam();
     } catch (error) {
       setFormError(getErrorMessage(error));
     } finally {
       setSending(false);
+    }
+  }
+
+  async function removeManager() {
+    if (!isOwner || !removeCandidate || removingMemberId) return;
+
+    const member = removeCandidate;
+
+    setRemovingMemberId(member.id);
+    setTeamActionError(null);
+    setTeamActionSuccess(null);
+
+    try {
+      const { data, error } = await supabase.functions.invoke(
+        "manage-company-team-member",
+        {
+          body: {
+            action: "remove_member",
+            company_id: companyId,
+            member_id: member.id,
+          },
+        },
+      );
+
+      if (error) {
+        let message = getErrorMessage(error);
+
+        const context = (
+          error as {
+            context?: {
+              json?: () => Promise<{
+                error?: string;
+                message?: string;
+                code?: string;
+              }>;
+            };
+          }
+        ).context;
+
+        try {
+          const responseBody = await context?.json?.();
+
+          if (
+            typeof responseBody?.error === "string" &&
+            responseBody.error.trim()
+          ) {
+            message = responseBody.error;
+          } else if (
+            typeof responseBody?.message === "string" &&
+            responseBody.message.trim()
+          ) {
+            message = responseBody.message;
+          }
+        } catch {
+          // Keep the original Supabase error message.
+        }
+
+        throw new Error(message);
+      }
+
+      if (data?.ok === false) {
+        throw new Error(
+          typeof data.error === "string"
+            ? data.error
+            : "Could not remove the manager.",
+        );
+      }
+
+      setRemoveCandidate(null);
+      setTeamActionSuccess(
+        `${member.email} no longer has manager access.`,
+      );
+
+      await loadTeam();
+    } catch (error) {
+      setTeamActionError(getErrorMessage(error));
+    } finally {
+      setRemovingMemberId(null);
+    }
+  }
+
+  async function revokeInvitation() {
+    if (!isOwner || !revokeCandidate || revokingInviteId) return;
+
+    const invite = revokeCandidate;
+
+    setRevokingInviteId(invite.id);
+    setTeamActionError(null);
+    setTeamActionSuccess(null);
+
+    try {
+      const { data, error } = await supabase.functions.invoke(
+        "manage-company-team-member",
+        {
+          body: {
+            action: "revoke_invite",
+            company_id: companyId,
+            invite_id: invite.id,
+          },
+        },
+      );
+
+      if (error) {
+        let message = getErrorMessage(error);
+
+        const context = (
+          error as {
+            context?: {
+              json?: () => Promise<{
+                error?: string;
+                message?: string;
+                code?: string;
+              }>;
+            };
+          }
+        ).context;
+
+        try {
+          const responseBody = await context?.json?.();
+
+          if (
+            typeof responseBody?.error === "string" &&
+            responseBody.error.trim()
+          ) {
+            message = responseBody.error;
+          } else if (
+            typeof responseBody?.message === "string" &&
+            responseBody.message.trim()
+          ) {
+            message = responseBody.message;
+          }
+        } catch {
+          // Keep the original Supabase error message.
+        }
+
+        throw new Error(message);
+      }
+
+      if (data?.ok === false) {
+        throw new Error(
+          typeof data.error === "string"
+            ? data.error
+            : "Could not revoke the invitation.",
+        );
+      }
+
+      setRevokeCandidate(null);
+      setTeamActionSuccess(
+        `Invitation to ${invite.email} has been revoked.`,
+      );
+
+      await loadTeam();
+    } catch (error) {
+      setTeamActionError(getErrorMessage(error));
+    } finally {
+      setRevokingInviteId(null);
     }
   }
 
@@ -203,20 +422,22 @@ export default function CompanyTeamManager({ companyId }: CompanyTeamManagerProp
           </div>
           <h2 className="mt-2 text-xl font-extrabold">Company team</h2>
           <p className="mt-1 max-w-2xl text-sm leading-6 text-black/60">
-            Invite managers to help manage the company profile and official replies.
-            Only the approved company owner can add team members.
+            {isOwner
+              ? "Invite managers to help manage the company profile and official replies. Only the approved company owner can add team members."
+              : "View the Company Admin and active managers who currently have access to this company profile."}
           </p>
         </div>
 
         <div className="rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1.5 text-xs font-bold text-emerald-800">
-          Owner controls access
+          {isOwner ? "Owner controls access" : "Team access"}
         </div>
       </div>
 
-      <form
-        onSubmit={sendInvitation}
-        className="mt-6 rounded-3xl border border-black/10 bg-black/[0.02] p-4 md:p-5"
-      >
+      {isOwner && (
+        <form
+          onSubmit={sendInvitation}
+          className="mt-6 rounded-3xl border border-black/10 bg-black/[0.02] p-4 md:p-5"
+        >
         <div className="grid gap-3 md:grid-cols-[1fr_170px] md:items-end">
           <label className="block">
             <span className="mb-2 block text-sm font-bold">Manager email</span>
@@ -263,9 +484,50 @@ export default function CompanyTeamManager({ companyId }: CompanyTeamManagerProp
             {successMessage}
           </div>
         )}
-      </form>
+        </form>
+      )}
 
-      <div className="mt-7 grid gap-6 lg:grid-cols-2">
+      <div className="mt-7">
+        <div className="flex items-center justify-between gap-3">
+          <h3 className="font-extrabold">Company Admin</h3>
+
+          <span className="rounded-full bg-black/[0.05] px-2.5 py-1 text-xs font-bold text-black/60">
+            {owner ? 1 : 0}
+          </span>
+        </div>
+
+        <div className="mt-3">
+          {loading ? (
+            <div className="rounded-2xl border border-black/10 px-4 py-4 text-sm text-black/50">
+              Loading owner...
+            </div>
+          ) : owner ? (
+            <div className="rounded-2xl border border-black/10 bg-white px-4 py-4">
+              <div className="flex flex-wrap items-start justify-between gap-3">
+                <div className="min-w-0">
+                  <div className="truncate text-sm font-bold">
+                    {owner.email || "Approved company owner"}
+                  </div>
+
+                  <div className="mt-1 text-xs text-black/45">
+                    Verified company owner
+                  </div>
+                </div>
+
+                <span className="rounded-full border border-blue-200 bg-blue-50 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-blue-800">
+                  Admin
+                </span>
+              </div>
+            </div>
+          ) : (
+            <div className="rounded-2xl border border-dashed border-black/15 px-4 py-5 text-sm text-black/50">
+              Owner information is unavailable.
+            </div>
+          )}
+        </div>
+      </div>
+
+      <div className={isOwner ? "mt-7 grid gap-6 lg:grid-cols-2" : "mt-7"}>
         <div>
           <div className="flex items-center justify-between gap-3">
             <h3 className="font-extrabold">Active managers</h3>
@@ -296,9 +558,19 @@ export default function CompanyTeamManager({ companyId }: CompanyTeamManagerProp
                         Joined {formatDate(member.accepted_at || member.created_at)}
                       </div>
                     </div>
-                    <span className="rounded-full border border-emerald-200 bg-emerald-50 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-emerald-800">
-                      Manager
-                    </span>
+                    {isOwner && (
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setTeamActionError(null);
+                          setTeamActionSuccess(null);
+                          setRemoveCandidate(member);
+                        }}
+                        className="rounded-full border border-red-200 bg-red-50 px-3 py-1 text-[11px] font-bold text-red-700 transition hover:border-red-300 hover:bg-red-100"
+                      >
+                        Remove
+                      </button>
+                    )}
                   </div>
                 </div>
               ))
@@ -306,48 +578,181 @@ export default function CompanyTeamManager({ companyId }: CompanyTeamManagerProp
           </div>
         </div>
 
-        <div>
-          <div className="flex items-center justify-between gap-3">
-            <h3 className="font-extrabold">Pending invitations</h3>
-            <span className="rounded-full bg-black/[0.05] px-2.5 py-1 text-xs font-bold text-black/60">
-              {pendingInvites.length}
-            </span>
-          </div>
+        {isOwner && (
+          <div>
+            <div className="flex items-center justify-between gap-3">
+              <h3 className="font-extrabold">Pending invitations</h3>
+              <span className="rounded-full bg-black/[0.05] px-2.5 py-1 text-xs font-bold text-black/60">
+                {pendingInvites.length}
+              </span>
+            </div>
 
-          <div className="mt-3 space-y-3">
-            {loading ? (
-              <div className="rounded-2xl border border-black/10 px-4 py-4 text-sm text-black/50">
-                Loading invitations...
-              </div>
-            ) : pendingInvites.length === 0 ? (
-              <div className="rounded-2xl border border-dashed border-black/15 px-4 py-5 text-sm text-black/50">
-                There are no pending invitations.
-              </div>
-            ) : (
-              pendingInvites.map((invite) => (
-                <div
-                  key={invite.id}
-                  className="rounded-2xl border border-black/10 bg-white px-4 py-4"
-                >
-                  <div className="flex flex-wrap items-start justify-between gap-3">
-                    <div className="min-w-0">
-                      <div className="truncate text-sm font-bold">{invite.email}</div>
-                      <div className="mt-1 text-xs leading-5 text-black/45">
-                        Sent {formatDate(invite.created_at)}
-                        <br />
-                        Expires {formatDate(invite.expires_at)}
+            <div className="mt-3 space-y-3">
+              {loading ? (
+                <div className="rounded-2xl border border-black/10 px-4 py-4 text-sm text-black/50">
+                  Loading invitations...
+                </div>
+              ) : pendingInvites.length === 0 ? (
+                <div className="rounded-2xl border border-dashed border-black/15 px-4 py-5 text-sm text-black/50">
+                  There are no pending invitations.
+                </div>
+              ) : (
+                pendingInvites.map((invite) => (
+                  <div
+                    key={invite.id}
+                    className="rounded-2xl border border-black/10 bg-white px-4 py-4"
+                  >
+                    <div className="flex flex-wrap items-start justify-between gap-3">
+                      <div className="min-w-0">
+                        <div className="truncate text-sm font-bold">{invite.email}</div>
+                        <div className="mt-1 text-xs leading-5 text-black/45">
+                          Sent {formatDate(invite.created_at)}
+                          <br />
+                          Expires {formatDate(invite.expires_at)}
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="rounded-full border border-amber-200 bg-amber-50 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-amber-800">
+                          Pending
+                        </span>
+
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setTeamActionError(null);
+                            setTeamActionSuccess(null);
+                            setRevokeCandidate(invite);
+                          }}
+                          className="rounded-full border border-red-200 bg-red-50 px-3 py-1 text-[11px] font-bold text-red-700 transition hover:border-red-300 hover:bg-red-100"
+                        >
+                          Revoke
+                        </button>
                       </div>
                     </div>
-                    <span className="rounded-full border border-amber-200 bg-amber-50 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-amber-800">
-                      Pending
-                    </span>
                   </div>
-                </div>
-              ))
-            )}
+                ))
+              )}
+            </div>
+          </div>
+        )}
+      </div>
+
+      {isOwner && removeCandidate && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/45 p-4 backdrop-blur-sm"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="remove-manager-title"
+        >
+          <div className="w-full max-w-md rounded-[28px] border border-black/10 bg-white p-6 shadow-2xl">
+            <div className="text-xs font-bold uppercase tracking-[0.16em] text-red-600">
+              Access management
+            </div>
+
+            <h3
+              id="remove-manager-title"
+              className="mt-2 text-xl font-extrabold text-black"
+            >
+              Remove manager?
+            </h3>
+
+            <p className="mt-3 text-sm leading-6 text-black/60">
+              <span className="font-bold text-black">
+                {removeCandidate.email}
+              </span>{" "}
+              will immediately lose access to this company profile and its
+              management features.
+            </p>
+
+            <div className="mt-6 flex flex-col-reverse gap-3 sm:flex-row sm:justify-end">
+              <button
+                type="button"
+                disabled={removingMemberId === removeCandidate.id}
+                onClick={() => setRemoveCandidate(null)}
+                className="rounded-2xl border border-black/10 bg-white px-5 py-3 text-sm font-bold text-black transition hover:bg-black/[0.03] disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                Cancel
+              </button>
+
+              <button
+                type="button"
+                disabled={removingMemberId === removeCandidate.id}
+                onClick={() => void removeManager()}
+                className="rounded-2xl bg-red-600 px-5 py-3 text-sm font-bold text-white transition hover:bg-red-700 disabled:cursor-not-allowed disabled:opacity-60"
+              >
+                {removingMemberId === removeCandidate.id
+                  ? "Removing..."
+                  : "Remove manager"}
+              </button>
+            </div>
           </div>
         </div>
-      </div>
+      )}
+
+      {isOwner && revokeCandidate && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/45 p-4 backdrop-blur-sm"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="revoke-invitation-title"
+        >
+          <div className="w-full max-w-md rounded-[28px] border border-black/10 bg-white p-6 shadow-2xl">
+            <div className="text-xs font-bold uppercase tracking-[0.16em] text-red-600">
+              Access management
+            </div>
+
+            <h3
+              id="revoke-invitation-title"
+              className="mt-2 text-xl font-extrabold text-black"
+            >
+              Revoke invitation?
+            </h3>
+
+            <p className="mt-3 text-sm leading-6 text-black/60">
+              The invitation sent to{" "}
+              <span className="font-bold text-black">
+                {revokeCandidate.email}
+              </span>{" "}
+              will stop working immediately. You can send a new invitation
+              later.
+            </p>
+
+            <div className="mt-6 flex flex-col-reverse gap-3 sm:flex-row sm:justify-end">
+              <button
+                type="button"
+                disabled={revokingInviteId === revokeCandidate.id}
+                onClick={() => setRevokeCandidate(null)}
+                className="rounded-2xl border border-black/10 bg-white px-5 py-3 text-sm font-bold text-black transition hover:bg-black/[0.03] disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                Cancel
+              </button>
+
+              <button
+                type="button"
+                disabled={revokingInviteId === revokeCandidate.id}
+                onClick={() => void revokeInvitation()}
+                className="rounded-2xl bg-red-600 px-5 py-3 text-sm font-bold text-white transition hover:bg-red-700 disabled:cursor-not-allowed disabled:opacity-60"
+              >
+                {revokingInviteId === revokeCandidate.id
+                  ? "Revoking..."
+                  : "Revoke invitation"}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {teamActionSuccess && (
+        <div className="mt-5 rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-800">
+          {teamActionSuccess}
+        </div>
+      )}
+
+      {teamActionError && (
+        <div className="mt-5 rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800">
+          {teamActionError}
+        </div>
+      )}
 
       {loadError && (
         <div className="mt-5 rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800">
@@ -362,10 +767,6 @@ export default function CompanyTeamManager({ companyId }: CompanyTeamManagerProp
         </div>
       )}
 
-      <div className="mt-5 text-xs leading-5 text-black/45">
-        Revoking invitations and removing managers will be added through protected
-        server functions. Browser-side database writes remain disabled for security.
-      </div>
     </section>
   );
 }

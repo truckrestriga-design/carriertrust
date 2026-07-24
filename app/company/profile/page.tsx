@@ -12,6 +12,8 @@ type Review = {
   created_at: string;
   rating: number | null;
   issue_type: string | null;
+  author_company: string | null;
+  author_company_vat: string | null;
   review_replies?: { id: string; reply_text: string | null; updated_at: string | null }[] | null;
 };
 
@@ -418,7 +420,7 @@ export default function CompanyProfilePage() {
       supabase
         .from("reviews")
         .select(
-          "id, created_at, rating, issue_type, review_text, review_replies(id, reply_text, updated_at)"
+          "id, created_at, rating, issue_type, review_text, author_company, author_company_vat, review_replies(id, reply_text, updated_at)"
         )
         .eq("company_id", activeCompanyId)
         .eq("status", "published")
@@ -734,9 +736,9 @@ export default function CompanyProfilePage() {
             )}
           </div>
 
-          {companyId && isOwner && (
+          {companyId && hasApprovedAccess && (
   <div className="mt-8">
-    <CompanyTeamManager companyId={companyId} />
+    <CompanyTeamManager companyId={companyId} isOwner={isOwner} />
   </div>
 )}
 
@@ -873,7 +875,25 @@ export default function CompanyProfilePage() {
                         )}
                       </div>
 
-                      <div className="mt-2 text-sm">{r.review_text}</div>
+                      {r.author_company && (
+                        <div className="mt-3 rounded-2xl border border-black/10 bg-black/[0.025] px-4 py-3">
+                          <div className="text-[11px] font-bold uppercase tracking-[0.12em] text-black/40">
+                            Review by
+                          </div>
+
+                          <div className="mt-1 text-sm font-extrabold text-black">
+                            {r.author_company}
+                          </div>
+
+                          {r.author_company_vat && (
+                            <div className="mt-1 text-xs text-black/45">
+                              {String(r.author_company_vat).toUpperCase()}
+                            </div>
+                          )}
+                        </div>
+                      )}
+
+                      <div className="mt-3 text-sm">{r.review_text}</div>
 
                       <div className="mt-2 text-xs text-black/50">
                         {t("issue")}: {r.issue_type || "—"} • {t("rating")}: {r.rating || "—"}/5

@@ -257,40 +257,6 @@ Deno.serve(async (req) => {
       },
     });
 
-// Prevent inviting an email that already has a CarrierTrust account.
-const { data: usersPage, error: usersError } =
-  await admin.auth.admin.listUsers({
-    page: 1,
-    perPage: 1000,
-  });
-
-if (usersError) {
-  console.error("User lookup failed:", usersError);
-
-  return json(
-    {
-      ok: false,
-      error: "Could not verify whether this email is already registered.",
-    },
-    500,
-  );
-}
-
-const existingUser = usersPage.users.find(
-  (u) => normalizeEmail(u.email) === email,
-);
-
-if (existingUser) {
-  return json(
-    {
-      ok: false,
-      error: "This email is already registered on CarrierTrust.",
-      code: "USER_ALREADY_EXISTS",
-    },
-    409,
-  );
-}
-
     const { data: ownership, error: ownershipError } = await admin
       .from("company_claims")
       .select("id")
@@ -362,6 +328,212 @@ if (existingUser) {
           ok: false,
           error: "Sorry, this email is already a member of your company team.",
           code: "TEAM_MEMBER_ALREADY_ACTIVE",
+        },
+        409,
+      );
+    }
+
+    const { data: usersPage, error: usersError } =
+      await admin.auth.admin.listUsers({
+        page: 1,
+        perPage: 1000,
+      });
+
+    if (usersError) {
+      console.error("User lookup failed:", usersError);
+
+      return json(
+        {
+          ok: false,
+          error: "Could not verify whether this email is already registered.",
+        },
+        500,
+      );
+    }
+
+    const existingUser = usersPage.users.find(
+      (candidate) => normalizeEmail(candidate.email) === email,
+    );
+
+    const canRestoreExistingMember =
+      Boolean(existingUser) &&
+      Boolean(existingMember) &&
+      (
+        existingMember?.status === "removed" ||
+        existingMember?.status === "disabled"
+      );
+
+    if (existingUser && existingMember && canRestoreExistingMember) {
+      const restoredAt = new Date().toISOString();
+
+      const { data: restoredMember, error: restoreError } =
+        await admin
+          .from("company_team_members")
+          .update({
+            user_id: existingUser.id,
+            email,
+            role: "manager",
+            status: "active",
+            invited_by: user.id,
+            accepted_at: restoredAt,
+            updated_at: restoredAt,
+          })
+          .eq("id", existingMember.id)
+          .eq("company_id", companyId)
+          .select(
+            "id, user_id, email, role, status, accepted_at, updated_at",
+          )
+          .single();
+
+      if (restoreError || !restoredMember) {
+        console.error(
+          "Manager access restoration failed:",
+          restoreError,
+        );
+
+        return json(
+          {
+            ok: false,
+            error: "Could not restore manager access",
+            code: "MANAGER_RESTORE_FAILED",
+          },
+          500,
+        );
+      }
+
+      const restoredCompanyName = String(
+        company.name ?? "the company",
+      );
+
+      const companyProfileUrl =
+        "https://www.carriertrust.eu/company/profile";
+
+      const restoreHtml = emailShell(`
+        <div style="font-size:34px;line-height:1.2;font-weight:800;color:#0b1635;margin:0 0 20px;">
+          Your manager access has been restored
+        </div>
+
+        <div style="font-size:18px;line-height:1.7;color:#334155;margin:0 0 26px;">
+          The Company Admin has restored your access to
+          <strong>${escapeHtml(restoredCompanyName)}</strong>
+          on CarrierTrust.
+        </div>
+
+        <div style="margin:0 0 28px;padding:20px 22px;border:1px solid #dbe4ef;border-radius:20px;background:#f8fafc;">
+          <div style="font-size:14px;line-height:1.5;color:#64748b;">
+            Company
+          </div>
+
+          <div style="margin-top:7px;font-size:20px;line-height:1.4;font-weight:800;color:#0b1635;">
+            ${escapeHtml(restoredCompanyName)}
+          </div>
+
+          <div style="margin-top:14px;font-size:16px;line-height:1.7;color:#475569;">
+            Access has been restored for
+            <strong>${escapeHtml(email)}</strong>.
+            You can once again manage the verified company profile,
+            publish official replies to customer reviews, and leave
+            positive or negative reviews about companies your business
+            has worked with.
+          </div>
+        </div>
+
+        <table role="presentation" cellspacing="0" cellpadding="0" style="margin:0 0 28px;">
+          <tr>
+            <td>
+              <a href="${companyProfileUrl}" style="display:inline-block;background:#07153d;color:#ffffff;text-decoration:none;font-size:18px;font-weight:700;padding:18px 28px;border-radius:18px;box-shadow:0 12px 30px rgba(7,21,61,0.18);">
+                Open company profile
+              </a>
+            </td>
+          </tr>
+        </table>
+
+        <div style="margin:0 0 22px;padding:20px 22px;border:1px solid #dbe4ef;border-radius:20px;background:#f8fafc;font-size:16px;line-height:1.7;color:#475569;">
+          Sign in using your existing CarrierTrust account.
+          No new registration or invitation acceptance is required.
+        </div>
+      `);
+
+      let restoreEmailResult: {
+        ok: boolean;
+        status: number;
+        result: unknown;
+      } = {
+        ok: false,
+        status: 0,
+        result: null,
+      };
+
+      for (let attempt = 1; attempt <= 2; attempt += 1) {
+        try {
+          restoreEmailResult = await sendEmail({
+            apiKey: RESEND_API_KEY,
+            from: EMAIL_FROM,
+            to: email,
+            subject:
+              `Manager access restored for ${restoredCompanyName} on CarrierTrust`,
+            html: restoreHtml,
+          });
+
+          if (restoreEmailResult.ok) {
+            break;
+          }
+
+          console.error(
+            `Restore notification attempt ${attempt} was rejected:`,
+            JSON.stringify(restoreEmailResult),
+          );
+        } catch (emailError) {
+          console.error(
+            `Restore notification attempt ${attempt} failed:`,
+            emailError,
+          );
+        }
+
+        if (attempt < 2) {
+          await new Promise((resolve) => setTimeout(resolve, 500));
+        }
+      }
+
+      const { error: pendingInviteCleanupError } =
+        await admin
+          .from("company_team_invites")
+          .update({
+            status: "revoked",
+            revoked_at: restoredAt,
+            updated_at: restoredAt,
+          })
+          .eq("company_id", companyId)
+          .ilike("email", email)
+          .eq("status", "pending");
+
+      if (pendingInviteCleanupError) {
+        console.error(
+          "Pending invitation cleanup warning:",
+          pendingInviteCleanupError,
+        );
+      }
+
+      return json({
+        ok: true,
+        action: "restore_member",
+        access_restored: true,
+        company_id: companyId,
+        email,
+        member: restoredMember,
+        email_sent: restoreEmailResult.ok,
+        email_status: restoreEmailResult.status,
+        pending_invites_revoked:
+          !pendingInviteCleanupError,
+      });
+    }
+
+    if (existingUser) {
+      return json(
+        {
+          ok: false,
+          error: "This email is already registered on CarrierTrust.",
+          code: "USER_ALREADY_EXISTS",
         },
         409,
       );
@@ -444,17 +616,7 @@ if (existingUser) {
       </div>
 
       <div style="font-size:18px;line-height:1.7;color:#334155;margin:0 0 26px;">
-        You have been invited to create a secure CarrierTrust manager account and help manage the company profile.
-      </div>
-
-      <div style="margin:0 0 28px;padding:20px 22px;border:1px solid #dbe4ef;border-radius:20px;background:#f8fafc;">
-        <div style="font-size:14px;line-height:1.5;color:#64748b;">Company</div>
-        <div style="margin-top:7px;font-size:20px;line-height:1.4;font-weight:800;color:#0b1635;">
-          ${escapeHtml(companyName)}
-        </div>
-        <div style="margin-top:14px;font-size:16px;line-height:1.7;color:#475569;">
-          The invitation is linked to <strong>${escapeHtml(email)}</strong>. You will be able to manage the company profile and publish official replies to reviews.
-        </div>
+        You have been invited to create a secure CarrierTrust manager account and join the verified company team.
       </div>
 
       <table role="presentation" cellspacing="0" cellpadding="0" style="margin:0 0 28px;">
@@ -466,6 +628,18 @@ if (existingUser) {
           </td>
         </tr>
       </table>
+
+      <div style="margin:0 0 28px;padding:20px 22px;border:1px solid #dbe4ef;border-radius:20px;background:#f8fafc;">
+        <div style="font-size:14px;line-height:1.5;color:#64748b;">Company</div>
+        <div style="margin-top:7px;font-size:20px;line-height:1.4;font-weight:800;color:#0b1635;">
+          ${escapeHtml(companyName)}
+        </div>
+        <div style="margin-top:14px;font-size:16px;line-height:1.7;color:#475569;">
+          The invitation is linked to <strong>${escapeHtml(email)}</strong>. You will be able to manage the company's verified profile, publish official replies to customer reviews, and leave positive or negative reviews about companies your business has worked with.
+        </div>
+      </div>
+
+
 
       <div style="margin:0 0 22px;padding:20px 22px;border:1px solid #dbe4ef;border-radius:20px;background:#f8fafc;font-size:16px;line-height:1.7;color:#475569;">
         This invitation expires in 7 days and can be used only once. If you did not expect this invitation, you can safely ignore this email.

@@ -10,6 +10,7 @@ export default function SiteHeader() {
   const { lang, setLang, t } = useLang();
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [hasCompanyAccess, setHasCompanyAccess] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
@@ -21,12 +22,49 @@ export default function SiteHeader() {
   const mobileMenuPanelRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    let active = true;
+
+    async function refreshCompanyAccess(userId?: string) {
+      if (!userId) {
+        if (active) setHasCompanyAccess(false);
+        return;
+      }
+
+      const [ownerResult, managerResult] = await Promise.all([
+        supabase
+          .from("company_claims")
+          .select("id")
+          .eq("claimant_user_id", userId)
+          .eq("status", "approved")
+          .limit(1),
+        supabase
+          .from("company_team_members")
+          .select("id")
+          .eq("user_id", userId)
+          .eq("status", "active")
+          .limit(1),
+      ]);
+
+      if (!active) return;
+
+      const ownerHasAccess =
+        !ownerResult.error && (ownerResult.data?.length ?? 0) > 0;
+      const managerHasAccess =
+        !managerResult.error && (managerResult.data?.length ?? 0) > 0;
+
+      setHasCompanyAccess(ownerHasAccess || managerHasAccess);
+    }
+
     supabase.auth.getUser().then(({ data }) => {
+      if (!active) return;
       setIsLoggedIn(!!data.user);
+      void refreshCompanyAccess(data.user?.id);
     });
 
     const { data: sub } = supabase.auth.onAuthStateChange((_e, session) => {
+      if (!active) return;
       setIsLoggedIn(!!session?.user);
+      void refreshCompanyAccess(session?.user?.id);
     });
 
     lastY.current = window.scrollY || 0;
@@ -69,6 +107,7 @@ export default function SiteHeader() {
     document.addEventListener("mousedown", onClickOutside);
 
     return () => {
+      active = false;
       window.removeEventListener("scroll", onScroll);
       document.removeEventListener("mousedown", onClickOutside);
       sub?.subscription?.unsubscribe();
@@ -184,8 +223,26 @@ export default function SiteHeader() {
                 {t("riskIndex")}
               </Link>
 
-              <Link href="/company/profile" className={navLink}>
-                {t("companyProfile")}
+              <Link
+                href="/company/profile"
+                className={
+                  hasCompanyAccess
+                    ? "group inline-flex shrink-0 items-center justify-center gap-2.5 whitespace-nowrap rounded-2xl border border-emerald-200/80 bg-emerald-50/70 px-4 py-2.5 text-sm font-semibold text-emerald-950 shadow-[0_8px_24px_rgba(16,185,129,0.10)] backdrop-blur-xl transition-all duration-200 hover:-translate-y-[1px] hover:border-emerald-300 hover:bg-emerald-50 hover:shadow-[0_12px_28px_rgba(16,185,129,0.16)]"
+                    : navLink
+                }
+              >
+                {hasCompanyAccess && (
+                  <span
+                    aria-label="Company profile access active"
+                    title="Company profile access active"
+                    className="relative flex h-2.5 w-2.5"
+                  >
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-35" />
+                    <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500 shadow-[0_0_0_4px_rgba(16,185,129,0.10)]" />
+                  </span>
+                )}
+
+                <span>{t("companyProfile")}</span>
               </Link>
 
               <Link href="/verified-profile" className={navLink}>
@@ -396,11 +453,31 @@ export default function SiteHeader() {
 
               <Link
                 href="/company/profile"
-                className={mobileNavItem}
+                className={
+                  hasCompanyAccess
+                    ? "flex min-h-[50px] items-center justify-between rounded-2xl border border-emerald-200/80 bg-emerald-50/80 px-4 py-3 text-sm font-semibold text-emerald-950 backdrop-blur-xl transition-all duration-200 active:scale-[0.99]"
+                    : mobileNavItem
+                }
                 onClick={() => setMobileMenuOpen(false)}
               >
-                <span>{t("companyProfile")}</span>
-                <span className="text-slate-300">→</span>
+                <span className="flex items-center gap-2.5">
+                  {hasCompanyAccess && (
+                    <span
+                      aria-label="Company profile access active"
+                      title="Company profile access active"
+                      className="relative flex h-2.5 w-2.5"
+                    >
+                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-35" />
+                      <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500" />
+                    </span>
+                  )}
+
+                  <span>{t("companyProfile")}</span>
+                </span>
+
+                <span className={hasCompanyAccess ? "text-emerald-500" : "text-slate-300"}>
+                  →
+                </span>
               </Link>
 
               <Link
