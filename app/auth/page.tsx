@@ -878,6 +878,8 @@ function AuthPageInner() {
       if (error) throw new Error(error.message);
 
       const user = data.user;
+      let destination = next;
+
       if (user?.id) {
         const meta = user.user_metadata as any;
         await ensureProfile(
@@ -887,9 +889,32 @@ function AuthPageInner() {
         );
 
         await syncCompanyAccess();
+
+        const [{ data: ownerClaim }, { data: managerMembership }] =
+          await Promise.all([
+            supabase
+              .from("company_claims")
+              .select("company_id")
+              .eq("claimant_user_id", user.id)
+              .eq("status", "approved")
+              .limit(1)
+              .maybeSingle(),
+            supabase
+              .from("company_team_members")
+              .select("company_id")
+              .eq("user_id", user.id)
+              .eq("role", "manager")
+              .eq("status", "active")
+              .limit(1)
+              .maybeSingle(),
+          ]);
+
+        if (ownerClaim?.company_id || managerMembership?.company_id) {
+          destination = "/company/profile";
+        }
       }
 
-      window.location.href = next;
+      window.location.href = destination;
     } catch (e: any) {
       setError(String(e?.message || e));
     } finally {
