@@ -3,7 +3,7 @@
 import { useMemo } from "react";
 import { useLang } from "@/lib/language-context";
 
-const CONTACT_EMAIL = "carriertrust.eu@gmail.com";
+const CONTACT_EMAIL = "support@carriertrust.eu";
 
 type Lang = "en" | "de" | "ru" | "fr" | "es" | "it";
 
