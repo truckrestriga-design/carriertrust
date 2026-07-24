@@ -112,6 +112,29 @@ export default function SiteFooter() {
           <div>{t("footerRights")}</div>
           <div>{t("footerBottomText")}</div>
         </div>
+
+        <div className="mt-5 border-t border-slate-200 pt-5 text-xs leading-6 text-slate-500">
+          <div className="font-semibold text-slate-600">
+            CarrierTrust is operated by
+          </div>
+
+          <div>SIA “JAKOVLEV CAPITAL”</div>
+
+          <div>
+            Registration No. 44103016716 · VAT No. LV44103016716
+          </div>
+
+          <div>
+            Kupriču iela 1E–93, Rīga, LV-1021, Latvia
+          </div>
+
+          <a
+            href="mailto:support@carriertrust.eu"
+            className="underline underline-offset-4 transition hover:text-emerald-600"
+          >
+            support@carriertrust.eu
+          </a>
+        </div>
       </div>
     </footer>
   );
