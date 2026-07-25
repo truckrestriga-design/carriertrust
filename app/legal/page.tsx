@@ -301,15 +301,21 @@ export default function LegalContact() {
                   <p>{t.legalContactText}</p>
 
                   <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-                    <p className="mb-2">
-                      <b>{t.email}:</b>{" "}
-                      <a className="underline" href={`mailto:${LEGAL_EMAIL}`}>
-                        {LEGAL_EMAIL}
-                      </a>
-                    </p>
-                    <p className="mb-0">
-                      <b>{t.preferredLanguage}:</b> {t.preferredLanguageValue}
-                    </p>
+                    <div className="space-y-1 text-sm leading-6 text-slate-600">
+                      <p>SIA JAKOVLEV CAPITAL</p>
+                      <p>VAT ID: LV44103016716</p>
+                      <p>Kupriču iela 1E–93, Riga, LV-1021, Latvia</p>
+                      <p>
+                        <b>{t.email}:</b>{" "}
+                        <a className="underline underline-offset-4" href="/contact">
+                          {LEGAL_EMAIL}
+                        </a>
+                      </p>
+                      <p>
+                        <b>{t.preferredLanguage}:</b>{" "}
+                        {t.preferredLanguageValue}
+                      </p>
+                    </div>
                   </div>
 
                   <h2 className="pt-4 text-xl font-semibold text-slate-900">
