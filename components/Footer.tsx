@@ -26,12 +26,11 @@ export default function SiteFooter() {
               </div>
             </div>
 
-            <div className="mt-5 max-w-md text-sm leading-6 text-slate-500">
-              <div className="text-slate-600">CarrierTrust is operated by</div>
-              <div className="mt-1 text-slate-500">SIA JAKOVLEV CAPITAL</div>
-              <div className="mt-2 text-xs leading-5">VAT No. LV44103016716</div>
-              <div className="text-xs leading-5">Kupriču iela 1E–93, Rīga, LV-1021, Latvia</div>
-              <a href="mailto:support@carriertrust.eu" className="mt-1 inline-block text-xs text-slate-600 underline underline-offset-4 hover:text-emerald-600">support@carriertrust.eu</a>
+            <div className="mt-5 grid max-w-md gap-1 text-xs leading-5 text-slate-500">
+              <div>SIA JAKOVLEV CAPITAL</div>
+              <div>VAT ID: LV44103016716</div>
+              <div>Kupriču iela 1E–93, Riga, LV-1021, Latvia</div>
+              <a href="mailto:support@carriertrust.eu" className="w-fit text-slate-500 underline underline-offset-4 transition hover:text-emerald-600">support@carriertrust.eu</a>
             </div>
           </div>
 
