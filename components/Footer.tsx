@@ -30,7 +30,7 @@ export default function SiteFooter() {
               <div>SIA JAKOVLEV CAPITAL</div>
               <div>VAT ID: LV44103016716</div>
               <div>Kupriču iela 1E–93, Riga, LV-1021, Latvia</div>
-              <a href="mailto:support@carriertrust.eu" className="w-fit text-slate-500 underline underline-offset-4 transition hover:text-emerald-600">support@carriertrust.eu</a>
+              <a href="/contact" className="w-fit text-slate-500 underline underline-offset-4 transition hover:text-emerald-600">support@carriertrust.eu</a>
             </div>
           </div>
 
