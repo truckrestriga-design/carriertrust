@@ -1018,7 +1018,7 @@ function stars(n: number) {
 
 function formatDate(iso: string) {
   try {
-    return new Date(iso).toLocaleDateString();
+    return new Intl.DateTimeFormat("en-GB").format(new Date(iso));
   } catch {
     return iso;
   }
@@ -1158,7 +1158,15 @@ function RotatingBanner({ side, banners, onAddClick }: RotatingBannerProps) {
   );
 }
 
-export default function CompanyPage() {
+export default function CompanyPage({
+  initialCompany,
+  initialCompanyPlan,
+  initialReviews,
+}: {
+  initialCompany: Company;
+  initialCompanyPlan: string | null;
+  initialReviews: Review[];
+}) {
   const params = useParams();
   const companySlug = String(params?.id || "");
   const { lang } = useLang();
@@ -1166,10 +1174,10 @@ export default function CompanyPage() {
 
   const [tab, setTab] = useState<TabKey>("reviews");
 
-  const [loading, setLoading] = useState(true);
-  const [company, setCompany] = useState<Company | null>(null);
-  const [companyPlan, setCompanyPlan] = useState<string | null>(null);
-  const [reviews, setReviews] = useState<Review[]>([]);
+  const loading = false;
+  const company = initialCompany;
+  const companyPlan = initialCompanyPlan;
+  const reviews = initialReviews;
   const [err, setErr] = useState<string | null>(null);
 
   const [claimStatus, setClaimStatus] = useState<
@@ -1265,146 +1273,53 @@ export default function CompanyPage() {
     isValidEmail(bannerOrderInvoiceEmail);
 
   useEffect(() => {
+    let cancelled = false;
+
     (async () => {
       try {
         setErr(null);
-        setLoading(true);
-
-        let c: any = null;
-
-const bySlug = await supabase
-  .from("companies")
-  .select(
-    "id, slug, name, vat_uid, country, trust_score, trust_level, trust_updated_at, is_verified_company, verified_at, verification_method, fraud_score, risk_level, auto_flagged"
-  )
-  .eq("slug", companySlug)
-  .maybeSingle();
-
-if (bySlug.error) throw new Error(bySlug.error.message);
-
-if (bySlug.data?.id) {
-  c = bySlug.data;
-} else {
-  const byId = await supabase
-    .from("companies")
-    .select(
-      "id, slug, name, vat_uid, country, trust_score, trust_level, trust_updated_at, is_verified_company, verified_at, verification_method, fraud_score, risk_level, auto_flagged"
-    )
-    .eq("id", companySlug)
-    .maybeSingle();
-
-  if (byId.error) throw new Error(byId.error.message);
-  c = byId.data;
-}
-
-if (!c?.id) throw new Error("Company not found");
-
-setCompany(c as any);
-
-const realCompanyId = String(c.id);
-const { data: planRow, error: planErr } = await supabase
-  .from("company_plans")
-  .select("plan, plan_status, current_period_end")
-  .eq("company_id", realCompanyId)
-  .eq("plan_status", "active")
-  .order("created_at", { ascending: false })
-  .limit(1)
-  .maybeSingle();
-
-if (planErr) throw new Error(planErr.message);
-
-setCompanyPlan(planRow?.plan ?? null);
-        const { data: r, error: rErr } = await supabase
-          .from("reviews")
-          .select(
-            "id, created_at, rating, issue_type, review_text, status, author_email, author_company, author_company_vat, is_verified, verification_method, risk_score, is_flagged"
-          )
-          .eq("company_id", realCompanyId)
-          .eq("status", "published")
-          .order("created_at", { ascending: false });
-
-        if (rErr) throw new Error(rErr.message);
-
-        const baseReviews: Review[] = (r || []).map((row: any) => ({
-          ...row,
-          review_replies: [],
-        }));
-
-        const ids = baseReviews.map((x) => x.id).filter(Boolean);
-
-        if (ids.length > 0) {
-          const res = await supabase.functions.invoke("company-replies", {
-            method: "POST",
-            body: { company_id: realCompanyId, review_ids: ids },
-          });
-
-          const data: any = (res as any)?.data;
-
-          if (data?.ok && Array.isArray(data.replies)) {
-            const byReviewId = new Map<string, PublicReplyRow>();
-            for (const rr of data.replies as PublicReplyRow[]) {
-              const rid = String((rr as any)?.review_id || "").trim();
-              if (!rid) continue;
-              byReviewId.set(rid, {
-                review_id: rid,
-                reply_text: (rr as any)?.reply_text ?? null,
-                updated_at: (rr as any)?.updated_at ?? null,
-              });
-            }
-
-            for (const br of baseReviews) {
-              const match = byReviewId.get(br.id);
-              if (
-                match &&
-                match.reply_text &&
-                String(match.reply_text).trim().length > 0
-              ) {
-                br.review_replies = [
-                  {
-                    id: "public",
-                    reply_text: match.reply_text,
-                    updated_at: match.updated_at,
-                  },
-                ];
-              }
-            }
-          }
-        }
-
-        setReviews(baseReviews);
 
         const { data: u } = await supabase.auth.getUser();
+        if (cancelled) return;
+
         const uid = u?.user?.id ?? null;
         setCurrentUserId(uid);
 
-        if (uid) {
-          const { data: claim, error: clErr } = await supabase
-            .from("company_claims")
-            .select("status")
-            .eq("company_id", realCompanyId)
-            .eq("claimant_user_id", uid)
-            .order("created_at", { ascending: false })
-            .limit(1);
+        if (!uid) {
+          setClaimStatus("none");
+          return;
+        }
 
-          if (!clErr && claim && claim.length) {
-            const st = String((claim[0] as any).status || "").toLowerCase();
-            if (st === "approved") setClaimStatus("approved");
-            else if (st === "pending") setClaimStatus("pending");
-            else if (st === "rejected") setClaimStatus("rejected");
-            else setClaimStatus("pending");
-          } else {
-            setClaimStatus("none");
-          }
+        const { data: claim, error: clErr } = await supabase
+          .from("company_claims")
+          .select("status")
+          .eq("company_id", company.id)
+          .eq("claimant_user_id", uid)
+          .order("created_at", { ascending: false })
+          .limit(1);
+
+        if (cancelled) return;
+
+        if (!clErr && claim && claim.length) {
+          const st = String((claim[0] as any).status || "").toLowerCase();
+          if (st === "approved") setClaimStatus("approved");
+          else if (st === "pending") setClaimStatus("pending");
+          else if (st === "rejected") setClaimStatus("rejected");
+          else setClaimStatus("pending");
         } else {
           setClaimStatus("none");
         }
       } catch (e: any) {
-        setErr(String(e?.message || e));
-      } finally {
-        setLoading(false);
+        if (!cancelled) {
+          setErr(String(e?.message || e));
+        }
       }
     })();
-  }, [companySlug]);
+
+    return () => {
+      cancelled = true;
+    };
+  }, [company.id]);
 
   useEffect(() => {
     if (!companySlug || !company?.name) return;

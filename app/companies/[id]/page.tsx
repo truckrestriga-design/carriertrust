@@ -14,10 +14,46 @@ type CompanySeoData = {
   id: string;
   slug: string | null;
   name: string | null;
-  country: string | null;
   vat_uid: string | null;
+  country: string | null;
   trust_score: number | null;
+  trust_level: string | null;
+  trust_updated_at: string | null;
+  is_verified_company: boolean | null;
+  verified_at: string | null;
+  verification_method: string | null;
+  fraud_score: number | null;
   risk_level: string | null;
+  auto_flagged: boolean | null;
+};
+
+type ReviewReplyData = {
+  id: string;
+  reply_text: string | null;
+  updated_at: string | null;
+};
+
+type CompanyReviewData = {
+  id: string;
+  created_at: string;
+  rating: number | null;
+  issue_type: string | null;
+  review_text: string | null;
+  status: string | null;
+  author_email: string | null;
+  author_company: string | null;
+  author_company_vat: string | null;
+  is_verified: boolean | null;
+  verification_method: string | null;
+  risk_score: number | null;
+  is_flagged: boolean | null;
+  review_replies: ReviewReplyData[];
+};
+
+type PublicReplyRow = {
+  review_id: string;
+  reply_text: string | null;
+  updated_at: string | null;
 };
 
 function slugifyPart(value: string) {
@@ -82,7 +118,7 @@ const getCompany = cache(
       const bySlug = await supabaseServer
         .from("companies")
         .select(
-          "id, name, slug, country, vat_uid, trust_score, risk_level"
+          "id, slug, name, vat_uid, country, trust_score, trust_level, trust_updated_at, is_verified_company, verified_at, verification_method, fraud_score, risk_level, auto_flagged"
         )
         .eq("slug", decodedIdentifier)
         .maybeSingle();
@@ -101,7 +137,7 @@ const getCompany = cache(
       const byId = await supabaseServer
         .from("companies")
         .select(
-          "id, name, slug, country, vat_uid, trust_score, risk_level"
+          "id, slug, name, vat_uid, country, trust_score, trust_level, trust_updated_at, is_verified_company, verified_at, verification_method, fraud_score, risk_level, auto_flagged"
         )
         .eq("id", decodedIdentifier)
         .maybeSingle();
@@ -121,6 +157,94 @@ const getCompany = cache(
     }
   }
 );
+
+const getCompanyPageData = cache(async (companyId: string) => {
+  const [planResult, reviewsResult] = await Promise.all([
+    supabaseServer
+      .from("company_plans")
+      .select("plan, plan_status, current_period_end")
+      .eq("company_id", companyId)
+      .eq("plan_status", "active")
+      .order("created_at", { ascending: false })
+      .limit(1)
+      .maybeSingle(),
+    supabaseServer
+      .from("reviews")
+      .select(
+        "id, created_at, rating, issue_type, review_text, status, author_email, author_company, author_company_vat, is_verified, verification_method, risk_score, is_flagged"
+      )
+      .eq("company_id", companyId)
+      .eq("status", "published")
+      .order("created_at", { ascending: false }),
+  ]);
+
+  if (planResult.error) {
+    console.error("Company plan lookup failed:", planResult.error.message);
+  }
+
+  if (reviewsResult.error) {
+    console.error("Company reviews lookup failed:", reviewsResult.error.message);
+  }
+
+  const reviews: CompanyReviewData[] = (reviewsResult.data || []).map((row) => ({
+    ...row,
+    review_replies: [],
+  }));
+
+  const reviewIds = reviews.map((review) => review.id).filter(Boolean);
+
+  if (reviewIds.length > 0) {
+    try {
+      const repliesResult = await supabaseServer.functions.invoke(
+        "company-replies",
+        {
+          method: "POST",
+          body: {
+            company_id: companyId,
+            review_ids: reviewIds,
+          },
+        }
+      );
+
+      if (repliesResult.error) {
+        console.error(
+          "Company replies lookup failed:",
+          repliesResult.error.message
+        );
+      }
+
+      const rows = Array.isArray(repliesResult.data?.replies)
+        ? (repliesResult.data.replies as PublicReplyRow[])
+        : [];
+
+      const repliesByReviewId = new Map(
+        rows
+          .filter((reply) => String(reply.review_id || "").trim())
+          .map((reply) => [String(reply.review_id), reply])
+      );
+
+      for (const review of reviews) {
+        const reply = repliesByReviewId.get(review.id);
+        if (reply?.reply_text?.trim()) {
+          review.review_replies = [
+            {
+              id: "public",
+              reply_text: reply.reply_text,
+              updated_at: reply.updated_at,
+            },
+          ];
+        }
+      }
+    } catch (error) {
+      console.error("Company replies lookup failed:", error);
+    }
+  }
+
+  return {
+    companyPlan: planResult.data?.plan ?? null,
+    reviews,
+  };
+});
 
 export async function generateMetadata({
   params,
@@ -236,6 +360,7 @@ export default async function CompanyPage({ params }: Props) {
   }
 
   const companyUrl = `https://carriertrust.eu/companies/${canonicalSlug}`;
+  const { companyPlan, reviews } = await getCompanyPageData(company.id);
 
   const companySchema = {
     "@context": "https://schema.org",
@@ -325,7 +450,11 @@ export default async function CompanyPage({ params }: Props) {
         }}
       />
 
-      <CompanyClient />
+      <CompanyClient
+        initialCompany={company}
+        initialCompanyPlan={companyPlan}
+        initialReviews={reviews}
+      />
     </>
   );
 }
