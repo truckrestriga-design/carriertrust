@@ -674,20 +674,20 @@ export default function HomeClient({
     "@graph": [
       {
         "@type": "WebSite",
-        "@id": "https://carriertrust.eu/#website",
+        "@id": "https://www.carriertrust.eu/#website",
         name: "CarrierTrust",
-        url: "https://carriertrust.eu",
+        url: "https://www.carriertrust.eu",
         potentialAction: {
           "@type": "SearchAction",
-          target: "https://carriertrust.eu/search?q={search_term_string}",
+          target: "https://www.carriertrust.eu/search?q={search_term_string}",
           "query-input": "required name=search_term_string",
         },
       },
       {
         "@type": "Organization",
-        "@id": "https://carriertrust.eu/#organization",
+        "@id": "https://www.carriertrust.eu/#organization",
         name: "CarrierTrust",
-        url: "https://carriertrust.eu",
+        url: "https://www.carriertrust.eu",
         description:
   "European logistics trust platform for cargo transportation, freight forwarding, carrier reviews, logistics verification, cargo delivery terms, Timocom alternative, cargo.lt market comparison, carrier risk index and company verification.",
   keywords: [
@@ -703,14 +703,14 @@ export default function HomeClient({
       },
       {
         "@type": "WebPage",
-        "@id": "https://carriertrust.eu/#webpage",
-        url: "https://carriertrust.eu",
+        "@id": "https://www.carriertrust.eu/#webpage",
+        url: "https://www.carriertrust.eu",
         name: "CarrierTrust",
         isPartOf: {
-          "@id": "https://carriertrust.eu/#website",
+          "@id": "https://www.carriertrust.eu/#website",
         },
         about: {
-          "@id": "https://carriertrust.eu/#organization",
+          "@id": "https://www.carriertrust.eu/#organization",
         },
       },
     ],

@@ -6,13 +6,13 @@ export const metadata: Metadata = {
   description:
     "Learn how CarrierTrust company verification works, including VAT, domain, and admin checks that improve trust and visibility across Europe.",
   alternates: {
-    canonical: "https://carriertrust.eu/verification",
+    canonical: "https://www.carriertrust.eu/verification",
   },
   openGraph: {
     title: "Company Verification | CarrierTrust",
     description:
       "Learn how CarrierTrust company verification works, including VAT, domain, and admin checks that improve trust and visibility across Europe.",
-    url: "https://carriertrust.eu/verification",
+    url: "https://www.carriertrust.eu/verification",
     siteName: "CarrierTrust",
     type: "website",
   },

@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://carriertrust.eu"),
+  metadataBase: new URL("https://www.carriertrust.eu"),
 
   icons: {
     icon: [
@@ -72,15 +72,15 @@ export const metadata: Metadata = {
   publisher: "CarrierTrust",
 
   alternates: {
-    canonical: "https://carriertrust.eu",
+    canonical: "https://www.carriertrust.eu",
     languages: {
-      en: "https://carriertrust.eu",
-      de: "https://carriertrust.eu",
-      fr: "https://carriertrust.eu",
-      es: "https://carriertrust.eu",
-      it: "https://carriertrust.eu",
-      ru: "https://carriertrust.eu",
-      "x-default": "https://carriertrust.eu",
+      en: "https://www.carriertrust.eu",
+      de: "https://www.carriertrust.eu",
+      fr: "https://www.carriertrust.eu",
+      es: "https://www.carriertrust.eu",
+      it: "https://www.carriertrust.eu",
+      ru: "https://www.carriertrust.eu",
+      "x-default": "https://www.carriertrust.eu",
     },
   },
 
@@ -89,7 +89,7 @@ export const metadata: Metadata = {
       "CarrierTrust — EU Logistics Reviews, Cargo Risk Index & Company Verification",
     description:
       "European logistics trust platform for cargo transportation, freight forwarding, logistics reviews, cargo delivery terms, carrier risk index, company verification and partner trust checks.",
-    url: "https://carriertrust.eu",
+    url: "https://www.carriertrust.eu",
     siteName: "CarrierTrust",
     type: "website",
     locale: "en_EU",

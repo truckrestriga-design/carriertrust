@@ -595,8 +595,8 @@ export default function SearchPage() {
 
   const searchSchema = useMemo(() => {
     const pageUrl = q
-      ? `https://carriertrust.eu/search?q=${encodeURIComponent(q)}`
-      : "https://carriertrust.eu/search";
+      ? `https://www.carriertrust.eu/search?q=${encodeURIComponent(q)}`
+      : "https://www.carriertrust.eu/search";
 
     const schema: Record<string, any> = {
       "@context": "https://schema.org",
@@ -606,11 +606,11 @@ export default function SearchPage() {
       isPartOf: {
         "@type": "WebSite",
         name: "CarrierTrust",
-        url: "https://carriertrust.eu",
+        url: "https://www.carriertrust.eu",
       },
       potentialAction: {
         "@type": "SearchAction",
-        target: "https://carriertrust.eu/search?q={search_term_string}",
+        target: "https://www.carriertrust.eu/search?q={search_term_string}",
         "query-input": "required name=search_term_string",
       },
     };
@@ -622,7 +622,7 @@ export default function SearchPage() {
         itemListElement: items.map((item, index) => ({
           "@type": "ListItem",
           position: index + 1,
-          url: `https://carriertrust.eu/companies/${item.slug || item.id}`,
+          url: `https://www.carriertrust.eu/companies/${item.slug || item.id}`,
           name: item.name || t.companyFallback,
         })),
       };

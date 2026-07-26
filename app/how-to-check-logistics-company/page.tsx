@@ -5,13 +5,13 @@ export const metadata: Metadata = {
   description:
     "Learn how to check a logistics company before cooperation: reviews, payment signals, verification status, and trust indicators across Europe.",
   alternates: {
-    canonical: "https://carriertrust.eu/how-to-check-logistics-company",
+    canonical: "https://www.carriertrust.eu/how-to-check-logistics-company",
   },
   openGraph: {
     title: "How to Check a Logistics Company | CarrierTrust",
     description:
       "Learn how to check a logistics company before cooperation: reviews, payment signals, verification status, and trust indicators across Europe.",
-    url: "https://carriertrust.eu/how-to-check-logistics-company",
+    url: "https://www.carriertrust.eu/how-to-check-logistics-company",
     siteName: "CarrierTrust",
     type: "article",
   },

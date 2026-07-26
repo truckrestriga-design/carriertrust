@@ -5,13 +5,13 @@ export const metadata: Metadata = {
   description:
     "Understand cargo delivery terms, payment conditions, freight deadlines, and logistics agreement risks across Europe.",
   alternates: {
-    canonical: "https://carriertrust.eu/cargo-delivery-terms",
+    canonical: "https://www.carriertrust.eu/cargo-delivery-terms",
   },
   openGraph: {
     title: "Cargo Delivery Terms | CarrierTrust",
     description:
       "Understand cargo delivery terms, payment conditions, freight deadlines, and logistics agreement risks across Europe.",
-    url: "https://carriertrust.eu/cargo-delivery-terms",
+    url: "https://www.carriertrust.eu/cargo-delivery-terms",
     siteName: "CarrierTrust",
     type: "article",
   },

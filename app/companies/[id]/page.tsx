@@ -280,7 +280,7 @@ export async function generateMetadata({
    * Он всегда строится по одному правилу.
    */
   const canonicalSlug = createCanonicalSlug(company);
-  const canonicalUrl = `https://carriertrust.eu/companies/${canonicalSlug}`;
+  const canonicalUrl = `https://www.carriertrust.eu/companies/${canonicalSlug}`;
 
   const title = `${companyName} Reviews, Trust Score & Carrier Reputation`;
 
@@ -359,7 +359,7 @@ export default async function CompanyPage({ params }: Props) {
     permanentRedirect(`/companies/${canonicalSlug}`);
   }
 
-  const companyUrl = `https://carriertrust.eu/companies/${canonicalSlug}`;
+  const companyUrl = `https://www.carriertrust.eu/companies/${canonicalSlug}`;
   const { companyPlan, reviews } = await getCompanyPageData(company.id);
 
   const companySchema = {
@@ -422,13 +422,13 @@ export default async function CompanyPage({ params }: Props) {
             "@type": "ListItem",
             position: 1,
             name: "Home",
-            item: "https://carriertrust.eu",
+            item: "https://www.carriertrust.eu",
           },
           {
             "@type": "ListItem",
             position: 2,
             name: "Companies",
-            item: "https://carriertrust.eu/companies",
+            item: "https://www.carriertrust.eu/companies",
           },
           {
             "@type": "ListItem",

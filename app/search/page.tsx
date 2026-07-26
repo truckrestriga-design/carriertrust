@@ -7,13 +7,13 @@ export async function generateMetadata(): Promise<Metadata> {
     description:
   "Search logistics companies, carrier reviews, trust scores, freight forwarders and transport companies across Europe on CarrierTrust.",
     alternates: {
-      canonical: "https://carriertrust.eu/search",
+      canonical: "https://www.carriertrust.eu/search",
     },
     openGraph: {
       title: "Logistics Companies Search | CarrierTrust",
       description:
         "Search logistics companies, freight forwarders, cargo delivery providers and transport companies across Europe.",
-      url: "https://carriertrust.eu/search",
+      url: "https://www.carriertrust.eu/search",
       siteName: "CarrierTrust",
       type: "website",
     },

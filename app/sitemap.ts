@@ -40,7 +40,7 @@ async function getAllCompanies(): Promise<CompanySitemapRow[]> {
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const base = "https://carriertrust.eu";
+  const base = "https://www.carriertrust.eu";
 
   const staticPages: MetadataRoute.Sitemap = [
     {

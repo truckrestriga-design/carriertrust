@@ -6,13 +6,13 @@ export const metadata: Metadata = {
   description:
     "Explore CarrierTrust pricing for logistics companies, carrier verification, reputation tools, review management, and trust visibility across Europe.",
   alternates: {
-    canonical: "https://carriertrust.eu/pricing",
+    canonical: "https://www.carriertrust.eu/pricing",
   },
   openGraph: {
     title: "Pricing | CarrierTrust",
     description:
       "Explore CarrierTrust pricing for logistics companies, carrier verification, reputation tools, review management, and trust visibility across Europe.",
-    url: "https://carriertrust.eu/pricing",
+    url: "https://www.carriertrust.eu/pricing",
     siteName: "CarrierTrust",
     type: "website",
   },

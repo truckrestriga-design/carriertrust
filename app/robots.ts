@@ -7,7 +7,7 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/auth", "/api", "/company/profile", "/billing"],
     },
-    sitemap: "https://carriertrust.eu/sitemap.xml",
-    host: "https://carriertrust.eu",
+    sitemap: "https://www.carriertrust.eu/sitemap.xml",
+    host: "https://www.carriertrust.eu",
   };
 }

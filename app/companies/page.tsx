@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description:
     "Browse logistics companies, carrier reviews, freight forwarders and trust scores across Europe on CarrierTrust.",
   alternates: {
-    canonical: "https://carriertrust.eu/companies",
+    canonical: "https://www.carriertrust.eu/companies",
   },
 };
 

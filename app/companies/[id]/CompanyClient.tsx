@@ -1618,7 +1618,7 @@ const trustScoreUI = useMemo(() => {
     const page_url =
       typeof window !== "undefined"
         ? window.location.href
-        : `https://carriertrust.eu/companies/${companySlug}`;
+        : `https://www.carriertrust.eu/companies/${companySlug}`;
 
     try {
       const res = await supabase.functions.invoke("submit-report", {

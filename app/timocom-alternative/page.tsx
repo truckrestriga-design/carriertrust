@@ -5,13 +5,13 @@ export const metadata: Metadata = {
   description:
     "Looking for a Timocom alternative? Compare freight exchange visibility with company trust checks, reviews, and logistics risk signals across Europe.",
   alternates: {
-    canonical: "https://carriertrust.eu/timocom-alternative",
+    canonical: "https://www.carriertrust.eu/timocom-alternative",
   },
   openGraph: {
     title: "Timocom Alternative | CarrierTrust",
     description:
       "Looking for a Timocom alternative? Compare freight exchange visibility with company trust checks, reviews, and logistics risk signals across Europe.",
-    url: "https://carriertrust.eu/timocom-alternative",
+    url: "https://www.carriertrust.eu/timocom-alternative",
     siteName: "CarrierTrust",
     type: "article",
   },
