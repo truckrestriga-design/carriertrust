@@ -1,6 +1,44 @@
 import type { MetadataRoute } from "next";
 import { supabaseServer } from "@/lib/supabaseServer";
 
+type CompanySitemapRow = {
+  id: string;
+  slug: string | null;
+  updated_at: string | null;
+};
+
+const COMPANY_PAGE_SIZE = 1000;
+
+async function getAllCompanies(): Promise<CompanySitemapRow[]> {
+  const allCompanies: CompanySitemapRow[] = [];
+
+  for (let from = 0; ; from += COMPANY_PAGE_SIZE) {
+    const { data, error } = await supabaseServer
+      .from("companies")
+      .select("id, slug, updated_at")
+      .order("updated_at", { ascending: false })
+      .order("id", { ascending: true })
+      .range(from, from + COMPANY_PAGE_SIZE - 1);
+
+    if (error) {
+      console.error(
+        `Failed to load companies for sitemap from row ${from}:`,
+        error.message
+      );
+      break;
+    }
+
+    const rows = (data || []) as CompanySitemapRow[];
+    allCompanies.push(...rows);
+
+    if (rows.length < COMPANY_PAGE_SIZE) {
+      break;
+    }
+  }
+
+  return allCompanies;
+}
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = "https://carriertrust.eu";
 
@@ -97,30 +135,23 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ];
 
-  const { data: companies, error } = await supabaseServer
-    .from("companies")
-    .select("id, slug, updated_at")
-    .order("updated_at", { ascending: false });
-
-  if (error || !companies) {
-    return staticPages;
-  }
+  const companies = await getAllCompanies();
 
   const companyPages: MetadataRoute.Sitemap = companies
-  .filter(
-    (
-      company
-    ): company is typeof company & { slug: string } =>
-      typeof company.slug === "string" && company.slug.trim().length > 0
-  )
-  .map((company) => ({
-    url: `${base}/companies/${company.slug}`,
-    lastModified: company.updated_at
-      ? new Date(company.updated_at)
-      : new Date(),
-    changeFrequency: "weekly",
-    priority: 0.8,
-  }));
+    .filter(
+      (
+        company
+      ): company is CompanySitemapRow & { slug: string } =>
+        typeof company.slug === "string" && company.slug.trim().length > 0
+    )
+    .map((company) => ({
+      url: `${base}/companies/${company.slug}`,
+      lastModified: company.updated_at
+        ? new Date(company.updated_at)
+        : new Date(),
+      changeFrequency: "weekly",
+      priority: 0.8,
+    }));
 
   return [...staticPages, ...companyPages];
 }
