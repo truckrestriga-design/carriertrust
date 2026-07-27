@@ -17,6 +17,7 @@ export const DICT: Record<Lang, Dict> = {
     companyProfile: "Company profile",
     plansAccess: "Plans & Access",
     verification: "Verification",
+    media: "Media",
     reviewPolicy: "Review Policy",
     legal: "Legal",
 
@@ -106,6 +107,7 @@ export const DICT: Record<Lang, Dict> = {
     footerDescription:
       "Independent ratings and reviews for transport and logistics companies across Europe. Built for trust, transparency and real business experience.",
     footerPlatform: "Platform",
+    footerCompany: "Company",
     footerLegal: "Legal",
     footerRights: "© 2026 CarrierTrust.eu. All rights reserved.",
     footerBottomText: "Built for EU transport & logistics.",
@@ -212,6 +214,7 @@ tipReply:
     companyProfile: "Firmenprofil",
     plansAccess: "Tarife & Zugang",
     verification: "Verifizierung",
+    media: "Medien",
     reviewPolicy: "Review-Richtlinie",
     legal: "Rechtliches",
 
@@ -301,6 +304,7 @@ tipReply:
     footerDescription:
       "Unabhängige Bewertungen und Rezensionen für Transport- und Logistikunternehmen in ganz Europa. Entwickelt für Vertrauen, Transparenz und echte Geschäftserfahrung.",
     footerPlatform: "Plattform",
+    footerCompany: "Unternehmen",
     footerLegal: "Rechtliches",
     footerRights: "© 2026 CarrierTrust.eu. Alle Rechte vorbehalten.",
     footerBottomText: "Entwickelt für EU-Transport & Logistik.",
@@ -407,6 +411,7 @@ tipReply:
     companyProfile: "Профиль компании",
     plansAccess: "Тарифы и доступ",
     verification: "Верификация",
+    media: "СМИ",
     reviewPolicy: "Политика отзывов",
     legal: "Юридическая информация",
 
@@ -496,6 +501,7 @@ tipReply:
     footerDescription:
       "Независимые рейтинги и отзывы для транспортных и логистических компаний по всей Европе. Создано для доверия, прозрачности и реального делового опыта.",
     footerPlatform: "Платформа",
+    footerCompany: "Компания",
     footerLegal: "Правовая информация",
     footerRights: "© 2026 CarrierTrust.eu. Все права защищены.",
     footerBottomText: "Создано для транспорта и логистики ЕС.",
@@ -602,6 +608,7 @@ tipReply:
     companyProfile: "Profil entreprise",
     plansAccess: "Offres & accès",
     verification: "Vérification",
+    media: "Médias",
     reviewPolicy: "Politique des avis",
     legal: "Mentions légales",
 
@@ -691,6 +698,7 @@ tipReply:
     footerDescription:
       "Notes et avis indépendants pour les entreprises de transport et de logistique à travers l’Europe. Conçu pour la confiance, la transparence et une vraie expérience commerciale.",
     footerPlatform: "Plateforme",
+    footerCompany: "Entreprise",
     footerLegal: "Légal",
     footerRights: "© 2026 CarrierTrust.eu. Tous droits réservés.",
     footerBottomText: "Conçu pour le transport & la logistique de l’UE.",
@@ -797,6 +805,7 @@ tipReply:
     companyProfile: "Perfil de empresa",
     plansAccess: "Planes y acceso",
     verification: "Verificación",
+    media: "Medios",
     reviewPolicy: "Política de reseñas",
     legal: "Legal",
 
@@ -886,6 +895,7 @@ tipReply:
     footerDescription:
       "Calificaciones y reseñas independientes para empresas de transporte y logística en toda Europa. Construido para confianza, transparencia y experiencia empresarial real.",
     footerPlatform: "Plataforma",
+    footerCompany: "Empresa",
     footerLegal: "Legal",
     footerRights: "© 2026 CarrierTrust.eu. Todos los derechos reservados.",
     footerBottomText: "Hecho para transporte y logística de la UE.",
@@ -992,6 +1002,7 @@ tipReply:
     companyProfile: "Profilo aziendale",
     plansAccess: "Piani e accesso",
     verification: "Verifica",
+    media: "Media",
     reviewPolicy: "Politica recensioni",
     legal: "Legale",
 
@@ -1081,6 +1092,7 @@ tipReply:
     footerDescription:
       "Valutazioni e recensioni indipendenti per aziende di trasporto e logistica in tutta Europa. Costruito per fiducia, trasparenza e vera esperienza aziendale.",
     footerPlatform: "Piattaforma",
+    footerCompany: "Azienda",
     footerLegal: "Legale",
     footerRights: "© 2026 CarrierTrust.eu. Tutti i diritti riservati.",
     footerBottomText: "Creato per trasporto e logistica UE.",
