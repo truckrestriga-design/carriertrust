@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useMemo } from "react";
 import { useLang } from "@/lib/language-context";
@@ -259,7 +260,7 @@ const MEDIA_ITEMS = [
   {
     id: "lsm",
     source: "LSM English",
-    initials: "LSM",
+    logo: "/media-logos/lsm.png",
     title: "Latvian startup launches transport sector 'reputation network'",
     date: "13 Jul 2026",
     language: "English",
@@ -268,7 +269,7 @@ const MEDIA_ITEMS = [
   {
     id: "labsEn",
     source: "Labs of Latvia",
-    initials: "LL",
+    logo: "/media-logos/labs-of-latvia.png",
     title:
       "Latvia-based startup CarrierTrust launches reputation network for European logistics",
     date: "Jul 2026",
@@ -278,7 +279,7 @@ const MEDIA_ITEMS = [
   {
     id: "labsLv",
     source: "Labs of Latvia",
-    initials: "LL",
+    logo: "/media-logos/labs-of-latvia.png",
     title:
       "Latvijā radīts jaunuzņēmums CarrierTrust veido reputācijas tīklu loģistikas nozarei",
     date: "Jul 2026",
@@ -288,7 +289,7 @@ const MEDIA_ITEMS = [
   {
     id: "delfi",
     source: "DELFI Bizness",
-    initials: "D",
+    logo: "/media-logos/delfi.webp",
     title:
       "Latvijā radīts jaunuzņēmums palīdz loģistikas uzņēmumiem pārbaudīt partnerus un izvērtēt riskus",
     date: "Jul 2026",
@@ -384,16 +385,22 @@ export default function MediaClient() {
               </span>
             </div>
 
-            <div className="mt-7 grid gap-5 lg:grid-cols-2">
+            <div className="mt-7 grid gap-4 lg:grid-cols-2">
               {MEDIA_ITEMS.map((item) => (
                 <article
                   key={item.id}
-                  className={`group flex min-h-[300px] flex-col rounded-[1.7rem] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-emerald-200 hover:shadow-[0_22px_56px_rgba(15,23,42,0.10)] sm:p-7 ${card}`}
+                  className={`group flex min-h-[250px] flex-col rounded-[1.5rem] p-5 transition-all duration-300 hover:-translate-y-1 hover:border-emerald-200 hover:shadow-[0_22px_56px_rgba(15,23,42,0.10)] sm:p-6 ${card}`}
                 >
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex min-w-0 items-center gap-3">
-                      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-400 via-teal-500 to-cyan-500 text-sm font-extrabold text-white shadow-[0_10px_26px_rgba(16,185,129,0.25)]">
-                        {item.initials}
+                      <div className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-slate-200/80 bg-white p-1.5 shadow-sm">
+                        <Image
+                          src={item.logo}
+                          alt={`${item.source} logo`}
+                          width={48}
+                          height={48}
+                          className="h-full w-full object-contain"
+                        />
                       </div>
                       <div className="min-w-0">
                         <div className="truncate text-sm font-extrabold text-slate-900">
@@ -410,24 +417,24 @@ export default function MediaClient() {
                     </span>
                   </div>
 
-                  <div className="mt-6">
-                    <span className="text-xs font-bold uppercase tracking-[0.14em] text-emerald-700">
+                  <div className="mt-5">
+                    <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-emerald-700">
                       {t.mediaCoverage}
                     </span>
-                    <h3 className="mt-3 text-xl font-extrabold leading-snug tracking-[-0.02em] text-slate-950">
+                    <h3 className="mt-2.5 text-lg font-extrabold leading-snug tracking-[-0.02em] text-slate-950">
                       {item.title}
                     </h3>
-                    <p className="mt-3 text-sm leading-6 text-slate-600">
+                    <p className="mt-2.5 text-sm leading-5 text-slate-600">
                       {t.descriptions[item.id]}
                     </p>
                   </div>
 
-                  <div className="mt-auto pt-7">
+                  <div className="mt-auto pt-5">
                     <a
                       href={item.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group inline-flex items-center gap-2 rounded-2xl border border-slate-200/90 bg-white/90 px-4 py-2.5 text-sm font-bold text-slate-800 transition-all duration-200 hover:border-emerald-300 hover:bg-emerald-50 hover:text-emerald-950"
+                      className="group inline-flex items-center gap-2 rounded-xl border border-slate-200/90 bg-white/90 px-3.5 py-2 text-sm font-bold text-slate-800 transition-all duration-200 hover:border-emerald-300 hover:bg-emerald-50 hover:text-emerald-950"
                     >
                       {t.readArticle}
                       <ExternalArrow />
