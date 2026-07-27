@@ -29,6 +29,11 @@ type TextPack = {
   descriptions: Record<string, string>;
   startinTitle: string;
   startinDescription: string;
+  crunchbaseTitle: string;
+  crunchbaseDescription: string;
+  linkedinTitle: string;
+  linkedinDescription: string;
+  viewProfile: string;
 };
 
 const TEXT: Record<Lang, TextPack> = {
@@ -68,6 +73,13 @@ const TEXT: Record<Lang, TextPack> = {
     startinTitle: "CarrierTrust in Latvia's startup database",
     startinDescription:
       "CarrierTrust is included in the Startin.LV startup overview supported by the Ministry of Economics of the Republic of Latvia.",
+    crunchbaseTitle: "CarrierTrust company profile on Crunchbase",
+    crunchbaseDescription:
+      "CarrierTrust has a public Crunchbase profile presenting the company, its market focus and development as a European logistics technology startup.",
+    linkedinTitle: "Follow CarrierTrust on LinkedIn",
+    linkedinDescription:
+      "The official CarrierTrust LinkedIn page shares company updates, platform developments, media coverage and insights from the European logistics sector.",
+    viewProfile: "View profile",
   },
   de: {
     eyebrow: "CarrierTrust Newsroom",
@@ -105,6 +117,13 @@ const TEXT: Record<Lang, TextPack> = {
     startinTitle: "CarrierTrust in Lettlands Startup-Datenbank",
     startinDescription:
       "CarrierTrust ist in der Startin.LV Startup-Übersicht gelistet, die vom Wirtschaftsministerium der Republik Lettland unterstützt wird.",
+    crunchbaseTitle: "CarrierTrust-Unternehmensprofil auf Crunchbase",
+    crunchbaseDescription:
+      "CarrierTrust verfügt über ein öffentliches Crunchbase-Profil mit Informationen zum Unternehmen, seinem Marktfokus und seiner Entwicklung als europäisches Logistik-Technologie-Startup.",
+    linkedinTitle: "CarrierTrust auf LinkedIn folgen",
+    linkedinDescription:
+      "Die offizielle LinkedIn-Seite von CarrierTrust veröffentlicht Unternehmensneuigkeiten, Plattform-Updates, Medienberichte und Einblicke in die europäische Logistikbranche.",
+    viewProfile: "Profil ansehen",
   },
   ru: {
     eyebrow: "Новости CarrierTrust",
@@ -142,6 +161,13 @@ const TEXT: Record<Lang, TextPack> = {
     startinTitle: "CarrierTrust в базе стартапов Латвии",
     startinDescription:
       "CarrierTrust включён в обзор стартапов Startin.LV, поддерживаемый Министерством экономики Латвийской Республики.",
+    crunchbaseTitle: "Профиль компании CarrierTrust на Crunchbase",
+    crunchbaseDescription:
+      "У CarrierTrust есть публичный профиль на Crunchbase с информацией о компании, её рыночном направлении и развитии как европейского технологического стартапа в сфере логистики.",
+    linkedinTitle: "Следите за CarrierTrust в LinkedIn",
+    linkedinDescription:
+      "На официальной странице CarrierTrust в LinkedIn публикуются новости компании, обновления платформы, материалы СМИ и информация о европейской логистической отрасли.",
+    viewProfile: "Открыть профиль",
   },
   fr: {
     eyebrow: "Newsroom CarrierTrust",
@@ -179,6 +205,13 @@ const TEXT: Record<Lang, TextPack> = {
     startinTitle: "CarrierTrust dans la base des startups lettones",
     startinDescription:
       "CarrierTrust figure dans l'aperçu Startin.LV soutenu par le ministère de l'Économie de la République de Lettonie.",
+    crunchbaseTitle: "Profil de CarrierTrust sur Crunchbase",
+    crunchbaseDescription:
+      "CarrierTrust dispose d’un profil public sur Crunchbase présentant l’entreprise, son marché et son développement en tant que startup technologique européenne dédiée à la logistique.",
+    linkedinTitle: "Suivez CarrierTrust sur LinkedIn",
+    linkedinDescription:
+      "La page LinkedIn officielle de CarrierTrust publie les actualités de l’entreprise, les évolutions de la plateforme, les articles de presse et des informations sur la logistique européenne.",
+    viewProfile: "Voir le profil",
   },
   es: {
     eyebrow: "Sala de prensa de CarrierTrust",
@@ -216,6 +249,13 @@ const TEXT: Record<Lang, TextPack> = {
     startinTitle: "CarrierTrust en la base de startups de Letonia",
     startinDescription:
       "CarrierTrust está incluido en el resumen de Startin.LV apoyado por el Ministerio de Economía de la República de Letonia.",
+    crunchbaseTitle: "Perfil de CarrierTrust en Crunchbase",
+    crunchbaseDescription:
+      "CarrierTrust cuenta con un perfil público en Crunchbase con información sobre la empresa, su mercado y su desarrollo como startup tecnológica europea para el sector logístico.",
+    linkedinTitle: "Sigue a CarrierTrust en LinkedIn",
+    linkedinDescription:
+      "La página oficial de CarrierTrust en LinkedIn publica noticias de la empresa, actualizaciones de la plataforma, cobertura mediática e información sobre el sector logístico europeo.",
+    viewProfile: "Ver perfil",
   },
   it: {
     eyebrow: "Newsroom CarrierTrust",
@@ -253,6 +293,13 @@ const TEXT: Record<Lang, TextPack> = {
     startinTitle: "CarrierTrust nel database delle startup lettoni",
     startinDescription:
       "CarrierTrust è incluso nella panoramica Startin.LV sostenuta dal Ministero dell'Economia della Repubblica di Lettonia.",
+    crunchbaseTitle: "Profilo di CarrierTrust su Crunchbase",
+    crunchbaseDescription:
+      "CarrierTrust dispone di un profilo pubblico su Crunchbase con informazioni sull’azienda, sul mercato di riferimento e sul suo sviluppo come startup tecnologica europea per la logistica.",
+    linkedinTitle: "Segui CarrierTrust su LinkedIn",
+    linkedinDescription:
+      "La pagina LinkedIn ufficiale di CarrierTrust pubblica notizie aziendali, aggiornamenti della piattaforma, copertura mediatica e approfondimenti sul settore logistico europeo.",
+    viewProfile: "Visualizza profilo",
   },
 };
 
@@ -464,10 +511,14 @@ export default function MediaClient() {
                       <div className="text-sm font-extrabold text-white">
                         Startin.LV
                       </div>
-                      <div className="flex gap-1.5">
-                        <span className="h-2 w-2 rounded-full bg-emerald-300" />
-                        <span className="h-2 w-2 rounded-full bg-cyan-300" />
-                        <span className="h-2 w-2 rounded-full bg-white/50" />
+                      <div className="rounded-xl bg-white px-3 py-2 shadow-sm">
+                        <Image
+                          src="/media-logos/startin-lv.png"
+                          alt="Startin.LV"
+                          width={76}
+                          height={40}
+                          className="h-auto w-[76px] object-contain"
+                        />
                       </div>
                     </div>
                     <div className="mt-5 rounded-xl border border-white/10 bg-white/10 px-3 py-2 text-xs text-white/65">
@@ -504,6 +555,140 @@ export default function MediaClient() {
                       className="group inline-flex items-center gap-2 rounded-2xl bg-slate-900 px-5 py-3 text-sm font-bold text-white shadow-[0_12px_28px_rgba(15,23,42,0.20)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-slate-800"
                     >
                       {t.viewDatabase}
+                      <ExternalArrow />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article className={`mt-5 overflow-hidden rounded-[1.8rem] ${card}`}>
+              <div className="grid lg:grid-cols-[0.8fr_1.2fr]">
+                <div className="relative flex min-h-[240px] items-center justify-center overflow-hidden border-b border-slate-200/70 bg-gradient-to-br from-blue-950 via-indigo-950 to-slate-950 p-8 lg:border-b-0 lg:border-r">
+                  <div className="pointer-events-none absolute -left-14 -top-16 h-44 w-44 rounded-full bg-blue-400/30 blur-3xl" />
+
+                  <div className="relative w-full max-w-sm rounded-[1.4rem] border border-white/15 bg-white/10 p-5 shadow-2xl backdrop-blur-xl">
+                    <div className="flex items-center justify-between">
+                      <div className="text-sm font-extrabold text-white">
+                        Crunchbase
+                      </div>
+                      <div className="rounded-xl bg-white px-3 py-2 shadow-sm">
+                        <Image
+                          src="/media-logos/crunchbase.png"
+                          alt="Crunchbase"
+                          width={126}
+                          height={20}
+                          className="h-auto w-[126px] object-contain"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="mt-5 rounded-xl border border-white/10 bg-white/10 px-3 py-2 text-xs text-white/65">
+                      Company profile
+                    </div>
+
+                    <div className="mt-3 space-y-2">
+                      <div className="rounded-xl border border-blue-300/20 bg-blue-300/10 px-3 py-3">
+                        <div className="text-sm font-bold text-white">CarrierTrust</div>
+                        <div className="mt-1 text-xs text-white/55">
+                          Logistics technology · Latvia
+                        </div>
+                      </div>
+                    </div>
+                 </div>
+                </div>
+
+                <div className="flex flex-col justify-center p-7 sm:p-9">
+                  <span className="w-fit rounded-full border border-blue-200/80 bg-blue-50/80 px-3 py-1 text-xs font-bold text-blue-900">
+                    {t.ecosystemRecognition}
+                  </span>
+
+                  <h3 className="mt-5 text-2xl font-extrabold tracking-[-0.025em] text-slate-950">
+                    {t.crunchbaseTitle}
+                  </h3>
+
+                  <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-600">
+                    {t.crunchbaseDescription}
+                  </p>
+
+                  <div className="mt-6">
+                    <a
+                      href="https://www.crunchbase.com/organization/carriertrust"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group inline-flex items-center gap-2 rounded-2xl bg-blue-600 px-5 py-3 text-sm font-bold text-white shadow-[0_12px_28px_rgba(37,99,235,0.22)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-blue-700"
+                    >
+                      {t.viewProfile}
+                      <ExternalArrow />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article className={`mt-5 overflow-hidden rounded-[1.8rem] ${card}`}>
+              <div className="grid lg:grid-cols-[0.8fr_1.2fr]">
+                <div className="relative flex min-h-[240px] items-center justify-center overflow-hidden border-b border-slate-200/70 bg-gradient-to-br from-[#0A66C2] via-blue-800 to-slate-950 p-8 lg:border-b-0 lg:border-r">
+                  <div className="pointer-events-none absolute -right-14 -top-16 h-44 w-44 rounded-full bg-cyan-300/25 blur-3xl" />
+
+                  <div className="relative w-full max-w-sm rounded-[1.4rem] border border-white/15 bg-white/10 p-5 shadow-2xl backdrop-blur-xl">
+                    <div className="flex items-center justify-between">
+                      <div className="text-sm font-extrabold text-white">
+                        LinkedIn
+                      </div>
+
+                      <div className="rounded-xl bg-white px-3 py-2 shadow-sm">
+                        <div
+                          className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#0A66C2]"
+                          aria-label="LinkedIn logo"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            viewBox="0 0 24 24"
+                            className="h-6 w-6 fill-white"
+                          >
+                            <path d="M5.337 21.554H1.004V7.588h4.333v13.966zM3.171 5.68A2.51 2.51 0 1 1 3.17.66a2.51 2.51 0 0 1 0 5.02zM23 21.554h-4.327v-6.798c0-1.621-.03-3.706-2.258-3.706-2.261 0-2.607 1.765-2.607 3.588v6.916H9.482V7.588h4.151v1.908h.058c.578-1.095 1.99-2.25 4.096-2.25 4.381 0 5.19 2.886 5.19 6.64v7.668z" />
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="mt-5 rounded-xl border border-white/10 bg-white/10 px-3 py-2 text-xs text-white/65">
+                      Official company page
+                    </div>
+
+                    <div className="mt-3 rounded-xl border border-cyan-200/20 bg-cyan-200/10 px-3 py-3">
+                      <div className="text-sm font-bold text-white">
+                        CarrierTrust
+                      </div>
+                      <div className="mt-1 text-xs text-white/55">
+                        Trust infrastructure for European logistics
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex flex-col justify-center p-7 sm:p-9">
+                  <span className="w-fit rounded-full border border-blue-200/80 bg-blue-50/80 px-3 py-1 text-xs font-bold text-blue-900">
+                    {t.ecosystemRecognition}
+                  </span>
+
+                  <h3 className="mt-5 text-2xl font-extrabold tracking-[-0.025em] text-slate-950">
+                    {t.linkedinTitle}
+                  </h3>
+
+                  <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-600">
+                    {t.linkedinDescription}
+                  </p>
+
+                  <div className="mt-6">
+                    <a
+                      href="https://www.linkedin.com/company/carriertrust"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group inline-flex items-center gap-2 rounded-2xl bg-[#0A66C2] px-5 py-3 text-sm font-bold text-white shadow-[0_12px_28px_rgba(10,102,194,0.24)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#004182]"
+                    >
+                      {t.viewProfile}
                       <ExternalArrow />
                     </a>
                   </div>

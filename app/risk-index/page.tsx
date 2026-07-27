@@ -879,7 +879,7 @@ export default function RiskIndexPage() {
   const tabOff = "bg-white/70 border-black/15 text-black hover:bg-white";
 
   return (
-    <main className="min-h-screen text-black">
+    <main className="min-h-screen select-none text-black">
       <div className="relative px-6 pt-44 pb-16 md:pt-48">
         <div className="mx-auto flex max-w-[1520px] items-start gap-10 xl:gap-20">
           <RotatingBanner side="left" banners={leftBanners} onAddClick={openOrder} t={modalT} />

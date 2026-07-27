@@ -679,7 +679,7 @@ export default function ContactPage() {
   const t = useMemo(() => TEXT[safeLang], [safeLang]);
 
   return (
-    <main className="min-h-screen text-slate-900">
+    <main className="min-h-screen select-none text-slate-900">
       <div className="pointer-events-none fixed inset-0 overflow-hidden">
         <div className="absolute inset-0 bg-slate-50" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(16,185,129,0.14),transparent)]" />
@@ -725,7 +725,7 @@ export default function ContactPage() {
                       {t.legalAddress}: {OPERATOR.address}
                     </p>
                     <p>
-                      {t.email}: <span className="font-bold text-slate-900">{OPERATOR.email}</span>
+                      {t.email}: <span className="cursor-text select-text font-bold text-slate-900">{OPERATOR.email}</span>
                     </p>
                     <p>
                       {t.languages}: {t.languagesValue}

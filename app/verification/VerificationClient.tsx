@@ -202,7 +202,7 @@ export default function VerificationPage() {
     "inline-flex items-center rounded-full border border-black/10 bg-white/70 px-3 py-1 text-xs font-semibold text-black/70";
 
   return (
-    <main className="min-h-screen text-black">
+    <main className="min-h-screen select-none text-black">
       <div className="relative px-6 pb-16 pt-40 md:pt-44">
         <div className="mx-auto max-w-3xl">
           <div className={`mt-5 p-7 ${hero}`}>

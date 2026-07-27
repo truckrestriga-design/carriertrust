@@ -182,7 +182,7 @@ export default function SiteHeader() {
   return (
     <div
       className={[
-        "fixed left-0 right-0 top-0 z-50",
+        "fixed left-0 right-0 top-0 z-50 select-none",
         "transition-transform duration-300 ease-out",
         hidden ? "-translate-y-full" : "translate-y-0",
       ].join(" ")}

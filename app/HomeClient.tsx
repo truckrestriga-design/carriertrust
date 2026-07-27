@@ -209,7 +209,7 @@ function FeatureCard({
   return (
     <div
       ref={ref}
-      className={`relative group transition-all duration-700 ${
+      className={`relative group h-full transition-all duration-700 ${
         isInView ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
       }`}
       style={{ transitionDelay: `${delay}ms` }}
@@ -222,7 +222,7 @@ function FeatureCard({
         }`}
       />
 
-      <div className="relative overflow-hidden rounded-3xl border border-white/50 bg-white/60 p-6 shadow-xl shadow-slate-200/50 transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl hover:shadow-emerald-100/50 backdrop-blur-xl sm:p-7 md:p-8">
+      <div className="relative h-full overflow-hidden rounded-3xl border border-white/50 bg-white/60 p-6 shadow-xl shadow-slate-200/50 transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl hover:shadow-emerald-100/50 backdrop-blur-xl sm:p-7 md:p-8">
         <div
           className={`absolute top-0 right-0 h-32 w-32 rounded-full bg-gradient-to-br ${colorClasses[color]} blur-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-50`}
         />
@@ -717,7 +717,7 @@ export default function HomeClient({
   };
 
   return (
-    <main className="min-h-screen overflow-x-hidden bg-slate-50 text-slate-900">
+    <main className="min-h-screen select-none overflow-x-hidden bg-slate-50 text-slate-900">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -1213,31 +1213,34 @@ export default function HomeClient({
                 {t("sectionCompaniesSub")}
               </p>
 
-              <Link
-                href="/verified-profile"
-                className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-slate-900 px-8 py-4 font-semibold text-white shadow-lg shadow-slate-900/20 transition-all hover:bg-slate-800 sm:w-auto sm:hover:scale-105"
-              >
-                {t("getStarted")}
-                <svg
-                  className="h-4 w-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
+              <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
+                <Link
+                  href="/verified-profile"
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-slate-900 px-8 py-4 font-semibold text-white shadow-lg shadow-slate-900/20 transition-all hover:bg-slate-800 sm:w-auto sm:hover:scale-105"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M17 8l4 4m0 0l-4 4m4-4H3"
-                  />
-                </svg>
-              </Link>
-              <Link
-  href="/companies"
-  className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-slate-300 px-8 py-4 font-semibold text-slate-800 transition-all hover:bg-slate-100 sm:w-auto"
->
-  Companies Directory
-</Link>
+                  {t("getStarted")}
+                  <svg
+                    className="h-4 w-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M17 8l4 4m0 0l-4 4m4-4H3"
+                    />
+                  </svg>
+                </Link>
+
+                <Link
+                  href="/companies"
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-slate-300 px-8 py-4 font-semibold text-slate-800 transition-all hover:bg-slate-100 sm:w-auto"
+                >
+                  Companies Directory
+                </Link>
+              </div>
 
             </div>
           </div>
@@ -1276,13 +1279,13 @@ export default function HomeClient({
               <div className="flex flex-col justify-center gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
                 <Link
                   href="/write-review"
-                  className="w-full rounded-2xl bg-white px-8 py-4 text-base font-bold text-emerald-600 shadow-xl transition-transform hover:scale-105 sm:w-auto sm:px-10 sm:py-5 sm:text-lg"
+                  className="inline-flex w-full items-center justify-center rounded-2xl bg-white px-8 py-4 text-center text-base font-bold text-emerald-600 shadow-xl transition-transform hover:scale-105 sm:w-auto sm:px-10 sm:py-5 sm:text-lg"
                 >
                   {t("ctaPrimary")}
                 </Link>
                 <Link
                   href="/verified-profile"
-                  className="w-full rounded-2xl border-2 border-white/30 bg-emerald-400/30 px-8 py-4 text-base font-bold text-white transition-all hover:bg-emerald-400/50 sm:w-auto sm:px-10 sm:py-5 sm:text-lg"
+                  className="inline-flex w-full items-center justify-center rounded-2xl border-2 border-white/30 bg-emerald-400/30 px-8 py-4 text-center text-base font-bold text-white shadow-xl transition-all hover:scale-105 hover:bg-emerald-400/50 sm:w-auto sm:px-10 sm:py-5 sm:text-lg"
                 >
                   {t("ctaSecondary")}
                 </Link>

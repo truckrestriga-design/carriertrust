@@ -7,7 +7,7 @@ export default function SiteFooter() {
   const { t } = useLang();
 
   return (
-    <footer className="relative mt-0 border-t border-slate-200/80 bg-white/70 backdrop-blur-xl">
+    <footer className="relative mt-0 select-none border-t border-slate-200/80 bg-white/70 backdrop-blur-xl">
   <div className="mx-auto max-w-7xl px-6 py-14">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-[1.35fr_0.8fr_0.8fr_0.8fr]">
           <div>

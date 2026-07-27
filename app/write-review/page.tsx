@@ -371,7 +371,7 @@ function WriteReviewPageInner() {
     supabase.auth.getUser().then(async ({ data }) => {
       if (!data.user) {
         const next = companyIdFromUrl ? `/write-review?company_id=${encodeURIComponent(companyIdFromUrl)}` : "/write-review";
-        window.location.href = `/auth?next=${encodeURIComponent(next)}`;
+        window.location.replace(`/auth?next=${encodeURIComponent(next)}`);
         return;
       }
 
@@ -489,7 +489,7 @@ function WriteReviewPageInner() {
     const { data: userData } = await supabase.auth.getUser();
     if (!userData.user) {
       const next = companyIdFromUrl ? `/write-review?company_id=${encodeURIComponent(companyIdFromUrl)}` : "/write-review";
-      window.location.href = `/auth?next=${encodeURIComponent(next)}`;
+      window.location.replace(`/auth?next=${encodeURIComponent(next)}`);
       return;
     }
 
