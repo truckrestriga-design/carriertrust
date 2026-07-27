@@ -1162,10 +1162,12 @@ export default function CompanyPage({
   initialCompany,
   initialCompanyPlan,
   initialReviews,
+  initialIsClaimed,
 }: {
   initialCompany: Company;
   initialCompanyPlan: string | null;
   initialReviews: Review[];
+  initialIsClaimed: boolean;
 }) {
   const params = useParams();
   const companySlug = String(params?.id || "");
@@ -1865,6 +1867,8 @@ const trustScoreUI = useMemo(() => {
                       </Link>
                     ) : claimStatus === "pending" ? (
                       <span className={disabledBtn}>{t.claimPending}</span>
+                    ) : initialIsClaimed ? (
+                      <span className={disabledBtn}>{t.claimApproved}</span>
                     ) : (
                       <Link href={claimHref} className={ghostBtn}>
                         {t.claimThisCompany}

@@ -3,6 +3,7 @@ import { cache } from "react";
 import { notFound, permanentRedirect } from "next/navigation";
 import CompanyClient from "./CompanyClient";
 import { supabaseServer } from "@/lib/supabaseServer";
+import { supabaseAdmin } from "@/lib/supabaseAdmin";
 
 type Props = {
   params: Promise<{
@@ -159,7 +160,7 @@ const getCompany = cache(
 );
 
 const getCompanyPageData = cache(async (companyId: string) => {
-  const [planResult, reviewsResult] = await Promise.all([
+  const [planResult, reviewsResult, approvedClaimResult] = await Promise.all([
     supabaseServer
       .from("company_plans")
       .select("plan, plan_status, current_period_end")
@@ -176,6 +177,13 @@ const getCompanyPageData = cache(async (companyId: string) => {
       .eq("company_id", companyId)
       .eq("status", "published")
       .order("created_at", { ascending: false }),
+    supabaseAdmin
+      .from("company_claims")
+      .select("id")
+      .eq("company_id", companyId)
+      .eq("status", "approved")
+      .limit(1)
+      .maybeSingle(),
   ]);
 
   if (planResult.error) {
@@ -184,6 +192,13 @@ const getCompanyPageData = cache(async (companyId: string) => {
 
   if (reviewsResult.error) {
     console.error("Company reviews lookup failed:", reviewsResult.error.message);
+  }
+
+  if (approvedClaimResult.error) {
+    console.error(
+      "Company approved claim lookup failed:",
+      approvedClaimResult.error.message
+    );
   }
 
   const reviews: CompanyReviewData[] = (reviewsResult.data || []).map((row) => ({
@@ -243,6 +258,7 @@ const getCompanyPageData = cache(async (companyId: string) => {
   return {
     companyPlan: planResult.data?.plan ?? null,
     reviews,
+    isClaimed: Boolean(approvedClaimResult.data?.id),
   };
 });
 
@@ -360,7 +376,7 @@ export default async function CompanyPage({ params }: Props) {
   }
 
   const companyUrl = `https://www.carriertrust.eu/companies/${canonicalSlug}`;
-  const { companyPlan, reviews } = await getCompanyPageData(company.id);
+  const { companyPlan, reviews, isClaimed } = await getCompanyPageData(company.id);
 
   const companySchema = {
     "@context": "https://schema.org",
@@ -454,6 +470,7 @@ export default async function CompanyPage({ params }: Props) {
         initialCompany={company}
         initialCompanyPlan={companyPlan}
         initialReviews={reviews}
+        initialIsClaimed={isClaimed}
       />
     </>
   );

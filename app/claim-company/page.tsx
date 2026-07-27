@@ -112,99 +112,54 @@ function ClaimCompanyPageInner() {
     setSending(true);
 
     try {
-      // 1. User already has any claim?
-      const { data: existingUserClaims, error: userClaimErr } = await supabase
-        .from("company_claims")
-        .select("id, company_id, status")
-        .eq("claimant_user_id", user.id)
-        .limit(10);
+      const { data: sessionData, error: sessionError } =
+        await supabase.auth.getSession();
 
-      if (userClaimErr) {
-        setMsg(userClaimErr.message);
+      if (sessionError) {
+        setMsg(sessionError.message);
         return;
       }
 
-      const sameCompanyClaim = (existingUserClaims || []).find(
-        (x: any) => String(x.company_id) === String(company.id)
-      );
+      const accessToken = sessionData.session?.access_token;
 
-      const anotherCompanyClaim = (existingUserClaims || []).find(
-        (x: any) => String(x.company_id) !== String(company.id)
-      );
-
-      if (sameCompanyClaim?.status === "approved") {
-        setMsg("Your account already has access to this company.");
-        setTimeout(() => {
-          router.push("/company/profile");
-        }, 600);
+      if (!accessToken) {
+        router.push(
+          `/auth?next=${encodeURIComponent(
+            `/claim-company?company_id=${companyIdFromQuery}`
+          )}`
+        );
         return;
       }
 
-      if (anotherCompanyClaim) {
-        setMsg("Your account already has access to another company.");
-        return;
-      }
-
-      // 2. Company already has approved owner?
-      const { data: existingApprovedOwner, error: ownerErr } = await supabase
-        .from("company_claims")
-        .select("id, claimant_user_id")
-        .eq("company_id", company.id)
-        .eq("status", "approved")
-        .limit(1);
-
-      if (ownerErr) {
-        setMsg(ownerErr.message);
-        return;
-      }
-
-      if (existingApprovedOwner && existingApprovedOwner.length > 0) {
-        const ownerUserId = String((existingApprovedOwner[0] as any).claimant_user_id || "");
-        if (ownerUserId !== user.id) {
-          setMsg("This company already has an owner.");
-          return;
-        }
-      }
-
-      // 3. If same company has pending claim for same user -> upgrade to approved
-      if (sameCompanyClaim?.id) {
-        const { error: updErr } = await supabase
-          .from("company_claims")
-          .update({
-            status: "approved",
-            claimant_email: user.email || null,
-          })
-          .eq("id", sameCompanyClaim.id);
-
-        if (updErr) {
-          setMsg(updErr.message);
-          return;
-        }
-
-        setMsg("✅ Company linked successfully.");
-        setTimeout(() => {
-          router.push("/company/profile");
-        }, 700);
-        return;
-      }
-
-      // 4. Fresh approved link
-      const { error } = await supabase.from("company_claims").insert({
-        company_id: company.id,
-        claimant_user_id: user.id,
-        claimant_email: user.email || null,
-        status: "approved",
+      const response = await fetch("/api/claim-company", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+        body: JSON.stringify({
+          company_id: company.id,
+        }),
       });
 
-      if (error) {
-        setMsg(error.message);
+      const result = await response.json().catch(() => null);
+
+      if (!response.ok || result?.ok === false) {
+        setMsg(result?.error || "Could not link company.");
         return;
       }
 
-      setMsg("✅ Company linked successfully.");
+      if (result?.already_has_access) {
+        setMsg("Your account already has access to this company.");
+      } else {
+        setMsg("✅ Company linked successfully.");
+      }
+
       setTimeout(() => {
         router.push("/company/profile");
       }, 700);
+    } catch (error: any) {
+      setMsg(String(error?.message || error || "Could not link company."));
     } finally {
       setSending(false);
     }
