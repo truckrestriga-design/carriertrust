@@ -21,6 +21,9 @@ type TextPack = {
   ecosystemTitle: string;
   ecosystemIntro: string;
   ecosystemRecognition: string;
+  officialChannelsTitle: string;
+  officialChannelsIntro: string;
+  officialChannel: string;
   viewDatabase: string;
   externalNote: string;
   contactTitle: string;
@@ -42,8 +45,8 @@ const TEXT: Record<Lang, TextPack> = {
     title: "CarrierTrust in the media",
     intro:
       "Selected media coverage and ecosystem recognition of CarrierTrust as it builds trust infrastructure for European logistics.",
-    featureCount: "4 media features",
-    publisherCount: "3 publishers",
+    featureCount: "4 published articles",
+    publisherCount: "3 media outlets",
     languageCount: "2 languages",
     coverageTitle: "Media coverage",
     coverageIntro:
@@ -54,6 +57,10 @@ const TEXT: Record<Lang, TextPack> = {
     ecosystemIntro:
       "CarrierTrust is also listed in Latvia's startup ecosystem database.",
     ecosystemRecognition: "Startup ecosystem",
+    officialChannelsTitle: "Official channels",
+    officialChannelsIntro:
+      "Follow CarrierTrust through its official company channels for platform updates, company news and logistics insights.",
+    officialChannel: "Official company channel",
     viewDatabase: "View database",
     externalNote:
       "External links open the original publisher or ecosystem platform in a new tab.",
@@ -98,6 +105,10 @@ const TEXT: Record<Lang, TextPack> = {
     ecosystemIntro:
       "CarrierTrust ist außerdem in der lettischen Startup-Datenbank gelistet.",
     ecosystemRecognition: "Startup-Ökosystem",
+    officialChannelsTitle: "Offizielle Kanäle",
+    officialChannelsIntro:
+      "Folgen Sie CarrierTrust über die offiziellen Unternehmenskanäle für Plattform-Updates, Unternehmensnachrichten und Einblicke in die Logistikbranche.",
+    officialChannel: "Offizieller Unternehmenskanal",
     viewDatabase: "Datenbank öffnen",
     externalNote:
       "Externe Links öffnen den ursprünglichen Herausgeber oder die Ökosystem-Plattform in einem neuen Tab.",
@@ -142,6 +153,10 @@ const TEXT: Record<Lang, TextPack> = {
     ecosystemIntro:
       "CarrierTrust также представлен в базе латвийской стартап-экосистемы.",
     ecosystemRecognition: "Стартап-экосистема",
+    officialChannelsTitle: "Официальные каналы",
+    officialChannelsIntro:
+      "Следите за CarrierTrust через официальные каналы компании, чтобы получать новости платформы, обновления компании и материалы о европейской логистике.",
+    officialChannel: "Официальный канал компании",
     viewDatabase: "Открыть базу",
     externalNote:
       "Внешние ссылки открывают оригинальный сайт издания или платформы в новой вкладке.",
@@ -186,6 +201,10 @@ const TEXT: Record<Lang, TextPack> = {
     ecosystemIntro:
       "CarrierTrust figure également dans la base de données des startups lettones.",
     ecosystemRecognition: "Écosystème startup",
+    officialChannelsTitle: "Canaux officiels",
+    officialChannelsIntro:
+      "Suivez CarrierTrust via les canaux officiels de l’entreprise pour découvrir les actualités de la plateforme, les nouvelles de l’entreprise et des informations sur la logistique européenne.",
+    officialChannel: "Canal officiel de l’entreprise",
     viewDatabase: "Voir la base",
     externalNote:
       "Les liens externes ouvrent le média ou la plateforme d'origine dans un nouvel onglet.",
@@ -230,6 +249,10 @@ const TEXT: Record<Lang, TextPack> = {
     ecosystemIntro:
       "CarrierTrust también aparece en la base de datos de startups de Letonia.",
     ecosystemRecognition: "Ecosistema startup",
+    officialChannelsTitle: "Canales oficiales",
+    officialChannelsIntro:
+      "Sigue a CarrierTrust a través de los canales oficiales de la empresa para conocer las novedades de la plataforma, noticias de la compañía e información sobre la logística europea.",
+    officialChannel: "Canal oficial de la empresa",
     viewDatabase: "Ver base de datos",
     externalNote:
       "Los enlaces externos abren el medio o la plataforma original en una nueva pestaña.",
@@ -274,6 +297,10 @@ const TEXT: Record<Lang, TextPack> = {
     ecosystemIntro:
       "CarrierTrust è presente anche nel database delle startup lettoni.",
     ecosystemRecognition: "Ecosistema startup",
+    officialChannelsTitle: "Canali ufficiali",
+    officialChannelsIntro:
+      "Segui CarrierTrust attraverso i canali ufficiali dell’azienda per ricevere aggiornamenti sulla piattaforma, notizie aziendali e approfondimenti sulla logistica europea.",
+    officialChannel: "Canale ufficiale dell’azienda",
     viewDatabase: "Apri database",
     externalNote:
       "I link esterni aprono l'editore o la piattaforma originale in una nuova scheda.",
@@ -626,7 +653,19 @@ export default function MediaClient() {
               </div>
             </article>
 
-            <article className={`mt-5 overflow-hidden rounded-[1.8rem] ${card}`}>
+          </section>
+
+          <section className="mt-14">
+            <div>
+              <h2 className="text-3xl font-extrabold tracking-[-0.03em] text-slate-950">
+                {t.officialChannelsTitle}
+              </h2>
+              <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-600">
+                {t.officialChannelsIntro}
+              </p>
+            </div>
+
+            <article className={`mt-7 overflow-hidden rounded-[1.8rem] ${card}`}>
               <div className="grid lg:grid-cols-[0.8fr_1.2fr]">
                 <div className="relative flex min-h-[240px] items-center justify-center overflow-hidden border-b border-slate-200/70 bg-gradient-to-br from-[#0A66C2] via-blue-800 to-slate-950 p-8 lg:border-b-0 lg:border-r">
                   <div className="pointer-events-none absolute -right-14 -top-16 h-44 w-44 rounded-full bg-cyan-300/25 blur-3xl" />
@@ -670,7 +709,7 @@ export default function MediaClient() {
 
                 <div className="flex flex-col justify-center p-7 sm:p-9">
                   <span className="w-fit rounded-full border border-blue-200/80 bg-blue-50/80 px-3 py-1 text-xs font-bold text-blue-900">
-                    {t.ecosystemRecognition}
+                    {t.officialChannel}
                   </span>
 
                   <h3 className="mt-5 text-2xl font-extrabold tracking-[-0.025em] text-slate-950">

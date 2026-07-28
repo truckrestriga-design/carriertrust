@@ -2,25 +2,27 @@ import type { Metadata } from "next";
 import MediaClient from "./MediaClient";
 
 export const metadata: Metadata = {
-  title: "CarrierTrust in the Media",
+  title: {
+    absolute: "CarrierTrust Newsroom & Media Coverage | European Logistics",
+  },
   description:
-    "Read selected media coverage and ecosystem recognition of CarrierTrust, the trust infrastructure platform for European logistics.",
+    "Explore media coverage, startup ecosystem recognition and company updates from CarrierTrust, a Latvia-built FreightTech startup developing trust infrastructure for European logistics.",
   alternates: {
     canonical: "https://www.carriertrust.eu/media",
   },
   openGraph: {
-    title: "CarrierTrust in the Media",
+    title: "CarrierTrust Newsroom & Media Coverage | European Logistics",
     description:
-      "Selected media coverage and ecosystem recognition of CarrierTrust across Latvian public media, business news and the startup ecosystem.",
+      "Explore media coverage, startup ecosystem recognition and company updates from CarrierTrust, a Latvia-built FreightTech startup developing trust infrastructure for European logistics.",
     url: "https://www.carriertrust.eu/media",
     siteName: "CarrierTrust",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "CarrierTrust in the Media",
+    title: "CarrierTrust Newsroom & Media Coverage | European Logistics",
     description:
-      "Selected media coverage and ecosystem recognition of CarrierTrust.",
+      "Explore media coverage, startup ecosystem recognition and company updates from CarrierTrust, a Latvia-built FreightTech startup developing trust infrastructure for European logistics.",
   },
 };
 

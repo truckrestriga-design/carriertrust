@@ -103,7 +103,7 @@ export const DICT: Record<Lang, Dict> = {
     ctaPrimary: "Write review",
     ctaSecondary: "Plans & Access",
 
-    footerTagline: "EU logistics reputation network",
+    footerTagline: "Trust infrastructure for European logistics",
     footerDescription:
       "Independent ratings and reviews for transport and logistics companies across Europe. Built for trust, transparency and real business experience.",
     footerPlatform: "Platform",
@@ -300,7 +300,7 @@ tipReply:
     ctaPrimary: "Bewertung schreiben",
     ctaSecondary: "Tarife & Zugang",
 
-    footerTagline: "EU-Reputationsnetzwerk für Logistik",
+    footerTagline: "Vertrauensinfrastruktur für die europäische Logistik",
     footerDescription:
       "Unabhängige Bewertungen und Rezensionen für Transport- und Logistikunternehmen in ganz Europa. Entwickelt für Vertrauen, Transparenz und echte Geschäftserfahrung.",
     footerPlatform: "Plattform",
@@ -497,7 +497,7 @@ tipReply:
     ctaPrimary: "Написать отзыв",
     ctaSecondary: "Тарифы и доступ",
 
-    footerTagline: "Репутационная сеть логистики ЕС",
+    footerTagline: "Инфраструктура доверия для европейской логистики",
     footerDescription:
       "Независимые рейтинги и отзывы для транспортных и логистических компаний по всей Европе. Создано для доверия, прозрачности и реального делового опыта.",
     footerPlatform: "Платформа",
@@ -694,7 +694,7 @@ tipReply:
     ctaPrimary: "Écrire un avis",
     ctaSecondary: "Offres & accès",
 
-    footerTagline: "Réseau de réputation logistique UE",
+    footerTagline: "Infrastructure de confiance pour la logistique européenne",
     footerDescription:
       "Notes et avis indépendants pour les entreprises de transport et de logistique à travers l’Europe. Conçu pour la confiance, la transparence et une vraie expérience commerciale.",
     footerPlatform: "Plateforme",
@@ -891,7 +891,7 @@ tipReply:
     ctaPrimary: "Escribir reseña",
     ctaSecondary: "Planes y acceso",
 
-    footerTagline: "Red reputacional logística UE",
+    footerTagline: "Infraestructura de confianza para la logística europea",
     footerDescription:
       "Calificaciones y reseñas independientes para empresas de transporte y logística en toda Europa. Construido para confianza, transparencia y experiencia empresarial real.",
     footerPlatform: "Plataforma",
@@ -1088,7 +1088,7 @@ tipReply:
     ctaPrimary: "Scrivi recensione",
     ctaSecondary: "Piani e accesso",
 
-    footerTagline: "Rete reputazionale logistica UE",
+    footerTagline: "Infrastruttura di fiducia per la logistica europea",
     footerDescription:
       "Valutazioni e recensioni indipendenti per aziende di trasporto e logistica in tutta Europa. Costruito per fiducia, trasparenza e vera esperienza aziendale.",
     footerPlatform: "Piattaforma",
