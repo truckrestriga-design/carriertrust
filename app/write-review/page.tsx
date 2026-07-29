@@ -543,9 +543,23 @@ function WriteReviewPageInner() {
         if (byVat && byVat.length > 0) {
           companyId = byVat[0].id;
         } else {
+          const companySlug = `${name
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .toLowerCase()
+            .replace(/[^a-z0-9]+/g, "-")
+            .replace(/^-+|-+$/g, "")}-${vatNorm
+            .toLowerCase()
+            .replace(/[^a-z0-9]+/g, "")}`;
+          
           const { data: newCompany, error: insErr } = await supabase
             .from("companies")
-            .insert({ name, country, vat_uid: vatNorm })
+            .insert({
+              name,
+              country,
+              vat_uid: vatNorm,
+              slug: companySlug,
+            })
             .select("id")
             .single();
 
