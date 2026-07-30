@@ -8,6 +8,8 @@ import { useLang } from "@/lib/language-context";
 type Lang = "en" | "de" | "ru" | "fr" | "es" | "it";
 type Mode = "login" | "register" | "reset";
 
+const ADMIN_EMAIL = "carriertrust.eu@gmail.com";
+
 type CompanyMatch = {
   id: string;
   name: string | null;
@@ -879,6 +881,13 @@ function AuthPageInner() {
 
       const user = data.user;
       let destination = next;
+
+      const signedInEmail = String(user?.email || "").trim().toLowerCase();
+
+      if (signedInEmail === ADMIN_EMAIL) {
+        window.location.href = "/admin";
+        return;
+      }
 
       if (user?.id) {
         const meta = user.user_metadata as any;

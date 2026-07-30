@@ -96,6 +96,16 @@ Deno.serve(async (req) => {
       return json({ ok: false, error: "Unauthorized" }, 401);
     }
 
+    const userEmail = clean(user.email).toLowerCase();
+
+    if (userEmail === "carriertrust.eu@gmail.com") {
+      return json({
+        ok: true,
+        skipped: true,
+        reason: "Administrator account does not use company access",
+      });
+    }
+
     const service = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
 
     const meta = (user.user_metadata || {}) as Record<string, unknown>;
@@ -104,7 +114,6 @@ Deno.serve(async (req) => {
     const metaCompanyVat = upper(meta.company_vat);
     const metaCompanyCountry = clean(meta.company_country);
     const selectedCompanyId = clean(meta.selected_company_id);
-    const userEmail = clean(user.email);
 
     const { data: profile, error: profileErr } = await service
       .from("profiles")

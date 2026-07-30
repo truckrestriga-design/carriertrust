@@ -6,10 +6,13 @@ import { supabase } from "@/lib/supabaseClient";
 import { type Lang } from "@/lib/i18n";
 import { useLang } from "@/lib/language-context";
 
+const ADMIN_EMAIL = "carriertrust.eu@gmail.com";
+
 export default function SiteHeader() {
   const { lang, setLang, t } = useLang();
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
   const [hasCompanyAccess, setHasCompanyAccess] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
@@ -24,8 +27,14 @@ export default function SiteHeader() {
   useEffect(() => {
     let active = true;
 
-    async function refreshCompanyAccess(userId?: string) {
-      if (!userId) {
+    async function refreshCompanyAccess(
+      userId?: string,
+      email?: string | null
+    ) {
+      const admin =
+        String(email || "").trim().toLowerCase() === ADMIN_EMAIL;
+
+      if (!userId || admin) {
         if (active) setHasCompanyAccess(false);
         return;
       }
@@ -57,14 +66,24 @@ export default function SiteHeader() {
 
     supabase.auth.getUser().then(({ data }) => {
       if (!active) return;
+
+      const admin =
+        String(data.user?.email || "").trim().toLowerCase() === ADMIN_EMAIL;
+
       setIsLoggedIn(!!data.user);
-      void refreshCompanyAccess(data.user?.id);
+      setIsAdmin(admin);
+      void refreshCompanyAccess(data.user?.id, data.user?.email);
     });
 
     const { data: sub } = supabase.auth.onAuthStateChange((_e, session) => {
       if (!active) return;
+
+      const admin =
+        String(session?.user?.email || "").trim().toLowerCase() === ADMIN_EMAIL;
+
       setIsLoggedIn(!!session?.user);
-      void refreshCompanyAccess(session?.user?.id);
+      setIsAdmin(admin);
+      void refreshCompanyAccess(session?.user?.id, session?.user?.email);
     });
 
     lastY.current = window.scrollY || 0;
@@ -224,7 +243,7 @@ export default function SiteHeader() {
               </Link>
 
               <Link
-                href="/company/profile"
+                href={isAdmin ? "/admin" : "/company/profile"}
                 className={
                   hasCompanyAccess
                     ? "group inline-flex shrink-0 items-center justify-center gap-2.5 whitespace-nowrap rounded-2xl border border-emerald-200/80 bg-emerald-50/70 px-4 py-2.5 text-sm font-semibold text-emerald-950 shadow-[0_8px_24px_rgba(16,185,129,0.10)] backdrop-blur-xl transition-all duration-200 hover:-translate-y-[1px] hover:border-emerald-300 hover:bg-emerald-50 hover:shadow-[0_12px_28px_rgba(16,185,129,0.16)]"
@@ -452,7 +471,7 @@ export default function SiteHeader() {
               </Link>
 
               <Link
-                href="/company/profile"
+                href={isAdmin ? "/admin" : "/company/profile"}
                 className={
                   hasCompanyAccess
                     ? "flex min-h-[50px] items-center justify-between rounded-2xl border border-emerald-200/80 bg-emerald-50/80 px-4 py-3 text-sm font-semibold text-emerald-950 backdrop-blur-xl transition-all duration-200 active:scale-[0.99]"

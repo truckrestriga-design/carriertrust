@@ -38,6 +38,8 @@ type AccessPlan = "free" | "pro" | "business" | "one_month";
 type ClaimStatus = "approved" | "pending" | null;
 type LangCode = "en" | "de" | "ru" | "fr" | "es" | "it";
 
+const ADMIN_EMAIL = "carriertrust.eu@gmail.com";
+
 type AnalyticsStats = {
   views30d: number;
   uniqueVisitors30d: number;
@@ -336,6 +338,13 @@ export default function CompanyProfilePage() {
 
     if (!user) {
       window.location.href = "/auth";
+      return;
+    }
+
+    const signedInEmail = String(user.email || "").trim().toLowerCase();
+
+    if (signedInEmail === ADMIN_EMAIL) {
+      window.location.replace("/admin");
       return;
     }
 
