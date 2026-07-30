@@ -97,6 +97,7 @@ Deno.serve(async (req) => {
       return json({ ok: false, error: "Forbidden" }, 403);
     }
 
+    const viewerEmail = user.email || null;
     const service = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
     async function writeAudit(
         action: string,
@@ -104,7 +105,7 @@ Deno.serve(async (req) => {
         details: Record<string, unknown> = {}
       ) {
         await service.from("admin_audit_log").insert({
-          admin_email: user.email || null,
+          admin_email: viewerEmail,
           action,
           target_company_id: targetCompanyId,
           details,
@@ -278,51 +279,69 @@ Deno.serve(async (req) => {
     }
 
     // LIST
-    const plansRes = await service
-      .from("company_plans")
-      .select(`
-        id,
-        company_id,
-        plan,
-        plan_status,
-        current_period_end,
-        commitment_end,
-        scheduled_plan,
-        scheduled_start_at,
-        stripe_customer_id,
-        stripe_subscription_id,
-        scheduled_stripe_subscription_id,
-        replies_limit,
-        replies_used
-      `)
-      .order("current_period_end", { ascending: true });
+    const PLAN_PAGE_SIZE = 1000;
+    const plans: any[] = [];
 
-    if (plansRes.error) {
-      console.error("company_plans query error:", plansRes.error);
-      return json({ ok: false, error: plansRes.error.message }, 500);
+    for (let from = 0; ; from += PLAN_PAGE_SIZE) {
+      const plansRes = await service
+        .from("company_plans")
+        .select(`
+          id,
+          company_id,
+          plan,
+          plan_status,
+          current_period_end,
+          commitment_end,
+          scheduled_plan,
+          scheduled_start_at,
+          stripe_customer_id,
+          stripe_subscription_id,
+          scheduled_stripe_subscription_id,
+          replies_limit,
+          replies_used
+        `)
+        .order("current_period_end", { ascending: true })
+        .order("id", { ascending: true })
+        .range(from, from + PLAN_PAGE_SIZE - 1);
+
+      if (plansRes.error) {
+        console.error("company_plans query error:", plansRes.error);
+        return json({ ok: false, error: plansRes.error.message }, 500);
+      }
+
+      const page = plansRes.data || [];
+      plans.push(...page);
+
+      if (page.length < PLAN_PAGE_SIZE) {
+        break;
+      }
     }
 
-    const plans = plansRes.data || [];
     const companyIds = plans.map((row: any) => String(row.company_id));
 
-    let companiesMap = new Map<string, any>();
+    const companiesMap = new Map<string, any>();
+    const COMPANY_BATCH_SIZE = 200;
 
-    if (companyIds.length > 0) {
+    for (let index = 0; index < companyIds.length; index += COMPANY_BATCH_SIZE) {
+      const companyIdBatch = companyIds.slice(
+        index,
+        index + COMPANY_BATCH_SIZE
+      );
+
       const companiesRes = await service
         .from("companies")
         .select("id, name, vat_uid, country, billing_email")
-        .in("id", companyIds);
+        .in("id", companyIdBatch);
 
       if (companiesRes.error) {
         console.error("companies query error:", companiesRes.error);
         return json({ ok: false, error: companiesRes.error.message }, 500);
       }
 
-      companiesMap = new Map(
-        (companiesRes.data || []).map((company: any) => [String(company.id), company])
-      );
+      for (const company of companiesRes.data || []) {
+        companiesMap.set(String(company.id), company);
+      }
     }
-
     const rows = plans.map((row: any) => {
       const company = companiesMap.get(String(row.company_id));
 
@@ -351,7 +370,7 @@ Deno.serve(async (req) => {
       ok: true,
       rows,
       count: rows.length,
-      viewer_email: user.email || null,
+      viewer_email: viewerEmail,
     });
   } catch (e: any) {
     console.error("admin-billing-monitor fatal error:", e);
