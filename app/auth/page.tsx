@@ -891,11 +891,14 @@ function AuthPageInner() {
 
       if (user?.id) {
         const meta = user.user_metadata as any;
-        await ensureProfile(
-          user.id,
-          meta?.company_name || null,
-          meta?.company_vat || null
-        );
+
+console.log("LOGIN META:", meta);
+
+await ensureProfile(
+  user.id,
+  meta?.company_name || null,
+  meta?.company_vat || null
+);
 
         await syncCompanyAccess();
 
@@ -973,7 +976,7 @@ function AuthPageInner() {
     setBusy(true);
 
     try {
-      const { error } = await supabase.auth.signUp({
+      const { data, error } = await supabase.auth.signUp({
         email: em,
         password: pass,
         options: {
@@ -985,11 +988,12 @@ function AuthPageInner() {
           },
         },
       });
-
+    
       if (error) throw new Error(error.message);
-
+    
       setMsg("accountCreated");
       setMode("login");
+    
     } catch (e: any) {
       setError(String(e?.message || e));
     } finally {
