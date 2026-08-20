@@ -9,6 +9,8 @@ import {
 
 export const dynamic = "force-dynamic";
 
+const SIGNED_URL_TTL_SECONDS = 60 * 60 * 24 * 30;
+
 type BannerOrder = {
   id: string;
   company_name: string;
@@ -41,6 +43,36 @@ type PublishedBanner = {
   target_company_name: string | null;
 };
 
+function getStoragePathFromSignedUrl(url: string, bucket: string) {
+  try {
+    const parsed = new URL(url);
+    const marker = `/storage/v1/object/sign/${bucket}/`;
+    const idx = parsed.pathname.indexOf(marker);
+
+    if (idx === -1) return null;
+
+    const rawPath = parsed.pathname.slice(idx + marker.length);
+    return decodeURIComponent(rawPath);
+  } catch {
+    return null;
+  }
+}
+
+async function refreshSignedUrl(url: string, bucket: string) {
+  if (!url) return url;
+
+  const path = getStoragePathFromSignedUrl(url, bucket);
+  if (!path) return url;
+
+  const { data, error } = await supabaseAdmin.storage
+    .from(bucket)
+    .createSignedUrl(path, SIGNED_URL_TTL_SECONDS);
+
+  if (error || !data?.signedUrl) return url;
+
+  return data.signedUrl;
+}
+
 async function getOrders(): Promise<BannerOrder[]> {
   const { data, error } = await supabaseAdmin
     .from("banner_orders")
@@ -52,7 +84,21 @@ async function getOrders(): Promise<BannerOrder[]> {
     return [];
   }
 
-  return (data || []) as BannerOrder[];
+  const orders = (data || []) as BannerOrder[];
+
+  return Promise.all(
+    orders.map(async (order) => ({
+      ...order,
+      banner_file_url: await refreshSignedUrl(
+        order.banner_file_url,
+        "banner-files"
+      ),
+      payment_proof_url: await refreshSignedUrl(
+        order.payment_proof_url,
+        "banner-proofs"
+      ),
+    }))
+  );
 }
 
 async function getPublishedBannersMap(orderIds: string[]) {
