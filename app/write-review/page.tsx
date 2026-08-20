@@ -611,8 +611,18 @@ function WriteReviewPageInner() {
 
       setSuccess(t.ok, "success");
 
-      setTimeout(() => {
-        window.location.href = `/companies/${data.company_id}`;
+      setTimeout(async () => {
+        const { data: company } = await supabase
+          .from("companies")
+          .select("slug")
+          .eq("id", data.company_id)
+          .single();
+      
+        if (company?.slug) {
+          window.location.href = `/companies/${company.slug}`;
+        } else {
+          window.location.href = `/companies/${data.company_id}`;
+        }
       }, 1400);
     } catch (e: any) {
       setError(String(e?.message || t.publishFailed));
