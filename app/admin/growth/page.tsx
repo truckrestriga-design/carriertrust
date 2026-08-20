@@ -80,6 +80,12 @@ export default function AdminGrowthPage() {
 
           <div className="flex flex-wrap gap-2">
             <Link
+              href="/admin/growth/mail"
+              className="px-4 py-2 rounded-xl border border-black bg-black text-white hover:opacity-90 inline-flex items-center"
+            >
+              Mail Explorer
+            </Link>
+            <Link
               href="/admin/growth/settings"
               className="px-4 py-2 rounded-xl border border-gray-300 hover:bg-gray-50 inline-flex items-center"
             >
