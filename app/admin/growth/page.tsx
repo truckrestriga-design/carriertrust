@@ -78,17 +78,26 @@ export default function AdminGrowthPage() {
             </p>
           </div>
 
-          <Link
-            href="/admin"
-            className="px-4 py-2 rounded-xl border border-gray-300 hover:bg-gray-50 inline-flex items-center"
-          >
-            Back to Admin
-          </Link>
+          <div className="flex flex-wrap gap-2">
+            <Link
+              href="/admin/growth/settings"
+              className="px-4 py-2 rounded-xl border border-gray-300 hover:bg-gray-50 inline-flex items-center"
+            >
+              Settings
+            </Link>
+            <Link
+              href="/admin"
+              className="px-4 py-2 rounded-xl border border-gray-300 hover:bg-gray-50 inline-flex items-center"
+            >
+              Back to Admin
+            </Link>
+          </div>
         </div>
 
         <div className="mt-4 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">
           Safety mode: all agents produce Drafts for human review. No automatic
-          sends, publishes, or Zoho sync in this build.
+          sends or publishes. Connect Zoho Mail in Settings for Inbox/Sent read
+          and Draft creation only.
         </div>
 
         <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
