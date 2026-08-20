@@ -82,6 +82,14 @@ export default function AdminGrowthMailPage() {
   const [detailLoading, setDetailLoading] = useState(false);
   const [detailError, setDetailError] = useState<string | null>(null);
 
+  const [showDraftForm, setShowDraftForm] = useState(false);
+  const [draftTo, setDraftTo] = useState("");
+  const [draftSubject, setDraftSubject] = useState("");
+  const [draftBody, setDraftBody] = useState("");
+  const [draftSaving, setDraftSaving] = useState(false);
+  const [draftError, setDraftError] = useState<string | null>(null);
+  const [draftSuccess, setDraftSuccess] = useState<string | null>(null);
+
   async function requireAdminOrRedirect() {
     const { data } = await supabase.auth.getUser();
     const email = (data.user?.email || "").toLowerCase();
@@ -209,6 +217,67 @@ export default function AdminGrowthMailPage() {
     void loadList(next);
   }
 
+  function openNewDraftForm() {
+    setShowDraftForm(true);
+    setDraftError(null);
+    setDraftSuccess(null);
+  }
+
+  function closeNewDraftForm() {
+    setShowDraftForm(false);
+    setDraftError(null);
+  }
+
+  async function saveDraftToZoho() {
+    setDraftSaving(true);
+    setDraftError(null);
+    setDraftSuccess(null);
+
+    try {
+      const token = await getAccessToken();
+      if (!token) {
+        setDraftError("Missing session");
+        return;
+      }
+
+      const res = await fetch("/api/zoho/mail/draft", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          to: draftTo.trim(),
+          subject: draftSubject.trim(),
+          body: draftBody,
+        }),
+      });
+      const json = await res.json().catch(() => ({}));
+
+      if (!res.ok) {
+        if (json?.notConnected || /not connected/i.test(String(json?.error || ""))) {
+          setNotConnected(true);
+          setDraftError(null);
+          return;
+        }
+        setDraftError(json?.error || "Failed to save draft");
+        return;
+      }
+
+      setDraftSuccess("Draft saved to Zoho Mail Drafts.");
+      setDraftTo("");
+      setDraftSubject("");
+      setDraftBody("");
+      setShowDraftForm(false);
+      setTab("drafts");
+      await loadList("drafts");
+    } catch (e) {
+      setDraftError(e instanceof Error ? e.message : "Failed to save draft");
+    } finally {
+      setDraftSaving(false);
+    }
+  }
+
   if (loading) {
     return <div className="p-10 text-black">Loading…</div>;
   }
@@ -220,12 +289,21 @@ export default function AdminGrowthMailPage() {
           <div>
             <h1 className="text-2xl font-bold">Mail Explorer</h1>
             <p className="mt-1 text-sm text-gray-600">
-              Read-only Zoho Mail view for Growth OS. Lists and opens messages
-              only — no send, delete, or status changes.
+              Zoho Mail Explorer for Growth OS. Browse Inbox / Sent / Drafts and
+              save drafts only — no send, delete, or status changes.
             </p>
           </div>
 
           <div className="flex flex-wrap gap-2">
+            {!notConnected ? (
+              <button
+                type="button"
+                onClick={openNewDraftForm}
+                className="px-4 py-2 rounded-xl border border-black bg-black text-white hover:opacity-90 inline-flex items-center"
+              >
+                New Draft
+              </button>
+            ) : null}
             <Link
               href="/admin/growth/settings"
               className="px-4 py-2 rounded-xl border border-gray-300 hover:bg-gray-50 inline-flex items-center"
@@ -242,9 +320,15 @@ export default function AdminGrowthMailPage() {
         </div>
 
         <div className="mt-4 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">
-          Safety mode: Inbox / Sent / Drafts are read-only. Message bodies load
-          only when you open a row. No mail send endpoints are used.
+          Safety mode: drafts can be created in Zoho Drafts only. Inbox / Sent
+          stay read-only. No mail send endpoints are used.
         </div>
+
+        {draftSuccess ? (
+          <div className="mt-4 rounded-xl border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-800">
+            {draftSuccess}
+          </div>
+        ) : null}
 
         {notConnected ? (
           <div className="mt-6 rounded-2xl border border-gray-200 bg-white p-6">
@@ -261,6 +345,88 @@ export default function AdminGrowthMailPage() {
           </div>
         ) : (
           <>
+            {showDraftForm ? (
+              <section className="mt-6 rounded-2xl border border-gray-200 bg-white p-6">
+                <div className="flex items-start justify-between gap-3">
+                  <div>
+                    <h2 className="text-lg font-semibold">New Draft</h2>
+                    <p className="mt-1 text-sm text-gray-600">
+                      Saves to Zoho Mail Drafts only. The message is never sent.
+                    </p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={closeNewDraftForm}
+                    className="px-3 py-1.5 rounded-xl border border-gray-300 text-sm hover:bg-gray-50"
+                    disabled={draftSaving}
+                  >
+                    Cancel
+                  </button>
+                </div>
+
+                <form
+                  className="mt-4 space-y-4"
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    void saveDraftToZoho();
+                  }}
+                >
+                  <label className="block">
+                    <span className="text-sm font-medium">To</span>
+                    <input
+                      type="email"
+                      required
+                      value={draftTo}
+                      onChange={(e) => setDraftTo(e.target.value)}
+                      className="mt-1 w-full rounded-xl border border-gray-300 px-3 py-2 text-sm"
+                      placeholder="recipient@example.com"
+                      disabled={draftSaving}
+                    />
+                  </label>
+
+                  <label className="block">
+                    <span className="text-sm font-medium">Subject</span>
+                    <input
+                      type="text"
+                      required
+                      value={draftSubject}
+                      onChange={(e) => setDraftSubject(e.target.value)}
+                      className="mt-1 w-full rounded-xl border border-gray-300 px-3 py-2 text-sm"
+                      placeholder="Subject"
+                      disabled={draftSaving}
+                    />
+                  </label>
+
+                  <label className="block">
+                    <span className="text-sm font-medium">Body</span>
+                    <textarea
+                      required
+                      value={draftBody}
+                      onChange={(e) => setDraftBody(e.target.value)}
+                      rows={10}
+                      className="mt-1 w-full rounded-xl border border-gray-300 px-3 py-2 text-sm font-mono"
+                      placeholder="Message body"
+                      disabled={draftSaving}
+                    />
+                  </label>
+
+                  {draftError ? (
+                    <div className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800">
+                      {draftError}
+                    </div>
+                  ) : null}
+
+                  <button
+                    type="submit"
+                    disabled={draftSaving}
+                    className="px-4 py-2 rounded-xl border border-black bg-black text-white hover:opacity-90 disabled:opacity-60"
+                  >
+                    {draftSaving ? "Saving…" : "Save to Zoho Drafts"}
+                  </button>
+                </form>
+              </section>
+            ) : null}
+
             <div className="mt-6 flex flex-wrap gap-2 border-b border-gray-200 pb-3">
               {TABS.map((t) => (
                 <button

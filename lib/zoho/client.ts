@@ -408,8 +408,10 @@ export async function getZohoMessageDetail(options: {
 }
 
 /**
- * Create a Draft only (`mode: "draft"`).
- * Intentionally no sendEmail / schedule helpers in phase 1.
+ * Create a Draft only via Zoho "Save Draft / Template" API:
+ * POST /api/accounts/{accountId}/messages with mode: "draft".
+ * Never omits mode (that would send). No send/schedule helpers.
+ * Docs: https://www.zoho.com/mail/help/api/post-save-draft-template.html
  */
 export async function createZohoDraft(
   input: CreateZohoDraftInput,
@@ -429,6 +431,7 @@ export async function createZohoDraft(
     throw new Error("fromAddress is required to create a draft");
   }
 
+  // Hard-lock: Zoho sends when mode is absent; draft requires mode:"draft".
   const body = {
     mode: "draft" as const,
     fromAddress,
@@ -439,6 +442,10 @@ export async function createZohoDraft(
     ...(input.ccAddress ? { ccAddress: input.ccAddress } : {}),
     ...(input.bccAddress ? { bccAddress: input.bccAddress } : {}),
   };
+
+  if (body.mode !== "draft") {
+    throw new Error("Refusing Zoho messages POST without mode=draft");
+  }
 
   const res = await zohoFetch(tokens, `/api/accounts/${accountId}/messages`, {
     method: "POST",
