@@ -90,6 +90,20 @@ export default function AdminGrowthMailPage() {
   const [draftError, setDraftError] = useState<string | null>(null);
   const [draftSuccess, setDraftSuccess] = useState<string | null>(null);
 
+  const [showAiDraftForm, setShowAiDraftForm] = useState(false);
+  const [aiCompanyName, setAiCompanyName] = useState("");
+  const [aiCompanyWebsite, setAiCompanyWebsite] = useState("");
+  const [aiContactEmail, setAiContactEmail] = useState("");
+  const [aiContactName, setAiContactName] = useState("");
+  const [aiCountry, setAiCountry] = useState("");
+  const [aiNotes, setAiNotes] = useState("");
+  const [aiSubject, setAiSubject] = useState("");
+  const [aiBody, setAiBody] = useState("");
+  const [aiHasDraft, setAiHasDraft] = useState(false);
+  const [aiGenerating, setAiGenerating] = useState(false);
+  const [aiSaving, setAiSaving] = useState(false);
+  const [aiError, setAiError] = useState<string | null>(null);
+
   async function requireAdminOrRedirect() {
     const { data } = await supabase.auth.getUser();
     const email = (data.user?.email || "").toLowerCase();
@@ -218,6 +232,7 @@ export default function AdminGrowthMailPage() {
   }
 
   function openNewDraftForm() {
+    setShowAiDraftForm(false);
     setShowDraftForm(true);
     setDraftError(null);
     setDraftSuccess(null);
@@ -226,6 +241,118 @@ export default function AdminGrowthMailPage() {
   function closeNewDraftForm() {
     setShowDraftForm(false);
     setDraftError(null);
+  }
+
+  function openAiDraftForm() {
+    setShowDraftForm(false);
+    setShowAiDraftForm(true);
+    setAiError(null);
+    setDraftSuccess(null);
+  }
+
+  function closeAiDraftForm() {
+    setShowAiDraftForm(false);
+    setAiError(null);
+  }
+
+  async function generateAiDraft() {
+    setAiGenerating(true);
+    setAiError(null);
+    setDraftSuccess(null);
+
+    try {
+      const token = await getAccessToken();
+      if (!token) {
+        setAiError("Missing session");
+        return;
+      }
+
+      const res = await fetch("/api/growth/ai-draft", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          companyName: aiCompanyName.trim(),
+          companyWebsite: aiCompanyWebsite.trim(),
+          contactEmail: aiContactEmail.trim(),
+          contactName: aiContactName.trim() || undefined,
+          country: aiCountry.trim() || undefined,
+          notes: aiNotes.trim() || undefined,
+        }),
+      });
+      const json = await res.json().catch(() => ({}));
+
+      if (!res.ok) {
+        setAiError(json?.error || "Failed to generate AI draft");
+        return;
+      }
+
+      setAiSubject(typeof json.subject === "string" ? json.subject : "");
+      setAiBody(typeof json.body === "string" ? json.body : "");
+      setAiHasDraft(true);
+    } catch (e) {
+      setAiError(e instanceof Error ? e.message : "Failed to generate AI draft");
+    } finally {
+      setAiGenerating(false);
+    }
+  }
+
+  async function saveAiDraftToZoho() {
+    setAiSaving(true);
+    setAiError(null);
+    setDraftSuccess(null);
+
+    try {
+      const token = await getAccessToken();
+      if (!token) {
+        setAiError("Missing session");
+        return;
+      }
+
+      const res = await fetch("/api/zoho/mail/draft", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          to: aiContactEmail.trim(),
+          subject: aiSubject.trim(),
+          body: aiBody,
+        }),
+      });
+      const json = await res.json().catch(() => ({}));
+
+      if (!res.ok) {
+        if (json?.notConnected || /not connected/i.test(String(json?.error || ""))) {
+          setNotConnected(true);
+          setAiError(null);
+          return;
+        }
+        setAiError(json?.error || "Failed to save draft");
+        return;
+      }
+
+      setDraftSuccess("AI draft saved to Zoho Mail Drafts.");
+      setAiCompanyName("");
+      setAiCompanyWebsite("");
+      setAiContactEmail("");
+      setAiContactName("");
+      setAiCountry("");
+      setAiNotes("");
+      setAiSubject("");
+      setAiBody("");
+      setAiHasDraft(false);
+      setShowAiDraftForm(false);
+      setTab("drafts");
+      await loadList("drafts");
+    } catch (e) {
+      setAiError(e instanceof Error ? e.message : "Failed to save draft");
+    } finally {
+      setAiSaving(false);
+    }
   }
 
   async function saveDraftToZoho() {
@@ -296,13 +423,22 @@ export default function AdminGrowthMailPage() {
 
           <div className="flex flex-wrap gap-2">
             {!notConnected ? (
-              <button
-                type="button"
-                onClick={openNewDraftForm}
-                className="px-4 py-2 rounded-xl border border-black bg-black text-white hover:opacity-90 inline-flex items-center"
-              >
-                New Draft
-              </button>
+              <>
+                <button
+                  type="button"
+                  onClick={openAiDraftForm}
+                  className="px-4 py-2 rounded-xl border border-black bg-black text-white hover:opacity-90 inline-flex items-center"
+                >
+                  AI Draft
+                </button>
+                <button
+                  type="button"
+                  onClick={openNewDraftForm}
+                  className="px-4 py-2 rounded-xl border border-gray-300 hover:bg-gray-50 inline-flex items-center"
+                >
+                  New Draft
+                </button>
+              </>
             ) : null}
             <Link
               href="/admin/growth/settings"
@@ -345,6 +481,195 @@ export default function AdminGrowthMailPage() {
           </div>
         ) : (
           <>
+            {showAiDraftForm ? (
+              <section className="mt-6 rounded-2xl border border-gray-200 bg-white p-6">
+                <div className="flex items-start justify-between gap-3">
+                  <div>
+                    <h2 className="text-lg font-semibold">AI Draft</h2>
+                    <p className="mt-1 text-sm text-gray-600">
+                      Generates a personalized outreach draft from the fields
+                      below. Website and notes are used as provided context only
+                      — no automatic web research. Save goes to Zoho Drafts; never
+                      sends.
+                    </p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={closeAiDraftForm}
+                    className="px-3 py-1.5 rounded-xl border border-gray-300 text-sm hover:bg-gray-50"
+                    disabled={aiGenerating || aiSaving}
+                  >
+                    Cancel
+                  </button>
+                </div>
+
+                <form
+                  className="mt-4 space-y-4"
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    void generateAiDraft();
+                  }}
+                >
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <label className="block">
+                      <span className="text-sm font-medium">Company name</span>
+                      <input
+                        type="text"
+                        required
+                        value={aiCompanyName}
+                        onChange={(e) => setAiCompanyName(e.target.value)}
+                        className="mt-1 w-full rounded-xl border border-gray-300 px-3 py-2 text-sm"
+                        placeholder="Acme Logistics GmbH"
+                        disabled={aiGenerating || aiSaving}
+                      />
+                    </label>
+
+                    <label className="block">
+                      <span className="text-sm font-medium">Company website</span>
+                      <input
+                        type="url"
+                        required
+                        value={aiCompanyWebsite}
+                        onChange={(e) => setAiCompanyWebsite(e.target.value)}
+                        className="mt-1 w-full rounded-xl border border-gray-300 px-3 py-2 text-sm"
+                        placeholder="https://example.com"
+                        disabled={aiGenerating || aiSaving}
+                      />
+                    </label>
+
+                    <label className="block">
+                      <span className="text-sm font-medium">Contact email</span>
+                      <input
+                        type="email"
+                        required
+                        value={aiContactEmail}
+                        onChange={(e) => setAiContactEmail(e.target.value)}
+                        className="mt-1 w-full rounded-xl border border-gray-300 px-3 py-2 text-sm"
+                        placeholder="contact@example.com"
+                        disabled={aiGenerating || aiSaving}
+                      />
+                    </label>
+
+                    <label className="block">
+                      <span className="text-sm font-medium">
+                        Contact name{" "}
+                        <span className="text-gray-400 font-normal">(optional)</span>
+                      </span>
+                      <input
+                        type="text"
+                        value={aiContactName}
+                        onChange={(e) => setAiContactName(e.target.value)}
+                        className="mt-1 w-full rounded-xl border border-gray-300 px-3 py-2 text-sm"
+                        placeholder="Jane Doe"
+                        disabled={aiGenerating || aiSaving}
+                      />
+                    </label>
+
+                    <label className="block md:col-span-2">
+                      <span className="text-sm font-medium">
+                        Country{" "}
+                        <span className="text-gray-400 font-normal">(optional)</span>
+                      </span>
+                      <input
+                        type="text"
+                        value={aiCountry}
+                        onChange={(e) => setAiCountry(e.target.value)}
+                        className="mt-1 w-full rounded-xl border border-gray-300 px-3 py-2 text-sm"
+                        placeholder="Germany"
+                        disabled={aiGenerating || aiSaving}
+                      />
+                    </label>
+                  </div>
+
+                  <label className="block">
+                    <span className="text-sm font-medium">
+                      Notes / context{" "}
+                      <span className="text-gray-400 font-normal">(optional)</span>
+                    </span>
+                    <textarea
+                      value={aiNotes}
+                      onChange={(e) => setAiNotes(e.target.value)}
+                      rows={4}
+                      className="mt-1 w-full rounded-xl border border-gray-300 px-3 py-2 text-sm"
+                      placeholder="Any context you already know about this company…"
+                      disabled={aiGenerating || aiSaving}
+                    />
+                  </label>
+
+                  {aiError ? (
+                    <div className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800">
+                      {aiError}
+                    </div>
+                  ) : null}
+
+                  {!aiHasDraft ? (
+                    <button
+                      type="submit"
+                      disabled={aiGenerating || aiSaving}
+                      className="px-4 py-2 rounded-xl border border-black bg-black text-white hover:opacity-90 disabled:opacity-60"
+                    >
+                      {aiGenerating ? "Generating…" : "Generate draft"}
+                    </button>
+                  ) : null}
+                </form>
+
+                {aiHasDraft ? (
+                  <div className="mt-6 space-y-4 border-t border-gray-100 pt-6">
+                    <h3 className="text-sm font-semibold">Generated draft (editable)</h3>
+
+                    <label className="block">
+                      <span className="text-sm font-medium">Subject</span>
+                      <input
+                        type="text"
+                        required
+                        value={aiSubject}
+                        onChange={(e) => setAiSubject(e.target.value)}
+                        className="mt-1 w-full rounded-xl border border-gray-300 px-3 py-2 text-sm"
+                        disabled={aiGenerating || aiSaving}
+                      />
+                    </label>
+
+                    <label className="block">
+                      <span className="text-sm font-medium">Body</span>
+                      <textarea
+                        required
+                        value={aiBody}
+                        onChange={(e) => setAiBody(e.target.value)}
+                        rows={12}
+                        className="mt-1 w-full rounded-xl border border-gray-300 px-3 py-2 text-sm font-mono"
+                        disabled={aiGenerating || aiSaving}
+                      />
+                    </label>
+
+                    <div className="flex flex-wrap gap-2">
+                      <button
+                        type="button"
+                        onClick={() => void generateAiDraft()}
+                        disabled={aiGenerating || aiSaving}
+                        className="px-4 py-2 rounded-xl border border-gray-300 hover:bg-gray-50 disabled:opacity-60"
+                      >
+                        {aiGenerating ? "Regenerating…" : "Regenerate"}
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => void saveAiDraftToZoho()}
+                        disabled={
+                          aiGenerating ||
+                          aiSaving ||
+                          !aiSubject.trim() ||
+                          !aiBody.trim() ||
+                          !aiContactEmail.trim()
+                        }
+                        className="px-4 py-2 rounded-xl border border-black bg-black text-white hover:opacity-90 disabled:opacity-60"
+                      >
+                        {aiSaving ? "Saving…" : "Save to Zoho Drafts"}
+                      </button>
+                    </div>
+                  </div>
+                ) : null}
+              </section>
+            ) : null}
+
             {showDraftForm ? (
               <section className="mt-6 rounded-2xl border border-gray-200 bg-white p-6">
                 <div className="flex items-start justify-between gap-3">
