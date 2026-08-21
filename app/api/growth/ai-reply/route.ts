@@ -1,4 +1,8 @@
 import { NextResponse } from "next/server";
+import {
+  buildCompanyContext,
+  findCompanyIdForContext,
+} from "@/lib/growth/contextBuilder";
 
 export async function POST(req: Request) {
   try {
@@ -7,6 +11,22 @@ export async function POST(req: Request) {
     const subject = body.subject || "";
     const from = body.from || "";
     const message = body.message || "";
+    let growthContext = "";
+
+    try {
+      const companyId = await findCompanyIdForContext({
+        contactEmail: from,
+      });
+    
+      if (companyId) {
+        growthContext = await buildCompanyContext(companyId);
+      }
+    } catch (error) {
+      console.error(
+        "AI REPLY MEMORY CONTEXT ERROR:",
+        error instanceof Error ? error.message : error
+      );
+    }
 
     const apiKey = process.env.OPENAI_API_KEY;
 
@@ -50,6 +70,10 @@ Writing style:
 - If someone helped CarrierTrust, acknowledge their support.
 - If information is missing, ask politely and clearly.
 - Do not over-explain.
+- Do not turn replies into checklists unless the recipient explicitly asked for multiple items.
+- Prefer one clear next step instead of multiple verification requests.
+- When dealing with partners or service providers, sound like a founder building a relationship, not someone auditing a task.
+- Avoid repeating URLs or company details already known from context unless necessary.
 - Use a polite but confident founder tone.
 
 Signature:
@@ -75,6 +99,18 @@ Subject: ${subject}
 
 Message:
 ${message}
+
+${growthContext ? `
+GROWTH MEMORY CONTEXT:
+
+${growthContext}
+
+IMPORTANT:
+Use this context to understand the relationship.
+Do not restart the introduction.
+Do not repeat previous outreach.
+Reply naturally to the latest message.
+` : ""}
 
 Create a reply.
 
