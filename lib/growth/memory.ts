@@ -571,16 +571,26 @@ export async function recordInteraction(input: {
   const interaction = data as GrowthInteraction;
   const shouldUpdateState = input.updateState !== false;
 
-  if (shouldUpdateState) {
-    await applyStateSideEffects(input.companyId, input.type);
-  }
+  const occurredAt =
+  typeof input.metadata?.date === "string"
+    ? input.metadata.date
+    : null;
+
+if (shouldUpdateState) {
+  await applyStateSideEffects(
+    input.companyId,
+    input.type,
+    occurredAt
+  );
+}
 
   return interaction;
 }
 
 async function applyStateSideEffects(
   companyId: string,
-  type: GrowthInteractionType
+  type: GrowthInteractionType,
+  occurredAt?: string | null
 ): Promise<void> {
   const { data: existing, error } = await supabaseAdmin
     .from("growth_company_state")
@@ -589,7 +599,7 @@ async function applyStateSideEffects(
     .maybeSingle();
   throwIfError(error, "applyStateSideEffects load");
 
-  const now = new Date().toISOString();
+  const now = occurredAt ?? new Date().toISOString();
   const state = (existing as GrowthCompanyState | null) ?? {
     company_id: companyId,
     outreach_status: "new" as GrowthOutreachStatus,

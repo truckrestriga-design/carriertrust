@@ -261,7 +261,47 @@ export default function AdminGrowthSettingsPage() {
             </div>
           </dl>
 
-          <div className="mt-5 flex flex-wrap gap-2">
+          <div className="mt-6 rounded-2xl border border-gray-200 bg-white p-5">
+        <h2 className="text-lg font-semibold">Growth AI Context Test</h2>
+        <p className="mt-2 text-sm text-gray-600">
+          Temporary preview for dienasmediji.lv
+        </p>
+
+        <button
+          type="button"
+          onClick={async () => {
+            try {
+              const token = await getAccessToken();
+
+              const res = await fetch(
+                "/api/growth/memory/context?companyId=f4b6c4a5-b0bc-4b83-9b2f-7dfe46d97879",
+                {
+                  headers: {
+                    Authorization: `Bearer ${token}`,
+                  },
+                }
+              );
+
+              const json = await res.json();
+
+              if (!res.ok) {
+                throw new Error(json.error || "Failed to load Growth context");
+              }
+
+              window.alert(json.context);
+            } catch (e) {
+              window.alert(
+                e instanceof Error ? e.message : "Failed to load Growth context"
+              );
+            }
+          }}
+          className="mt-4 px-4 py-2 rounded-xl border border-black bg-black text-white hover:opacity-90"
+        >
+          Preview Growth Context
+        </button>
+      </div>
+
+      <div className="mt-5 flex flex-wrap gap-2">
             <button
               type="button"
               disabled={busy}

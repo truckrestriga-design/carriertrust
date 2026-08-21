@@ -5,7 +5,13 @@ import {
   type WebsiteSummary,
 } from "@/lib/growth/websiteAnalyzer";
 import { createChatCompletion } from "@/lib/openai/client";
+import {
+  buildCompanyContext,
+  findCompanyIdForContext,
+} from "@/lib/growth/contextBuilder";
 import { requireGrowthAdmin } from "@/lib/zoho/adminGuard";
+import { buildModeInstructions } from "@/lib/growth/draftPrompts";
+import { getCompanyMemory } from "@/lib/growth/memory";
 
 export const runtime = "nodejs";
 
@@ -40,7 +46,9 @@ What CarrierTrust is:
 - It helps build transparent business reputation and check potential partners before working with them.
 
 Length and structure:
-- Body: about 90–150 words.
+- Cold outreach body: about 90–150 words.
+- Follow-up body: about 55–90 words.
+- Reply body: only as long as needed to answer naturally.
 - Subject: short, natural, no marketing/spam language.
 - Plain text only. Greeting, a few short paragraphs, light CTA, sign-off as the CarrierTrust team.
 - Soft CTA only: invitation to register / take a look. No hard sell, no urgency, no "book a demo" pressure.
@@ -65,6 +73,19 @@ Using other context fields:
 - Use company name. Address the contact by name only if a contact name is provided.
 - Use country and notes ONLY when they add useful, non-speculative context.
 - If fields contradict each other, omit the disputed fact rather than guessing.
+
+Growth Memory rules:
+
+- If Growth Memory contains previous communication, this is NOT cold outreach.
+- Treat previous sent messages as already received by the recipient.
+- Never introduce CarrierTrust from the beginning again when previous outreach already exists.
+- Never repeat the same pitch just because there was no reply.
+- Continue the relationship naturally from the latest real interaction.
+- If there is no reply yet, write a genuine follow-up and keep it lighter than the original outreach.
+- If a reply exists, prioritize the latest received message and answer its context directly.
+- Use the latest sent subject and content to avoid repeating information.
+- If several messages were already sent without a reply, do not generate another generic sales email.
+- Do not invent new events, traction, publications, customers, partnerships, or updates unless explicitly present in Growth Memory, website context, or sender notes.
 
 Language: English by default.
 
@@ -132,8 +153,89 @@ export async function POST(req: Request) {
     const analysis = await analyzeCompanyWebsite(companyWebsite);
     const websiteSummary: WebsiteSummary = analysis.summary;
 
-    const userPrompt = [
-      "Write one short human outreach email from this context only.",
+  let growthContext = "";
+  let growthCompanyId: string | null = null;
+
+  try {
+    growthCompanyId = await findCompanyIdForContext({
+      companyName,
+      companyWebsite,
+      contactEmail,
+    });
+
+    if (growthCompanyId) {
+      growthContext = await buildCompanyContext(growthCompanyId);
+    }
+  } catch (error) {
+    console.error(
+      "GROWTH MEMORY CONTEXT ERROR:",
+      error instanceof Error ? error.message : error
+    );
+  }
+
+
+    let draftMode: "cold" | "follow_up" | "reply" = "cold";
+
+  if (growthCompanyId) {
+    try {
+      const memory = await getCompanyMemory(growthCompanyId, {
+        interactionLimit: 20,
+        learningLimit: 10,
+      });
+
+      const interactions = memory?.recentInteractions || [];
+      const hasReceived = interactions.some(
+        (interaction) => interaction.type === "received"
+      );
+
+      if (hasReceived) {
+        draftMode = "reply";
+      } else if (
+        memory?.state?.outreach_status &&
+        memory.state.outreach_status !== "new" &&
+        memory.state.outreach_status !== "draft_ready"
+      ) {
+        draftMode = "follow_up";
+      }
+    } catch (error) {
+      console.error(
+        "GROWTH DRAFT MODE ERROR:",
+        error instanceof Error ? error.message : error
+      );
+    }
+  }
+
+  const userPrompt = [
+      "Write one short human email from this context only.",
+      `DRAFT MODE: ${draftMode}`,
+      "",
+      draftMode === "follow_up"
+        ? [
+            "FOLLOW-UP MODE RULES:",
+            "- This is not a new introduction.",
+            "- Keep the body around 55–90 words.",
+            "- Do NOT explain what CarrierTrust is again.",
+            "- Do NOT repeat platfm features already sent.",
+            "- Refer briefly and naturally to the previous email.",
+            "- The purpose is simply to reopen the conversation.",
+            "- Use one light question or CTA.",
+            "- If there is no genuinely new fact in notes or memory, do not invent one.",
+          ].join("\n")
+        : draftMode === "reply"
+        ? [
+            "REPLY MODE RULES:",
+            "- Reply directly to the latest received message.",
+            "- Address what the person actually wrote.",
+            "- Do not restart the CarrierTrust pitch.",
+            "- Preserve continuity with the existing conversation.",
+            "- Be concise and natural.",
+          ].join("\n")
+        : [
+            "COLD OUTREACH MODE RULES:",
+            "- This is a first-contact message.",
+            "- Briefly explain why CarrierTrust may be relevant.",
+            "- Keep the pitch specific and low-pressure.",
+          ].join("\n"),
       "",
       "Use website summary only as factual context.",
       "Never invent company information.",
@@ -150,6 +252,17 @@ export async function POST(req: Request) {
         ? `- Notes/context from the sender:\n${notes}`
         : "- Notes/context: (none)",
       "",
+      "GROWTH MEMORY / PREVIOUS RELATIONSHIP:",
+      growthContext || "No previous communication found in Growth Memory.",
+      "",
+      "IMPORTANT RELATIONSHIP RULES:",
+      "- If previous communication exists, continue the relationship naturally.",
+      "- Do not write a first-contact introduction if we already contacted this company.",
+      "- Do not repeat information already sent unless it is necessary.",
+      "- If a reply exists, prioritize the latest reply and its context.",
+      "- Match the existing conversation context instead of restarting the sales pitch.",
+      "- Never invent anything that is not present in Growth Memory or website context.",
+      "",
       "WEBSITE SUMMARY (factual context only; omit empty fields mentally):",
       formatWebsiteSummaryForPrompt(websiteSummary),
       analysis.pagesFetched
@@ -161,7 +274,13 @@ export async function POST(req: Request) {
 
     const completion = await createChatCompletion({
       messages: [
-        { role: "system", content: SYSTEM_PROMPT },
+        {
+          role: "system",
+          content: `${SYSTEM_PROMPT}
+        
+        ${buildModeInstructions(draftMode)}
+        `,
+        },
         { role: "user", content: userPrompt },
       ],
       temperature: 0.55,
@@ -197,6 +316,12 @@ export async function POST(req: Request) {
       subject,
       body,
       websiteSummary,
+      growthMemory: {
+        draftMode,
+        found: Boolean(growthCompanyId),
+        companyId: growthCompanyId,
+        contextCharacters: growthContext.length,
+      },
       websiteAnalysis: {
         pagesFetched: analysis.pagesFetched,
         textChars: analysis.textChars,
