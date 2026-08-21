@@ -20,12 +20,30 @@ type ZohoStatus = {
   error?: string;
 };
 
+type FolderSyncStats = {
+  scanned: number;
+  imported: number;
+  skippedExisting: number;
+  skippedInvalid: number;
+  errors: number;
+};
+
+type MemorySyncResult = {
+  ok?: boolean;
+  sent?: FolderSyncStats;
+  inbox?: FolderSyncStats;
+  error?: string;
+};
+
 export default function AdminGrowthSettingsPage() {
   const [loading, setLoading] = useState(true);
   const [busy, setBusy] = useState(false);
+  const [syncBusy, setSyncBusy] = useState(false);
   const [status, setStatus] = useState<ZohoStatus | null>(null);
   const [banner, setBanner] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [syncResult, setSyncResult] = useState<MemorySyncResult | null>(null);
+  const [syncError, setSyncError] = useState<string | null>(null);
 
   async function requireAdminOrRedirect() {
     const { data } = await supabase.auth.getUser();
@@ -127,6 +145,31 @@ export default function AdminGrowthSettingsPage() {
       setError(e instanceof Error ? e.message : "Disconnect failed");
     } finally {
       setBusy(false);
+    }
+  }
+
+  async function syncZohoHistory() {
+    setSyncBusy(true);
+    setSyncError(null);
+    setSyncResult(null);
+    try {
+      const token = await getAccessToken();
+      if (!token) {
+        throw new Error("Missing session");
+      }
+      const res = await fetch("/api/growth/memory/sync-zoho", {
+        method: "POST",
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      const json = (await res.json()) as MemorySyncResult;
+      if (!res.ok || !json.ok) {
+        throw new Error(json.error || "Sync failed");
+      }
+      setSyncResult(json);
+    } catch (e) {
+      setSyncError(e instanceof Error ? e.message : "Sync failed");
+    } finally {
+      setSyncBusy(false);
     }
   }
 
@@ -236,6 +279,37 @@ export default function AdminGrowthSettingsPage() {
               Disconnect
             </button>
           </div>
+        </section>
+
+        <section className="mt-6 rounded-2xl border border-gray-200 bg-white p-5">
+          <h2 className="text-lg font-semibold">Growth Memory Sync</h2>
+          <p className="mt-2 text-sm text-gray-600">
+            Read-only Zoho sync. Imports up to 100 Sent + 100 Inbox messages
+            into Growth Memory. Does not modify mail.
+          </p>
+
+          <div className="mt-5">
+            <button
+              type="button"
+              disabled={syncBusy || busy || !status?.connected}
+              onClick={syncZohoHistory}
+              className="px-4 py-2 rounded-xl border border-black bg-black text-white hover:opacity-90 disabled:opacity-50"
+            >
+              {syncBusy ? "Syncing…" : "Sync Zoho History"}
+            </button>
+          </div>
+
+          {syncError ? (
+            <div className="mt-4 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800">
+              {syncError}
+            </div>
+          ) : null}
+
+          {syncResult ? (
+            <pre className="mt-4 overflow-x-auto rounded-xl border border-gray-200 bg-gray-50 p-4 text-xs text-gray-800">
+              {JSON.stringify(syncResult, null, 2)}
+            </pre>
+          ) : null}
         </section>
       </div>
     </main>
