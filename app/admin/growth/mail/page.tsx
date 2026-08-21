@@ -103,6 +103,10 @@ export default function AdminGrowthMailPage() {
   const [aiGenerating, setAiGenerating] = useState(false);
   const [aiSaving, setAiSaving] = useState(false);
   const [aiError, setAiError] = useState<string | null>(null);
+const [replyGenerating, setReplyGenerating] = useState(false);
+const [replyDraft, setReplyDraft] = useState("");
+const [replySubject, setReplySubject] = useState("");
+const [replyError, setReplyError] = useState<string | null>(null);
 
   async function requireAdminOrRedirect() {
     const { data } = await supabase.auth.getUser();
@@ -299,7 +303,113 @@ export default function AdminGrowthMailPage() {
     }
   }
 
-  async function saveAiDraftToZoho() {
+
+  async function generateAiReply() {
+    if (!detail) return;
+
+    setReplyGenerating(true);
+    setReplyError(null);
+
+    try {
+      const token = await getAccessToken();
+
+      if (!token) {
+        setReplyError("Missing session");
+        return;
+      }
+
+      const res = await fetch("/api/growth/ai-reply", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          subject: detail.subject || "",
+          from: detail.fromAddress || "",
+          message:
+            detail.plainTextBody ||
+            detail.htmlBody ||
+            "",
+        }),
+      });
+
+      const json = await res.json().catch(() => ({}));
+
+      if (!res.ok) {
+        setReplyError(json?.error || "Failed to generate reply");
+        return;
+      }
+
+      setReplySubject(
+        typeof json.subject === "string"
+          ? json.subject
+          : `Re: ${detail.subject || ""}`
+      );
+
+      setReplyDraft(
+        typeof json.body === "string"
+          ? json.body
+          : ""
+      );
+
+    } catch (e) {
+      setReplyError(
+        e instanceof Error ? e.message : "Failed to generate reply"
+      );
+    } finally {
+      setReplyGenerating(false);
+    }
+  }
+
+  
+async function saveReplyDraftToZoho() {
+  setReplyError(null);
+
+  try {
+    const token = await getAccessToken();
+
+    if (!token) {
+      setReplyError("Missing session");
+      return;
+    }
+
+    if (!detail?.fromAddress) {
+      setReplyError("Missing recipient email");
+      return;
+    }
+
+    const res = await fetch("/api/zoho/mail/draft", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        to: detail.fromAddress,
+        subject: replySubject.trim(),
+        body: replyDraft,
+      }),
+    });
+
+    const json = await res.json().catch(() => ({}));
+
+    if (!res.ok) {
+      setReplyError(json?.error || "Failed to save reply draft");
+      return;
+    }
+
+    setReplyError(null);
+    alert("Reply saved to Zoho Drafts.");
+
+  } catch (e) {
+    setReplyError(
+      e instanceof Error ? e.message : "Failed to save reply draft"
+    );
+  }
+}
+
+async function saveAiDraftToZoho() {
     setAiSaving(true);
     setAiError(null);
     setDraftSuccess(null);
@@ -848,7 +958,20 @@ export default function AdminGrowthMailPage() {
 
               <section className="rounded-2xl border border-gray-200 bg-white overflow-hidden">
                 <div className="px-4 py-3 border-b border-gray-100">
-                  <h2 className="font-semibold">Message</h2>
+                  <div className="flex items-center justify-between">
+  <h2 className="font-semibold">Message</h2>
+
+  {detail ? (
+    <button
+      type="button"
+      onClick={() => void generateAiReply()}
+      disabled={replyGenerating}
+      className="px-3 py-1.5 rounded-lg bg-black text-white text-sm disabled:opacity-50"
+    >
+      {replyGenerating ? "Generating..." : "✨ Generate AI Reply"}
+    </button>
+  ) : null}
+</div>
                 </div>
 
                 {!selectedId && !detailLoading ? (
@@ -902,16 +1025,65 @@ export default function AdminGrowthMailPage() {
                     </div>
 
                     {detail.htmlBody ? (
-                      <div>
-                        <h3 className="text-sm font-semibold">HTML body</h3>
-                        <pre className="mt-2 whitespace-pre-wrap break-all rounded-xl border border-gray-100 bg-gray-50 p-3 text-xs text-gray-800 max-h-64 overflow-auto">
-                          {detail.htmlBody}
-                        </pre>
-                      </div>
-                    ) : null}
+                  <details className="rounded-xl border border-gray-200 bg-gray-50 p-3">
+                    <summary className="cursor-pointer text-sm font-semibold">
+                      Show raw HTML
+                    </summary>
+                    <pre className="mt-3 whitespace-pre-wrap break-all text-xs text-gray-700 max-h-64 overflow-auto">
+                      {detail.htmlBody}
+                    </pre>
+                  </details>
+                ) : null}
 
                     <div>
-                      <h3 className="text-sm font-semibold">Attachments</h3>
+                      
+{replyDraft ? (
+  <div className="rounded-xl border border-gray-200 bg-gray-50 p-4">
+    <h3 className="text-sm font-semibold">
+      AI Reply Draft
+    </h3>
+
+    {replyError ? (
+      <div className="mt-2 text-sm text-red-600">
+        {replyError}
+      </div>
+    ) : null}
+
+    <div className="mt-3">
+      <label className="text-xs text-gray-500">
+        Subject
+      </label>
+
+      <input
+        className="mt-1 w-full rounded-lg border px-3 py-2 text-sm"
+        value={replySubject}
+        onChange={(e) => setReplySubject(e.target.value)}
+      />
+    </div>
+
+    <div className="mt-3">
+      <label className="text-xs text-gray-500">
+        Reply
+      </label>
+
+      <textarea
+        className="mt-1 w-full min-h-[220px] rounded-lg border px-3 py-2 text-sm"
+        value={replyDraft}
+        onChange={(e) => setReplyDraft(e.target.value)}
+      />
+
+      <button
+        type="button"
+        onClick={() => void saveReplyDraftToZoho()}
+        className="mt-3 px-4 py-2 rounded-lg bg-black text-white text-sm"
+      >
+        Save Reply to Zoho Drafts
+      </button>
+    </div>
+  </div>
+) : null}
+
+<h3 className="text-sm font-semibold">Attachments</h3>
                       {detail.attachments?.length ? (
                         <ul className="mt-2 space-y-1 text-sm">
                           {detail.attachments.map((a) => (
